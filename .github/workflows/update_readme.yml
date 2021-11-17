@@ -1,4 +1,4 @@
-name: Pylint
+name: Update README
 
 on:
   push:
