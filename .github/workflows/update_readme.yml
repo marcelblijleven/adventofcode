@@ -21,8 +21,8 @@ jobs:
     - name: Generate new README
       run: generate-readme
     - name: Commit new README
-        run: |
-          git config --global user.name 'Marcel Blijleven'
-          git config --global user.email 'marcelblijleven@users.noreply.github.com'
-          if ! git diff-index --quiet HEAD; then git commit -am "docs: update README"; fi
-          git push
+      run: |
+        git config --global user.name 'Marcel Blijleven'
+        git config --global user.email 'marcelblijleven@users.noreply.github.com'
+        if ! git diff-index --quiet HEAD; then git commit -am "docs: update README"; fi
+        git push
