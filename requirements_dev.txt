@@ -4,3 +4,4 @@ mypy==0.910
 mypy-extensions==0.4.3
 flake8==4.0.1
 tox==3.24.4
+pytest-mock==3.6.1
