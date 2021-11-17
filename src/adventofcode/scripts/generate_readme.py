@@ -43,8 +43,8 @@ def _create_completed_text() -> str:
         text.append(f'### {year}')
 
         for day, parts in days.items():
-            part_one = '✅' if parts['part_one'] else '❌'
-            part_two = '✅' if parts['part_two'] else '❌'
+            part_one = '⭐️' if parts['part_one'] else '–'
+            part_two = '⭐️' if parts['part_two'] else '-'
             text.append(f'- day {day:02}: part one {part_one}, part two {part_two}')
 
     text.append('')
