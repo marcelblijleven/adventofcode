@@ -1,4 +1,5 @@
-# Advent of Code
+# Advent of Code ⭐️
+Collection of my Advent of Code solutions 
 
 <!-- start completed section -->
 ## Completed
