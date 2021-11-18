@@ -1,0 +1,82 @@
+{
+  "bumpFiles": [
+    {
+      "filename": "VERSION",
+      "type": "plain-text"
+    }
+  ],
+  "types": [
+    {
+      "section": "✨ Features",
+      "type": "feat"
+    },
+    {
+      "section": "⭐️ Solutions",
+      "type": "solution"
+    },
+    {
+      "section": "🐛 Bug Fixes",
+      "type": "fix"
+    },
+    {
+      "hidden": false,
+      "section": "🚦Tests",
+      "type": "test"
+    },
+    {
+      "hidden": false,
+      "section": "📦 Build System",
+      "type": "build"
+    },
+    {
+      "hidden": false,
+      "type": "ci",
+      "section": "🛠 CI"
+    },
+    {
+      "hidden": true,
+      "type": "chore",
+      "section": "🏗 Chores"
+    },
+    {
+      "hidden": false,
+      "type": "imp",
+      "section": "🛠 Improvements"
+    },
+    {
+      "hidden": false,
+      "type": "docs",
+      "section": "📄 Documentation"
+    },
+    {
+      "hidden": false,
+      "type": "perf",
+      "section": "⚡️ Performance"
+    },
+    {
+      "hidden": false,
+      "type": "security",
+      "section": "🔒 Security"
+    },
+    {
+      "hidden": false,
+      "type": "style",
+      "section": "💅 Style"
+    },
+    {
+      "hidden": false,
+      "type": "refactor",
+      "section": "🔨 Refactor"
+    },
+    {
+      "hidden": false,
+      "type": "revert",
+      "section": "♻️ Revert"
+    },
+    {
+      "hidden": false,
+      "type": "hotfix",
+      "section": "🔥 Hotfix"
+    }
+  ]
+}
