@@ -2,10 +2,9 @@ import time
 import os
 from typing import Callable
 
-from rich.console import Console
+from adventofcode.util.console import console
 
-
-console = Console(color_system='truecolor')
+from adventofcode.util.exceptions import SolutionNotFoundException
 
 
 def _get_year_from_segment(segment: str) -> int:
@@ -26,21 +25,30 @@ def get_year_from_file(file: str):
     return _get_year_from_segment(year_segment)
 
 
-def solution_timer(day: int, part: int):  # type: ignore
+def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: C901, type: ignore
     if not day or not part:
         raise ValueError('incorrect values provided for solution timer')
 
-    prefix = f'[blue]day {day:02} part {part:02}[/blue]: '
+    if version:
+        version = f' [yellow]{version}[/yellow]'
+
+    prefix = f'[blue]{year} day {day:02} part {part:02}[/blue]{version}: '
 
     def decorator(func: Callable):  # type: ignore
         def wrapper(*args, **kwargs):
             try:
                 start = time.perf_counter()
                 solution = func(*args, **kwargs)
+
+                if not solution:
+                    raise SolutionNotFoundException(year, day, part)
+
                 diff = time.perf_counter() - start
                 console.print(f'{prefix}{solution} in {diff:.4f} ms')
             except (ValueError, ArithmeticError, TypeError):
                 console.print_exception()
+            except SolutionNotFoundException:
+                console.print(f'{prefix}[red]solution not found')
             else:
                 return solution
 
