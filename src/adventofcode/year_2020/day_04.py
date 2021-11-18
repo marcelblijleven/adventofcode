@@ -79,7 +79,7 @@ def deep_validation(passport: Dict[str, str]) -> bool:
 
     checks = []
 
-    for key, value in passport.items():
+    for key, value in passport.items(): # noqa C901
         if key == 'byr':
             checks.append(dob_check(value))
         elif key == 'iyr':
