@@ -6,6 +6,5 @@ Collection of my Advent of Code solutions
 <!-- start completed section -->
 ## Completed
 ### 2020
-- day 01: part one –, part two –
 
 <!-- end completed section -->
