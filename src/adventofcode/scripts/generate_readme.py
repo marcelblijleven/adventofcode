@@ -20,6 +20,8 @@ def generate_readme():
         '<!-- end completed section -->'
     )
 
+    readme = _update_stars(readme)
+
     with open(readme_file, 'w') as f:
         f.write(readme)
 
@@ -35,6 +37,22 @@ def _replace_between_tags(readme: str, content: str, start: str, end: str) -> st
     )
 
 
+def _update_stars(readme: str) -> str:
+    star_count = _count_stars()
+
+    return re.sub(
+        pattern=r'&message=\d+',
+        repl=f'&message={star_count}',
+        string=readme,
+        flags=re.DOTALL,
+    )
+
+
+def _count_stars() -> int:
+    found = _find_completed_days()
+    return sum([val for days in found.values() for parts in days.values() for val in parts.values()])
+
+
 def _create_completed_text() -> str:
     found = _find_completed_days()
 
@@ -44,7 +62,7 @@ def _create_completed_text() -> str:
 
         for day, parts in days.items():
             part_one = '⭐️' if parts['part_one'] else '–'
-            part_two = '⭐️' if parts['part_two'] else '-'
+            part_two = '⭐️' if parts['part_two'] else '–'
             text.append(f'- day {day:02}: part one {part_one}, part two {part_two}')
 
     text.append('')
