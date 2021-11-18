@@ -1,9 +1,9 @@
-import ast
 import os
 import re
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.config import ROOT_DIR
+from adventofcode.util.module_helpers import get_functions_from_day_file, get_full_day_paths, get_full_year_paths, clean_day, clean_year
 
 
 def generate_readme():
@@ -56,7 +56,7 @@ def _count_stars() -> int:
 def _create_completed_text() -> str:
     found = _find_completed_days()
 
-    text = ['## Completed']
+    text = ['## Completed ⭐️']
     for year, days in found.items():
         text.append(f'### {year}')
 
@@ -78,52 +78,16 @@ def _find_completed_days() -> Dict[int, Dict[int, Dict[str, bool]]]:
     """
     items: Dict[int, Dict[int, Dict[str, bool]]] = {}
 
-    for year in _get_years():
-        clean_year = _clean_year(year)
-        items[clean_year] = {}
+    for year_path in get_full_year_paths():
+        year = clean_year(year_path)
+        items[year] = {}
 
-        for day in _get_days(year):
-            clean_day = _clean_day(day)
-            items[clean_year][clean_day] = {}
-            funcs = _get_functions_from_day(day)
+        for day_file in get_full_day_paths(year_path):
+            day = clean_day(day_file)
+            items[year][day] = {}
+            funcs = get_functions_from_day_file(day_file)
 
-            items[clean_year][clean_day]['part_one'] = 'part_one' in funcs
-            items[clean_year][clean_day]['part_two'] = 'part_two' in funcs
+            items[year][day]['part_one'] = 'part_one' in funcs
+            items[year][day]['part_two'] = 'part_two' in funcs
 
     return items
-
-
-def _get_years() -> List[str]:
-    """
-    Retrieves all directories in the ROOT_DIR that start with 'year_'
-    """
-    return [os.path.join(ROOT_DIR, val) for val in os.listdir(ROOT_DIR) if val.startswith('year_')]
-
-
-def _get_days(year: str) -> List[str]:
-    """
-    Retrieves all files in the ROOT_DIR/year_{year} directory that start with 'day_'
-    """
-    return [os.path.join(year, val) for val in os.listdir(year) if val.startswith('day_')]
-
-
-def _get_functions_from_day(day: str):
-    """
-    Uses ast to retrieve all top level functions in the provided day file
-    """
-    with open(day, 'rt') as f:
-        parsed = ast.parse(f.read(), filename=day)
-
-    return [func.name for func in parsed.body if isinstance(func, ast.FunctionDef)]
-
-
-def _clean_year(year: str) -> int:
-    segments = year.split(os.sep)
-    year_segment = segments[-1]
-    return int(year_segment[len('year_'):])
-
-
-def _clean_day(day: str) -> int:
-    segments = day.split(os.sep)
-    day_segment = segments[-1].replace('.py', '')
-    return int(day_segment[len('year_'):])
