@@ -73,13 +73,13 @@ def pid_check(value):
     return re.compile(r'\d{9}$').match(value) is not None
 
 
-def deep_validation(passport: Dict[str, str]) -> bool:
+def deep_validation(passport: Dict[str, str]) -> bool: # noqa C901
     if not validate_passport(passport):
         return False
 
     checks = []
 
-    for key, value in passport.items(): # noqa C901
+    for key, value in passport.items():
         if key == 'byr':
             checks.append(dob_check(value))
         elif key == 'iyr':
