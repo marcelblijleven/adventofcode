@@ -1,6 +1,5 @@
 import hashlib
-from typing import List, Dict
-
+from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
@@ -12,6 +11,8 @@ def find_number(secret: str, target: str, range_size: int) -> int:
         h = hashlib.md5((secret + str(i)).encode('utf-8')).hexdigest()
         if h[:len(target)] == target:
             return i
+
+    raise ValueError('number not found')
 
 
 @solution_timer(2015, 4, 1)

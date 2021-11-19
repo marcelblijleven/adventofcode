@@ -1,4 +1,5 @@
 import pytest
+
 from adventofcode.year_2015.day_03 import part_one, part_two
 
 
@@ -18,5 +19,3 @@ def test_part_one(instructions, expected):
 ])
 def test_part_two(instructions, expected):
     assert expected == part_two([instructions])
-
-

@@ -1,5 +1,6 @@
 import pytest
-from adventofcode.year_2015.day_02 import part_one, part_two, get_surface, get_ribbon
+
+from adventofcode.year_2015.day_02 import get_surface, get_ribbon
 
 
 @pytest.mark.parametrize(['line', 'expected'], [
