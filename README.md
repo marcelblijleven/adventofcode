@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=0&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=22&color=yellow)]()
 
 Collection of my Advent of Code solutions in a slightly overkill project setup 👻.
 
@@ -16,6 +16,19 @@ Collection of my Advent of Code solutions in a slightly overkill project setup �
 - Tested against multiple python versions using `tox` on each push to master and pull request
 
 <!-- start completed section -->
+## Completed ⭐️
+### 2020
+- day 01: part one ⭐️, part two ⭐️
+- day 02: part one ⭐️, part two ⭐️
+- day 03: part one ⭐️, part two ⭐️
+- day 04: part one ⭐️, part two ⭐️
+- day 05: part one ⭐️, part two ⭐️
+- day 06: part one ⭐️, part two ⭐️
+- day 07: part one ⭐️, part two ⭐️
+- day 08: part one ⭐️, part two ⭐️
+- day 09: part one ⭐️, part two ⭐️
+- day 10: part one ⭐️, part two ⭐️
+- day 11: part one ⭐️, part two ⭐️
 
 <!-- end completed section -->
 
