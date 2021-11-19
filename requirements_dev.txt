@@ -5,3 +5,5 @@ mypy-extensions==0.4.3
 flake8==4.0.1
 tox==3.24.4
 pytest-mock==3.6.1
+requests==2.26.0
+types-requests==2.26.0
