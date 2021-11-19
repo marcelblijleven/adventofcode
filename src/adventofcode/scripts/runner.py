@@ -1,3 +1,4 @@
+from adventofcode import config
 from adventofcode.util.console import console
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.util.module_helpers import get_full_year_paths, clean_year, get_full_day_paths, year_dir_from_path, \
@@ -11,6 +12,8 @@ def run_all() -> None:
 
     If input file is not found, or a function is not found, it will be printed to console
     """
+    config.RUNNING_ALL = True
+
     for year_path in get_full_year_paths():
         year_dir = year_dir_from_path(year_path)
         year = clean_year(year_dir)
@@ -25,6 +28,8 @@ def run_all() -> None:
                 _run_day(module, year, day)
             except FileNotFoundError:
                 console.print(f'[blue]{year} day {day:02}: [red]input file not found')
+
+    config.RUNNING_ALL = False
 
 
 def _run_day(module: str, year: int, day: int):

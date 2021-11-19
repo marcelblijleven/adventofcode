@@ -2,6 +2,7 @@ import time
 import os
 from typing import Callable
 
+from adventofcode.config import RUNNING_ALL
 from adventofcode.util.console import console
 
 from adventofcode.util.exceptions import SolutionNotFoundException
@@ -32,7 +33,10 @@ def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: 
     if version:
         version = f' [yellow]{version}[/yellow]'
 
-    prefix = f'[blue]{year} day {day:02} part {part:02}[/blue]{version}: '
+    if RUNNING_ALL:
+        prefix = f'[blue]  - day {day:02} part {part:02}[/blue]{version}: '
+    else:
+        prefix = f'[blue]{year} day {day:02} part {part:02}[/blue]{version}: '
 
     def decorator(func: Callable):  # type: ignore
         def wrapper(*args, **kwargs):
