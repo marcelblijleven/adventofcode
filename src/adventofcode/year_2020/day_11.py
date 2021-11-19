@@ -9,6 +9,9 @@ FLOOR = '.'
 TAKEN_SEAT = '#'
 
 
+LayoutType = Dict[tuple[int, int], str]
+
+
 def get_layout(lines):
     y = 0
     layout = {}
@@ -23,14 +26,14 @@ def get_layout(lines):
     return layout
 
 
-def get_x_y_range(layout: Dict[Tuple[int, int], str]) -> Tuple[int, int]:
+def get_x_y_range(layout: LayoutType) -> Tuple[int, int]:
     max_x = max(layout.keys(), key=itemgetter(0))[0]
     max_y = max(layout.keys(), key=itemgetter(1))[1]
     return max_x, max_y
 
 
-def get_adjacent_coordinates(layout: Dict[Tuple[int, int], str], current_x: int, current_y: int) -> Dict[
-    Tuple[int, int], str]:
+def get_adjacent_coordinates(
+    layout: LayoutType, current_x: int, current_y: int) -> LayoutType:
     adjacent_coordinates = {}
 
     for x, y in [(current_x + i, current_y + j) for i in [-1, 0, 1] for j in [-1, 0, 1]]:
@@ -40,7 +43,7 @@ def get_adjacent_coordinates(layout: Dict[Tuple[int, int], str], current_x: int,
     return adjacent_coordinates
 
 
-def seating_iteration(layout: Dict[Tuple[int, int], str]):
+def seating_iteration(layout: LayoutType):
     new_layout = layout.copy()
     max_x, max_y = get_x_y_range(layout)
 
@@ -61,7 +64,7 @@ def seating_iteration(layout: Dict[Tuple[int, int], str]):
     return new_layout
 
 
-def print_layout(layout: Dict[Tuple[int, int], str]):
+def print_layout(layout: LayoutType):
     max_x, max_y = get_x_y_range(layout)
     lines = []
 
@@ -75,7 +78,7 @@ def print_layout(layout: Dict[Tuple[int, int], str]):
     print('\n'.join(lines), '\n')
 
 
-def start_iterating(layout: Dict[Tuple[int, int], str], iteration_func=seating_iteration):  # type: ignore
+def start_iterating(layout: LayoutType, iteration_func=seating_iteration):  # type: ignore
     previous_layout = layout
     iteration = 1
 
@@ -95,7 +98,7 @@ def part_one(_input):
     return taken_seats
 
 
-def seats_in_line_of_sight(layout: Dict[Tuple[int, int], str], current_x: int, current_y: int) -> Dict[
+def seats_in_line_of_sight(layout: LayoutType, current_x: int, current_y: int) -> Dict[
     Tuple[int, int], str]:
     directions = {
         'left': (-1, 0),
@@ -128,7 +131,7 @@ def seats_in_line_of_sight(layout: Dict[Tuple[int, int], str], current_x: int, c
     return coords
 
 
-def los_seating_iteration(layout: Dict[Tuple[int, int], str], tolerance=5) -> Dict[Tuple[int, int], str]:
+def los_seating_iteration(layout: LayoutType, tolerance=5) -> LayoutType:
     new_layout = layout.copy()
     max_x, max_y = get_x_y_range(layout)
 
