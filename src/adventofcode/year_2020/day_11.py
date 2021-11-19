@@ -8,7 +8,6 @@ FREE_SEAT = 'L'
 FLOOR = '.'
 TAKEN_SEAT = '#'
 
-
 LayoutType = Dict[tuple[int, int], str]
 
 
@@ -32,8 +31,7 @@ def get_x_y_range(layout: LayoutType) -> Tuple[int, int]:
     return max_x, max_y
 
 
-def get_adjacent_coordinates(
-    layout: LayoutType, current_x: int, current_y: int) -> LayoutType:
+def get_adjacent_coordinates(layout: LayoutType, current_x: int, current_y: int) -> LayoutType:
     adjacent_coordinates = {}
 
     for x, y in [(current_x + i, current_y + j) for i in [-1, 0, 1] for j in [-1, 0, 1]]:
@@ -98,8 +96,7 @@ def part_one(_input):
     return taken_seats
 
 
-def seats_in_line_of_sight(layout: LayoutType, current_x: int, current_y: int) -> Dict[
-    Tuple[int, int], str]:
+def seats_in_line_of_sight(layout: LayoutType, current_x: int, current_y: int) -> LayoutType:
     directions = {
         'left': (-1, 0),
         'right': (1, 0),

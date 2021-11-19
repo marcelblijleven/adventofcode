@@ -8,9 +8,9 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 class PasswordHelper:
     def __init__(self, line: str):
-        self.line = line
+        self.line: str = line
         self.pattern = re.compile(r'(\d+)-(\d+) (\w+): (\w+)')
-        self._matches: Sequence[AnyStr] = []
+        self._matches: Sequence[str] = []
 
     @property
     def lower_bound(self) -> int:
@@ -29,9 +29,9 @@ class PasswordHelper:
         return self.matches[3]
 
     @property
-    def matches(self):
+    def matches(self) -> Sequence[str]:
         if not self._matches:
-            self._matches = re.match(self.pattern, self.line).groups()
+            self._matches = re.match(self.pattern, self.line).groups()  # type: ignore
             return self._matches
 
         return self._matches

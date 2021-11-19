@@ -5,7 +5,7 @@ from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def decypher_xmas(preamble: int, numbers: List[int]) -> int:
+def decipher_xmas(preamble: int, numbers: List[int]) -> int:
     idx = preamble
 
     while preamble < len(numbers):
@@ -24,12 +24,19 @@ def decypher_xmas(preamble: int, numbers: List[int]) -> int:
 
         idx += 1
 
+    raise ValueError('xmas could not by deciphered')
+
 
 @solution_timer(2020, 9, 1)
 def part_one(input_data: List[str]):
     preamble = 25
-    input_data = list(map(int, input_data))
-    return decypher_xmas(preamble, input_data)
+    int_data = list(map(int, input_data))
+    answer = decipher_xmas(preamble, int_data)
+
+    if not answer:
+        raise SolutionNotFoundException(2020, 9, 1)
+
+    return answer
 
 
 def find_group_sum(numbers: List[int], target: int) -> List[int]:
@@ -39,13 +46,19 @@ def find_group_sum(numbers: List[int], target: int) -> List[int]:
             if sum(window) == target:
                 return window
 
+    raise ValueError('group sum not found')
+
 
 @solution_timer(2020, 9, 2)
 def part_two(input_data: List[str]):
     preamble = 25
-    input_data = list(map(int, input_data))
-    wrong_number = decypher_xmas(preamble, input_data)
-    group = find_group_sum(input_data, wrong_number)
+    int_data = list(map(int, input_data))
+    wrong_number = decipher_xmas(preamble, int_data)
+    group = find_group_sum(int_data, wrong_number)
+
+    if not group:
+        raise SolutionNotFoundException(2020, 9, 2)
+
     return min(group) + max(group)
 
 

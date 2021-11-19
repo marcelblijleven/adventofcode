@@ -3,7 +3,7 @@ from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
-from adventofcode.util.input_helpers import get_input_for_day, get_input_for_day_as_str
+from adventofcode.util.input_helpers import get_input_for_day_as_str
 
 
 def get_passports(batch_file: str) -> List[Dict[str, str]]:
@@ -73,7 +73,7 @@ def pid_check(value):
     return re.compile(r'\d{9}$').match(value) is not None
 
 
-def deep_validation(passport: Dict[str, str]) -> bool: # noqa C901
+def deep_validation(passport: Dict[str, str]) -> bool:  # noqa C901
     if not validate_passport(passport):
         return False
 

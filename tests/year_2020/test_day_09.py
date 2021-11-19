@@ -1,4 +1,4 @@
-from adventofcode.year_2020.day_09 import decypher_xmas, find_group_sum
+from adventofcode.year_2020.day_09 import decipher_xmas, find_group_sum
 
 test_input = [
     35,
@@ -25,10 +25,10 @@ test_input = [
 
 
 def test_part_one():
-    assert 127 == decypher_xmas(5, test_input)
+    assert 127 == decipher_xmas(5, test_input)
 
 
 def test_part_two():
-    num = decypher_xmas(5, test_input)
+    num = decipher_xmas(5, test_input)
     group = find_group_sum(test_input, num)
     assert 62 == min(group) + max(group)

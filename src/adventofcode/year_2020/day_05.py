@@ -37,6 +37,9 @@ def part_one(input_data: List[str]):
         column = parse([char for char in boarding_pass if char in ['L', 'R']], 0, 7)
         ids.append(row * 8 + column)
 
+    if not ids:
+        raise SolutionNotFoundException(2020, 5, 1)
+
     return max(ids)
 
 
@@ -52,6 +55,9 @@ def _part_one_binary_version(input_data: List[str]) -> List[int]:
             .replace('R', '1')\
             .replace('L', '0')
         ids.append(int(boarding_pass, 2))
+
+    if not ids:
+        raise SolutionNotFoundException(2020, 5, 2)
 
     return ids
 

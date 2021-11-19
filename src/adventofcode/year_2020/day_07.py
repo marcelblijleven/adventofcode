@@ -1,14 +1,15 @@
 import re
-from typing import Tuple, List, Dict
+from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
-
 bag_type_pattern = re.compile(r'^([a-z]+ [a-z]+)')
 contents_pattern = re.compile(r'((\d) ([a-z]+ [a-z]+))')
 gold_bag = 'shiny gold'
+
+BagType = Dict[str, Dict[str, int]]
 
 
 @solution_timer(2020, 7, 1)
@@ -19,20 +20,29 @@ def part_one(input_data: List[str]) -> int:
         if search(bags, bag, gold_bag):
             gold_holders.append(bag)
 
+    if not gold_holders:
+        raise SolutionNotFoundException(2020, 7, 1)
+
     return len(gold_holders)
 
 
 @solution_timer(2020, 7, 2)
 def part_two(input_data: List[str]) -> int:
     bags = get_bags(input_data)
-    return bag_counter(gold_bag, bags, 1, 0)
+
+    answer = bag_counter(gold_bag, bags, 1, 0)
+
+    if not answer:
+        raise SolutionNotFoundException(2020, 7, 2)
+
+    return answer
 
 
-def get_bags(input_data: List[str]) -> Dict[str, Dict[str, int]]:
-    bags = {}
+def get_bags(input_data: List[str]) -> BagType:
+    bags: BagType = {}
 
     for line in input_data:
-        bag = bag_type_pattern.match(line).group()
+        bag = bag_type_pattern.match(line).group()  # type: ignore
         contents = contents_pattern.findall(line)
         bags[bag] = {}
 
@@ -43,7 +53,7 @@ def get_bags(input_data: List[str]) -> Dict[str, Dict[str, int]]:
     return bags
 
 
-def search(bags: Dict[str, Dict[str, int]], current_bag: str, bag: str) -> bool:
+def search(bags: BagType, current_bag: str, bag: str) -> bool:
     contents = [content for content in bags[current_bag].keys()]
     if contents:
         for content in contents:
@@ -52,11 +62,11 @@ def search(bags: Dict[str, Dict[str, int]], current_bag: str, bag: str) -> bool:
             else:
                 if search(bags, content, bag):
                     return True
-    else:
-        return False
+
+    return False
 
 
-def bag_counter(bag: str, bags: Dict[str, Dict[str, int]], multiplier: int, total: int) -> int:
+def bag_counter(bag: str, bags: BagType, multiplier: int, total: int) -> int:
     contents = bags[bag]
     total += sum([multiplier * value for _, value in contents.items()])
 

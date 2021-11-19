@@ -14,6 +14,10 @@ OPERATION_NOP = 'nop'
 def part_one(input_data: List[str]) -> int:
     instructions = [parse_instruction(line) for line in input_data]
     accumulator = isolation_run(instructions)
+
+    if not accumulator:
+        raise SolutionNotFoundException(2020, 8, 1)
+
     return accumulator[0]
 
 
@@ -21,6 +25,10 @@ def part_one(input_data: List[str]) -> int:
 def part_two(input_data: List[str]) -> int:
     instructions = [parse_instruction(line) for line in input_data]
     accumulator = correcting_run(instructions)
+
+    if not accumulator:
+        raise SolutionNotFoundException(2020, 8, 2)
+
     return accumulator
 
 
@@ -73,6 +81,8 @@ def correcting_run(instructions: List[Tuple[str, int]]) -> int:
                 return accumulator
             else:
                 instructions[idx] = operation, argument
+
+    raise ValueError('accumulator not found')
 
 
 if __name__ == '__main__':

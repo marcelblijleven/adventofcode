@@ -1,11 +1,11 @@
-from typing import List
+from typing import List, Set, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def groups(input_data: List[str]) -> List[str]:
+def groups(input_data: List[str]) -> Generator[List[str], None, None]:
     group = ''
     for line in input_data:
         if line:
@@ -17,7 +17,7 @@ def groups(input_data: List[str]) -> List[str]:
     yield sorted(list(set(list(group))))
 
 
-def groups_as_lists(input_data: List[str]) -> List[List[str]]:
+def groups_as_lists(input_data: List[str]) -> Generator[List[str], None, None]:
     group = []
     for line in input_data:
         if line:
@@ -29,7 +29,7 @@ def groups_as_lists(input_data: List[str]) -> List[List[str]]:
     yield group
 
 
-def get_all_answered(value: List[str]) -> List[str]:
+def get_all_answered(value: List[str]) -> Set[str]:
     s = set(value[0])
 
     for i in range(1, len(value)):
@@ -45,6 +45,9 @@ def part_one(input_data):
     for group in groups(input_data):
         total += len(group)
 
+    if not total:
+        raise SolutionNotFoundException(2020, 6, 1)
+
     return total
 
 
@@ -54,6 +57,9 @@ def part_two(input_data):
 
     for group in groups_as_lists(input_data):
         total += len(get_all_answered(group))
+
+    if not total:
+        raise SolutionNotFoundException(2020, 6, 2)
 
     return total
 
