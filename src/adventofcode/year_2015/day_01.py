@@ -27,7 +27,7 @@ def part_two(input_data: List[str]) -> int:
             floor += 1
         else:
             floor -= 1
-        print(floor)
+
         if floor == -1:
             return i + 1
 
