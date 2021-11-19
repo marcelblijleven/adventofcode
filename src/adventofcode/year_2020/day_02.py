@@ -1,5 +1,5 @@
 import re
-from typing import AnyStr, Sequence, List
+from typing import Sequence, List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
