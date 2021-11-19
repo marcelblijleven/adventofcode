@@ -6,6 +6,9 @@ from adventofcode.config import ROOT_DIR
 from adventofcode.util.module_helpers import get_functions_from_day_file, get_full_day_paths, get_full_year_paths, clean_day, clean_year
 
 
+YearDayType = Dict[int, Dict[int, Dict[str, bool]]]
+
+
 def generate_readme():
     path = os.path.join(ROOT_DIR, '../../README.md')
     readme_file = os.path.abspath(path)
@@ -69,14 +72,14 @@ def _create_completed_text() -> str:
     return '\n'.join(text)
 
 
-def _find_completed_days() -> Dict[int, Dict[int, Dict[str, bool]]]:
+def _find_completed_days() -> YearDayType:
     """
     Loops through all the year directories, all the day files
     and checks if the file contains functions 'part_one' and 'part_two'
 
     Returns the results as a Dict
     """
-    items: Dict[int, Dict[int, Dict[str, bool]]] = {}
+    items: YearDayType = {}
 
     for year_path in get_full_year_paths():
         year = clean_year(year_path)
