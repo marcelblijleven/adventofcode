@@ -1,5 +1,6 @@
 import pytest
-from adventofcode.year_2015.day_05 import is_nice, is_nice_part_two
+
+from adventofcode.year_2015.day_05 import is_nice
 
 
 @pytest.mark.parametrize(['line', 'expected'], [
