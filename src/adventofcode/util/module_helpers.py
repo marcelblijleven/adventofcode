@@ -41,11 +41,12 @@ def clean_year(year_path: str) -> int:
 
 def clean_day(day_file: str) -> int:
     """
-    Removes the 'day_' prefix and .py extension from the day file
+    Removes the 'day_' prefix, _year suffix and .py extension from the day file
     """
     segments = day_file.split(os.sep)
     day_segment = segments[-1].replace('.py', '')
-    return int(day_segment[4:])
+
+    return int(day_segment[4:-5])
 
 
 def year_dir_from_path(year_dir: str) -> str:
