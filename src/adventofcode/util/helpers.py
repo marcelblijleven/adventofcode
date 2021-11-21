@@ -44,7 +44,7 @@ def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: 
                 start = time.perf_counter()
                 solution = func(*args, **kwargs)
 
-                if not solution:
+                if solution is None:
                     raise SolutionNotFoundException(year, day, part)
 
                 diff = time.perf_counter() - start
