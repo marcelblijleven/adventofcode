@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.year_2020.day_05 import part_one
+from adventofcode.year_2020.day_05_2020 import part_one
 
 test_input = ['BFFFBBFRRR', 'FFFBBBFRRR', 'BBFFBBFRLL']
 

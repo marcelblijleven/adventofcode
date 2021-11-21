@@ -1,4 +1,4 @@
-from adventofcode.year_2020.day_09 import decipher_xmas, find_group_sum
+from adventofcode.year_2020.day_09_2020 import decipher_xmas, find_group_sum
 
 test_input = [
     35,

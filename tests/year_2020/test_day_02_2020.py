@@ -1,4 +1,4 @@
-from adventofcode.year_2020.day_02 import part_one, part_two
+from adventofcode.year_2020.day_02_2020 import part_one, part_two
 
 
 def test_part_one():

@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.year_2015.day_03 import part_one, part_two
+from adventofcode.year_2015.day_03_2015 import part_one, part_two
 
 
 @pytest.mark.parametrize(['instructions', 'expected'], [

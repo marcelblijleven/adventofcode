@@ -1,4 +1,4 @@
-from adventofcode.year_2020.day_07 import part_one, part_two
+from adventofcode.year_2020.day_07_2020 import part_one, part_two
 
 test_input = [
     'light red bags contain 1 bright white bag, 2 muted yellow bags.',

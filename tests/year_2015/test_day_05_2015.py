@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.year_2015.day_05 import is_nice, has_repeating_letter, has_recurring_pairs
+from adventofcode.year_2015.day_05_2015 import is_nice, has_repeating_letter, has_recurring_pairs
 
 
 @pytest.mark.parametrize(['line', 'expected'], [

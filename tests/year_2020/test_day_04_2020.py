@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.year_2020.day_04 import dob_check, issue_check, expiration_check, height_check, \
+from adventofcode.year_2020.day_04_2020 import dob_check, issue_check, expiration_check, height_check, \
     hair_color_check, eye_color_check, pid_check, part_one, part_two
 
 test_input = """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd

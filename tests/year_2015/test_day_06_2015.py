@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.year_2015.day_06 import count_lights, count_brightness, run_instructions_part_two, run_instructions
+from adventofcode.year_2015.day_06_2015 import count_lights, count_brightness, run_instructions_part_two, run_instructions
 
 
 @pytest.mark.parametrize(['grid', 'expected'], [

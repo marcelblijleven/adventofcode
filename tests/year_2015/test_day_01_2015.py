@@ -1,5 +1,5 @@
 import pytest
-from adventofcode.year_2015.day_01 import part_one
+from adventofcode.year_2015.day_01_2015 import part_one
 
 
 @pytest.mark.parametrize(['sequence', 'expected'], [

@@ -1,4 +1,4 @@
-from adventofcode.year_2020.day_03 import part_one, part_two
+from adventofcode.year_2020.day_03_2020 import part_one, part_two
 
 test_input = ['..##.........##.........##.........##.........##.........##.......',
               '#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..',

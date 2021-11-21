@@ -1,5 +1,5 @@
 import pytest
-from adventofcode.year_2015.day_04 import find_number
+from adventofcode.year_2015.day_04_2015 import find_number
 
 
 @pytest.mark.parametrize(['secret', 'target', 'range_size', 'expected'], [
