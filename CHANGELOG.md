@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/marcelblijleven/adventofcode/compare/v1.1.0...v1.2.0) (2021-11-21)
+
+
+### 🛠 CI
+
+* add release script ([9f38229](https://github.com/marcelblijleven/adventofcode/commit/9f38229fad24253303e552e21d6751e48a9f4707))
+
+
+### ✨ Features
+
+* add template for day ([9eb524c](https://github.com/marcelblijleven/adventofcode/commit/9eb524c88bdc959b01063726ba63a598e7dcc7d7))
+
+
+### ⭐️ Solutions
+
+* add 2015 day 1 part one and two ([da29637](https://github.com/marcelblijleven/adventofcode/commit/da29637a9145c24c22d15ad157f5651d59b4a87b))
+* add 2015 day 2 part one and two ([3a369b9](https://github.com/marcelblijleven/adventofcode/commit/3a369b90671d634157bce74bb0cc98cea5f95a67))
+* add 2015 day 3 part one and two ([6a06298](https://github.com/marcelblijleven/adventofcode/commit/6a06298f2a9947364a8d44aeddb029973a9d499f))
+* add 2015 day 4 part one and two ([0ad0da5](https://github.com/marcelblijleven/adventofcode/commit/0ad0da556c999f6b069a2f9a25cd85a2d3e7aa36))
+* add 2015 day 5 part one ([711e835](https://github.com/marcelblijleven/adventofcode/commit/711e835f246d199aab5f47cb53b1d2b5a769fc97))
+* add 2015 day 5 part two ([097f03a](https://github.com/marcelblijleven/adventofcode/commit/097f03ab650a90987c7be212bd33fb7a4f0f7be9))
+* add 2015 day 6 part one and two ([213d090](https://github.com/marcelblijleven/adventofcode/commit/213d090c673bbba80c479ea1973516bce795d1e8))
+
+
+### 🐛 Bug Fixes
+
+* check for None explicitly to prevent incorrect behaviour when answer is 0 ([ec6c170](https://github.com/marcelblijleven/adventofcode/commit/ec6c170d98996fb9247ff694159539afd9d60476))
+* flake8 and mypy issues ([2d17659](https://github.com/marcelblijleven/adventofcode/commit/2d17659ddfb26cecdd23c41399c3f0e91667600a))
+* make all files unique to prevent issues in the global import namespace ([0bb19b3](https://github.com/marcelblijleven/adventofcode/commit/0bb19b3b03ae5d274f8493005968c0898a2346d2))
+* mypy and flake8 issues ([94bbc9f](https://github.com/marcelblijleven/adventofcode/commit/94bbc9ff4f48f15fed758737af209552f728a176))
+* strip _year suffix from day in clean_day ([e8925df](https://github.com/marcelblijleven/adventofcode/commit/e8925dfc3fc61e70f26708b52bdb9eadacc25211))
+
+
+### 📄 Documentation
+
+* update README ([7a17ba7](https://github.com/marcelblijleven/adventofcode/commit/7a17ba7c1cd5ea5b3bc91cdee155b8cd8bfb3412))
+* update README ([fc47a76](https://github.com/marcelblijleven/adventofcode/commit/fc47a76c280ceaae60389075eb8ddff3bc27a8cd))
+* update README ([d3bf904](https://github.com/marcelblijleven/adventofcode/commit/d3bf904f5a7e3b4c053f85552d91b7739011c1d7))
+* update README ([63f28ee](https://github.com/marcelblijleven/adventofcode/commit/63f28ee51346179c7cac5d6ead2959fc0efc6ec5))
+* update README ([fdc1763](https://github.com/marcelblijleven/adventofcode/commit/fdc1763453be022353f0d75bda2af40a736df78b))
+* update README ([d5d1562](https://github.com/marcelblijleven/adventofcode/commit/d5d15622dca7c80c157bd0b8fb83e7b7a7e46dd4))
+* update README ([37d97f0](https://github.com/marcelblijleven/adventofcode/commit/37d97f09e6b37036bc5a083bf4a8f0c7f8f954b2))
+* update README ([f175dd3](https://github.com/marcelblijleven/adventofcode/commit/f175dd3a3ed4b5b9d1b64fd831e517540b0126d4))
+* update README ([2fed2ff](https://github.com/marcelblijleven/adventofcode/commit/2fed2ffaf2fac1b7268b95d19d6680b0ea91fbe3))
+
 ## [1.1.0](https://github.com/marcelblijleven/adventofcode/compare/v1.0.0...v1.1.0) (2021-11-19)
 
 
