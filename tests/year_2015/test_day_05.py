@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.year_2015.day_05 import is_nice
+from adventofcode.year_2015.day_05 import is_nice, has_repeating_letter, has_recurring_pairs
 
 
 @pytest.mark.parametrize(['line', 'expected'], [
@@ -12,3 +12,21 @@ from adventofcode.year_2015.day_05 import is_nice
 ])
 def test_is_nice(line, expected):
     assert expected == is_nice(line)
+
+
+@pytest.mark.parametrize(['line', 'expected'], [
+    ('xyx', True),
+    ('abcdefeghi', True),
+    ('aaa', True),
+])
+def test_has_repeating_letter(line, expected):
+    assert expected == has_repeating_letter(line)
+
+
+@pytest.mark.parametrize(['line', 'expected'], [
+    ('xyxy', True),
+    ('aabcdefgaa', True),
+    ('aaa', False),
+])
+def test_has_recurring_pairs(line, expected):
+    assert expected == has_recurring_pairs(line)

@@ -1,3 +1,4 @@
+import re
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
@@ -48,9 +49,32 @@ def part_one(input_data: List[str]):
     return answer
 
 
+def has_repeating_letter(line: str) -> bool:
+    pattern = re.compile(r'([a-z])[a-z]\1')
+    match = pattern.findall(line)
+
+    return len(match) > 0
+
+
+def has_recurring_pairs(line: str) -> bool:
+    pattern = re.compile(r'([a-z]{2})[a-z]*\1')
+    match = pattern.findall(line)
+
+    return len(match) > 0
+
+
+def is_nice_part_two(line: str) -> bool:
+    return has_repeating_letter(line) and has_recurring_pairs(line)
+
+
 @solution_timer(2015, 5, 2)
 def part_two(input_data: List[str]):
-    return None
+    answer = len([line for line in input_data if is_nice_part_two(line)])
+
+    if not answer:
+        raise SolutionNotFoundException(2015, 5, 1)
+
+    return answer
 
 
 if __name__ == '__main__':
