@@ -18,24 +18,24 @@ Collection of my Advent of Code solutions in a slightly overkill project setup �
 <!-- start completed section -->
 ## Completed ⭐️
 ### 2015
-- day 01: part one ⭐️, part two ⭐️
-- day 02: part one ⭐️, part two ⭐️
-- day 03: part one ⭐️, part two ⭐️
-- day 04: part one ⭐️, part two ⭐️
-- day 05: part one ⭐️, part two ⭐️
-- day 06: part one ⭐️, part two ⭐️
+- day 12015: part one ⭐️, part two ⭐️
+- day 22015: part one ⭐️, part two ⭐️
+- day 32015: part one ⭐️, part two ⭐️
+- day 42015: part one ⭐️, part two ⭐️
+- day 52015: part one ⭐️, part two ⭐️
+- day 62015: part one ⭐️, part two ⭐️
 ### 2020
-- day 01: part one ⭐️, part two ⭐️
-- day 02: part one ⭐️, part two ⭐️
-- day 03: part one ⭐️, part two ⭐️
-- day 04: part one ⭐️, part two ⭐️
-- day 05: part one ⭐️, part two ⭐️
-- day 06: part one ⭐️, part two ⭐️
-- day 07: part one ⭐️, part two ⭐️
-- day 08: part one ⭐️, part two ⭐️
-- day 09: part one ⭐️, part two ⭐️
-- day 10: part one ⭐️, part two ⭐️
-- day 11: part one ⭐️, part two ⭐️
+- day 12020: part one ⭐️, part two ⭐️
+- day 22020: part one ⭐️, part two ⭐️
+- day 32020: part one ⭐️, part two ⭐️
+- day 42020: part one ⭐️, part two ⭐️
+- day 52020: part one ⭐️, part two ⭐️
+- day 62020: part one ⭐️, part two ⭐️
+- day 72020: part one ⭐️, part two ⭐️
+- day 82020: part one ⭐️, part two ⭐️
+- day 92020: part one ⭐️, part two ⭐️
+- day 102020: part one ⭐️, part two ⭐️
+- day 112020: part one ⭐️, part two ⭐️
 
 <!-- end completed section -->
 
