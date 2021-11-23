@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=42&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=50&color=yellow)]()
 
 Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
@@ -30,6 +30,10 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 - day 08: part one ⭐️, part two ⭐️
 - day 09: part one ⭐️, part two ⭐️
 - day 10: part one ⭐️, part two ⭐️
+- day 11: part one ⭐️, part two ⭐️
+- day 12: part one ⭐️, part two ⭐️
+- day 13: part one ⭐️, part two ⭐️
+- day 14: part one ⭐️, part two ⭐️
 ### 2020
 - day 01: part one ⭐️, part two ⭐️
 - day 02: part one ⭐️, part two ⭐️
