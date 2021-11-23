@@ -1,4 +1,4 @@
-from adventofcode.year_2015.day_14_2015 import Reindeer, check_leaderboard_and_assign_points, get_reindeer, race
+from adventofcode.year_2015.day_14_2015 import check_leaderboard_and_assign_points, get_reindeer, race
 
 test_input = [
     'Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.',
