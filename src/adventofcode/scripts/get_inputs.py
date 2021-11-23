@@ -19,7 +19,7 @@ def _download_input(year: int, day: int, session: str) -> bytes:
     url = f'https://adventofcode.com/{year}/day/{day}/input'
     resp = requests.get(url, cookies=cookies)
     resp.raise_for_status()
-    return resp.content
+    return resp.content  # type: ignore
 
 
 def _save_input(data: bytes, year: int, day: int) -> None:
