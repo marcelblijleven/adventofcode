@@ -1,10 +1,11 @@
-import time
+import cProfile
 import os
-from typing import Callable
+import pstats
+import time
+from typing import Callable, Literal
 
 from adventofcode.config import RUNNING_ALL
 from adventofcode.util.console import console
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 
 
@@ -26,7 +27,7 @@ def get_year_from_file(file: str):
     return _get_year_from_segment(year_segment)
 
 
-def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: C901, type: ignore
+def _get_prefix(year: int, day: int, part: int, version: str) -> str:
     if not day or not part:
         raise ValueError('incorrect values provided for solution timer')
 
@@ -37,6 +38,12 @@ def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: 
         prefix = f'[blue]  - day {day:02} part {part:02}[/blue]{version}: '
     else:
         prefix = f'[blue]{year} day {day:02} part {part:02}[/blue]{version}: '
+
+    return prefix
+
+
+def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: C901, type: ignore
+    prefix = _get_prefix(year, day, part, version)
 
     def decorator(func: Callable):  # type: ignore
         def wrapper(*args, **kwargs):
@@ -57,4 +64,32 @@ def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: 
                 return solution
 
         return wrapper
+
+    return decorator
+
+
+def solution_profiler(year: int, day: int, part: int, version: str = '', stats_amount: int = 10,
+                      sort: Literal['time', 'cumulative'] = 'time'):  # noqa: C901, type: ignore
+    prefix = _get_prefix(year, day, part, version)
+
+    def decorator(func: Callable):  # type: ignore
+        def wrapper(*args, **kwargs):
+            with cProfile.Profile() as profiler:
+                func(*args, **kwargs)
+
+            stats = pstats.Stats(profiler)
+
+            if sort == 'time':
+                stats.sort_stats(pstats.SortKey.TIME)
+            elif sort == 'cumulative':
+                stats.sort_stats(pstats.SortKey.CUMULATIVE)
+            else:
+                raise ValueError('only "time" and "cumulative" are supported')
+
+            stats.sort_stats(pstats.SortKey.TIME)
+            console.print(f'{prefix} profiling')
+            stats.print_stats(stats_amount)
+
+        return wrapper
+
     return decorator
