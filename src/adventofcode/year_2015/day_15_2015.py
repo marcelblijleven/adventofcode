@@ -7,7 +7,6 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
-
 PATTERN = re.compile(r'(-?\d)')
 
 
@@ -93,10 +92,11 @@ def parse_ingredients(input_data: List[str]) -> List[Ingredient]:
 def find_highest_scoring_cookie(input_data: List[str], match_calories: bool = False) -> int:  # noqa: C901
     highest_score = 0
     ingredients = parse_ingredients(input_data)
+    max_ingredients = 100
 
     if len(ingredients) == 2:
-        for a in range(100):
-            for b in range(100):
+        for a in range(max_ingredients):
+            for b in range(max_ingredients - a):
                 b = 100 - a
                 ingredients[0].set_quantity(a)
                 ingredients[1].set_quantity(b)
@@ -109,10 +109,10 @@ def find_highest_scoring_cookie(input_data: List[str], match_calories: bool = Fa
                 if cookie.score > highest_score:
                     highest_score = cookie.score
     else:
-        for a in range(100):
-            for b in range(100):
-                for c in range(100):
-                    d = 100 - a - b - c
+        for a in range(max_ingredients):
+            for b in range(max_ingredients - a):
+                for c in range(max_ingredients - a - b):
+                    d = max_ingredients - a - b - c
                     ingredients[0].set_quantity(a)
                     ingredients[1].set_quantity(b)
                     ingredients[2].set_quantity(c)
