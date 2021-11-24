@@ -1,5 +1,3 @@
-import pytest
-
 from adventofcode.year_2015.day_17_2015 import get_containers, find_combinations, find_different_ways
 
 test_input = [

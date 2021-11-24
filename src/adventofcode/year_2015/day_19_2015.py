@@ -1,10 +1,9 @@
 import re
-from typing import List, Dict
+from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
-
 
 REPLACEMENT_PATTERN = re.compile(r'(\w+) => (\w+)')
 
@@ -27,7 +26,7 @@ def find_unique_replacements(replacements: list[tuple[str, str]], medicine: str)
     for key, value in replacements:
         for i, _ in enumerate(medicine):
             if medicine[i:i + len(key)] == key:
-                replacement = medicine[:i] + value + medicine[i+len(key):]
+                replacement = medicine[:i] + value + medicine[i + len(key):]
                 unique_replacements.add(replacement)
 
     return len(unique_replacements)

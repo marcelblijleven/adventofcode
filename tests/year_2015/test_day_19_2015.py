@@ -1,5 +1,3 @@
-import pytest
-
 from adventofcode.year_2015.day_19_2015 import part_one, part_two, get_input_for_day
 
 
