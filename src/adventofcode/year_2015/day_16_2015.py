@@ -4,6 +4,19 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
+mfcsam = {
+    'children': 3,
+    'cats': 7,
+    'samoyeds': 2,
+    'pomeranians': 3,
+    'akitas': 0,
+    'vizslas': 0,
+    'goldfish': 5,
+    'trees': 3,
+    'cars': 2,
+    'perfumes': 1,
+}
+
 
 class Aunt:
     def __init__(self, name: str, **kwargs):
@@ -37,24 +50,34 @@ def find_aunt_sue(aunts: List[Aunt]) -> Aunt:
             return aunt
 
 
-def all_properties_match(aunt: Aunt) -> bool:
-    mfcsam = {
-        'children': 3,
-        'cats': 7,
-        'samoyeds': 2,
-        'pomeranians': 3,
-        'akitas': 0,
-        'vizslas': 0,
-        'goldfish': 5,
-        'trees': 3,
-        'cars': 2,
-        'perfumes': 1,
-    }
+def find_aunt_sue_part_two(aunts: List[Aunt]) -> Aunt:
+    aunts = [aunt for aunt in aunts if matches_part_two(aunt)]
 
+    if len(aunts) != 1:
+        raise ValueError('could not locate Aunt Sue')
+
+    return aunts[0]
+
+
+def all_properties_match(aunt: Aunt) -> bool:
     for key, value in aunt.kwargs.items():
         if mfcsam[key] != value:
             return False
 
+    return True
+
+
+def matches_part_two(aunt: Aunt) -> bool:
+    for key, value in aunt.kwargs.items():
+        if key in ['cats', 'trees']:
+            if mfcsam[key] >= value:
+                return False
+        elif key in ['pomeranians', 'goldfish']:
+            if mfcsam[key] <= value:
+                return False
+        else:
+            if mfcsam[key] != value:
+                return False
     return True
 
 
@@ -71,7 +94,8 @@ def part_one(input_data: List[str]):
 
 @solution_timer(2015, 16, 2)
 def part_two(input_data: List[str]):
-    answer = ...
+    aunts = parse_lines(input_data)
+    answer = find_aunt_sue_part_two(aunts).number
 
     if not answer:
         raise SolutionNotFoundException(2015, 16, 2)
