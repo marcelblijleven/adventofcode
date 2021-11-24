@@ -1,6 +1,7 @@
 import pytest
 
-from adventofcode.year_2015.day_16_2015 import parse_lines, Aunt, all_properties_match, find_aunt_sue
+from adventofcode.year_2015.day_16_2015 import parse_lines, Aunt, all_properties_match, find_aunt_sue, \
+    find_aunt_sue_part_two
 
 test_input = [
     'Sue 1: children: 1, cars: 8, vizslas: 7',
@@ -36,3 +37,14 @@ def test_find_aunt_sue():
     ]
 
     assert find_aunt_sue(aunts).name == 'Sue 2'
+
+
+def test_find_aunt_sue_part_two():
+    aunts = [
+        Aunt('Sue 1', children=1, cats=7, samoyeds=2),
+        Aunt('Sue 2', children=3, cats=7, samoyeds=2),
+        Aunt('Sue 3', akitas=0, goldfish=10, trees=1),
+        Aunt('Sue 4', akitas=0, goldfish=2, trees=10),
+    ]
+
+    assert find_aunt_sue_part_two(aunts).name == 'Sue 4'
