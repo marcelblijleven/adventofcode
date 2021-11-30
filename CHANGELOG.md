@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/marcelblijleven/adventofcode/compare/v1.2.0...v1.3.0) (2021-11-30)
+
+
+### 🛠 CI
+
+* rename update_readme.yaml ([de56dbb](https://github.com/marcelblijleven/adventofcode/commit/de56dbb91b12de6a967be901adb93e556c2c35f3))
+
+
+### 🛠 Improvements
+
+* make day 15 7x faster ([a84a128](https://github.com/marcelblijleven/adventofcode/commit/a84a12872ddc3295c7c204ba7ae52a9d66823b5b))
+
+
+### 📄 Documentation
+
+* add more badges and examples ([1c5192b](https://github.com/marcelblijleven/adventofcode/commit/1c5192b46ee9c1414f4b10bb995d24564900f00b))
+* **README:** add script examples to README.md ([5c6febe](https://github.com/marcelblijleven/adventofcode/commit/5c6febe7a8673b2164f07ca716e3f3bf542eaa5e))
+* update README ([d7c127c](https://github.com/marcelblijleven/adventofcode/commit/d7c127cd3eab94661ec1b0bbe6c8b9e9146be38a))
+* update README ([64baa1e](https://github.com/marcelblijleven/adventofcode/commit/64baa1ec1d3bade42ad421f4055e21e871306344))
+* update README ([c52c5c5](https://github.com/marcelblijleven/adventofcode/commit/c52c5c586296627f93390eff72fbaa3f5f32b412))
+
+
+### ✨ Features
+
+* add add-day script ([de1fca0](https://github.com/marcelblijleven/adventofcode/commit/de1fca02498a73ba1781d17f991b203552bf3873))
+* add clean-repo script ([e9445b2](https://github.com/marcelblijleven/adventofcode/commit/e9445b296b2ea5b9015148dcbb575d02661c8843))
+* add codecov reports to tox ([fa662be](https://github.com/marcelblijleven/adventofcode/commit/fa662be93144a991647a9d72a68b544dfdbd79ea))
+* add memoization decorator ([abfb726](https://github.com/marcelblijleven/adventofcode/commit/abfb72688de28d23f4247eee0fb3c099312dafe0))
+* add profiler decorator ([667a799](https://github.com/marcelblijleven/adventofcode/commit/667a79986c879b63cce69d09000a0d83e8002acc))
+
+
+### 🚦Tests
+
+* add 2015 day 15 tests ([6818daf](https://github.com/marcelblijleven/adventofcode/commit/6818daf1eb07e121ccbd0bf4b692d3bf6436ad72))
+* add 2015 day 16-20 tests ([47d2267](https://github.com/marcelblijleven/adventofcode/commit/47d22676b14b061da75a3afe81e593876454b1fd))
+* add 2015 day 21 tests ([13c6e29](https://github.com/marcelblijleven/adventofcode/commit/13c6e29b0e2337b78a80c1f11cd523f7c30731a6))
+* add 2015 day 22 tests ([24581ca](https://github.com/marcelblijleven/adventofcode/commit/24581cac13d9cf9180cc8f000c21da10042f3d91))
+* add 2015 day 7, 8, 9 tests ([9860896](https://github.com/marcelblijleven/adventofcode/commit/9860896a53e61c4dbee6385f5b44d748a97fef95))
+* add get input for day as string test ([699883f](https://github.com/marcelblijleven/adventofcode/commit/699883fa7d38123c8ed170f63511c22a523f0075))
+* add module_helpers tests ([68764eb](https://github.com/marcelblijleven/adventofcode/commit/68764eb482518d5b0668c7cb4db8e59daa9fad76))
+* add tests for 2015 day 16 part one ([8fbe6b6](https://github.com/marcelblijleven/adventofcode/commit/8fbe6b66966c97ca8d8348501e6c0de9901ca2ba))
+
+
+### ⭐️ Solutions
+
+* add 2015 day 10 ([83618de](https://github.com/marcelblijleven/adventofcode/commit/83618dea7f266aa9a85ff6058a85dcfbcef18d7d))
+* add 2015 day 15 part one and two ([e3b9c5d](https://github.com/marcelblijleven/adventofcode/commit/e3b9c5df5326769c95028804bfc06e16bff79d7e))
+* add 2015 day 16 part one ([3bd6fbf](https://github.com/marcelblijleven/adventofcode/commit/3bd6fbf08100787fdd7d49630a756c83f5264df8))
+* add 2015 day 16 part two ([7089dcc](https://github.com/marcelblijleven/adventofcode/commit/7089dccac066a4fb2fe99b8d39c5f7af710b9817))
+* add 2015 day 17 to 20 ([fde0f10](https://github.com/marcelblijleven/adventofcode/commit/fde0f1082adcc406ccc301712cca668296e8f1bc))
+* add 2015 day 21 and 22 ([b47723c](https://github.com/marcelblijleven/adventofcode/commit/b47723c8be4a6e58ec43ba6df3a2fc4772736975))
+* add 2015 day 23 ([19d8911](https://github.com/marcelblijleven/adventofcode/commit/19d8911556a9340cb0c94f8a754fdc656ab24aef))
+* add 2015 day 24 ([ca52cdb](https://github.com/marcelblijleven/adventofcode/commit/ca52cdb03b4827a128ef4a1f7fddc570885e0ee0))
+* add 2015 day 7, 8 and 9 ([678e810](https://github.com/marcelblijleven/adventofcode/commit/678e810d2177088231ee8e1fb483b7a432054640))
+* add tests for 2015 day 11 to 14 ([c2d9ea4](https://github.com/marcelblijleven/adventofcode/commit/c2d9ea4078b160821ad09883c34f30411dcd921d))
+
 ## [1.2.0](https://github.com/marcelblijleven/adventofcode/compare/v1.1.0...v1.2.0) (2021-11-21)
 
 
