@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=50&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=65&color=yellow)]()
 [![codecov](https://codecov.io/gh/marcelblijleven/adventofcode/branch/master/graph/badge.svg?token=jZ2TgfyltM)](https://codecov.io/gh/marcelblijleven/adventofcode)
 [![tests](https://github.com/marcelblijleven/adventofcode/actions/workflows/tests.yaml/badge.svg)](https://github.com/marcelblijleven/adventofcode)
 [![version](https://img.shields.io/github/v/release/marcelblijleven/adventofcode.svg)](https://github.com/marcelblijleven/adventofcode/releases)
@@ -37,6 +37,14 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 - day 12: part one ⭐️, part two ⭐️
 - day 13: part one ⭐️, part two ⭐️
 - day 14: part one ⭐️, part two ⭐️
+- day 15: part one ⭐️, part two ⭐️
+- day 16: part one ⭐️, part two ⭐️
+- day 17: part one ⭐️, part two ⭐️
+- day 18: part one ⭐️, part two ⭐️
+- day 19: part one ⭐️, part two ⭐️
+- day 20: part one ⭐️, part two ⭐️
+- day 21: part one ⭐️, part two –
+- day 22: part one ⭐️, part two ⭐️
 ### 2020
 - day 01: part one ⭐️, part two ⭐️
 - day 02: part one ⭐️, part two ⭐️
