@@ -40,7 +40,7 @@ def get_shop_inventory():
     warhammer = Weapon('Warhammer', 25, 6, 0)
     longsword = Weapon('Longsword', 40, 7, 0)
     greataxe = Weapon('Greataxe', 74, 8, 0)
-    empty_hand = Weapon('Empty', 0, 0, 0)
+    # empty_hand = Weapon('Empty', 0, 0, 0)
     weapons = [dagger, shortsword, warhammer, longsword, greataxe]
 
     leather = Armor('Leather', 13, 0, 1)
