@@ -16,7 +16,7 @@ def most_presents_at_house(houses: Dict[int, int]) -> int:
 
 
 def visit_houses(elf_count: int, target: int):
-    houses = defaultdict(int)
+    houses: Dict[int, int] = defaultdict(int)
 
     for elf in range(1, target):
         for house in range(elf, elf_count, elf):
@@ -27,7 +27,7 @@ def visit_houses(elf_count: int, target: int):
 
 
 def visit_houses_part_two(elf_count: int, target: int):
-    houses = defaultdict(int)
+    houses: Dict[int, int] = defaultdict(int)
 
     for elf in range(1, target):
         for house in range(elf, min([elf * 50 + 1, elf_count]), elf):
