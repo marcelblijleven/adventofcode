@@ -16,11 +16,14 @@ def move_packages_into_groups(all_packages: List[int], number_of_groups: int) ->
     size = sum(all_packages) // number_of_groups
 
     for package_idx in range(len(all_packages)):
-        entanglements = [get_quantum_entanglement(packages) for packages in combinations(all_packages, package_idx) if
+        entanglements = [get_quantum_entanglement(list(packages)) for packages in
+                         combinations(all_packages, package_idx) if
                          sum(packages) == size]
 
         if len(entanglements):
             return min(entanglements)
+
+    raise ValueError('could not find correct quantum entanglement')
 
 
 @solution_timer(2015, 24, 1)
