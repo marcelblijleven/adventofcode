@@ -41,7 +41,7 @@ def get_shop_inventory():
     longsword = Weapon('Longsword', 40, 7, 0)
     greataxe = Weapon('Greataxe', 74, 8, 0)
     empty_hand = Weapon('Empty', 0, 0, 0)
-    weapons = [dagger, shortsword, warhammer, longsword, greataxe, empty_hand]
+    weapons = [dagger, shortsword, warhammer, longsword, greataxe]
 
     leather = Armor('Leather', 13, 0, 1)
     chainmail = Armor('Chainmail', 31, 0, 2)
@@ -58,7 +58,8 @@ def get_shop_inventory():
     defense_2 = Ring('Defense +2', 40, 0, 2)
     defense_3 = Ring('Defense +3', 80, 0, 3)
     no_jewelry = Ring('No jewelry', 0, 0, 0)
-    rings = [damage_1, damage_2, damage_3, defense_1, defense_2, defense_3, no_jewelry]
+    no_jewelry2 = Ring('No jewelry', 0, 0, 0)
+    rings = [damage_1, damage_2, damage_3, defense_1, defense_2, defense_3, no_jewelry, no_jewelry2]
 
     return weapons, armor, rings
 
@@ -68,6 +69,7 @@ def calculate_cost(boss: Character):
 
     wins: List[int] = []
     losses: List[int] = []
+    max_cost: int = 0
 
     for weapon in weapons:
         # only one weapon
@@ -85,6 +87,7 @@ def calculate_cost(boss: Character):
                     wins.append(total_cost)
                 else:
                     losses.append(total_cost)
+                    max_cost = max(total_cost, max_cost)
 
     return min(wins), max(losses)
 
@@ -135,18 +138,18 @@ def part_one(input_data: List[str]):
 
 
 # Solution isn't correct for part 2
-# @solution_timer(2015, 21, 2)
-# def part_two(input_data: List[str]):
-#     boss = get_boss(input_data)
-#     _, answer = calculate_cost(boss)
-#
-#     if not answer:
-#         raise SolutionNotFoundException(2015, 21, 2)
-#
-#     return answer
+@solution_timer(2015, 21, 2)
+def part_two(input_data: List[str]):
+    boss = get_boss(input_data)
+    _, answer = calculate_cost(boss)
+
+    if not answer:
+        raise SolutionNotFoundException(2015, 21, 2)
+
+    return answer
 
 
 if __name__ == '__main__':
     data = get_input_for_day(2015, 21)
     part_one(data)
-    # part_two(data)
+    part_two(data)
