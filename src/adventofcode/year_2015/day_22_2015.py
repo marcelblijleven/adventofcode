@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import dataclasses
 from copy import deepcopy
-from typing import List, Callable, Any, Dict
+from typing import List, Callable
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer, memoize
@@ -67,7 +67,8 @@ def apply_status_effects(status_effects: tuple[Spell, ...], boss_health: int, pl
     return next_effects, boss_health, player_health, player_armor, player_mana
 
 
-def do_player_turn(next_effects: tuple[Spell, ...], boss_health: int, player_health: int, player_mana: int, mana_spent: int,
+def do_player_turn(next_effects: tuple[Spell, ...], boss_health: int, player_health: int, player_mana: int,
+                   mana_spent: int,
                    simulation_func: Callable[[int, int, int, tuple[Spell, ...], bool, int], bool]):
     for spell in spells:
         if spell.name in [effect.name for effect in next_effects]:
