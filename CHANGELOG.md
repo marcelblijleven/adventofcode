@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/marcelblijleven/adventofcode/compare/v1.3.0...v1.3.1) (2021-11-30)
+
+
+### 🐛 Bug Fixes
+
+* flake 8 issues ([dba96a0](https://github.com/marcelblijleven/adventofcode/commit/dba96a064e450c9fcd1d9515ca5fc9c1e09f787d))
+
+
+### ⭐️ Solutions
+
+* add 2015 day 25 ([6a9fcf6](https://github.com/marcelblijleven/adventofcode/commit/6a9fcf6fa9670a5bb59029981f3e1d7eb709c485))
+* remove empty hand option to solve 2015 day 21 part two ([5e6e227](https://github.com/marcelblijleven/adventofcode/commit/5e6e227cccbe1ac91d9cd4bf2f21c66621d883f6))
+
+
+### 📄 Documentation
+
+* update README ([bd4e08b](https://github.com/marcelblijleven/adventofcode/commit/bd4e08baa4dc6d7b855fc7e9862ce5625ea1b8b6))
+* update README ([10226eb](https://github.com/marcelblijleven/adventofcode/commit/10226eb02a8eee5bbc84b1407c34e166ae44e8ea))
+* update README ([13cbb48](https://github.com/marcelblijleven/adventofcode/commit/13cbb485f5a0f55a7e5de9413d00e5706d186c3b))
+
 ## [1.3.0](https://github.com/marcelblijleven/adventofcode/compare/v1.2.0...v1.3.0) (2021-11-30)
 
 
