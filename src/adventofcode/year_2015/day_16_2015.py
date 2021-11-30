@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
@@ -44,10 +44,12 @@ def parse_lines(input_data: List[str]) -> List[Aunt]:
     return aunts
 
 
-def find_aunt_sue(aunts: List[Aunt]) -> Aunt:
+def find_aunt_sue(aunts: List[Aunt]) -> Optional[Aunt]:
     for aunt in aunts:
         if all_properties_match(aunt):
             return aunt
+
+    return None
 
 
 def find_aunt_sue_part_two(aunts: List[Aunt]) -> Aunt:
@@ -84,7 +86,12 @@ def matches_part_two(aunt: Aunt) -> bool:
 @solution_timer(2015, 16, 1)
 def part_one(input_data: List[str]):
     aunts = parse_lines(input_data)
-    answer = find_aunt_sue(aunts).number
+    aunt = find_aunt_sue(aunts)
+
+    if not aunt:
+        raise SolutionNotFoundException(2015, 16, 1)
+
+    answer = aunt.number
 
     if not answer:
         raise SolutionNotFoundException(2015, 16, 1)
