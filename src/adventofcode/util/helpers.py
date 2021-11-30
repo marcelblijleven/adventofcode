@@ -2,7 +2,7 @@ import cProfile
 import os
 import pstats
 import time
-from typing import Callable, Literal
+from typing import Callable, Literal, Dict, Any
 
 from adventofcode.config import RUNNING_ALL
 from adventofcode.util.console import console
@@ -93,3 +93,17 @@ def solution_profiler(year: int, day: int, part: int, version: str = '', stats_a
         return wrapper
 
     return decorator
+
+
+def memoize(func: Callable):  # type: ignore
+    cache: Dict[Any, Any] = dict()
+
+    def memoized_func(*args):
+        if args in cache:
+            return cache[args]
+
+        result = func(*args)
+        cache[args] = result
+        return result
+
+    return memoized_func
