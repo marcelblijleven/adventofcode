@@ -30,7 +30,6 @@ def test_get_shop_inventory():
         Weapon(name='Warhammer', cost=25, damage=6, armor=0),
         Weapon(name='Longsword', cost=40, damage=7, armor=0),
         Weapon(name='Greataxe', cost=74, damage=8, armor=0),
-        Weapon(name='Empty', cost=0, damage=0, armor=0)
     ]
 
     armor = [
