@@ -54,8 +54,8 @@ def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: 
                 if solution is None:
                     raise SolutionNotFoundException(year, day, part)
 
-                diff = time.perf_counter() - start
-                console.print(f'{prefix}{solution} in {diff:.4f} ms')
+                diff = (time.perf_counter() - start) * 1000
+                console.print(f'{prefix}{solution} in {diff:.2f} ms')
             except (ValueError, ArithmeticError, TypeError):
                 console.print_exception()
             except SolutionNotFoundException:
