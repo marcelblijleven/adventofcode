@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/marcelblijleven/adventofcode/compare/v1.3.1...v1.3.2) (2021-12-01)
+
+
+### ⭐️ Solutions
+
+* add 2021 day 1 ([a10642f](https://github.com/marcelblijleven/adventofcode/commit/a10642f638d953b4c8ecb2d6706414dcc3eafd8f))
+
+
+### 🚦Tests
+
+* update test for changes in shop inventory ([7a426e3](https://github.com/marcelblijleven/adventofcode/commit/7a426e3b79c425a3f38afc320a9965fddef9ebdf))
+* update test with new shop inventory ([b94620e](https://github.com/marcelblijleven/adventofcode/commit/b94620ed5c91d91e5b7c20f9861042c1200bcd44))
+
+
+### 📄 Documentation
+
+* update README ([fa50425](https://github.com/marcelblijleven/adventofcode/commit/fa50425638de6ee79b1ec72ab09a26c9d712129e))
+
+
+### 🐛 Bug Fixes
+
+* display correct amount of microseconds in solution timer ([7a46063](https://github.com/marcelblijleven/adventofcode/commit/7a4606342cbb30b669c88231386622019bf84737))
+* remove hardcoded day - year from get_input function ([9a0ffa1](https://github.com/marcelblijleven/adventofcode/commit/9a0ffa15901df366b68d9bd3dfd6af8e49690a14))
+
 ### [1.3.1](https://github.com/marcelblijleven/adventofcode/compare/v1.3.0...v1.3.1) (2021-11-30)
 
 
