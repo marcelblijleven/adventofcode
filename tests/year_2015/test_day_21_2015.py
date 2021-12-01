@@ -48,6 +48,7 @@ def test_get_shop_inventory():
         Ring(name='Defense +1', cost=20, damage=0, armor=1),
         Ring(name='Defense +2', cost=40, damage=0, armor=2),
         Ring(name='Defense +3', cost=80, damage=0, armor=3),
+        Ring(name='No jewelry', cost=0, damage=0, armor=0),
         Ring(name='No jewelry', cost=0, damage=0, armor=0)
     ]
 
