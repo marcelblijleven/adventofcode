@@ -17,10 +17,23 @@ def add_day():
 
     module_path = os.path.join(ROOT_DIR, f'year_{year}')
     full_path = os.path.join(module_path, f'day_{day:02}_{year}.py')
-    create_dir(module_path)
-    write_template(full_path, read_template(year, day))
-    console.print(f'Wrote template to {full_path}')
+    create_module_dir(module_path)
+
+    if not os.path.exists(full_path):
+        write_template(full_path, read_template(year, day))
+        console.print(f'Wrote template to {full_path}')
+    else:
+        console.print(f'[yellow]Did not write template for year {year} day {day}, the file already exists.')
+
     verify_input_exists(year, day)
+
+
+def create_module_dir(path: str) -> None:
+    create_dir(path)
+
+    if not os.path.exists(init_file := os.path.join(path, '__init__.py')):
+        with open(init_file):
+            pass
 
 
 def create_dir(path: str) -> None:
