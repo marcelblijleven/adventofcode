@@ -1,6 +1,7 @@
 import pytest
 
-from adventofcode.year_2015.day_24_2015 import get_quantum_entanglement, move_packages_into_groups
+from adventofcode.util.input_helpers import get_input_for_day
+from adventofcode.year_2015.day_24_2015 import get_quantum_entanglement, move_packages_into_groups, part_two, part_one
 
 test_input = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11]
 
@@ -23,3 +24,11 @@ def test_get_quantum_entanglement(packages, expected):
 def test_move_packages_into_groups():
     assert move_packages_into_groups(test_input, 3) == 99
     assert move_packages_into_groups(test_input, 4) == 44
+
+
+def test_part_one():
+    assert part_one(get_input_for_day(2015, 24)) == 10723906903
+
+
+def test_part_two():
+    assert part_two(get_input_for_day(2015, 24)) == 74850409
