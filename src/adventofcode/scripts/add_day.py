@@ -35,7 +35,7 @@ def verify_input_exists(year: int, day: int) -> None:
         return
     except FileNotFoundError:
         try:
-            get_input(2015, 14)
+            get_input(year, day)
             console.print(f'Automatically downloaded input data for year {year} day {day}')
             return
         except HTTPError as e:
