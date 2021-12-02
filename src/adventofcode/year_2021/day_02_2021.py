@@ -4,7 +4,6 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
-
 Instruction = tuple[str, int]
 Position = tuple[int, int]
 
@@ -43,7 +42,7 @@ def _get_new_position(position: Position, instruction: Instruction) -> Position:
     return x, y
 
 
-def _get_new_position_with_aim(position: Position, aim: int, instruction: Instruction) ->tuple[Position, int]:
+def _get_new_position_with_aim(position: Position, aim: int, instruction: Instruction) -> tuple[Position, int]:
     x, y = position
     direction, steps = instruction
 
