@@ -1,7 +1,6 @@
 import pytest
-from adventofcode.util.input_helpers import get_input_for_day
-from adventofcode.year_2021.day_03_2021 import part_two, part_one, get_life_support, filter_list
 
+from adventofcode.year_2021.day_03_2021 import part_two, part_one, get_life_support, filter_list
 
 test_input = [
     '00100',
