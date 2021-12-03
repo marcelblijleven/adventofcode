@@ -20,6 +20,10 @@ def merge_lists(lists: List[List[str]]) -> list[tuple[str]]:
     return list(merged)  # type: ignore
 
 
+def change_list(input_data: List[str]) -> List[tuple[str]]:
+    return merge_lists(input_to_list_of_list(input_data))
+
+
 def get_power_consumption(values: list[tuple[str]]) -> int:
     gamma_rate = ''
     epsilon_rate = ''
@@ -32,15 +36,35 @@ def get_power_consumption(values: list[tuple[str]]) -> int:
     return int(gamma_rate, 2) * int(epsilon_rate, 2)
 
 
-def get_life_support_rating(values: list[tuple[str]]):
-    ...
+def filter_list(input_data: List[str], use_most_common: bool, idx: int = 0) -> int:
+    if len(input_data) == 1:
+        return int(input_data[0], 2)
+
+    if idx > 12:
+        raise IndexError('index is higher than 12')
+
+    values = change_list(input_data)
+    count_results = Counter(values[idx]).most_common()
+
+    if len(count_results) > 1 and count_results[0][1] != count_results[1][1]:
+        target = count_results[0][0] if use_most_common else count_results[1][0]
+    else:
+        target = int(use_most_common)
+
+    filtered_input_data = [i for i in input_data if i[idx] == str(target)]
+
+    return filter_list(filtered_input_data, use_most_common, idx + 1)
+
+
+def get_life_support(input_data: List[str]) -> int:
+    oxygen_generator = filter_list(input_data, use_most_common=True)
+    co2_scrubber = filter_list(input_data, use_most_common=False)
+    return oxygen_generator * co2_scrubber
 
 
 @solution_timer(2021, 3, 1)
 def part_one(input_data: List[str]):
-    lists = input_to_list_of_list(input_data)
-    merged = list(merge_lists(lists))
-    get_power_consumption(merged)
+    merged = change_list(input_data)
     answer = get_power_consumption(merged)
 
     if not answer:
@@ -51,7 +75,7 @@ def part_one(input_data: List[str]):
 
 @solution_timer(2021, 3, 2)
 def part_two(input_data: List[str]):
-    answer = ...
+    answer = get_life_support(input_data)
 
     if not answer:
         raise SolutionNotFoundException(2021, 3, 2)
