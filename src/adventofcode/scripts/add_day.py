@@ -77,24 +77,35 @@ def verify_input_exists(year: int, day: int) -> None:
     raise ValueError('unknown exception occurred in verify_input_exists')
 
 
-def _read_template(template_path: str, year: int, day: int) -> str:
+def _read_solution_template(template_path: str, year: str, day: str) -> str:
     with open(template_path) as f:
         template = f.read()
 
-    template = template.replace('{year}', str(year))
-    template = template.replace('{day}', str(day))
+    template = template.replace('{year}', year)
+    template = template.replace('{day}', day)
+
+    return template
+
+
+def _read_test_template(template_path: str, year: str, day: str, file_day: str) -> str:
+    with open(template_path) as f:
+        template = f.read()
+
+    template = template.replace('{year}', year)
+    template = template.replace('{day}', day)
+    template = template.replace('{file_day}', file_day)
 
     return template
 
 
 def read_solution_template(year: int, day: int) -> str:
     template_path = os.path.join(ROOT_DIR, 'scripts/templates/day_template.txt')
-    return _read_template(template_path, year, day)
+    return _read_solution_template(template_path, str(year), str(day))
 
 
 def read_test_template(year: int, day: int) -> str:
     template_path = os.path.join(ROOT_DIR, 'scripts/templates/test_template.txt')
-    return _read_template(template_path, year, day)
+    return _read_test_template(template_path, str(year), str(day), f'{day:02}')
 
 
 def write_template(filename: str, template: str):
