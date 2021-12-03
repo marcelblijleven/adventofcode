@@ -47,9 +47,9 @@ def filter_list(input_data: List[str], use_most_common: bool, idx: int = 0) -> i
     count_results = Counter(values[idx]).most_common()
 
     if len(count_results) > 1 and count_results[0][1] != count_results[1][1]:
-        target = count_results[0][0] if use_most_common else count_results[1][0]
+        target = str(count_results[0][0] if use_most_common else count_results[1][0])
     else:
-        target = int(use_most_common)
+        target = str(use_most_common)
 
     filtered_input_data = [i for i in input_data if i[idx] == str(target)]
 
