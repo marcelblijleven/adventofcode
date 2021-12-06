@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from typing import List, DefaultDict
+from typing import List, DefaultDict, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
@@ -39,7 +39,7 @@ def get_line(positions: LinePositions) -> Line:
     return [(x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)]
 
 
-def get_lines(positions_list: List[LinePositions]) -> List[Line]:
+def get_lines(positions_list: List[LinePositions]) -> Generator[Line, None, None]:
     for positions in positions_list:
         yield get_line(positions)
 
