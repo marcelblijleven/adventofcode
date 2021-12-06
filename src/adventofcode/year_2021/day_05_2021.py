@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from typing import List, DefaultDict, Set
+from typing import List, DefaultDict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
@@ -9,7 +9,7 @@ from adventofcode.util.input_helpers import get_input_for_day
 Coord = tuple[int, int]
 GridType = DefaultDict[Coord, int]
 LinePositions = tuple[Coord, Coord]
-Line = Set[Coord]
+Line = List[Coord]
 line_pattern = re.compile(r'(\d+)')
 
 
@@ -36,15 +36,12 @@ def get_line(positions: LinePositions) -> Line:
     dx = bool(x2 > x1) - bool(x2 < x1)
     dy = bool(y2 > y1) - bool(y2 < y1)
 
-    return {(x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)}
+    return [(x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)]
 
 
 def get_lines(positions_list: List[LinePositions]) -> List[Line]:
-    lines: List[Line] = []
     for positions in positions_list:
-        lines.append(get_line(positions))
-
-    return lines
+        yield get_line(positions)
 
 
 def count_intersections(parsed_input: List[LinePositions]) -> int:
