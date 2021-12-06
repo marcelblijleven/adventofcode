@@ -1,7 +1,4 @@
-import pytest
-
-from adventofcode.util.input_helpers import get_input_for_day
-from adventofcode.year_2021.day_04_2021 import part_two, part_one, play_bingo, Board, transpose_rows, flatten
+from adventofcode.year_2021.day_04_2021 import part_two, part_one, play_bingo, transpose_rows, flatten
 
 test_input = [
     '7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1',
