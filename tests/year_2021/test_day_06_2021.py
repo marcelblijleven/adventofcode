@@ -1,7 +1,7 @@
 import pytest
 
 from adventofcode.year_2021.day_06_2021 import part_two, part_one, Fish, get_starting_fish, iterate_day, \
-    count_fish_faster
+    count_fish_faster, count_fish_after_days
 
 test_input = [
     '3,4,3,1,2',
@@ -24,6 +24,14 @@ def test_iterate_day(days, expected):
         fish = iterate_day(fish)
 
     assert len(fish) == expected
+
+
+@pytest.mark.parametrize(['days', 'expected'], [
+    (18, 26),
+    (80, 5934),
+])
+def test_count_fish_after_days(days, expected):
+    assert count_fish_after_days(test_input, days) == expected
 
 
 @pytest.mark.parametrize(['days', 'expected'], [
