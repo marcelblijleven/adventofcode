@@ -2,6 +2,74 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/marcelblijleven/adventofcode/compare/v1.3.2...v1.4.0) (2021-12-08)
+
+
+### 🛠 Improvements
+
+* create __init__.py if it doesn't exist in module ([0db7a18](https://github.com/marcelblijleven/adventofcode/commit/0db7a1857ef97db329778095cbeea5dc79cd6870))
+* prevent overwriting existing solution files with add-day script ([10a5b87](https://github.com/marcelblijleven/adventofcode/commit/10a5b87cb97d5b85306c190e472c74ef305fb3dd))
+
+
+### 🛠 CI
+
+* decrease amount of test runs in github actions ([f7739c2](https://github.com/marcelblijleven/adventofcode/commit/f7739c2f0137af51de78bfd9cd35cb5990693b54))
+* ignore .github folder for python tests ([57c29d7](https://github.com/marcelblijleven/adventofcode/commit/57c29d72a1ec406db1a80e48e195895fb1929555))
+* ignore .github folder for python tests ([156fbea](https://github.com/marcelblijleven/adventofcode/commit/156fbea3d81847af74f13894af73c71c0f1a7874))
+* run update_readme.yaml only when changes will affect automated readme generation ([6d5c31b](https://github.com/marcelblijleven/adventofcode/commit/6d5c31b08db80d03052a1ec1560dbd2bb9fdc6ad))
+
+
+### ✨ Features
+
+* add math helpers ([e2a8a56](https://github.com/marcelblijleven/adventofcode/commit/e2a8a56ba1e9f6316858cf36ed2c79d5c914865d))
+* add test template to add-day script ([d11c5cb](https://github.com/marcelblijleven/adventofcode/commit/d11c5cb4adb96a4bf832df2d12e6639c051c328b))
+* make test template use test input by default ([b95fa82](https://github.com/marcelblijleven/adventofcode/commit/b95fa82a3f65377f0da9cc0c0821df370a00d1b6))
+
+
+### 🐛 Bug Fixes
+
+* fix incompatible types in assignment ([fb3b340](https://github.com/marcelblijleven/adventofcode/commit/fb3b340fb276329f862f4bc9bbde32dd24750c89))
+* fix incorrect day replacement in test template ([de76d81](https://github.com/marcelblijleven/adventofcode/commit/de76d814e448de0d9f39fc0f7f4971e5bfc585c0))
+* fix incorrect default data for filter list ([042e040](https://github.com/marcelblijleven/adventofcode/commit/042e040ba23db5d4e07f6e269908e4557d0af2e2))
+* fix incorrect turn waypoint function ([11b3dc2](https://github.com/marcelblijleven/adventofcode/commit/11b3dc2d889ceff3f638526bddf5519687790001))
+
+
+### ⭐️ Solutions
+
+* add 2020 day 12 part 1 and 2 ([87a0cc6](https://github.com/marcelblijleven/adventofcode/commit/87a0cc6352198b0710774179aa20684045186887))
+* add 2020 day 13 part 1 and 2 ([e7c90db](https://github.com/marcelblijleven/adventofcode/commit/e7c90db1d0952426cd914409606fb51aa52aad36))
+* add 2020 day 14 ([dfce539](https://github.com/marcelblijleven/adventofcode/commit/dfce539bfa095401c3e610a66c9eea941c38e6a6))
+* add 2021 day 2 part 1 and 2 ([3d37457](https://github.com/marcelblijleven/adventofcode/commit/3d374574412dd702215621b3e5d4990b857506a8))
+* add 2021 day 3 part 1 ([e418f9b](https://github.com/marcelblijleven/adventofcode/commit/e418f9b1cdad4c3853a67d7fec12f3a3bb165cf8))
+* add 2021 day 3 part 2 ([0d929aa](https://github.com/marcelblijleven/adventofcode/commit/0d929aa3a3aede252fece6577bec1b56ab350f81))
+* add 2021 day 4 ([2a06b29](https://github.com/marcelblijleven/adventofcode/commit/2a06b2960f6189b8817c03d36db5e0cedddaabe7))
+* add 2021 day 5 ([0be615b](https://github.com/marcelblijleven/adventofcode/commit/0be615b03cb1d8c0e227f60a2f69adbe65d6fc31))
+* add 2021 day 6 ([eb3751b](https://github.com/marcelblijleven/adventofcode/commit/eb3751ba3fe66d91b0ffec7f40aecffdd586886e))
+* add 2021 day 7 ([52f0d3f](https://github.com/marcelblijleven/adventofcode/commit/52f0d3f08568d9d0ca9d5db93298bc7c3b741033))
+* add 2021 day 8 ([adc4b0c](https://github.com/marcelblijleven/adventofcode/commit/adc4b0ca6675002f0e1958745de10ca4ce6e9dbf))
+* add different approach to 2021 day 1 part 2 ([a7744aa](https://github.com/marcelblijleven/adventofcode/commit/a7744aae2f4d8bc002f461768bf9a4082e4bf13b))
+
+
+### 🚦Tests
+
+* add count fish faster tests ([a898329](https://github.com/marcelblijleven/adventofcode/commit/a898329bc2e220c4589117600200fe8a46a133c6))
+* add test for alternative approach to 2021 day 1 part 2 ([4459a54](https://github.com/marcelblijleven/adventofcode/commit/4459a546ecf1721fc2b0831d444b21a567bc34a6))
+* add tests for 2020 day 14 ([a144ba7](https://github.com/marcelblijleven/adventofcode/commit/a144ba78f38d91012b451145aeddceee523d67a8))
+* fix broken tests ([4089a0d](https://github.com/marcelblijleven/adventofcode/commit/4089a0d75eed6f5b085e98a1fcc88e788922f689))
+* improve test coverage for 2015 ([d2dbbe7](https://github.com/marcelblijleven/adventofcode/commit/d2dbbe7c2a53c6709d2449317d4596d17cbd1e30))
+
+
+### 📄 Documentation
+
+* update README ([f11ce84](https://github.com/marcelblijleven/adventofcode/commit/f11ce84b58fc765d12d0bb47477085c1f2333060))
+* update README ([53769d4](https://github.com/marcelblijleven/adventofcode/commit/53769d4787bcbb5ac3e5372034c790ae09685839))
+* update README ([1a8cdcf](https://github.com/marcelblijleven/adventofcode/commit/1a8cdcfa94b89ad5f90ec0ae48a4f3450f4bb513))
+* update README ([551d6a4](https://github.com/marcelblijleven/adventofcode/commit/551d6a4f71f0cf6732cf9fa5dcaeaf1afbe0a7c1))
+* update README ([e3f1b49](https://github.com/marcelblijleven/adventofcode/commit/e3f1b49a93aebc4accce234d719bd07b2482d7d6))
+* update README ([b478d35](https://github.com/marcelblijleven/adventofcode/commit/b478d351666c61e5bffeb7b33ff8a55f48ad1bd4))
+* update README ([cec185c](https://github.com/marcelblijleven/adventofcode/commit/cec185c446e7a407b7250120ef8fba0c611ef27e))
+* update README ([b18ff6b](https://github.com/marcelblijleven/adventofcode/commit/b18ff6b62c70ce986e358f73e2f48ecc0213c90b))
+
 ### [1.3.2](https://github.com/marcelblijleven/adventofcode/compare/v1.3.1...v1.3.2) (2021-12-01)
 
 
