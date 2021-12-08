@@ -1,7 +1,7 @@
 from typing import List, Dict, FrozenSet
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer, solution_profiler
+from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
 segment_0 = 'abcefg'
@@ -52,14 +52,14 @@ def get_digits(line: str) -> List[str]:
 def get_output_for_line(line: InputLine) -> int:
     output = 0
     input_data, output_data = line
-    output_sets = list(map(frozenset, output_data.split(' ')))
+    output_sets = list(map(frozenset, output_data.split(' ')))  # type: ignore
     patterns = patterns_as_frozen_sets(input_data.split(' '))
     table = pattern_translation_table(patterns)
 
-    output += table[output_sets[0]] * 1000
-    output += table[output_sets[1]] * 100
-    output += table[output_sets[2]] * 10
-    output += table[output_sets[3]]
+    output += table[output_sets[0]] * 1000  # type: ignore
+    output += table[output_sets[1]] * 100  # type: ignore
+    output += table[output_sets[2]] * 10  # type: ignore
+    output += table[output_sets[3]]  # type: ignore
 
     return output
 
@@ -74,7 +74,7 @@ def get_all_outputs(lines: List[InputLine]) -> List[int]:
 
 
 def patterns_as_frozen_sets(patterns: List[str]) -> List[FrozenSet[str]]:
-    return list(map(frozenset, patterns))
+    return list(map(frozenset, patterns))  # type: ignore
 
 
 def _fill_table_with_know_patterns(patterns: List[FrozenSet[str]], table: TranslationTable):
