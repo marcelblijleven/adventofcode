@@ -1,7 +1,7 @@
 import pytest
 
-from adventofcode.util.input_helpers import get_input_for_day
-from adventofcode.year_2021.day_07_2021 import part_two, part_one, get_crabs, move_to_position, try_all_positions
+from adventofcode.year_2021.day_07_2021 import part_two, part_one, get_crabs, move_to_position, try_all_positions, \
+    get_least_amount_of_fuel, get_least_amount_of_fuel_part_two, get_least_amount_of_fuel_part_two_slower
 
 test_input = [
     '16,1,2,0,4,2,7,1,2,14',
@@ -28,12 +28,31 @@ def test_try_all_positions():
     assert try_all_positions(crabs) == 37
 
 
+def test_get_least_amount_of_fuel():
+    crabs = get_crabs(test_input)
+    assert get_least_amount_of_fuel(crabs) == 37
+
+
+def test_get_least_amount_of_fuel_part_two():
+    crabs = get_crabs(test_input)
+    assert get_least_amount_of_fuel_part_two(crabs) == 168
+
+
+def test_get_least_amount_of_fuel_part_two_slower():
+    crabs = get_crabs(test_input)
+    assert get_least_amount_of_fuel_part_two_slower(crabs) == 168
+
+
+def test_compare_part_two_solutions():
+    crabs = get_crabs(test_input)
+    assert get_least_amount_of_fuel_part_two_slower(crabs) == get_least_amount_of_fuel_part_two(crabs)
+
 
 def test_part_one():
-    answer = part_one(get_input_for_day(2021, 7))
-    assert False
+    answer = part_one(test_input)
+    assert answer == 37
 
 
 def test_part_two():
-    answer = part_two(get_input_for_day(2021, 7))
-    assert False
+    answer = part_two(test_input)
+    assert answer == 168

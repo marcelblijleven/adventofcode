@@ -50,15 +50,17 @@ def turn(turn_direction: str, degrees: int, current_direction: str) -> str:
 
 
 def _turn_waypoint_left(waypoint: tuple[int, int], degrees: int) -> tuple[int, int]:
-    x, y = waypoint
+    original_x, original_y = waypoint
 
     if degrees == 90:
-        x = y * -1
+        x = original_y * -1
+        y = original_x
     elif degrees == 180:
-        x *= -1
-        y *= -1
+        x = original_x * -1
+        y = original_y * -1
     elif degrees == 270:
-        y = x * -1
+        x = original_y
+        y = original_x * -1
     else:
         raise ValueError(f'cannot process degrees: {degrees}')
 
@@ -66,15 +68,17 @@ def _turn_waypoint_left(waypoint: tuple[int, int], degrees: int) -> tuple[int, i
 
 
 def _turn_waypoint_right(waypoint: tuple[int, int], degrees: int) -> tuple[int, int]:
-    x, y = waypoint
+    original_x, original_y = waypoint
 
     if degrees == 90:
-        y = x * -1
+        x = original_y
+        y = original_x * -1
     elif degrees == 180:
-        x *= -1
-        y *= -1
+        x = original_x * -1
+        y = original_y * -1
     elif degrees == 270:
-        x = y * -1
+        x = original_y * -1
+        y = original_x
     else:
         raise ValueError(f'cannot process degrees: {degrees}')
 

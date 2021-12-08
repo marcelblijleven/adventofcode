@@ -43,12 +43,12 @@ def test_turn(turn_direction, degrees, current_direction, expected):
 
 
 @pytest.mark.parametrize(['waypoint', 'direction', 'degrees', 'expected'], [
-    ((10, 10), LEFT, 90, (-10, 10)),
-    ((10, 10), LEFT, 180, (-10, -10)),
-    ((10, 10), LEFT, 270, (10, -10)),
-    ((10, 10), RIGHT, 90, (10, -10)),
-    ((10, 10), RIGHT, 180, (-10, -10)),
-    ((10, 10), RIGHT, 270, (-10, 10)),
+    ((10, 4), LEFT, 90, (-4, 10)),
+    ((10, 4), LEFT, 180, (-10, -4)),
+    ((10, 4), LEFT, 270, (4, -10)),
+    ((10, 4), RIGHT, 90, (4, -10)),
+    ((10, 4), RIGHT, 180, (-10, -4)),
+    ((10, 4), RIGHT, 270, (-4, 10)),
 ])
 def test_turn_waypoint(waypoint, direction, degrees, expected):
     assert turn_waypoint(waypoint, direction, degrees) == expected

@@ -25,7 +25,7 @@ def test_parse_input():
 
 
 @pytest.mark.parametrize(['positions', 'expected'], [
-    (((0, 9), (5, 9)), {(0, 9), (1, 9), (2, 9), (3, 9), (4, 9), (5, 9)})
+    (((0, 9), (5, 9)), [(0, 9), (1, 9), (2, 9), (3, 9), (4, 9), (5, 9)])
 ])
 def test_get_line(positions, expected):
     assert get_line(positions) == expected
