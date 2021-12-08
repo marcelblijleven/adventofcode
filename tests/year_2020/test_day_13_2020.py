@@ -19,7 +19,7 @@ def test_get_departure_times():
 
 def test_get_answer_part_one():
     times = {7: [945, 952, 959], 13: [949], 19: [950], 31: [961], 59: [944]}
-    assert get_answer_part_one(939, times) == 944
+    assert get_answer_part_one(939, times) == 295
 
 
 def test_get_sequential_departure_times():
