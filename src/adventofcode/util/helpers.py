@@ -75,7 +75,7 @@ def solution_profiler(year: int, day: int, part: int, version: str = '', stats_a
     def decorator(func: Callable):  # type: ignore
         def wrapper(*args, **kwargs):
             with cProfile.Profile() as profiler:
-                func(*args, **kwargs)
+                solution = func(*args, **kwargs)
 
             stats = pstats.Stats(profiler)
 
@@ -89,6 +89,7 @@ def solution_profiler(year: int, day: int, part: int, version: str = '', stats_a
             stats.sort_stats(pstats.SortKey.TIME)
             console.print(f'{prefix} profiling')
             stats.print_stats(stats_amount)
+            return solution
 
         return wrapper
 
