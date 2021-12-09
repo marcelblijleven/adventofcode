@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/marcelblijleven/adventofcode/compare/v1.4.0...v1.4.1) (2021-12-09)
+
+
+### ⭐️ Solutions
+
+* add 2020 day 15 ([b44285a](https://github.com/marcelblijleven/adventofcode/commit/b44285a97a16bffa3c58181fe1f7de501ff6b3cc))
+* add 2021 day 9 ([700a5ab](https://github.com/marcelblijleven/adventofcode/commit/700a5aba228b1e1c90de5e3357a5fe5d605b60a1))
+
 ## [1.4.0](https://github.com/marcelblijleven/adventofcode/compare/v1.3.2...v1.4.0) (2021-12-08)
 
 
