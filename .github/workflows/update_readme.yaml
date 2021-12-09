@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - 'v*'
     paths:
       - 'src/adventofcode/year_*/**'
       - 'src/adventofcode/scripts/generate_readme.py'
