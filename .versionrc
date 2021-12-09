@@ -44,7 +44,7 @@
       "section": "🛠 Improvements"
     },
     {
-      "hidden": false,
+      "hidden": true,
       "type": "docs",
       "section": "📄 Documentation"
     },
