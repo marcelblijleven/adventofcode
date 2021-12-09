@@ -59,17 +59,6 @@ All notable changes to this project will be documented in this file. See [standa
 * improve test coverage for 2015 ([d2dbbe7](https://github.com/marcelblijleven/adventofcode/commit/d2dbbe7c2a53c6709d2449317d4596d17cbd1e30))
 
 
-### 📄 Documentation
-
-* update README ([f11ce84](https://github.com/marcelblijleven/adventofcode/commit/f11ce84b58fc765d12d0bb47477085c1f2333060))
-* update README ([53769d4](https://github.com/marcelblijleven/adventofcode/commit/53769d4787bcbb5ac3e5372034c790ae09685839))
-* update README ([1a8cdcf](https://github.com/marcelblijleven/adventofcode/commit/1a8cdcfa94b89ad5f90ec0ae48a4f3450f4bb513))
-* update README ([551d6a4](https://github.com/marcelblijleven/adventofcode/commit/551d6a4f71f0cf6732cf9fa5dcaeaf1afbe0a7c1))
-* update README ([e3f1b49](https://github.com/marcelblijleven/adventofcode/commit/e3f1b49a93aebc4accce234d719bd07b2482d7d6))
-* update README ([b478d35](https://github.com/marcelblijleven/adventofcode/commit/b478d351666c61e5bffeb7b33ff8a55f48ad1bd4))
-* update README ([cec185c](https://github.com/marcelblijleven/adventofcode/commit/cec185c446e7a407b7250120ef8fba0c611ef27e))
-* update README ([b18ff6b](https://github.com/marcelblijleven/adventofcode/commit/b18ff6b62c70ce986e358f73e2f48ecc0213c90b))
-
 ### [1.3.2](https://github.com/marcelblijleven/adventofcode/compare/v1.3.1...v1.3.2) (2021-12-01)
 
 
@@ -82,11 +71,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * update test for changes in shop inventory ([7a426e3](https://github.com/marcelblijleven/adventofcode/commit/7a426e3b79c425a3f38afc320a9965fddef9ebdf))
 * update test with new shop inventory ([b94620e](https://github.com/marcelblijleven/adventofcode/commit/b94620ed5c91d91e5b7c20f9861042c1200bcd44))
-
-
-### 📄 Documentation
-
-* update README ([fa50425](https://github.com/marcelblijleven/adventofcode/commit/fa50425638de6ee79b1ec72ab09a26c9d712129e))
 
 
 ### 🐛 Bug Fixes
@@ -108,12 +92,6 @@ All notable changes to this project will be documented in this file. See [standa
 * remove empty hand option to solve 2015 day 21 part two ([5e6e227](https://github.com/marcelblijleven/adventofcode/commit/5e6e227cccbe1ac91d9cd4bf2f21c66621d883f6))
 
 
-### 📄 Documentation
-
-* update README ([bd4e08b](https://github.com/marcelblijleven/adventofcode/commit/bd4e08baa4dc6d7b855fc7e9862ce5625ea1b8b6))
-* update README ([10226eb](https://github.com/marcelblijleven/adventofcode/commit/10226eb02a8eee5bbc84b1407c34e166ae44e8ea))
-* update README ([13cbb48](https://github.com/marcelblijleven/adventofcode/commit/13cbb485f5a0f55a7e5de9413d00e5706d186c3b))
-
 ## [1.3.0](https://github.com/marcelblijleven/adventofcode/compare/v1.2.0...v1.3.0) (2021-11-30)
 
 
@@ -131,9 +109,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * add more badges and examples ([1c5192b](https://github.com/marcelblijleven/adventofcode/commit/1c5192b46ee9c1414f4b10bb995d24564900f00b))
 * **README:** add script examples to README.md ([5c6febe](https://github.com/marcelblijleven/adventofcode/commit/5c6febe7a8673b2164f07ca716e3f3bf542eaa5e))
-* update README ([d7c127c](https://github.com/marcelblijleven/adventofcode/commit/d7c127cd3eab94661ec1b0bbe6c8b9e9146be38a))
-* update README ([64baa1e](https://github.com/marcelblijleven/adventofcode/commit/64baa1ec1d3bade42ad421f4055e21e871306344))
-* update README ([c52c5c5](https://github.com/marcelblijleven/adventofcode/commit/c52c5c586296627f93390eff72fbaa3f5f32b412))
 
 
 ### ✨ Features
@@ -202,18 +177,6 @@ All notable changes to this project will be documented in this file. See [standa
 * mypy and flake8 issues ([94bbc9f](https://github.com/marcelblijleven/adventofcode/commit/94bbc9ff4f48f15fed758737af209552f728a176))
 * strip _year suffix from day in clean_day ([e8925df](https://github.com/marcelblijleven/adventofcode/commit/e8925dfc3fc61e70f26708b52bdb9eadacc25211))
 
-
-### 📄 Documentation
-
-* update README ([7a17ba7](https://github.com/marcelblijleven/adventofcode/commit/7a17ba7c1cd5ea5b3bc91cdee155b8cd8bfb3412))
-* update README ([fc47a76](https://github.com/marcelblijleven/adventofcode/commit/fc47a76c280ceaae60389075eb8ddff3bc27a8cd))
-* update README ([d3bf904](https://github.com/marcelblijleven/adventofcode/commit/d3bf904f5a7e3b4c053f85552d91b7739011c1d7))
-* update README ([63f28ee](https://github.com/marcelblijleven/adventofcode/commit/63f28ee51346179c7cac5d6ead2959fc0efc6ec5))
-* update README ([fdc1763](https://github.com/marcelblijleven/adventofcode/commit/fdc1763453be022353f0d75bda2af40a736df78b))
-* update README ([d5d1562](https://github.com/marcelblijleven/adventofcode/commit/d5d15622dca7c80c157bd0b8fb83e7b7a7e46dd4))
-* update README ([37d97f0](https://github.com/marcelblijleven/adventofcode/commit/37d97f09e6b37036bc5a083bf4a8f0c7f8f954b2))
-* update README ([f175dd3](https://github.com/marcelblijleven/adventofcode/commit/f175dd3a3ed4b5b9d1b64fd831e517540b0126d4))
-* update README ([2fed2ff](https://github.com/marcelblijleven/adventofcode/commit/2fed2ffaf2fac1b7268b95d19d6680b0ea91fbe3))
 
 ## [1.1.0](https://github.com/marcelblijleven/adventofcode/compare/v1.0.0...v1.1.0) (2021-11-19)
 
