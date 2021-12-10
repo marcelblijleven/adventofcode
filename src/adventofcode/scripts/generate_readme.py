@@ -1,10 +1,10 @@
 import os
 import re
-from typing import Dict
+from typing import Dict, List
 
 from adventofcode.config import ROOT_DIR
-from adventofcode.util.module_helpers import get_functions_from_day_file, get_full_day_paths, get_full_year_paths, clean_day, clean_year
-
+from adventofcode.util.module_helpers import get_functions_from_day_file, get_full_day_paths, get_full_year_paths, \
+    clean_day, clean_year
 
 YearDayType = Dict[int, Dict[int, Dict[str, bool]]]
 
@@ -56,17 +56,54 @@ def _count_stars() -> int:
     return sum([val for days in found.values() for parts in days.values() for val in parts.values()])
 
 
+def _update_year_readme(year: int) -> None:
+    found = _find_completed_days()[year]
+    header: List[str] = [f'# {year}']
+
+    days = found.keys()
+    completed_parts = sum([len(parts.keys()) for parts in found.values()])
+    body: List[str] = [
+        f'Solutions for {len(days)} {"day" if len(days) == 0 else "days"} in {year} '
+        f'with a total of {completed_parts} stars collected',
+        ''
+    ]
+
+    body = body + _create_year_overview(found)
+    year_readme_file = os.path.join(ROOT_DIR, f'year_{year}/README.md')
+    text = header + body
+
+    with open(year_readme_file, 'w') as f:
+        f.write('\n'.join(text))
+
+
+def _create_year_overview(completed_days: dict[int, dict[str, bool]]) -> List[str]:
+    text: List[str] = [
+        '| day   | part one | part two |',
+        '| :---: | :------: | :------: |']
+
+    for day, parts in completed_days.items():
+        part_one = '⭐️' if parts['part_one'] else '–'
+        part_two = '⭐️' if parts['part_two'] else '–'
+        text.append(f'| {day:02} | {part_one} | {part_two} |')
+
+    return text
+
+
 def _create_completed_text() -> str:
     found = _find_completed_days()
 
     text = ['## Completed ⭐️']
     for year, days in found.items():
+        _update_year_readme(year)
         text.append(f'### {year}')
-
-        for day, parts in days.items():
-            part_one = '⭐️' if parts['part_one'] else '–'
-            part_two = '⭐️' if parts['part_two'] else '–'
-            text.append(f'- day {day:02}: part one {part_one}, part two {part_two}')
+        text.append(f'<details><summary>Solutions for {year}</summary>')
+        text.append('<p>')
+        text.append('')  # whitespace required
+        text = text + _create_year_overview(days)
+        text.append('')  # whitespace required
+        text.append('</p>')
+        text.append('</details>')
+        text.append('')  # whitespace required
 
     text.append('')
     return '\n'.join(text)

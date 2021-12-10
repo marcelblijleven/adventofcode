@@ -1,6 +1,8 @@
 import asyncio
+import multiprocessing
 from asyncio import Queue
 from collections import defaultdict
+from itertools import repeat
 from typing import List, DefaultDict, Set
 
 import math
@@ -13,8 +15,12 @@ Position = tuple[int, int]
 CaveFloor = DefaultDict[Position, int]
 
 
+def _cave_floor_factory() -> int:
+    return 10
+
+
 def parse_input(input_data: List[str]) -> tuple[CaveFloor, int, int]:
-    cave_floor = defaultdict(lambda: 10)
+    cave_floor = defaultdict(_cave_floor_factory)
     height = 0
     width = 0
 
@@ -100,6 +106,23 @@ async def find_basin_size_product_async(cave_floor: CaveFloor, width: int, heigh
     return math.prod(lengths[-3:])
 
 
+def calculate_basin_mp(cave_floor: CaveFloor, position: Position) -> list[tuple[int, int]]:
+    basin: Set[Position] = set()
+    basin = calculate_basin(cave_floor, position, basin)
+    return list(basin)
+
+
+def find_basin_size_product_mp(cave_floor: CaveFloor, width: int, height: int) -> int:
+    low_points = get_low_points(cave_floor, width, height)
+    args = zip(repeat(cave_floor), low_points)
+
+    with multiprocessing.Pool(processes=2) as pool:
+        results = pool.starmap(calculate_basin_mp, args)
+
+    lengths = sorted([len(res) for res in results])
+    return math.prod(lengths[-3:])
+
+
 def get_risk_level(cave_floor: CaveFloor, width: int, height: int) -> int:
     points: List[int] = []
 
@@ -138,8 +161,17 @@ def part_two(input_data: List[str]):
 
 @solution_timer(2021, 9, 2, version='async')
 def part_two_async(input_data: List[str]):
-    # answer = find_basin_size_product(*parse_input(input_data))
     answer = asyncio.run(find_basin_size_product_async(*parse_input(input_data)))
+
+    if not answer:
+        raise SolutionNotFoundException(2021, 9, 2)
+
+    return answer
+
+
+@solution_timer(2021, 9, 2, version='multiprocessing')
+def part_two_mp(input_data: List[str]):
+    answer = find_basin_size_product_mp(*parse_input(input_data))
 
     if not answer:
         raise SolutionNotFoundException(2021, 9, 2)
@@ -152,3 +184,4 @@ if __name__ == '__main__':
     part_one(data)
     part_two(data)
     part_two_async(data)
+    part_two_mp(data)

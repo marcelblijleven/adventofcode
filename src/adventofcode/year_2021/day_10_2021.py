@@ -1,40 +1,31 @@
-from typing import List
+from typing import List, TypedDict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
 
-parentheses_open = '('
-parentheses_close = ')'
-bracket_open = '['
-bracket_close = ']'
-braces_open = '{'
-braces_close = '}'
-angle_bracket_open = '<'
-angle_bracket_close = '>'
-
-points_map = {
+POINTS_MAP = {
     ')': 3,
     ']': 57,
     '}': 1197,
     '>': 25137,
 }
 
-autocomplete_points_map = {
+POINTS_MAP_AUTOCOMPLETE = {
     ')': 1,
     ']': 2,
     '}': 3,
     '>': 4,
 }
 
-pairs = {
+PAIRS = {
     '(': ')',
     '[': ']',
     '{': '}',
     '<': '>',
 }
 
-pair_reversed = {v: k for k, v in pairs.items()}
+PAIRS_REVERSED = {v: k for k, v in PAIRS.items()}
 
 
 def _is_open(character: str) -> bool:
@@ -52,7 +43,7 @@ def reduce_line(line: str) -> str:
         if _is_open(character):
             first_to_close.append(character)
         elif _is_close(character):
-            if first_to_close[-1] == pair_reversed[character]:
+            if first_to_close[-1] == PAIRS_REVERSED[character]:
                 first_to_close.pop(-1)
             else:
                 return character
@@ -77,7 +68,7 @@ def find_corrupted_characters(lines: List[str]) -> List[str]:
 def count_points_corrupted_characters(corrupted_characters: List[str]) -> int:
     total = 0
 
-    for key, value in points_map.items():
+    for key, value in POINTS_MAP.items():
         total += corrupted_characters.count(key) * value
 
     return total
@@ -99,7 +90,7 @@ def find_closing_characters(lines: List[str]) -> List[str]:
             elif _is_close(character):
                 first_to_close.reverse()
                 for idx, to_close in enumerate(first_to_close):
-                    if pair_reversed[character] == to_close:
+                    if PAIRS_REVERSED[character] == to_close:
                         first_to_close.pop(idx)
                         break
 
@@ -107,7 +98,7 @@ def find_closing_characters(lines: List[str]) -> List[str]:
 
         first_to_close.reverse()
         if len(first_to_close) > 0:
-            characters = ''.join(first_to_close).translate(str.maketrans(pairs))
+            characters = ''.join(first_to_close).translate(str.maketrans(PAIRS))  # type: ignore
             closing_characters.append(characters)
 
     return closing_characters
@@ -120,7 +111,7 @@ def count_points_autocomplete(closing_characters: List[str]) -> int:
         subtotal = 0
         for character in line:
             subtotal *= 5
-            subtotal += autocomplete_points_map[character]
+            subtotal += POINTS_MAP_AUTOCOMPLETE[character]
 
         total.append(subtotal)
 

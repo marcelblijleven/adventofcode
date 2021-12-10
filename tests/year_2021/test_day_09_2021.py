@@ -1,7 +1,10 @@
+import asyncio
+
 import pytest
 
 from adventofcode.year_2021.day_09_2021 import part_two, part_one, parse_input, get_risk_level, find_basin_size_product, \
-    calculate_basin, get_low_points
+    calculate_basin, get_low_points, calculate_basin_async, find_basin_size_product_async, calculate_basin_mp, \
+    find_basin_size_product_mp
 
 test_input = [
     '2199943210',
@@ -45,8 +48,40 @@ def test_calculate_basin(position, expected):
     assert len(calculate_basin(cave_floor, position, basin)) == expected
 
 
+@pytest.mark.parametrize(['position', 'expected'], [
+    ((1, 0), 3),
+    ((9, 0), 9),
+    ((2, 2), 14),
+    ((6, 4), 9),
+])
+def test_calculate_basin_async(position, expected):
+    cave_floor, width, height = parse_input(test_input)
+    result = asyncio.run(calculate_basin_async(cave_floor, position))
+    assert len(result) == expected
+
+
+@pytest.mark.parametrize(['position', 'expected'], [
+    ((1, 0), 3),
+    ((9, 0), 9),
+    ((2, 2), 14),
+    ((6, 4), 9),
+])
+def test_calculate_basin_mp(position, expected):
+    cave_floor, width, height = parse_input(test_input)
+    assert len(calculate_basin_mp(cave_floor, position)) == expected
+
+
 def test_find_basin_size_product():
     assert find_basin_size_product(*parse_input(test_input)) == 1134
+
+
+def test_find_basin_size_product_async():
+    result = asyncio.run(find_basin_size_product_async(*parse_input(test_input)))
+    assert result == 1134
+
+
+def test_find_basin_size_product_mp():
+    assert find_basin_size_product_mp(*parse_input(test_input)) == 1134
 
 
 def test_part_one():
