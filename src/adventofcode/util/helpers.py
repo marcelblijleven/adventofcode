@@ -4,7 +4,7 @@ import pstats
 import time
 from typing import Callable, Literal, Dict, Any
 
-from adventofcode.config import RUNNING_ALL
+from adventofcode.config import RUNNING_ALL, RUNNING_BENCHMARKS
 from adventofcode.util.console import console
 from adventofcode.util.exceptions import SolutionNotFoundException
 
@@ -55,12 +55,17 @@ def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: 
                     raise SolutionNotFoundException(year, day, part)
 
                 diff = (time.perf_counter() - start) * 1000
-                console.print(f'{prefix}{solution} in {diff:.2f} ms')
+
+                if not RUNNING_BENCHMARKS:
+                    console.print(f'{prefix}{solution} in {diff:.2f} ms')
             except (ValueError, ArithmeticError, TypeError):
                 console.print_exception()
             except SolutionNotFoundException:
                 console.print(f'{prefix}[red]solution not found')
             else:
+                if RUNNING_BENCHMARKS:
+                    return diff
+
                 return solution
 
         return wrapper
