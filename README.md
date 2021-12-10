@@ -23,7 +23,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 <!-- start completed section -->
 ## Completed ⭐️
 ### 2015
-<details><summary>Solutions overview of 2015</summary>
+<details><summary>Solutions for 2015</summary>
 <p>
 
 | day   | part one | part two |
@@ -58,7 +58,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 </details>
 
 ### 2020
-<details><summary>Solutions overview of 2020</summary>
+<details><summary>Solutions for 2020</summary>
 <p>
 
 | day   | part one | part two |
@@ -78,13 +78,12 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 | 13 | ⭐️ | ⭐️ |
 | 14 | ⭐️ | ⭐️ |
 | 15 | ⭐️ | ⭐️ |
-| 16 | ⭐️ | ⭐️ |
 
 </p>
 </details>
 
 ### 2021
-<details><summary>Solutions overview of 2021</summary>
+<details><summary>Solutions for 2021</summary>
 <p>
 
 | day   | part one | part two |
