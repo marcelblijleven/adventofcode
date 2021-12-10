@@ -1,4 +1,4 @@
-from typing import List, TypedDict
+from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import solution_timer
