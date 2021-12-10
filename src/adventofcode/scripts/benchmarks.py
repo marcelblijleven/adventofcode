@@ -1,6 +1,5 @@
 import os
 from concurrent.futures import ProcessPoolExecutor
-from itertools import repeat
 from typing import Dict, List
 
 from rich.table import Table

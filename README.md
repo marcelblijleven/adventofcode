@@ -15,6 +15,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 - A badge that is updated automatically with the amount of stars I've collected
 - Pip installable (`pip install -e .`) with:
   - A `generate-readme` script, which updates the readme
+  - A `generate-benchmarks` script, which gets the duration per solution and adds it to the readme
   - A `run-all` script, which dynamically calls every solution in every `adventofcode.year_*.day_*` module
   - An `add-day` script, which add a solution day file using a template and downloads the input data from the AOC site automatically
 - Type checked (`mypy`) and linted (`flake8`)
