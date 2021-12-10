@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=100&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=102&color=yellow)]()
 [![codecov](https://codecov.io/gh/marcelblijleven/adventofcode/branch/master/graph/badge.svg?token=jZ2TgfyltM)](https://codecov.io/gh/marcelblijleven/adventofcode)
 [![tests](https://github.com/marcelblijleven/adventofcode/actions/workflows/tests.yaml/badge.svg)](https://github.com/marcelblijleven/adventofcode)
 [![version](https://img.shields.io/github/v/release/marcelblijleven/adventofcode.svg)](https://github.com/marcelblijleven/adventofcode/releases)
@@ -23,60 +23,227 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 <!-- start completed section -->
 ## Completed ⭐️
 ### 2015
-- day 01: part one ⭐️, part two ⭐️
-- day 02: part one ⭐️, part two ⭐️
-- day 03: part one ⭐️, part two ⭐️
-- day 04: part one ⭐️, part two ⭐️
-- day 05: part one ⭐️, part two ⭐️
-- day 06: part one ⭐️, part two ⭐️
-- day 07: part one ⭐️, part two ⭐️
-- day 08: part one ⭐️, part two ⭐️
-- day 09: part one ⭐️, part two ⭐️
-- day 10: part one ⭐️, part two ⭐️
-- day 11: part one ⭐️, part two ⭐️
-- day 12: part one ⭐️, part two ⭐️
-- day 13: part one ⭐️, part two ⭐️
-- day 14: part one ⭐️, part two ⭐️
-- day 15: part one ⭐️, part two ⭐️
-- day 16: part one ⭐️, part two ⭐️
-- day 17: part one ⭐️, part two ⭐️
-- day 18: part one ⭐️, part two ⭐️
-- day 19: part one ⭐️, part two ⭐️
-- day 20: part one ⭐️, part two ⭐️
-- day 21: part one ⭐️, part two ⭐️
-- day 22: part one ⭐️, part two ⭐️
-- day 23: part one ⭐️, part two ⭐️
-- day 24: part one ⭐️, part two ⭐️
-- day 25: part one ⭐️, part two ⭐️
+<details><summary>Solutions overview of 2015</summary>
+<p>
+
+| day   | part one | part two |
+| :---: | :------: | :------: |
+| 01 | ⭐️ | ⭐️ |
+| 02 | ⭐️ | ⭐️ |
+| 03 | ⭐️ | ⭐️ |
+| 04 | ⭐️ | ⭐️ |
+| 05 | ⭐️ | ⭐️ |
+| 06 | ⭐️ | ⭐️ |
+| 07 | ⭐️ | ⭐️ |
+| 08 | ⭐️ | ⭐️ |
+| 09 | ⭐️ | ⭐️ |
+| 10 | ⭐️ | ⭐️ |
+| 11 | ⭐️ | ⭐️ |
+| 12 | ⭐️ | ⭐️ |
+| 13 | ⭐️ | ⭐️ |
+| 14 | ⭐️ | ⭐️ |
+| 15 | ⭐️ | ⭐️ |
+| 16 | ⭐️ | ⭐️ |
+| 17 | ⭐️ | ⭐️ |
+| 18 | ⭐️ | ⭐️ |
+| 19 | ⭐️ | ⭐️ |
+| 20 | ⭐️ | ⭐️ |
+| 21 | ⭐️ | ⭐️ |
+| 22 | ⭐️ | ⭐️ |
+| 23 | ⭐️ | ⭐️ |
+| 24 | ⭐️ | ⭐️ |
+| 25 | ⭐️ | ⭐️ |
+
+</p>
+</details>
+
 ### 2020
-- day 01: part one ⭐️, part two ⭐️
-- day 02: part one ⭐️, part two ⭐️
-- day 03: part one ⭐️, part two ⭐️
-- day 04: part one ⭐️, part two ⭐️
-- day 05: part one ⭐️, part two ⭐️
-- day 06: part one ⭐️, part two ⭐️
-- day 07: part one ⭐️, part two ⭐️
-- day 08: part one ⭐️, part two ⭐️
-- day 09: part one ⭐️, part two ⭐️
-- day 10: part one ⭐️, part two ⭐️
-- day 11: part one ⭐️, part two ⭐️
-- day 12: part one ⭐️, part two ⭐️
-- day 13: part one ⭐️, part two ⭐️
-- day 14: part one ⭐️, part two ⭐️
-- day 15: part one ⭐️, part two ⭐️
+<details><summary>Solutions overview of 2020</summary>
+<p>
+
+| day   | part one | part two |
+| :---: | :------: | :------: |
+| 01 | ⭐️ | ⭐️ |
+| 02 | ⭐️ | ⭐️ |
+| 03 | ⭐️ | ⭐️ |
+| 04 | ⭐️ | ⭐️ |
+| 05 | ⭐️ | ⭐️ |
+| 06 | ⭐️ | ⭐️ |
+| 07 | ⭐️ | ⭐️ |
+| 08 | ⭐️ | ⭐️ |
+| 09 | ⭐️ | ⭐️ |
+| 10 | ⭐️ | ⭐️ |
+| 11 | ⭐️ | ⭐️ |
+| 12 | ⭐️ | ⭐️ |
+| 13 | ⭐️ | ⭐️ |
+| 14 | ⭐️ | ⭐️ |
+| 15 | ⭐️ | ⭐️ |
+| 16 | ⭐️ | ⭐️ |
+
+</p>
+</details>
+
 ### 2021
-- day 01: part one ⭐️, part two ⭐️
-- day 02: part one ⭐️, part two ⭐️
-- day 03: part one ⭐️, part two ⭐️
-- day 04: part one ⭐️, part two ⭐️
-- day 05: part one ⭐️, part two ⭐️
-- day 06: part one ⭐️, part two ⭐️
-- day 07: part one ⭐️, part two ⭐️
-- day 08: part one ⭐️, part two ⭐️
-- day 09: part one ⭐️, part two ⭐️
-- day 10: part one ⭐️, part two ⭐️
+<details><summary>Solutions overview of 2021</summary>
+<p>
+
+| day   | part one | part two |
+| :---: | :------: | :------: |
+| 01 | ⭐️ | ⭐️ |
+| 02 | ⭐️ | ⭐️ |
+| 03 | ⭐️ | ⭐️ |
+| 04 | ⭐️ | ⭐️ |
+| 05 | ⭐️ | ⭐️ |
+| 06 | ⭐️ | ⭐️ |
+| 07 | ⭐️ | ⭐️ |
+| 08 | ⭐️ | ⭐️ |
+| 09 | ⭐️ | ⭐️ |
+| 10 | ⭐️ | ⭐️ |
+
+</p>
+</details>
+
 
 <!-- end completed section -->
+
+<!-- start benchmark section -->
+## Benchmarks 🚀
+### 2015
+<details><summary>Benchmarks for 2015</summary>
+<p>
+
+|  day  | part  | duration |
+| :---: | :---: | -------: |
+| 01 | part one | 0.87 ms |
+| 01 | part two | 0.37 ms |
+| 02 | part one | 4.46 ms |
+| 02 | part two | 4.15 ms |
+| 03 | part one | 6.75 ms |
+| 03 | part two | 8.82 ms |
+| 04 | part one | 333.73 ms |
+| 04 | part two | 8140.10 ms |
+| 05 | part one | 4.01 ms |
+| 05 | part two | 5.82 ms |
+| 06 | part one | 12203.14 ms |
+| 06 | part two | 9126.94 ms |
+| 07 | part one | 3.67 ms |
+| 07 | part two | 7.33 ms |
+| 08 | part one | 2.55 ms |
+| 08 | part two | 0.97 ms |
+| 09 | part one | 294.32 ms |
+| 09 | part two | 306.38 ms |
+| 10 | part one | 963.03 ms |
+| 10 | part two | 9617.11 ms |
+| 11 | part one | 0.02 ms |
+| 11 | part two | 0.01 ms |
+| 12 | part one | 2.84 ms |
+| 12 | part two | 2.29 ms |
+| 13 | part one | 332.69 ms |
+| 13 | part two | 2907.43 ms |
+| 14 | part one | 57.30 ms |
+| 14 | part two | 68.64 ms |
+| 15 | part one | 2137.44 ms |
+| 15 | part two | 754.40 ms |
+| 16 | part one | 2.65 ms |
+| 16 | part two | 2.67 ms |
+| 17 | part one | 507.51 ms |
+| 17 | part two | 285.50 ms |
+| 18 | part one | 7436.95 ms |
+| 18 | part two | 5324.89 ms |
+| 19 | part one | 8.57 ms |
+| 19 | part two | 0.38 ms |
+| 20 | part one | 7938.11 ms |
+| 20 | part two | 2262.16 ms |
+| 21 | part one | 15.81 ms |
+| 21 | part two | 14.73 ms |
+| 22 | part one | 653.37 ms |
+| 22 | part two | 441.59 ms |
+| 23 | part one | 2.05 ms |
+| 23 | part two | 2.71 ms |
+| 24 | part one | 217.20 ms |
+| 24 | part two | 10.32 ms |
+| 25 | part one | 6792.81 ms |
+| 25 | part two | 0.00 ms |
+
+</p>
+</details>
+
+### 2020
+<details><summary>Benchmarks for 2020</summary>
+<p>
+
+|  day  | part  | duration |
+| :---: | :---: | -------: |
+| 01 | part one | 0.31 ms |
+| 01 | part two | 265.49 ms |
+| 02 | part one | 8.78 ms |
+| 02 | part two | 8.86 ms |
+| 03 | part one | 0.31 ms |
+| 03 | part two | 1.07 ms |
+| 05 | part one | 26.12 ms |
+| 05 | part two | 8.17 ms |
+| 05 | part one binary version | 1.65 ms |
+| 06 | part one | 2.51 ms |
+| 06 | part two | 3.09 ms |
+| 07 | part one | 209.15 ms |
+| 07 | part two | 2.58 ms |
+| 08 | part one | 1.12 ms |
+| 08 | part two | 68.21 ms |
+| 09 | part one | 2.22 ms |
+| 09 | part two | 1433.78 ms |
+| 10 | part one | 0.08 ms |
+| 10 | part two | 0.13 ms |
+| 11 | part one | 4829.47 ms |
+| 11 | part two | 4330.25 ms |
+| 12 | part one | 0.97 ms |
+| 12 | part two | 1.12 ms |
+| 13 | part one | 0.56 ms |
+| 13 | part two | 0.25 ms |
+| 14 | part one | 5.48 ms |
+| 14 | part two | 572.31 ms |
+| 15 | part one | 0.64 ms |
+| 15 | part two | 8811.56 ms |
+| 16 | part one | 5.49 ms |
+| 16 | part two | 0.01 ms |
+
+</p>
+</details>
+
+### 2021
+<details><summary>Benchmarks for 2021</summary>
+<p>
+
+|  day  | part  | duration |
+| :---: | :---: | -------: |
+| 01 | part one | 0.78 ms |
+| 01 | part two | 3.29 ms |
+| 01 | part two reuse part one | 2.35 ms |
+| 02 | part one | 1.54 ms |
+| 02 | part two | 1.51 ms |
+| 03 | part one | 2.63 ms |
+| 03 | part two | 7.89 ms |
+| 04 | part one | 21.67 ms |
+| 04 | part two | 34.83 ms |
+| 05 | part one | 73.54 ms |
+| 05 | part two | 118.77 ms |
+| 06 | part one | 0.11 ms |
+| 06 | part two | 0.22 ms |
+| 06 | part two faster | 0.25 ms |
+| 07 | part one | 0.43 ms |
+| 07 | part two | 0.81 ms |
+| 08 | part one | 0.65 ms |
+| 08 | part two | 3.40 ms |
+| 09 | part one | 14.88 ms |
+| 09 | part two | 20.69 ms |
+| 09 | part two async | 26.22 ms |
+| 09 | part two mp | 201.47 ms |
+| 10 | part one | 2.74 ms |
+| 10 | part two | 6.54 ms |
+
+</p>
+</details>
+
+<!-- end benchmark section --> 
 
 ## Decorators
 What's Christmas without decorations? 🎄
