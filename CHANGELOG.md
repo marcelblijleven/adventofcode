@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/marcelblijleven/adventofcode/compare/v1.4.2...v1.5.0) (2021-12-10)
+
+
+### 🐛 Bug Fixes
+
+* checkout git repository in release.yaml ([ac91f20](https://github.com/marcelblijleven/adventofcode/commit/ac91f20388c440354fa7a7fed148b3b071358005))
+
+
+### ✨ Features
+
+* add benchmarks ([89ee762](https://github.com/marcelblijleven/adventofcode/commit/89ee762733edaf548253c58c4b785b44b24b6aca))
+* make solution timer return duration when running benchmarks ([69f7d5d](https://github.com/marcelblijleven/adventofcode/commit/69f7d5d96b9eebf2a184c3565c894aa4b21e3377))
+* replace solution lists with tables ([b35fc45](https://github.com/marcelblijleven/adventofcode/commit/b35fc451d0bb788c1786535492d8f75207fce2e4))
+
+
+### ⭐️ Solutions
+
+* add 2021 day 10 ([ef55e5b](https://github.com/marcelblijleven/adventofcode/commit/ef55e5b23b90ae0592e5f7fc07141ee81308add7))
+* add multiprocessing versions ([e382db3](https://github.com/marcelblijleven/adventofcode/commit/e382db35d0b9b6b176234bb7ba956d4c63ccb402))
+
 ### [1.4.2](https://github.com/marcelblijleven/adventofcode/compare/v1.4.1...v1.4.2) (2021-12-09)
 
 
