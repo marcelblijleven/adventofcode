@@ -15,7 +15,6 @@ class Octopus:
         self.position = position
         self.adjacent_octopuses = self._adjacent_octopuses()
         self._has_flashed = False
-        self._has_updated = False
 
     def __str__(self):
         return f'{self.energy}'
@@ -29,7 +28,6 @@ class Octopus:
 
     def reset_tick(self):
         self._has_flashed = False
-        self._has_updated = False
 
     def respond_to_flash(self):
         if not self._has_flashed:
@@ -55,9 +53,7 @@ class Octopus:
 
     def update_energy(self):
         if not self._has_flashed:
-            if not self._has_updated:
-                self.energy += 1
-                self._has_updated = True
+            self.energy += 1
 
 
 Grid = dict[Position, Octopus]
