@@ -91,6 +91,14 @@ class OctopusGrid:
         self.flash_counter = 0
         self.total_octopuses = 100
 
+    def _get_flashers_for_tick(self):
+        for octopus in self.grid.values():
+            octopus.reset_tick()
+            octopus.update_energy()
+
+            if octopus.can_flash:
+                self.can_flash.append(octopus)
+
     def tick(self):
         initial_run = True
         flashed_during_tick = 0
@@ -98,12 +106,7 @@ class OctopusGrid:
         while initial_run or len(self.can_flash):
             if initial_run:
                 initial_run = False
-                for octopus in self.grid.values():
-                    octopus.reset_tick()
-                    octopus.update_energy()
-
-                    if octopus.can_flash:
-                        self.can_flash.append(octopus)
+                self._get_flashers_for_tick()
 
             if not len(self.can_flash):
                 break
