@@ -115,55 +115,55 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.87 ms |
-| 01 | part two | 0.37 ms |
-| 02 | part one | 4.46 ms |
-| 02 | part two | 4.15 ms |
-| 03 | part one | 6.75 ms |
-| 03 | part two | 8.82 ms |
-| 04 | part one | 333.73 ms |
-| 04 | part two | 8140.10 ms |
-| 05 | part one | 4.01 ms |
-| 05 | part two | 5.82 ms |
-| 06 | part one | 12203.14 ms |
-| 06 | part two | 9126.94 ms |
-| 07 | part one | 3.67 ms |
-| 07 | part two | 7.33 ms |
-| 08 | part one | 2.55 ms |
-| 08 | part two | 0.97 ms |
-| 09 | part one | 294.32 ms |
-| 09 | part two | 306.38 ms |
-| 10 | part one | 963.03 ms |
-| 10 | part two | 9617.11 ms |
-| 11 | part one | 0.02 ms |
-| 11 | part two | 0.01 ms |
-| 12 | part one | 2.84 ms |
-| 12 | part two | 2.29 ms |
-| 13 | part one | 332.69 ms |
-| 13 | part two | 2907.43 ms |
-| 14 | part one | 57.30 ms |
-| 14 | part two | 68.64 ms |
-| 15 | part one | 2137.44 ms |
-| 15 | part two | 754.40 ms |
-| 16 | part one | 2.65 ms |
-| 16 | part two | 2.67 ms |
-| 17 | part one | 507.51 ms |
-| 17 | part two | 285.50 ms |
-| 18 | part one | 7436.95 ms |
-| 18 | part two | 5324.89 ms |
-| 19 | part one | 8.57 ms |
-| 19 | part two | 0.38 ms |
-| 20 | part one | 7938.11 ms |
-| 20 | part two | 2262.16 ms |
-| 21 | part one | 15.81 ms |
-| 21 | part two | 14.73 ms |
-| 22 | part one | 653.37 ms |
-| 22 | part two | 441.59 ms |
-| 23 | part one | 2.05 ms |
-| 23 | part two | 2.71 ms |
-| 24 | part one | 217.20 ms |
-| 24 | part two | 10.32 ms |
-| 25 | part one | 6792.81 ms |
+| 01 | part one | 0.56 ms |
+| 01 | part two | 0.23 ms |
+| 02 | part one | 2.57 ms |
+| 02 | part two | 2.33 ms |
+| 03 | part one | 3.80 ms |
+| 03 | part two | 5.69 ms |
+| 04 | part one | 154.56 ms |
+| 04 | part two | 5025.29 ms |
+| 05 | part one | 2.79 ms |
+| 05 | part two | 3.31 ms |
+| 06 | part one | 9376.18 ms |
+| 06 | part two | 10287.19 ms |
+| 07 | part one | 2.64 ms |
+| 07 | part two | 4.47 ms |
+| 08 | part one | 1.67 ms |
+| 08 | part two | 0.57 ms |
+| 09 | part one | 138.39 ms |
+| 09 | part two | 133.13 ms |
+| 10 | part one | 440.19 ms |
+| 10 | part two | 6384.13 ms |
+| 11 | part one | 0.08 ms |
+| 11 | part two | 0.02 ms |
+| 12 | part one | 1.83 ms |
+| 12 | part two | 1.38 ms |
+| 13 | part one | 149.41 ms |
+| 13 | part two | 1411.51 ms |
+| 14 | part one | 30.84 ms |
+| 14 | part two | 30.82 ms |
+| 15 | part one | 1030.11 ms |
+| 15 | part two | 386.30 ms |
+| 16 | part one | 1.53 ms |
+| 16 | part two | 1.38 ms |
+| 17 | part one | 210.90 ms |
+| 17 | part two | 133.04 ms |
+| 18 | part one | 4451.16 ms |
+| 18 | part two | 4697.19 ms |
+| 19 | part one | 6.22 ms |
+| 19 | part two | 0.32 ms |
+| 20 | part one | 7042.06 ms |
+| 20 | part two | 2365.66 ms |
+| 21 | part one | 10.52 ms |
+| 21 | part two | 10.06 ms |
+| 22 | part one | 351.35 ms |
+| 22 | part two | 259.52 ms |
+| 23 | part one | 1.73 ms |
+| 23 | part two | 1.83 ms |
+| 24 | part one | 103.18 ms |
+| 24 | part two | 3.76 ms |
+| 25 | part one | 4271.42 ms |
 | 25 | part two | 0.00 ms |
 
 </p>
@@ -175,36 +175,36 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.31 ms |
-| 01 | part two | 265.49 ms |
-| 02 | part one | 8.78 ms |
-| 02 | part two | 8.86 ms |
-| 03 | part one | 0.31 ms |
-| 03 | part two | 1.07 ms |
-| 05 | part one | 26.12 ms |
-| 05 | part two | 8.17 ms |
-| 05 | part one binary version | 1.65 ms |
-| 06 | part one | 2.51 ms |
-| 06 | part two | 3.09 ms |
-| 07 | part one | 209.15 ms |
-| 07 | part two | 2.58 ms |
-| 08 | part one | 1.12 ms |
-| 08 | part two | 68.21 ms |
-| 09 | part one | 2.22 ms |
-| 09 | part two | 1433.78 ms |
-| 10 | part one | 0.08 ms |
-| 10 | part two | 0.13 ms |
-| 11 | part one | 4829.47 ms |
-| 11 | part two | 4330.25 ms |
-| 12 | part one | 0.97 ms |
-| 12 | part two | 1.12 ms |
-| 13 | part one | 0.56 ms |
-| 13 | part two | 0.25 ms |
-| 14 | part one | 5.48 ms |
-| 14 | part two | 572.31 ms |
-| 15 | part one | 0.64 ms |
-| 15 | part two | 8811.56 ms |
-| 16 | part one | 5.49 ms |
+| 01 | part one | 0.20 ms |
+| 01 | part two | 154.39 ms |
+| 02 | part one | 6.41 ms |
+| 02 | part two | 4.56 ms |
+| 03 | part one | 0.16 ms |
+| 03 | part two | 0.71 ms |
+| 05 | part one | 13.14 ms |
+| 05 | part two | 4.35 ms |
+| 05 | part one binary version | 0.56 ms |
+| 06 | part one | 1.47 ms |
+| 06 | part two | 1.66 ms |
+| 07 | part one | 118.55 ms |
+| 07 | part two | 1.71 ms |
+| 08 | part one | 0.87 ms |
+| 08 | part two | 35.31 ms |
+| 09 | part one | 1.10 ms |
+| 09 | part two | 1340.50 ms |
+| 10 | part one | 0.07 ms |
+| 10 | part two | 0.11 ms |
+| 11 | part one | 4962.46 ms |
+| 11 | part two | 4513.10 ms |
+| 12 | part one | 0.58 ms |
+| 12 | part two | 0.53 ms |
+| 13 | part one | 0.28 ms |
+| 13 | part two | 0.13 ms |
+| 14 | part one | 2.85 ms |
+| 14 | part two | 473.64 ms |
+| 15 | part one | 0.40 ms |
+| 15 | part two | 10414.54 ms |
+| 16 | part one | 3.58 ms |
 | 16 | part two | 0.01 ms |
 
 </p>
@@ -216,30 +216,36 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.78 ms |
-| 01 | part two | 3.29 ms |
-| 01 | part two reuse part one | 2.35 ms |
-| 02 | part one | 1.54 ms |
-| 02 | part two | 1.51 ms |
-| 03 | part one | 2.63 ms |
-| 03 | part two | 7.89 ms |
-| 04 | part one | 21.67 ms |
-| 04 | part two | 34.83 ms |
-| 05 | part one | 73.54 ms |
-| 05 | part two | 118.77 ms |
+| 01 | part one | 0.46 ms |
+| 01 | part two | 1.87 ms |
+| 01 | part two reuse part one | 1.61 ms |
+| 02 | part one | 0.98 ms |
+| 02 | part two | 0.90 ms |
+| 03 | part one | 1.32 ms |
+| 03 | part two | 4.18 ms |
+| 04 | part one | 18.66 ms |
+| 04 | part two | 38.83 ms |
+| 05 | part one | 61.04 ms |
+| 05 | part two | 113.12 ms |
 | 06 | part one | 0.11 ms |
-| 06 | part two | 0.22 ms |
-| 06 | part two faster | 0.25 ms |
-| 07 | part one | 0.43 ms |
-| 07 | part two | 0.81 ms |
-| 08 | part one | 0.65 ms |
-| 08 | part two | 3.40 ms |
-| 09 | part one | 14.88 ms |
-| 09 | part two | 20.69 ms |
-| 09 | part two async | 26.22 ms |
-| 09 | part two mp | 201.47 ms |
-| 10 | part one | 2.74 ms |
-| 10 | part two | 6.54 ms |
+| 06 | part two | 0.26 ms |
+| 06 | part two faster | 0.14 ms |
+| 07 | part one | 0.42 ms |
+| 07 | part two | 0.83 ms |
+| 08 | part one | 0.56 ms |
+| 08 | part two | 3.11 ms |
+| 09 | part one | 15.42 ms |
+| 09 | part two | 24.14 ms |
+| 09 | part two async | 40.85 ms |
+| 09 | part two mp | 311.77 ms |
+| 10 | part one | 1.92 ms |
+| 10 | part two | 3.67 ms |
+| 11 | part one | 13.92 ms |
+| 11 | part two | 31.48 ms |
+| 12 | part one | 28.04 ms |
+| 12 | part two | 899.15 ms |
+| 13 | part one | 1.56 ms |
+| 13 | part two | 2.47 ms |
 
 </p>
 </details>
