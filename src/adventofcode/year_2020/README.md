@@ -1,5 +1,5 @@
 # 2020
-Solutions for 16 days in 2020 with a total of 32 stars collected
+Solutions for 15 days in 2020 with a total of 30 stars collected
 
 | day   | part one | part two |
 | :---: | :------: | :------: |
@@ -18,4 +18,3 @@ Solutions for 16 days in 2020 with a total of 32 stars collected
 | 13 | ⭐️ | ⭐️ |
 | 14 | ⭐️ | ⭐️ |
 | 15 | ⭐️ | ⭐️ |
-| 16 | ⭐️ | ⭐️ |

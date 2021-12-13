@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=108&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=106&color=yellow)]()
 [![codecov](https://codecov.io/gh/marcelblijleven/adventofcode/branch/master/graph/badge.svg?token=jZ2TgfyltM)](https://codecov.io/gh/marcelblijleven/adventofcode)
 [![tests](https://github.com/marcelblijleven/adventofcode/actions/workflows/tests.yaml/badge.svg)](https://github.com/marcelblijleven/adventofcode)
 [![version](https://img.shields.io/github/v/release/marcelblijleven/adventofcode.svg)](https://github.com/marcelblijleven/adventofcode/releases)
@@ -80,7 +80,6 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 | 13 | ⭐️ | ⭐️ |
 | 14 | ⭐️ | ⭐️ |
 | 15 | ⭐️ | ⭐️ |
-| 16 | ⭐️ | ⭐️ |
 
 </p>
 </details>
