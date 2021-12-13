@@ -24,9 +24,25 @@ def get_benchmarks() -> Benchmarks:
     """
     Runs all tests and retrieves the benchmarks
     """
-    # benchmarks = _retrieve_benchmarks()
-    benchmarks = _retrieve_benchmarks_mp()
+    benchmarks = _retrieve_benchmarks()
+    # benchmarks = _retrieve_benchmarks_mp()
+    print(get_averages(benchmarks))
     return benchmarks
+
+
+def get_averages(benchmarks: Benchmarks) -> tuple[float, float]:
+    part_one_solutions = []
+    part_two_solutions = []
+
+    for days in benchmarks.values():
+        for day, solutions in days.items():
+            for solution, benchmark in solutions.items():
+                if solution.startswith('part one'):
+                    part_one_solutions.append(benchmark)
+                elif solution.startswith('part two'):
+                    part_two_solutions.append(benchmark)
+
+    return sum(part_one_solutions) / len(part_one_solutions), sum(part_two_solutions) / len(part_two_solutions)
 
 
 def create_benchmark_text(benchmarks: Benchmarks) -> str:

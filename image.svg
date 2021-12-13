@@ -1,0 +1,55 @@
+<svg fill="none" viewBox="0 0 800 50" width="800" height="50" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes animateStar {
+			0% {
+				text-shadow: #ffff66 0px 0px 2px, #ffff66 0px 0px 7px;
+			}
+			50% {
+				text-shadow: #ffff66 0px 0px 4px, #ffff66 0px 0px 10px;
+			}
+			100% {
+				text-shadow: #ffff66 0px 0px 2px, #ffff66 0px 0px 7px;
+			}
+        }
+
+        .container {
+			color: rgb(0, 204, 0);
+			font-family: "Source Code Pro", monospace;
+			font-size: 18px;
+			font-weight: normal;
+
+			text-decoration: none;
+			text-shadow: rgb(0, 204, 0) 0px 0px 2px, rgb(0, 204, 0) 0px 0px 7px;
+        }
+
+		.normal-text {
+			color: #009900;
+			text-shadow: none;
+		}
+
+        .star-count {
+			color: #ffff66;
+			text-shadow: none;
+        }
+
+        .animate {
+			text-shadow: none;
+			animation: animateStar 5s ease infinite;
+        }
+
+
+    </style>
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <div class="container">
+                github.com/marcelblijleven/adventofcode
+                <br/>
+                <span class="normal-text">stars collected:</span>
+				<!-- start star count -->
+				<span class="star-count">108</span>
+<!-- end star count -->
+                <span class="animate">⭐️</span>
+            </div>
+        </div>
+    </foreignObject>
+</svg>
