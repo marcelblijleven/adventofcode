@@ -24,8 +24,8 @@ def get_benchmarks() -> Benchmarks:
     """
     Runs all tests and retrieves the benchmarks
     """
-    # benchmarks = _retrieve_benchmarks()
-    benchmarks = _retrieve_benchmarks_mp()
+    benchmarks = _retrieve_benchmarks()
+    # benchmarks = _retrieve_benchmarks_mp()
     return benchmarks
 
 
