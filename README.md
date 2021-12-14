@@ -1,10 +1,11 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=106&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=110&color=yellow)]()
 [![codecov](https://codecov.io/gh/marcelblijleven/adventofcode/branch/master/graph/badge.svg?token=jZ2TgfyltM)](https://codecov.io/gh/marcelblijleven/adventofcode)
 [![tests](https://github.com/marcelblijleven/adventofcode/actions/workflows/tests.yaml/badge.svg)](https://github.com/marcelblijleven/adventofcode)
 [![version](https://img.shields.io/github/v/release/marcelblijleven/adventofcode.svg)](https://github.com/marcelblijleven/adventofcode/releases)
 
-[![advent of code](./image.svg)](https://github.com/marcelblijleven/adventofcode)
+[![advent of code](./image_dark.svg#gh-dark-mode-only)](https://github.com/marcelblijleven/adventofcode)
+[![advent of code](./image_light.svg#gh-light-mode-only)](https://github.com/marcelblijleven/adventofcode)
 
 Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
@@ -12,11 +13,15 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 - Solutions are timed with the help of a decorator using `time.perf_counter`
 - Solution and time are printed to console using the `rich` package with `truecolor`
 - Solution profiler decorator using `Cprofile` and `pstats`
-- Automatic listing of completed solutions in the README
-- Automatic changelog, using semantic versioning and the conventional commit specification
+- Automatic listing of [completed solutions](#completed-) in the README
+- [Automatic changelog](CHANGELOG.md), using semantic versioning and the conventional commit specification
 - A badge that is updated automatically with the amount of stars I've collected
+- A svg image that is updated automatically with the amount of stars in the style of Advent of Code
+  - Has a dark mode and light mode version which are visible only when their respective mode is used by the user
+  - Has an animated star emoji which helps the Elves save Christmas
 - Pip installable (`pip install -e .`) with:
   - A `generate-readme` script, which updates the readme
+  - A `generate-benchmarks` script, which runs all solutions and saves the duration of each solution to [these tables](#benchmarks-)
   - A `run-all` script, which dynamically calls every solution in every `adventofcode.year_*.day_*` module
   - An `add-day` script, which add a solution day file using a template and downloads the input data from the AOC site automatically
 - Type checked (`mypy`) and linted (`flake8`)
@@ -80,6 +85,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 | 13 | ⭐️ | ⭐️ |
 | 14 | ⭐️ | ⭐️ |
 | 15 | ⭐️ | ⭐️ |
+| 16 | ⭐️ | ⭐️ |
 
 </p>
 </details>
@@ -103,6 +109,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 | 11 | ⭐️ | ⭐️ |
 | 12 | ⭐️ | ⭐️ |
 | 13 | ⭐️ | ⭐️ |
+| 14 | ⭐️ | ⭐️ |
 
 </p>
 </details>
