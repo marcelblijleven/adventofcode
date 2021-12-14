@@ -55,14 +55,24 @@ def _update_stars(readme: str) -> str:
 
 def _update_stars_in_image():
     star_count = _count_stars()
-    image_svg = os.path.join(ROOT_DIR, '../../image.svg')
+    image_dark = os.path.join(ROOT_DIR, '../../image_dark.svg')
+    image_light = os.path.join(ROOT_DIR, '../../image_light.svg')
     content = f'				<span class="star-count">{star_count}</span>'
-    with open(image_svg) as f:
+
+    with open(image_dark) as f:
         svg_content = f.read()
 
     svg_content = _replace_between_tags(svg_content, content, '<!-- start star count -->', '<!-- end star count -->')
 
-    with open(image_svg, 'w') as f:
+    with open(image_dark, 'w') as f:
+        f.write(svg_content)
+
+    with open(image_light) as f:
+        svg_content = f.read()
+
+    svg_content = _replace_between_tags(svg_content, content, '<!-- start star count -->', '<!-- end star count -->')
+
+    with open(image_light, 'w') as f:
         f.write(svg_content)
 
 
