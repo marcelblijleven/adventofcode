@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/marcelblijleven/adventofcode/compare/v1.5.0...v1.6.0) (2021-12-15)
+
+
+### ⭐️ Solutions
+
+* add 2020 day 16 ([8d8b0ef](https://github.com/marcelblijleven/adventofcode/commit/8d8b0ef2dbe81cda9d1f2c7fbbca7dc9f9e1ff41))
+* add 2021 day 11 🐙 ([44dbac3](https://github.com/marcelblijleven/adventofcode/commit/44dbac3494731a4e1345ef04bc423e2709aefcbd))
+* add 2021 day 12 ([18b29b7](https://github.com/marcelblijleven/adventofcode/commit/18b29b730186b44d088696c628a0fecb81643eca))
+* add 2021 day 13 ([e78a10d](https://github.com/marcelblijleven/adventofcode/commit/e78a10d3efe10c2ab6aa2c75930f3eac3cdbfde9))
+* add 2021 day 14 ([6c265cd](https://github.com/marcelblijleven/adventofcode/commit/6c265cdadb0255fdf82b0a0d183ead2a5072f354))
+
+
+### ✨ Features
+
+* add dark and light mode svg ([a712034](https://github.com/marcelblijleven/adventofcode/commit/a7120345bd98b4ada6da92a6fd9842810c2bd0f8))
+* add dark and light mode svg ([0f9200a](https://github.com/marcelblijleven/adventofcode/commit/0f9200ab4f39c22e8b2f922fc7ad30716b35adf6))
+* add dynamic star counter svg ([a2bd97a](https://github.com/marcelblijleven/adventofcode/commit/a2bd97ad1974f30490fac7df603dc43dd3f21b86))
+* gather average solution durations ([485df72](https://github.com/marcelblijleven/adventofcode/commit/485df7212072e7cfbfd5dff0df4851bb7a1c02ef))
+
+
+### 🚦Tests
+
+* add 2021 day 14 tests ([53182eb](https://github.com/marcelblijleven/adventofcode/commit/53182ebd5dfd0d34706db2792bdd2e4e301feaf1))
+* update test to match new function return type ([49e1dce](https://github.com/marcelblijleven/adventofcode/commit/49e1dced0f50083b49f117d4b63d0237a2e1296b))
+
+
+### 🐛 Bug Fixes
+
+* fix issue where both light and dark images would show side by side ([eb520ae](https://github.com/marcelblijleven/adventofcode/commit/eb520aee67abf46afe5a3840c78fbe6aa1c38a65))
+* remove multiprocessing from benchmarks to prevent adding overhead ([f51cda8](https://github.com/marcelblijleven/adventofcode/commit/f51cda8006062aa299528bda80d33ef0189bc1f9))
+
 ## [1.5.0](https://github.com/marcelblijleven/adventofcode/compare/v1.4.2...v1.5.0) (2021-12-10)
 
 
