@@ -126,6 +126,8 @@ def _process_type_ids_0123(type_id: int, values: list[int]) -> int:
         return min(values)
     elif type_id == 3:
         return max(values)
+    else:
+        raise ValueError('type id does not equal 0, 1, 2 or 3')
 
 
 def _process_type_ids_567(type_id: int, values: list[int]) -> int:

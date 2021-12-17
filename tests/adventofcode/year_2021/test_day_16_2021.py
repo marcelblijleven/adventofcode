@@ -66,7 +66,6 @@ def test_input_to_binary_string_faster(hex_string, expected):
     assert input_to_binary_string_faster(hex_string) == expected
 
 
-
 def test_peek_version_and_type_id():
     # version
     bin_string = ''
