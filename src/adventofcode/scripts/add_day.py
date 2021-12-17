@@ -22,7 +22,7 @@ def add_day():
     write_solution_template(solution_file, year, day)
 
     # Test file
-    test_module_path = os.path.abspath(os.path.join(ROOT_DIR, '../../tests', f'year_{year}'))
+    test_module_path = os.path.abspath(os.path.join(ROOT_DIR, '../../tests/adventofcode', f'year_{year}'))
     test_file = os.path.join(test_module_path, f'test_day_{day:02}_{year}.py')
     create_module_dir(test_module_path)
     write_test_template(test_file, year, day)
