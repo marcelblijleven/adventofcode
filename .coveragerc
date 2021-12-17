@@ -11,6 +11,8 @@ exclude_lines =
     pragma: no cover
     raise NotImplementedError
     if __name__ == .__main__.:
+    if not answer:
+    if answer is None:
 ignore_errors = True
 omit =
     tests/*
