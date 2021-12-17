@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/marcelblijleven/adventofcode/compare/v1.6.0...v1.7.0) (2021-12-17)
+
+
+### 🚦Tests
+
+* move tests to advent of code directory ([09efdef](https://github.com/marcelblijleven/adventofcode/commit/09efdef4a550bf4b3f93266cafe0130d49c579b1))
+
+
+### ✨ Features
+
+* add grid helpers ([70a879b](https://github.com/marcelblijleven/adventofcode/commit/70a879bcc293c0e6ff609b4454ea7a30a8628647))
+
+
+### ⭐️ Solutions
+
+* add 2021 day 15 ([774cf0e](https://github.com/marcelblijleven/adventofcode/commit/774cf0e91f4808146e225be94625e28b65898bc5))
+* add 2021 day 16 part 1 ([32c591b](https://github.com/marcelblijleven/adventofcode/commit/32c591b3a2f7a3a8ca4ba011b1dacde3113a2488))
+* add 2021 day 16 part 2 ([58442e6](https://github.com/marcelblijleven/adventofcode/commit/58442e69abfefd202d388558b14c3fe70fc057b9))
+* add 2021 day 17 ([b4ae3fb](https://github.com/marcelblijleven/adventofcode/commit/b4ae3fbfcadd87d22ce9470d78c8c62bf5fbbfbc))
+
 ## [1.6.0](https://github.com/marcelblijleven/adventofcode/compare/v1.5.0...v1.6.0) (2021-12-15)
 
 
