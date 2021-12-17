@@ -119,16 +119,12 @@ def _process_type_ids_0123(type_id: int, values: list[int]) -> int:
     Processes values with type id 0, 1, 2 or 3
     """
     if type_id == 0:
-        # sum
         return sum(values)
-    elif type_id == 1:  # product
-        # product
+    elif type_id == 1:
         return math.prod(values)
     elif type_id == 2:
-        # min
         return min(values)
     elif type_id == 3:
-        # max
         return max(values)
 
 
@@ -140,10 +136,8 @@ def _process_type_ids_567(type_id: int, values: list[int]) -> int:
         raise ValueError(f'values should have length of 2, got: {values}')
 
     if type_id == 5:
-        # greater than
         return int(values[0] > values[1])
     elif type_id == 6:
-        # less than
         return int(values[0] < values[1])
     else:
         return int(values[0] == values[1])
@@ -289,6 +283,9 @@ def read_operator_packet(buffer: io.StringIO, parent_type_id: int) -> tuple[list
 
 
 def read_garbage_bits(buffer: io.StringIO) -> None:
+    """
+    Removes any trailing zero bits
+    """
     read_bits = buffer.tell()
 
     if read_bits % 4 > 0:
