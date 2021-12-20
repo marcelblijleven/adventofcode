@@ -31,7 +31,7 @@ def get_pair_numbers(pair: str) -> tuple[int, int]:
 def apply_explode_update_left(number: int, sub_string: str) -> str:
     matches = list(single_number_pattern.finditer(sub_string))
 
-    if len(matches) == 0:
+    if not matches:
         return sub_string
 
     last_match = matches[-1]
@@ -43,7 +43,7 @@ def apply_explode_update_left(number: int, sub_string: str) -> str:
 def apply_explode_update_right(number: int, sub_string: str) -> str:
     matches = list(single_number_pattern.finditer(sub_string))
 
-    if len(matches) == 0:
+    if not matches:
         return sub_string
 
     first_match = matches[0]
@@ -73,9 +73,7 @@ def split_number(number: int) -> tuple[int, int]:
 
 
 def split(snailfish_number: str) -> tuple[str, bool]:
-    pattern = re.compile(r'(\d+)')
-
-    for match in pattern.finditer(snailfish_number):
+    for match in single_number_pattern.finditer(snailfish_number):
         if (number := int(match.group())) > 9:
             left, right = split_number(number)
             span = match.span()
