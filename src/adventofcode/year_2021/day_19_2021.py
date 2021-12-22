@@ -25,6 +25,9 @@ def calculate_max_distance(scanners: list[Scanner]) -> int:
     max_distance = 0
 
     for scanner_a, scanner_b in combinations(scanners, 2):
+        if scanner_a.position is None or scanner_b.position is None:
+            raise ValueError('scanner position cannot be None')
+
         xa, ya, za = scanner_a.position
         xb, yb, zb = scanner_b.position
         distance = abs(xa - xb) + abs(ya - yb) + abs(za - zb)
