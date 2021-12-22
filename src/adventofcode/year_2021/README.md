@@ -1,5 +1,5 @@
 # 2021
-Solutions for 18 days in 2021 with a total of 36 stars collected
+Solutions for 19 days in 2021 with a total of 38 stars collected
 
 | day   | part one | part two |
 | :---: | :------: | :------: |
@@ -21,3 +21,4 @@ Solutions for 18 days in 2021 with a total of 36 stars collected
 | 16 | ⭐️ | ⭐️ |
 | 17 | ⭐️ | ⭐️ |
 | 18 | ⭐️ | ⭐️ |
+| 19 | ⭐️ | ⭐️ |
