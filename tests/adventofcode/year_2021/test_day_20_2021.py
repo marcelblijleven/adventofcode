@@ -39,7 +39,7 @@ def test_parse_input():
 
 def test_enhance():
     image = parse_input(test_input)
-    assert image.enhance(2, debug=True) == 35
+    assert image.enhance(2) == 35
 
 
 def test_get_algorithm_position_for_pixel():
