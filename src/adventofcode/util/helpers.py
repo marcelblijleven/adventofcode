@@ -30,8 +30,10 @@ def _get_prefix(year: int, day: int, part: int, version: str) -> str:
     if not day or not part:
         raise ValueError('incorrect values provided for solution timer')
 
-    if version:
+    if version and version != 'normal':
         version = f' [yellow]{version}[/yellow]'
+    else:
+        version = ''
 
     if RUNNING_ALL:
         prefix = f'[blue]  - day {day:02} part {part:02}[/blue]{version}: '

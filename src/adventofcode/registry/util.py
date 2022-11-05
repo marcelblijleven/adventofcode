@@ -1,4 +1,4 @@
-def get_registry_key(year: int, day: int, part: int, version: str = None) -> str:
+def get_registry_key(year: int, day: int, part: int, version: str = 'normal') -> str:
     """Generate a key from the provided solution info"""
     if version:
         return f'{year}:{day}:{part}:{version}'
