@@ -2,7 +2,7 @@ import re
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 bag_type_pattern = re.compile(r'^([a-z]+ [a-z]+)')
@@ -12,7 +12,7 @@ gold_bag = 'shiny gold'
 BagType = Dict[str, Dict[str, int]]
 
 
-@solution_timer(2020, 7, 1)
+@register_solution(2020, 7, 1)
 def part_one(input_data: List[str]) -> int:
     bags = get_bags(input_data)
     gold_holders = []
@@ -26,7 +26,7 @@ def part_one(input_data: List[str]) -> int:
     return len(gold_holders)
 
 
-@solution_timer(2020, 7, 2)
+@register_solution(2020, 7, 2)
 def part_two(input_data: List[str]) -> int:
     bags = get_bags(input_data)
 

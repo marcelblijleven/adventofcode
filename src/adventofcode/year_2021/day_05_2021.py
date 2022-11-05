@@ -3,7 +3,7 @@ from collections import defaultdict
 from typing import List, DefaultDict, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Coord = tuple[int, int]
@@ -69,7 +69,7 @@ def parse_input(input_data: List[str], filter_diagonal: bool = True) -> List[Lin
     return lines
 
 
-@solution_timer(2021, 5, 1)
+@register_solution(2021, 5, 1)
 def part_one(input_data: List[str]):
     parsed_input = parse_input(input_data)
     answer = count_intersections(parsed_input)
@@ -80,7 +80,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 5, 2)
+@register_solution(2021, 5, 2)
 def part_two(input_data: List[str]):
     parsed_input = parse_input(input_data, filter_diagonal=False)
     answer = count_intersections(parsed_input)

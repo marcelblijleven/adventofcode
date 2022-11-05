@@ -288,7 +288,7 @@ The solution timer times the solution using `time.perf_counter` and outputs the 
 
 Example:
 ```python
-@solution_timer(2015, 9, 1)  # year, day, part
+@register_solution(2015, 9, 1)  # year, day, part
 def part_one(input_data: List[str]) -> int:
     ...
 ```

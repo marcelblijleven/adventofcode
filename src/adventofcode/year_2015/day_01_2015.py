@@ -1,11 +1,11 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
 from adventofcode.util.input_helpers import get_input_for_day
+from adventofcode.registry.decorators import register_solution
 
 
-@solution_timer(2015, 1, 1)
+@register_solution(2015, 1, 1)
 def part_one(input_data: List[str]) -> int:
     floor = 0
 
@@ -18,7 +18,7 @@ def part_one(input_data: List[str]) -> int:
     return floor
 
 
-@solution_timer(2015, 1, 2)
+@register_solution(2015, 1, 2)
 def part_two(input_data: List[str]) -> int:
     floor = 0
 

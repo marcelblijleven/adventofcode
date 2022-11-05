@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -18,7 +18,7 @@ def solve(input_data: List[int], rounds: int) -> int:
     return number
 
 
-@solution_timer(2020, 15, 1)
+@register_solution(2020, 15, 1)
 def part_one(input_data: List[str]):
     answer = solve(parse_input(input_data), 2020)
 
@@ -28,7 +28,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2020, 15, 2)
+@register_solution(2020, 15, 2)
 def part_two(input_data: List[str]):
     answer = solve(parse_input(input_data), 30000000)
 

@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -27,7 +27,7 @@ def decipher_xmas(preamble: int, numbers: List[int]) -> int:
     raise ValueError('xmas could not by deciphered')
 
 
-@solution_timer(2020, 9, 1)
+@register_solution(2020, 9, 1)
 def part_one(input_data: List[str]):
     preamble = 25
     int_data = list(map(int, input_data))
@@ -49,7 +49,7 @@ def find_group_sum(numbers: List[int], target: int) -> List[int]:
     raise ValueError('group sum not found')
 
 
-@solution_timer(2020, 9, 2)
+@register_solution(2020, 9, 2)
 def part_two(input_data: List[str]):
     preamble = 25
     int_data = list(map(int, input_data))

@@ -1,7 +1,7 @@
 from typing import List, Set, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -38,7 +38,7 @@ def get_all_answered(value: List[str]) -> Set[str]:
     return s
 
 
-@solution_timer(2020, 6, 1)
+@register_solution(2020, 6, 1)
 def part_one(input_data):
     total = 0
 
@@ -51,7 +51,7 @@ def part_one(input_data):
     return total
 
 
-@solution_timer(2020, 6, 2)
+@register_solution(2020, 6, 2)
 def part_two(input_data):
     total = 0
 

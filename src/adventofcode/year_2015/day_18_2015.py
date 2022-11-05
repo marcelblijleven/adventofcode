@@ -2,7 +2,7 @@ import math
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -112,7 +112,7 @@ def grid_to_list_str(grid: GridType) -> List[str]:
     return lines
 
 
-@solution_timer(2015, 18, 1)
+@register_solution(2015, 18, 1)
 def part_one(input_data: List[str]):
     grid = read_grid(input_data)
 
@@ -127,7 +127,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 18, 2)
+@register_solution(2015, 18, 2)
 def part_two(input_data: List[str]):
     grid = read_grid(input_data)
 

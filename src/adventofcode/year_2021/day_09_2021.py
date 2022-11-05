@@ -8,7 +8,7 @@ from typing import List, DefaultDict, Set
 import math
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -139,7 +139,7 @@ def get_risk_level(cave_floor: CaveFloor, width: int, height: int) -> int:
     return sum(points)
 
 
-@solution_timer(2021, 9, 1)
+@register_solution(2021, 9, 1)
 def part_one(input_data: List[str]):
     answer = get_risk_level(*parse_input(input_data))
 
@@ -149,7 +149,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 9, 2)
+@register_solution(2021, 9, 2)
 def part_two(input_data: List[str]):
     answer = find_basin_size_product(*parse_input(input_data))
 
@@ -159,7 +159,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 9, 2, version='async')
+@register_solution(2021, 9, 2, version='async')
 def part_two_async(input_data: List[str]):
     answer = asyncio.run(find_basin_size_product_async(*parse_input(input_data)))
 
@@ -169,7 +169,7 @@ def part_two_async(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 9, 2, version='multiprocessing')
+@register_solution(2021, 9, 2, version='multiprocessing')
 def part_two_mp(input_data: List[str]):
     answer = find_basin_size_product_mp(*parse_input(input_data))
 

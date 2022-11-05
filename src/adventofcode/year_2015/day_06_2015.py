@@ -2,7 +2,7 @@ import re
 from typing import List, Callable, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 pattern = re.compile(r'(\d{1,3},\d{1,3}) through (\d{1,3},\d{1,3})')
@@ -97,7 +97,7 @@ def count_brightness(lights: Dict[tuple[int, int], int]) -> int:
     return sum(lights.values())
 
 
-@solution_timer(2015, 6, 1)
+@register_solution(2015, 6, 1)
 def part_one(input_data: List[str]):
     answer = run_instructions(input_data)
 
@@ -107,7 +107,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 6, 2)
+@register_solution(2015, 6, 2)
 def part_two(input_data: List[str]):
     answer = run_instructions_part_two(input_data)
 

@@ -1,11 +1,11 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.util.registry import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-@solution_timer({year}, {day}, 1)
+@register_solution({year}, {day}, 1)
 def part_one(input_data: List[str]):
     answer = ...
 
@@ -15,7 +15,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer({year}, {day}, 2)
+@register_solution({year}, {day}, 2)
 def part_two(input_data: List[str]):
     answer = ...
 

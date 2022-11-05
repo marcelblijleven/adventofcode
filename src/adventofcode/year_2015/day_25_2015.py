@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 mul = 252533
@@ -26,7 +26,7 @@ def get_next_code(current_code: int, coords: tuple[int, int]) -> int:
             return current_code
 
 
-@solution_timer(2015, 25, 1)
+@register_solution(2015, 25, 1)
 def part_one(_: List[str]):
     row = 2978
     column = 3083
@@ -38,7 +38,7 @@ def part_one(_: List[str]):
     return answer
 
 
-@solution_timer(2015, 25, 2)
+@register_solution(2015, 25, 2)
 def part_two(input_data: List[str]):
     answer = 'hooray'
 

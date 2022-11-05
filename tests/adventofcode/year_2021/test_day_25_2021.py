@@ -28,11 +28,9 @@ step_1 = [
 
 def test_do_step():
     grid = get_values(test_input)
-    do_step(grid)
-    print()
-    print(grid_to_string(grid))
-    print()
-    print(grid_to_string(get_values(step_1)))
+    max_x = max(pos[0] for pos in grid.keys())
+    max_y = max(pos[1] for pos in grid.keys())
+    do_step(grid, max_x, max_y)
     assert grid == get_values(step_1)
 
 

@@ -5,7 +5,7 @@ from typing import List, Union
 import math
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 pair_pattern = re.compile(r'(\[\d+,\d+])')
@@ -147,7 +147,7 @@ def solve_homework_part_two(input_data: List[str]) -> int:
     return max_magnitude
 
 
-@solution_timer(2021, 18, 1)
+@register_solution(2021, 18, 1)
 def part_one(input_data: List[str]):
     answer = solve_homework(input_data)
 
@@ -157,7 +157,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 18, 2)
+@register_solution(2021, 18, 2)
 def part_two(input_data: List[str]):
     answer = solve_homework_part_two(input_data)
 

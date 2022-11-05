@@ -3,7 +3,7 @@ from itertools import combinations, permutations
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r'^(\w+)[\w\s]+(gain|lose)\s(\d+)[\w\s]+\s(\w+)\.$')
@@ -86,7 +86,7 @@ def update_happiness_chart(chart: HappinessChartType, person: str) -> HappinessC
     return chart
 
 
-@solution_timer(2015, 13, 1)
+@register_solution(2015, 13, 1)
 def part_one(input_data: List[str]):
     chart = get_happiness_chart(input_data)
     persons = get_unique_persons(chart)
@@ -99,7 +99,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 13, 2)
+@register_solution(2015, 13, 2)
 def part_two(input_data: List[str]):
     chart = get_happiness_chart(input_data)
     chart = update_happiness_chart(chart, 'Marcel')

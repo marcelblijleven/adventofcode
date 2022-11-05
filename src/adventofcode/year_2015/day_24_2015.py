@@ -4,7 +4,7 @@ from typing import List
 import math
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -26,7 +26,7 @@ def move_packages_into_groups(all_packages: List[int], number_of_groups: int) ->
     raise ValueError('could not find correct quantum entanglement')
 
 
-@solution_timer(2015, 24, 1)
+@register_solution(2015, 24, 1)
 def part_one(input_data: List[str]):
     packages = list(map(int, input_data))
     answer = move_packages_into_groups(packages, 3)
@@ -37,7 +37,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 24, 2)
+@register_solution(2015, 24, 2)
 def part_two(input_data: List[str]):
     packages = list(map(int, input_data))
     answer = move_packages_into_groups(packages, 4)

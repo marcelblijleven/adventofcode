@@ -1,7 +1,7 @@
 from typing import List, Tuple
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -10,7 +10,7 @@ OPERATION_JMP = 'jmp'
 OPERATION_NOP = 'nop'
 
 
-@solution_timer(2020, 8, 1)
+@register_solution(2020, 8, 1)
 def part_one(input_data: List[str]) -> int:
     instructions = [parse_instruction(line) for line in input_data]
     accumulator = isolation_run(instructions)
@@ -21,7 +21,7 @@ def part_one(input_data: List[str]) -> int:
     return accumulator[0]
 
 
-@solution_timer(2020, 8, 2)
+@register_solution(2020, 8, 2)
 def part_two(input_data: List[str]) -> int:
     instructions = [parse_instruction(line) for line in input_data]
     accumulator = correcting_run(instructions)

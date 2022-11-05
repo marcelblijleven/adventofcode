@@ -1,6 +1,6 @@
 from typing import List, Dict
 
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 GridType = Dict[tuple[int, int], int]
@@ -22,7 +22,7 @@ def get_new_position(current: tuple[int, int], instruction: str) -> tuple[int, i
     return x, y
 
 
-@solution_timer(2015, 3, 1)
+@register_solution(2015, 3, 1)
 def part_one(input_data: List[str]):
     str_data = ''.join(input_data)
     current = (0, 0)
@@ -48,7 +48,7 @@ def update_grid(santa_like: tuple[int, int], grid: GridType) -> GridType:
     return grid
 
 
-@solution_timer(2015, 3, 2)
+@register_solution(2015, 3, 2)
 def part_two(input_data: List[str]):
     str_data = ''.join(input_data)
     santa = (0, 0)

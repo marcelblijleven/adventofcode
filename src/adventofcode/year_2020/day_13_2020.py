@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -62,7 +62,7 @@ def get_earliest_bus(arrival: int, departure_times: DepartureTimes) -> tuple[int
     return bus_id, min_wait_time
 
 
-@solution_timer(2020, 13, 1)
+@register_solution(2020, 13, 1)
 def part_one(input_data: List[str]):
     timestamp, busses = parse_input(input_data)
     answer = get_answer_part_one(timestamp, get_departure_times(timestamp, busses))
@@ -73,7 +73,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2020, 13, 2)
+@register_solution(2020, 13, 2)
 def part_two(input_data: List[str]):
     schedule = input_data[1]
     answer = get_sequential_departure_times(schedule)

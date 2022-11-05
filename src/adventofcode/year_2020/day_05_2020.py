@@ -2,7 +2,7 @@ import statistics
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -28,7 +28,7 @@ def parse(sequence: List[str], min_row: int, max_row: int) -> int:
     return parse(sequence, min_row, max_row)
 
 
-@solution_timer(2020, 5, 1)
+@register_solution(2020, 5, 1)
 def part_one(input_data: List[str]):
     ids = []
 
@@ -62,12 +62,12 @@ def _part_one_binary_version(input_data: List[str]) -> List[int]:
     return ids
 
 
-@solution_timer(2020, 5, 2, 'binary version')
+@register_solution(2020, 5, 2, 'binary version')
 def part_one_binary_version(input_data):
     return max(_part_one_binary_version(input_data))
 
 
-@solution_timer(2020, 5, 2)
+@register_solution(2020, 5, 2)
 def part_two(input_data: List[str]):
     ids = _part_one_binary_version(input_data)
 

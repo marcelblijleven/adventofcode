@@ -4,7 +4,7 @@ from typing import List, Dict, Set
 import math
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Rules = Dict[str, List[int]]
@@ -131,7 +131,7 @@ def filter_tickets(tickets: List[Ticket], rules: Rules) -> List[Ticket]:
     return valid_tickets
 
 
-@solution_timer(2020, 16, 1)
+@register_solution(2020, 16, 1)
 def part_one(input_data: List[str]):
     input_as_string = '\n'.join(input_data)
     rules, ticket, tickets = parse_input(input_as_string)
@@ -144,7 +144,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2020, 16, 2)
+@register_solution(2020, 16, 2)
 def part_two(input_data: List[str]):
     input_as_string = '\n'.join(input_data)
     answer = get_departures(input_as_string)

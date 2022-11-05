@@ -4,7 +4,7 @@ import re
 from typing import List, Optional
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 pattern = re.compile(r'(-?\d+)')
@@ -102,7 +102,7 @@ def apply_reboot_without_limit(input_data: list[str]):
     return sum(cuboid.sign * cuboid.volume for cuboid in cuboids)
 
 
-@solution_timer(2021, 22, 1)
+@register_solution(2021, 22, 1)
 def part_one(input_data: List[str]):
     answer = apply_reboot(input_data, limit=True)
 
@@ -112,7 +112,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 22, 2)
+@register_solution(2021, 22, 2)
 def part_two(input_data: List[str]):
     answer = apply_reboot_without_limit(input_data)
 

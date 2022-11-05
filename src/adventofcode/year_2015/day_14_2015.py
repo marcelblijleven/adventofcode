@@ -2,7 +2,7 @@ import re
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r'(\w+)[^0-9]+(\d{1,2})[^0-9]+(\d{1,2})[^0-9]+(\d{2,3}).+')
@@ -107,7 +107,7 @@ def race(reindeer: List[Reindeer], race_duration: int) -> Reindeer:
     return winner
 
 
-@solution_timer(2015, 14, 1)
+@register_solution(2015, 14, 1)
 def part_one(input_data: List[str]):
     reindeer = get_reindeer(input_data)
     answer = race(reindeer, 2503)
@@ -118,7 +118,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 14, 2)
+@register_solution(2015, 14, 2)
 def part_two(input_data: List[str]):
     reindeer = get_reindeer(input_data)
     _ = race(reindeer, 2503)

@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -118,7 +118,7 @@ def count_visible_dots(paper: Paper) -> int:
     return len(paper.values())
 
 
-@solution_timer(2021, 13, 1)
+@register_solution(2021, 13, 1)
 def part_one(input_data: List[str]):
     paper, instructions = parse_input(input_data)
     paper = run_instructions(paper, instructions[:1])
@@ -130,7 +130,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 13, 2)
+@register_solution(2021, 13, 2)
 def part_two(input_data: List[str]):
     paper, instructions = parse_input(input_data)
     paper = run_instructions(paper, instructions)

@@ -2,7 +2,7 @@ from collections import deque
 from typing import List, Optional
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -58,7 +58,7 @@ def sonar_sweep_sliding_window_reuse(measurements: List[int]) -> int:
     return sonar_sweep(list(map(sum, windows)))
 
 
-@solution_timer(2021, 1, 1)
+@register_solution(2021, 1, 1)
 def part_one(input_data: List[str]):
     answer = sonar_sweep(list(map(int, input_data)))
 
@@ -68,7 +68,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 1, 2)
+@register_solution(2021, 1, 2)
 def part_two(input_data: List[str]):
     answer = sonar_sweep_sliding_window(list(map(int, input_data)))
 
@@ -78,7 +78,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 1, 1, version='re-use part one')
+@register_solution(2021, 1, 1, version='re-use part one')
 def part_two_reuse_part_one(input_data: List[str]):
     answer = sonar_sweep_sliding_window_reuse(list(map(int, input_data)))
 

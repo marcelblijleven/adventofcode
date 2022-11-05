@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 POINTS_MAP = {
@@ -120,7 +120,7 @@ def count_points_autocomplete(closing_characters: List[str]) -> int:
     return total[mid]
 
 
-@solution_timer(2021, 10, 1)
+@register_solution(2021, 10, 1)
 def part_one(input_data: List[str]):
     corrupted_characters = find_corrupted_characters(input_data)
     answer = count_points_corrupted_characters(corrupted_characters)
@@ -131,7 +131,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 10, 2)
+@register_solution(2021, 10, 2)
 def part_two(input_data: List[str]):
     closing_characters = find_closing_characters(input_data)
     answer = count_points_autocomplete(closing_characters)

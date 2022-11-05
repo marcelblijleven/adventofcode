@@ -2,7 +2,7 @@ import re
 from typing import List, Dict, Union
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r'(?:(\w+)?\s?(RSHIFT|LSHIFT|AND|OR|NOT) )?(\w+)')
@@ -117,7 +117,7 @@ class Graph:
         self._values[key] = value
 
 
-@solution_timer(2015, 7, 1)
+@register_solution(2015, 7, 1)
 def part_one(input_data: List[str]):
     graph = Graph(input_data)
     answer = graph.get_value('a')
@@ -128,7 +128,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 7, 2)
+@register_solution(2015, 7, 2)
 def part_two(input_data: List[str]):
     graph = Graph(input_data)
     answer_part_one = graph.get_value('a')

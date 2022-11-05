@@ -2,7 +2,7 @@ from collections import defaultdict
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -12,7 +12,7 @@ def find_differences(input_data: List[int]) -> List[int]:
     return differences
 
 
-@solution_timer(2020, 10, 1)
+@register_solution(2020, 10, 1)
 def part_one(input_data: List[str]):
     int_data = list(map(int, input_data))
     differences = find_differences(int_data)
@@ -25,7 +25,7 @@ def part_one(input_data: List[str]):
     return ones * threes
 
 
-@solution_timer(2020, 10, 2)
+@register_solution(2020, 10, 2)
 def part_two(input_data: List[str]):
     int_data = list(map(int, input_data))
     jolts = sorted([0] + int_data + [max(int_data) + 3])

@@ -3,7 +3,7 @@ from itertools import combinations
 from typing import List, Dict, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 MEMORY_PATTERN = re.compile(r'(\d+).+ = (\d+)$')
@@ -80,7 +80,7 @@ def count_memory(memory: Dict[int, int]) -> int:
     return sum(memory.values())
 
 
-@solution_timer(2020, 14, 1)
+@register_solution(2020, 14, 1)
 def part_one(input_data: List[str]):
     memory = parse_program(input_data)
     answer = count_memory(memory)
@@ -91,7 +91,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2020, 14, 2)
+@register_solution(2020, 14, 2)
 def part_two(input_data: List[str]):
     memory = parse_program_version_2(input_data)
     answer = count_memory(memory)

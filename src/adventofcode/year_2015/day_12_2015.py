@@ -3,7 +3,7 @@ import re
 from typing import List, Any
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r'(-?\d+)')
@@ -36,7 +36,7 @@ def traverser(input_data: Any):
     return recursive_sum(input_data)
 
 
-@solution_timer(2015, 12, 1)
+@register_solution(2015, 12, 1)
 def part_one(input_data: List[str]):
     answer = count_all_numbers(input_data[0])
 
@@ -46,7 +46,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 12, 2)
+@register_solution(2015, 12, 2)
 def part_two(input_data: List[str]):
     answer = traverser(get_json(input_data[0]))
 

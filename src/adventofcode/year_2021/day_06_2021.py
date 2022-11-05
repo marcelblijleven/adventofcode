@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import List, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -95,7 +95,7 @@ def count_fish_faster(input_data: List[str], stop_after: int) -> int:
     return sum(cyclic_days)
 
 
-@solution_timer(2021, 6, 1)
+@register_solution(2021, 6, 1)
 def part_one(input_data: List[str]):
     # answer = count_fish_after_days(input_data, 80)
     answer = count_fish_faster(input_data, 80)
@@ -106,7 +106,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 6, 2)
+@register_solution(2021, 6, 2)
 def part_two(input_data: List[str]):
     # answer = count_fish_after_days(input_data, 256) <- don't run this :)
     answer = count_fish_faster(input_data, 256)
@@ -117,7 +117,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 6, 2, version='faster')
+@register_solution(2021, 6, 2, version='faster')
 def part_two_faster(input_data: List[str]):
     starting_fish = [f for f in get_starting_fish_no_classes(input_data)]
     days = [starting_fish.count(i) for i in range(9)]

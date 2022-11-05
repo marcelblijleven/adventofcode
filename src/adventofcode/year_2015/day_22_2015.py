@@ -5,7 +5,8 @@ from copy import deepcopy
 from typing import List, Callable
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer, memoize
+from adventofcode.registry.decorators import register_solution
+from adventofcode.util.helpers import memoize
 from adventofcode.util.input_helpers import get_input_for_day
 
 """
@@ -122,7 +123,7 @@ def fight(player_starting_health: int, player_starting_mana: int, boss_starting_
     return minimum_mana
 
 
-@solution_timer(2015, 22, 1)
+@register_solution(2015, 22, 1)
 def part_one(_: List[str]):
     answer = fight(50, 500, 58, 9, False)
 
@@ -132,7 +133,7 @@ def part_one(_: List[str]):
     return answer
 
 
-@solution_timer(2015, 22, 2)
+@register_solution(2015, 22, 2)
 def part_two(_: List[str]):
     answer = fight(50, 500, 58, 9, True)
 

@@ -2,15 +2,15 @@ import re
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
-from adventofcode.util.input_helpers import get_input_for_day_as_str
+from adventofcode.registry.decorators import register_solution
+from adventofcode.util.input_helpers import get_input_for_day
 
 
 def get_passports(batch_file: str) -> List[Dict[str, str]]:
-    data = batch_file.split('\n\n')
+    _data = batch_file.split('\n\n')
     passports: List[Dict[str, str]] = []
 
-    for value in data:
+    for value in _data:
         passports.append(get_passport_as_dict(value))
 
     return passports
@@ -100,9 +100,9 @@ def deep_validation(passport: Dict[str, str]) -> bool:  # noqa C901
     return all(checks)
 
 
-@solution_timer(2020, 4, 1)
-def part_one(input_data: str) -> int:
-    passports = get_passports(input_data)
+@register_solution(2020, 4, 1)
+def part_one(input_data: list[str]) -> int:
+    passports = get_passports('\n'.join(input_data))
     answer = len([passport for passport in passports if validate_passport(passport)])
 
     if not answer:
@@ -111,9 +111,10 @@ def part_one(input_data: str) -> int:
     return answer
 
 
-@solution_timer(2020, 4, 2)
-def part_two(input_data: str) -> int:
-    passports = get_passports(input_data)
+@register_solution(2020, 4, 2)
+def part_two(input_data: list[str]) -> int:
+
+    passports = get_passports('\n'.join(input_data))
     answer = len([passport for passport in passports if deep_validation(passport)])
 
     if not answer:
@@ -123,6 +124,6 @@ def part_two(input_data: str) -> int:
 
 
 if __name__ == '__main__':
-    data = get_input_for_day_as_str(2020, 4)
+    data = get_input_for_day(2020, 4)
     part_one(data)
     part_two(data)

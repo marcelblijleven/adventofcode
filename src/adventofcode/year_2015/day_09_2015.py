@@ -3,7 +3,7 @@ from itertools import permutations
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r'(\w+)')
@@ -65,7 +65,7 @@ def get_slowest_route(routes: List[tuple[str, ...]], dist_dict: DistDictType) ->
     return max(_get_route_distances(routes, dist_dict))
 
 
-@solution_timer(2015, 9, 1)
+@register_solution(2015, 9, 1)
 def part_one(input_data: List[str]):
     dist_dict: DistDictType = {}
     cities = get_all_cities(input_data, dist_dict)
@@ -79,7 +79,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 9, 2)
+@register_solution(2015, 9, 2)
 def part_two(input_data: List[str]):
     dist_dict: DistDictType = {}
     cities = get_all_cities(input_data, dist_dict)

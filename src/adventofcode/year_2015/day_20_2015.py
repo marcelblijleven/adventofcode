@@ -2,7 +2,7 @@ from collections import defaultdict
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -37,7 +37,7 @@ def visit_houses_part_two(elf_count: int, target: int):
             return elf
 
 
-@solution_timer(2015, 20, 1)
+@register_solution(2015, 20, 1)
 def part_one(input_data: List[str]):
     target = int(input_data[0])
     answer = visit_houses(1000000, target)
@@ -48,7 +48,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 20, 2)
+@register_solution(2015, 20, 2)
 def part_two(input_data: List[str]):
     target = int(input_data[0])
     answer = visit_houses_part_two(1000000, target)

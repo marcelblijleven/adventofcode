@@ -4,7 +4,7 @@ from typing import List
 import math
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 translation_dict: dict[str, str] = {
@@ -296,7 +296,7 @@ def read_garbage_bits(buffer: io.StringIO) -> None:
     assert buffer.tell() % 4 == 0
 
 
-@solution_timer(2021, 16, 1)
+@register_solution(2021, 16, 1)
 def part_one(input_data: List[str]):
     binary_string = input_to_binary_string(input_data[0])
     buffer = io.StringIO(binary_string)
@@ -309,7 +309,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 16, 2)
+@register_solution(2021, 16, 2)
 def part_two(input_data: List[str]):
     binary_string = input_to_binary_string(input_data[0])
     buffer = io.StringIO(binary_string)

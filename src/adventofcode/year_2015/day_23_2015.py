@@ -1,7 +1,7 @@
 from typing import List, Dict, Callable
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -52,7 +52,7 @@ def parse_instruction(line: str) -> tuple[str, str]:
     return instruction_key, instruction
 
 
-@solution_timer(2015, 23, 1)
+@register_solution(2015, 23, 1)
 def part_one(input_data: List[str]):
     registers = {'a': 0, 'b': 0}
     answer = run_program(input_data, registers)
@@ -63,7 +63,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 23, 2)
+@register_solution(2015, 23, 2)
 def part_two(input_data: List[str]):
     registers = {'a': 1, 'b': 0}
     answer = run_program(input_data, registers)

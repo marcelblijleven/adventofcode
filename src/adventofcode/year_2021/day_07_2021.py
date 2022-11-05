@@ -2,7 +2,7 @@ from statistics import median
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.util.math_helpers import mean_floor, mean_ceil, gaussian_sum
 
@@ -63,7 +63,7 @@ def try_all_positions(crabs: List[int]) -> int:
     return fuel
 
 
-@solution_timer(2021, 7, 1)
+@register_solution(2021, 7, 1)
 def part_one(input_data: List[str]):
     crabs = get_crabs(input_data)
     answer = get_least_amount_of_fuel(crabs)
@@ -74,7 +74,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 7, 2)
+@register_solution(2021, 7, 2)
 def part_two(input_data: List[str]):
     crabs = get_crabs(input_data)
     answer = get_least_amount_of_fuel_part_two(crabs)

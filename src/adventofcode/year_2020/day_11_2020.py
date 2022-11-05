@@ -1,7 +1,7 @@
 from operator import itemgetter
 from typing import Tuple, Dict
 
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 FREE_SEAT = 'L'
@@ -89,7 +89,7 @@ def start_iterating(layout: LayoutType, iteration_func=seating_iteration):  # ty
         iteration += 1
 
 
-@solution_timer(2020, 11, 1)
+@register_solution(2020, 11, 1)
 def part_one(_input):
     layout = get_layout(_input)
     taken_seats = start_iterating(layout)
@@ -149,7 +149,7 @@ def los_seating_iteration(layout: LayoutType, tolerance=5) -> LayoutType:
     return new_layout
 
 
-@solution_timer(2020, 11, 2)
+@register_solution(2020, 11, 2)
 def part_two(_input):
     layout = get_layout(_input)
     taken_seats = start_iterating(layout, los_seating_iteration)

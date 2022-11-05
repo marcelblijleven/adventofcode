@@ -3,7 +3,7 @@ import itertools
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -126,7 +126,7 @@ def fight(player: Character, boss: Character) -> bool:
             return False
 
 
-@solution_timer(2015, 21, 1)
+@register_solution(2015, 21, 1)
 def part_one(input_data: List[str]):
     boss = get_boss(input_data)
     answer, _ = calculate_cost(boss)
@@ -138,7 +138,7 @@ def part_one(input_data: List[str]):
 
 
 # Solution isn't correct for part 2
-@solution_timer(2015, 21, 2)
+@register_solution(2015, 21, 2)
 def part_two(input_data: List[str]):
     boss = get_boss(input_data)
     _, answer = calculate_cost(boss)

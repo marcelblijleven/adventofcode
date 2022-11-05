@@ -3,7 +3,7 @@ from typing import List, Set, DefaultDict
 
 from adventofcode.util.console import console
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PathDict = DefaultDict[str, list[str]]
@@ -87,7 +87,7 @@ class CaveExplorer3000:
         return sum(self.traverse_with_print(path, visited.copy(), path_flow) for path in paths)
 
 
-@solution_timer(2021, 12, 1)
+@register_solution(2021, 12, 1)
 def part_one(input_data: List[str]):
     path_dict = get_paths(input_data)
     cave_explorer = CaveExplorer3000(path_dict)
@@ -99,7 +99,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 12, 2)
+@register_solution(2021, 12, 2)
 def part_two(input_data: List[str]):
     path_dict = get_paths(input_data)
     cave_explorer = CaveExplorer3000(path_dict, limit_small_caves=True)

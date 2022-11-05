@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -126,7 +126,7 @@ class OctopusGrid:
         return False
 
 
-@solution_timer(2021, 11, 1)
+@register_solution(2021, 11, 1)
 def part_one(input_data: List[str]):
     grid = OctopusGrid(input_data)
     run_ticks(grid, 100)
@@ -139,7 +139,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 11, 2)
+@register_solution(2021, 11, 2)
 def part_two(input_data: List[str]):
     grid = OctopusGrid(input_data)
     answer = run_ticks_until_sync(grid)

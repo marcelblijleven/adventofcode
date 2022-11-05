@@ -2,7 +2,7 @@ import hashlib
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -15,7 +15,7 @@ def find_number(secret: str, target: str, range_size: int) -> int:
     raise ValueError('number not found')
 
 
-@solution_timer(2015, 4, 1)
+@register_solution(2015, 4, 1)
 def part_one(input_data: List[str]) -> int:
     secret = input_data[0]
     number = find_number(secret, '00000', 1000000)
@@ -26,7 +26,7 @@ def part_one(input_data: List[str]) -> int:
     return number
 
 
-@solution_timer(2015, 4, 2)
+@register_solution(2015, 4, 2)
 def part_two(input_data: List[str]) -> int:
     secret = input_data[0]
     number = find_number(secret, '000000', 10000000)

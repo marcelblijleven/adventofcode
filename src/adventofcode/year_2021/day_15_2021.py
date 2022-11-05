@@ -2,7 +2,8 @@ import heapq
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer, manhattan_distance
+from adventofcode.registry.decorators import register_solution
+from adventofcode.util.helpers import manhattan_distance
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -96,7 +97,7 @@ def enlarge_grid(grid: Grid, factor: int = 5) -> Grid:
     return new_grid
 
 
-@solution_timer(2021, 15, 1)
+@register_solution(2021, 15, 1)
 def part_one(input_data: List[str]):
     answer = find_route(parse_input(input_data))
 
@@ -106,7 +107,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 15, 2)
+@register_solution(2021, 15, 2)
 def part_two(input_data: List[str]):
     grid = parse_input(input_data)
     answer = find_route(enlarge_grid(grid))

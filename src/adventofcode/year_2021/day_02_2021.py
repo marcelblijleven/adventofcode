@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Instruction = tuple[str, int]
@@ -77,7 +77,7 @@ def move_submarine(input_data: List[str], include_aim: bool) -> Position:
     return position
 
 
-@solution_timer(2021, 2, 1)
+@register_solution(2021, 2, 1)
 def part_one(input_data: List[str]):
     x, y = move_submarine(input_data, False)
     answer = x * y
@@ -88,7 +88,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 2, 2)
+@register_solution(2021, 2, 2)
 def part_two(input_data: List[str]):
     x, y = move_submarine(input_data, True)
     answer = x * y
