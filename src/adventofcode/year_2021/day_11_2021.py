@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -17,10 +17,10 @@ class Octopus:
         self._has_flashed = False
 
     def __str__(self):
-        return f'{self.energy}'
+        return f"{self.energy}"
 
     def __repr__(self):
-        return f'Octopus at ({self.position[0], self.position[1]}) with energy {self.energy}'
+        return f"Octopus at ({self.position[0], self.position[1]}) with energy {self.energy}"
 
     @property
     def can_flash(self) -> bool:
@@ -36,12 +36,20 @@ class Octopus:
     def _adjacent_octopuses(self) -> List[Position]:
         x, y = self.position
         octopuses = [
-            (x - 1, y - 1), (x, y - 1), (x + 1, y - 1), (x - 1, y),
-            (x + 1, y), (x - 1, y + 1), (x, y + 1), (x + 1, y + 1),
+            (x - 1, y - 1),
+            (x, y - 1),
+            (x + 1, y - 1),
+            (x - 1, y),
+            (x + 1, y),
+            (x - 1, y + 1),
+            (x, y + 1),
+            (x + 1, y + 1),
         ]
 
         return [
-            octopus for octopus in octopuses if 0 <= octopus[0] <= 9 and 0 <= octopus[1] <= 9
+            octopus
+            for octopus in octopuses
+            if 0 <= octopus[0] <= 9 and 0 <= octopus[1] <= 9
         ]
 
     def flash(self, grid: dict[Position, Octopus]):
@@ -118,7 +126,10 @@ class OctopusGrid:
 
             for coord in octopus.adjacent_octopuses:
                 adjacent_octopus = self.grid[coord]
-                if adjacent_octopus not in self.can_flash and adjacent_octopus.can_flash:
+                if (
+                    adjacent_octopus not in self.can_flash
+                    and adjacent_octopus.can_flash
+                ):
                     self.can_flash.append(adjacent_octopus)
 
         if flashed_during_tick == self.total_octopuses:
@@ -126,7 +137,7 @@ class OctopusGrid:
         return False
 
 
-@solution_timer(2021, 11, 1)
+@register_solution(2021, 11, 1)
 def part_one(input_data: List[str]):
     grid = OctopusGrid(input_data)
     run_ticks(grid, 100)
@@ -139,7 +150,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 11, 2)
+@register_solution(2021, 11, 2)
 def part_two(input_data: List[str]):
     grid = OctopusGrid(input_data)
     answer = run_ticks_until_sync(grid)
@@ -150,7 +161,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 11)
     part_one(data)
     part_two(data)

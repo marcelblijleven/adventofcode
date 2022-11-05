@@ -2,12 +2,12 @@ import copy
 from typing import List, Union
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-EASTBOUND = '>'
-SOUTHBOUND = 'v'
-EMPTY = '.'
+EASTBOUND = ">"
+SOUTHBOUND = "v"
+EMPTY = "."
 
 Position = tuple[int, int]
 Grid = dict[Position, str]
@@ -22,7 +22,9 @@ def get_values(input_data: list[str]) -> Grid:
     return grid
 
 
-def get_next_position(position: Position, direction: str, grid: Grid, max_x: int, max_y: int) -> Union[bool, Position]:
+def get_next_position(
+    position: Position, direction: str, grid: Grid, max_x: int, max_y: int
+) -> Union[bool, Position]:
     x, y = position
 
     if direction == EASTBOUND:
@@ -43,7 +45,11 @@ def get_next_position(position: Position, direction: str, grid: Grid, max_x: int
 
 
 def get_next_southbound_position(
-    position: Position, seen: set[Position], old_eastbound_positions: set[Position], grid: Grid, max_y: int
+    position: Position,
+    seen: set[Position],
+    old_eastbound_positions: set[Position],
+    grid: Grid,
+    max_y: int,
 ) -> Union[bool, Position]:
     x, y = position
     y += 1
@@ -111,7 +117,7 @@ def do_steps(input_data: list[str]) -> int:
     return counter
 
 
-@solution_timer(2021, 25, 1)
+@register_solution(2021, 25, 1)
 def part_one(input_data: List[str]):
     answer = do_steps(input_data)
 
@@ -121,7 +127,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-# @solution_timer(2021, 25, 2)
+# @register_solution(2021, 5, 2)
 # def part_two(input_data: List[str]):
 #     answer = ...
 #
@@ -131,7 +137,7 @@ def part_one(input_data: List[str]):
 #     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 25)
     part_one(data)
     # part_two(data)

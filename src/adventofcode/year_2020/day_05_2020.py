@@ -2,7 +2,7 @@ import statistics
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -13,13 +13,13 @@ def get_midpoint(min_row: int, max_row: int) -> int:
 def parse(sequence: List[str], min_row: int, max_row: int) -> int:
     next_step = sequence.pop(0)
 
-    if next_step in ['F', 'L']:
+    if next_step in ["F", "L"]:
         # Take lower half, subtract 1 because you take the lower part until the midpoint
         max_row = get_midpoint(min_row, max_row) - 1
         if not sequence:
             return min_row
 
-    elif next_step in ['B', 'R']:
+    elif next_step in ["B", "R"]:
         # Take upper half
         min_row = get_midpoint(min_row, max_row)
         if not sequence:
@@ -28,13 +28,13 @@ def parse(sequence: List[str], min_row: int, max_row: int) -> int:
     return parse(sequence, min_row, max_row)
 
 
-@solution_timer(2020, 5, 1)
+@register_solution(2020, 5, 1)
 def part_one(input_data: List[str]):
     ids = []
 
     for boarding_pass in input_data:
-        row = parse([char for char in boarding_pass if char in ['F', 'B']], 0, 127)
-        column = parse([char for char in boarding_pass if char in ['L', 'R']], 0, 7)
+        row = parse([char for char in boarding_pass if char in ["F", "B"]], 0, 127)
+        column = parse([char for char in boarding_pass if char in ["L", "R"]], 0, 7)
         ids.append(row * 8 + column)
 
     if not ids:
@@ -49,11 +49,12 @@ def _part_one_binary_version(input_data: List[str]) -> List[int]:
     for boarding_pass in input_data:
         # could also use a translation table
         # boarding_pass.translate(str.maketrans({'B': '1', 'F': '0', 'R': '1', 'L': '0'})
-        boarding_pass = boarding_pass\
-            .replace('B', '1')\
-            .replace('F', '0')\
-            .replace('R', '1')\
-            .replace('L', '0')
+        boarding_pass = (
+            boarding_pass.replace("B", "1")
+            .replace("F", "0")
+            .replace("R", "1")
+            .replace("L", "0")
+        )
         ids.append(int(boarding_pass, 2))
 
     if not ids:
@@ -62,12 +63,12 @@ def _part_one_binary_version(input_data: List[str]) -> List[int]:
     return ids
 
 
-@solution_timer(2020, 5, 2, 'binary version')
+@register_solution(2020, 5, 2, "binary version")
 def part_one_binary_version(input_data):
     return max(_part_one_binary_version(input_data))
 
 
-@solution_timer(2020, 5, 2)
+@register_solution(2020, 5, 2)
 def part_two(input_data: List[str]):
     ids = _part_one_binary_version(input_data)
 
@@ -76,7 +77,7 @@ def part_two(input_data: List[str]):
             return i
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 5)
     part_one(data)
     part_one_binary_version(data)

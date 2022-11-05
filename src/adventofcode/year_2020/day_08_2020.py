@@ -1,16 +1,16 @@
 from typing import List, Tuple
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-OPERATION_ACC = 'acc'
-OPERATION_JMP = 'jmp'
-OPERATION_NOP = 'nop'
+OPERATION_ACC = "acc"
+OPERATION_JMP = "jmp"
+OPERATION_NOP = "nop"
 
 
-@solution_timer(2020, 8, 1)
+@register_solution(2020, 8, 1)
 def part_one(input_data: List[str]) -> int:
     instructions = [parse_instruction(line) for line in input_data]
     accumulator = isolation_run(instructions)
@@ -21,7 +21,7 @@ def part_one(input_data: List[str]) -> int:
     return accumulator[0]
 
 
-@solution_timer(2020, 8, 2)
+@register_solution(2020, 8, 2)
 def part_two(input_data: List[str]) -> int:
     instructions = [parse_instruction(line) for line in input_data]
     accumulator = correcting_run(instructions)
@@ -33,7 +33,7 @@ def part_two(input_data: List[str]) -> int:
 
 
 def parse_instruction(line: str) -> Tuple[str, int]:
-    parsed = line.split(' ')
+    parsed = line.split(" ")
     operation = parsed[0]
     argument = int(parsed[1])
     return operation, argument
@@ -59,7 +59,7 @@ def isolation_run(instructions: List[Tuple[str, int]]) -> Tuple[int, int]:
         elif operation == OPERATION_JMP:
             idx += argument
         else:
-            raise ValueError('unrecognized operation received')
+            raise ValueError("unrecognized operation received")
 
     return accumulator, 0
 
@@ -82,10 +82,10 @@ def correcting_run(instructions: List[Tuple[str, int]]) -> int:
             else:
                 instructions[idx] = operation, argument
 
-    raise ValueError('accumulator not found')
+    raise ValueError("accumulator not found")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 8)
     part_one(data)
     part_two(data)

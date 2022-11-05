@@ -3,10 +3,10 @@ from itertools import combinations, permutations
 from typing import List, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-PATTERN = re.compile(r'^(\w+)[\w\s]+(gain|lose)\s(\d+)[\w\s]+\s(\w+)\.$')
+PATTERN = re.compile(r"^(\w+)[\w\s]+(gain|lose)\s(\d+)[\w\s]+\s(\w+)\.$")
 
 HappinessChartType = Dict[tuple[str, str], int]
 
@@ -15,7 +15,7 @@ def parse_line(line: str, chart: HappinessChartType) -> None:
     if (matched := PATTERN.match(line)) and matched is not None:
         person_a, would, number_str, person_b = matched.groups()
 
-        number = int(number_str) if would == 'gain' else int(number_str) * -1
+        number = int(number_str) if would == "gain" else int(number_str) * -1
         pair = (person_a, person_b)
         chart[pair] = number
         return
@@ -74,7 +74,9 @@ def get_seating_happiness(persons: List[str], chart: HappinessChartType) -> int:
     return max_happiness
 
 
-def update_happiness_chart(chart: HappinessChartType, person: str) -> HappinessChartType:
+def update_happiness_chart(
+    chart: HappinessChartType, person: str
+) -> HappinessChartType:
     persons = get_unique_persons(chart)
     persons.append(person)
 
@@ -86,7 +88,7 @@ def update_happiness_chart(chart: HappinessChartType, person: str) -> HappinessC
     return chart
 
 
-@solution_timer(2015, 13, 1)
+@register_solution(2015, 13, 1)
 def part_one(input_data: List[str]):
     chart = get_happiness_chart(input_data)
     persons = get_unique_persons(chart)
@@ -99,10 +101,10 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 13, 2)
+@register_solution(2015, 13, 2)
 def part_two(input_data: List[str]):
     chart = get_happiness_chart(input_data)
-    chart = update_happiness_chart(chart, 'Marcel')
+    chart = update_happiness_chart(chart, "Marcel")
     persons = get_unique_persons(chart)
 
     answer = get_seating_happiness(persons, chart)
@@ -113,7 +115,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 13)
     part_one(data)
     part_two(data)

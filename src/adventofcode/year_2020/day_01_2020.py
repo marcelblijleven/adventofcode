@@ -1,11 +1,11 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-@solution_timer(2020, 1, 1)
+@register_solution(2020, 1, 1)
 def part_one(input_data: List[str]) -> int:
     numbers = map(int, input_data)
     seen = []
@@ -19,7 +19,7 @@ def part_one(input_data: List[str]) -> int:
     raise SolutionNotFoundException(2020, 1, 1)
 
 
-@solution_timer(2020, 1, 2)
+@register_solution(2020, 1, 2)
 def part_two(input_data: List[str]) -> int:
     import math
     from itertools import combinations
@@ -33,7 +33,7 @@ def part_two(input_data: List[str]) -> int:
     raise SolutionNotFoundException(2020, 1, 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 1)
     part_one(data)
     part_two(data)

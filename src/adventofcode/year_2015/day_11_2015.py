@@ -2,14 +2,14 @@ import re
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-PAIR_PATTERN = re.compile(r'(([a-z])\2)+')
+PAIR_PATTERN = re.compile(r"(([a-z])\2)+")
 
 
 def check_characters(password: str) -> bool:
-    for char in ['i', 'o', 'l']:
+    for char in ["i", "o", "l"]:
         if char in password:
             return False
 
@@ -81,10 +81,15 @@ def increment_password(password: str) -> str:
     seventh = sixth + 1  # e.g. 'c'
     eighth = seventh  # e.g. 'c'
 
-    password = ''.join([chr(char) for char in int_password[:3] + [fourth, fifth, sixth, seventh, eighth]])
+    password = "".join(
+        [
+            chr(char)
+            for char in int_password[:3] + [fourth, fifth, sixth, seventh, eighth]
+        ]
+    )
 
     if not is_valid(password):
-        raise ValueError('password invalid')
+        raise ValueError("password invalid")
 
     return password
 
@@ -98,15 +103,15 @@ def increment_password_part_two(password: str) -> str:
 
     third = int_password[2] + 1
 
-    password = ''.join([chr(x) for x in int_password[:2] + [third]]) + 'aabcc'
+    password = "".join([chr(x) for x in int_password[:2] + [third]]) + "aabcc"
 
     if not is_valid(password):
-        raise ValueError('password invalid')
+        raise ValueError("password invalid")
 
     return password
 
 
-@solution_timer(2015, 11, 1)
+@register_solution(2015, 11, 1)
 def part_one(input_data: List[str]):
     answer = increment_password(input_data[0])
 
@@ -116,7 +121,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2015, 11, 2)
+@register_solution(2015, 11, 2)
 def part_two(input_data: List[str]):
     answer = increment_password_part_two(input_data[0])
 
@@ -126,7 +131,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 11)
     part_one(data)
     part_two(data)

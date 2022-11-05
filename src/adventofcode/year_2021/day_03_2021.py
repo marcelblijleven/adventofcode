@@ -2,7 +2,7 @@ from collections import Counter
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -25,8 +25,8 @@ def change_list(input_data: List[str]) -> List[tuple[str]]:
 
 
 def get_power_consumption(values: list[tuple[str]]) -> int:
-    gamma_rate = ''
-    epsilon_rate = ''
+    gamma_rate = ""
+    epsilon_rate = ""
 
     for value in values:
         counter = Counter(value)
@@ -41,7 +41,7 @@ def filter_list(input_data: List[str], use_most_common: bool, idx: int = 0) -> i
         return int(input_data[0], 2)
 
     if idx > 12:
-        raise IndexError('index is higher than 12')
+        raise IndexError("index is higher than 12")
 
     values = change_list(input_data)
     count_results = Counter(values[idx]).most_common()
@@ -62,7 +62,7 @@ def get_life_support(input_data: List[str]) -> int:
     return oxygen_generator * co2_scrubber
 
 
-@solution_timer(2021, 3, 1)
+@register_solution(2021, 3, 1)
 def part_one(input_data: List[str]):
     merged = change_list(input_data)
     answer = get_power_consumption(merged)
@@ -73,7 +73,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 3, 2)
+@register_solution(2021, 3, 2)
 def part_two(input_data: List[str]):
     answer = get_life_support(input_data)
 
@@ -83,7 +83,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 3)
     part_one(data)
     part_two(data)

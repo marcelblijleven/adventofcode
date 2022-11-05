@@ -3,7 +3,7 @@ import itertools
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -35,31 +35,40 @@ class Character:
 
 
 def get_shop_inventory():
-    dagger = Weapon('Dagger', 8, 4, 0)
-    shortsword = Weapon('Shortsword', 10, 5, 0)
-    warhammer = Weapon('Warhammer', 25, 6, 0)
-    longsword = Weapon('Longsword', 40, 7, 0)
-    greataxe = Weapon('Greataxe', 74, 8, 0)
+    dagger = Weapon("Dagger", 8, 4, 0)
+    shortsword = Weapon("Shortsword", 10, 5, 0)
+    warhammer = Weapon("Warhammer", 25, 6, 0)
+    longsword = Weapon("Longsword", 40, 7, 0)
+    greataxe = Weapon("Greataxe", 74, 8, 0)
     # empty_hand = Weapon('Empty', 0, 0, 0)
     weapons = [dagger, shortsword, warhammer, longsword, greataxe]
 
-    leather = Armor('Leather', 13, 0, 1)
-    chainmail = Armor('Chainmail', 31, 0, 2)
-    splintmail = Armor('Splintmail', 53, 0, 3)
-    bandedmail = Armor('Bandedmail', 75, 0, 4)
-    platemail = Armor('Platemail', 102, 0, 5)
-    naked = Armor('Naked', 0, 0, 0)
+    leather = Armor("Leather", 13, 0, 1)
+    chainmail = Armor("Chainmail", 31, 0, 2)
+    splintmail = Armor("Splintmail", 53, 0, 3)
+    bandedmail = Armor("Bandedmail", 75, 0, 4)
+    platemail = Armor("Platemail", 102, 0, 5)
+    naked = Armor("Naked", 0, 0, 0)
     armor = [leather, chainmail, splintmail, bandedmail, platemail, naked]
 
-    damage_1 = Ring('Damage +1', 25, 1, 0)
-    damage_2 = Ring('Damage +2', 50, 2, 0)
-    damage_3 = Ring('Damage +3', 100, 3, 0)
-    defense_1 = Ring('Defense +1', 20, 0, 1)
-    defense_2 = Ring('Defense +2', 40, 0, 2)
-    defense_3 = Ring('Defense +3', 80, 0, 3)
-    no_jewelry = Ring('No jewelry', 0, 0, 0)
-    no_jewelry2 = Ring('No jewelry', 0, 0, 0)
-    rings = [damage_1, damage_2, damage_3, defense_1, defense_2, defense_3, no_jewelry, no_jewelry2]
+    damage_1 = Ring("Damage +1", 25, 1, 0)
+    damage_2 = Ring("Damage +2", 50, 2, 0)
+    damage_3 = Ring("Damage +3", 100, 3, 0)
+    defense_1 = Ring("Defense +1", 20, 0, 1)
+    defense_2 = Ring("Defense +2", 40, 0, 2)
+    defense_3 = Ring("Defense +3", 80, 0, 3)
+    no_jewelry = Ring("No jewelry", 0, 0, 0)
+    no_jewelry2 = Ring("No jewelry", 0, 0, 0)
+    rings = [
+        damage_1,
+        damage_2,
+        damage_3,
+        defense_1,
+        defense_2,
+        defense_3,
+        no_jewelry,
+        no_jewelry2,
+    ]
 
     return weapons, armor, rings
 
@@ -77,9 +86,18 @@ def calculate_cost(boss: Character):
             # only one armor
             for ring_one, ring_two in itertools.combinations(rings, 2):
                 # two rings
-                total_cost = weapon.cost + armor_item.cost + ring_one.cost + ring_two.cost
-                total_damage = weapon.damage + armor_item.damage + ring_one.damage + ring_two.damage
-                total_armor = weapon.armor + armor_item.armor + ring_one.armor + ring_two.armor
+                total_cost = (
+                    weapon.cost + armor_item.cost + ring_one.cost + ring_two.cost
+                )
+                total_damage = (
+                    weapon.damage
+                    + armor_item.damage
+                    + ring_one.damage
+                    + ring_two.damage
+                )
+                total_armor = (
+                    weapon.armor + armor_item.armor + ring_one.armor + ring_two.armor
+                )
 
                 player = Character(health=100, damage=total_damage, armor=total_armor)
 
@@ -102,9 +120,9 @@ def get_damage(attacker: Character, defender: Character) -> int:
 
 
 def get_boss(input_data: List[str]) -> Character:
-    health = int(input_data[0].split(': ')[1])
-    damage = int(input_data[1].split(': ')[1])
-    armor = int(input_data[2].split(': ')[1])
+    health = int(input_data[0].split(": ")[1])
+    damage = int(input_data[1].split(": ")[1])
+    armor = int(input_data[2].split(": ")[1])
     return Character(health, damage, armor)
 
 
@@ -126,7 +144,7 @@ def fight(player: Character, boss: Character) -> bool:
             return False
 
 
-@solution_timer(2015, 21, 1)
+@register_solution(2015, 21, 1)
 def part_one(input_data: List[str]):
     boss = get_boss(input_data)
     answer, _ = calculate_cost(boss)
@@ -138,7 +156,7 @@ def part_one(input_data: List[str]):
 
 
 # Solution isn't correct for part 2
-@solution_timer(2015, 21, 2)
+@register_solution(2015, 21, 2)
 def part_two(input_data: List[str]):
     boss = get_boss(input_data)
     _, answer = calculate_cost(boss)
@@ -149,7 +167,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 21)
     part_one(data)
     part_two(data)

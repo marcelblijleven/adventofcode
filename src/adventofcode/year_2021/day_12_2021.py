@@ -3,7 +3,7 @@ from typing import List, Set, DefaultDict
 
 from adventofcode.util.console import console
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 PathDict = DefaultDict[str, list[str]]
@@ -25,7 +25,7 @@ def get_paths(input_data: List[str]) -> PathDict:
     path_dict: PathDict = defaultdict(default_dict_factory)
 
     for line in input_data:
-        a, b = line.split('-')
+        a, b = line.split("-")
         path_dict[a].append(b)
         path_dict[b].append(a)
 
@@ -39,9 +39,9 @@ class CaveExplorer3000:
         self.path_count = 0
 
     def traverse(self, cave: str, visited: Set[str]) -> int:
-        if cave == 'end':
+        if cave == "end":
             return 1
-        elif cave == 'start' and cave in visited:
+        elif cave == "start" and cave in visited:
             return 0
 
         if cave in visited and is_small_cave(cave):
@@ -52,9 +52,9 @@ class CaveExplorer3000:
         return sum(self.traverse(path, visited.copy()) for path in paths)
 
     def traverse_part_two(self, cave: str, visited: Set[str], revisit=True) -> int:
-        if cave == 'end':
+        if cave == "end":
             return 1
-        elif cave == 'start' and cave in visited:
+        elif cave == "start" and cave in visited:
             return 0
 
         if cave in visited and is_small_cave(cave):
@@ -65,18 +65,22 @@ class CaveExplorer3000:
 
         visited.add(cave)
         paths = self.paths[cave]
-        return sum(self.traverse_part_two(path, visited.copy(), revisit) for path in paths)
+        return sum(
+            self.traverse_part_two(path, visited.copy(), revisit) for path in paths
+        )
 
-    def traverse_with_print(self, cave: str, visited: Set[str], path_flow: str = '') -> int:
-        if path_flow == '':
-            path_flow = f'{cave}'
+    def traverse_with_print(
+        self, cave: str, visited: Set[str], path_flow: str = ""
+    ) -> int:
+        if path_flow == "":
+            path_flow = f"{cave}"
         else:
-            path_flow += f' -> {cave}'
+            path_flow += f" -> {cave}"
 
-        if cave == 'end':
+        if cave == "end":
             console.print(path_flow)
             return 1
-        elif cave == 'start' and cave in visited:
+        elif cave == "start" and cave in visited:
             return 0
 
         if cave in visited and is_small_cave(cave):
@@ -84,14 +88,16 @@ class CaveExplorer3000:
 
         visited.add(cave)
         paths = self.paths[cave]
-        return sum(self.traverse_with_print(path, visited.copy(), path_flow) for path in paths)
+        return sum(
+            self.traverse_with_print(path, visited.copy(), path_flow) for path in paths
+        )
 
 
-@solution_timer(2021, 12, 1)
+@register_solution(2021, 12, 1)
 def part_one(input_data: List[str]):
     path_dict = get_paths(input_data)
     cave_explorer = CaveExplorer3000(path_dict)
-    answer = cave_explorer.traverse('start', set())
+    answer = cave_explorer.traverse("start", set())
 
     if not answer:
         raise SolutionNotFoundException(2021, 12, 1)
@@ -99,11 +105,11 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 12, 2)
+@register_solution(2021, 12, 2)
 def part_two(input_data: List[str]):
     path_dict = get_paths(input_data)
     cave_explorer = CaveExplorer3000(path_dict, limit_small_caves=True)
-    answer = cave_explorer.traverse_part_two('start', set())
+    answer = cave_explorer.traverse_part_two("start", set())
 
     if not answer:
         raise SolutionNotFoundException(2021, 12, 2)
@@ -111,7 +117,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 12)
     part_one(data)
     part_two(data)

@@ -1,7 +1,7 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -9,7 +9,7 @@ def decipher_xmas(preamble: int, numbers: List[int]) -> int:
     idx = preamble
 
     while preamble < len(numbers):
-        preamble_check = numbers[idx - preamble:idx]
+        preamble_check = numbers[idx - preamble : idx]
         need = numbers[idx]
         seen = []
         is_valid = False
@@ -24,10 +24,10 @@ def decipher_xmas(preamble: int, numbers: List[int]) -> int:
 
         idx += 1
 
-    raise ValueError('xmas could not by deciphered')
+    raise ValueError("xmas could not by deciphered")
 
 
-@solution_timer(2020, 9, 1)
+@register_solution(2020, 9, 1)
 def part_one(input_data: List[str]):
     preamble = 25
     int_data = list(map(int, input_data))
@@ -46,10 +46,10 @@ def find_group_sum(numbers: List[int], target: int) -> List[int]:
             if sum(window) == target:
                 return window
 
-    raise ValueError('group sum not found')
+    raise ValueError("group sum not found")
 
 
-@solution_timer(2020, 9, 2)
+@register_solution(2020, 9, 2)
 def part_two(input_data: List[str]):
     preamble = 25
     int_data = list(map(int, input_data))
@@ -62,7 +62,7 @@ def part_two(input_data: List[str]):
     return min(group) + max(group)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 9)
     part_one(data)
     part_two(data)

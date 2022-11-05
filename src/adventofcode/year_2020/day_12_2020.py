@@ -1,16 +1,16 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-NORTH = 'N'
-EAST = 'E'
-SOUTH = 'S'
-WEST = 'W'
-FORWARD = 'F'
-LEFT = 'L'
-RIGHT = 'R'
+NORTH = "N"
+EAST = "E"
+SOUTH = "S"
+WEST = "W"
+FORWARD = "F"
+LEFT = "L"
+RIGHT = "R"
 
 Position = tuple[int, int]
 
@@ -18,16 +18,16 @@ Position = tuple[int, int]
 def move(direction: str, steps: int, current_position: Position) -> Position:
     x, y = current_position
 
-    if direction == 'N':
+    if direction == "N":
         y += steps
-    elif direction == 'E':
+    elif direction == "E":
         x += steps
-    elif direction == 'S':
+    elif direction == "S":
         y -= steps
-    elif direction == 'W':
+    elif direction == "W":
         x -= steps
     else:
-        raise ValueError(f'unknown direction {direction}')
+        raise ValueError(f"unknown direction {direction}")
 
     return x, y
 
@@ -42,7 +42,7 @@ def turn(turn_direction: str, degrees: int, current_direction: str) -> str:
     elif turn_direction == LEFT:
         current_degrees -= degrees
     else:
-        raise ValueError(f'unknown turn direction: {turn_direction}')
+        raise ValueError(f"unknown turn direction: {turn_direction}")
 
     current_degrees %= 360
 
@@ -62,7 +62,7 @@ def _turn_waypoint_left(waypoint: tuple[int, int], degrees: int) -> tuple[int, i
         x = original_y
         y = original_x * -1
     else:
-        raise ValueError(f'cannot process degrees: {degrees}')
+        raise ValueError(f"cannot process degrees: {degrees}")
 
     return x, y
 
@@ -80,21 +80,25 @@ def _turn_waypoint_right(waypoint: tuple[int, int], degrees: int) -> tuple[int, 
         x = original_y * -1
         y = original_x
     else:
-        raise ValueError(f'cannot process degrees: {degrees}')
+        raise ValueError(f"cannot process degrees: {degrees}")
 
     return x, y
 
 
-def turn_waypoint(waypoint: tuple[int, int], direction: str, degrees: int) -> tuple[int, int]:
+def turn_waypoint(
+    waypoint: tuple[int, int], direction: str, degrees: int
+) -> tuple[int, int]:
     if direction == LEFT:
         return _turn_waypoint_left(waypoint, degrees)
     elif direction == RIGHT:
         return _turn_waypoint_right(waypoint, degrees)
     else:
-        raise ValueError(f'cannot process unknown direction: {direction}')
+        raise ValueError(f"cannot process unknown direction: {direction}")
 
 
-def move_waypoint(waypoint: tuple[int, int], action: str, number: int) -> tuple[int, int]:
+def move_waypoint(
+    waypoint: tuple[int, int], action: str, number: int
+) -> tuple[int, int]:
     x, y = waypoint
 
     if action == NORTH:
@@ -106,7 +110,7 @@ def move_waypoint(waypoint: tuple[int, int], action: str, number: int) -> tuple[
     elif action == WEST:
         x -= number
     else:
-        raise ValueError(f'unknown action received: {action}')
+        raise ValueError(f"unknown action received: {action}")
 
     return x, y
 
@@ -126,7 +130,7 @@ def parse_instructions(instructions: List[str]) -> int:
         elif action == FORWARD:
             position = move(direction, number, position)
         else:
-            raise ValueError(f'unknown action {action}')
+            raise ValueError(f"unknown action {action}")
 
     return abs(position[0]) + abs(position[1])
 
@@ -149,12 +153,12 @@ def parse_instructions_part_two(instructions: List[str]) -> int:
             y += number * waypoint[1]
             position = (x, y)
         else:
-            raise ValueError(f'unknown action {action}')
+            raise ValueError(f"unknown action {action}")
 
     return abs(position[0]) + abs(position[1])
 
 
-@solution_timer(2020, 12, 1)
+@register_solution(2020, 12, 1)
 def part_one(input_data: List[str]):
     answer = parse_instructions(input_data)
 
@@ -164,7 +168,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2020, 12, 2)
+@register_solution(2020, 12, 2)
 def part_two(input_data: List[str]):
     answer = parse_instructions_part_two(input_data)
 
@@ -174,7 +178,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 12)
     part_one(data)
     part_two(data)

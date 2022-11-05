@@ -3,14 +3,14 @@ from collections import defaultdict
 from typing import List, DefaultDict, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 Coord = tuple[int, int]
 GridType = DefaultDict[Coord, int]
 LinePositions = tuple[Coord, Coord]
 Line = List[Coord]
-line_pattern = re.compile(r'(\d+)')
+line_pattern = re.compile(r"(\d+)")
 
 
 def is_horizontal(line: LinePositions) -> bool:
@@ -36,7 +36,9 @@ def get_line(positions: LinePositions) -> Line:
     dx = bool(x2 > x1) - bool(x2 < x1)
     dy = bool(y2 > y1) - bool(y2 < y1)
 
-    return [(x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)]
+    return [
+        (x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)
+    ]
 
 
 def get_lines(positions_list: List[LinePositions]) -> Generator[Line, None, None]:
@@ -54,7 +56,9 @@ def count_intersections(parsed_input: List[LinePositions]) -> int:
     return len([value for value in seen.values() if value > 1])
 
 
-def parse_input(input_data: List[str], filter_diagonal: bool = True) -> List[LinePositions]:
+def parse_input(
+    input_data: List[str], filter_diagonal: bool = True
+) -> List[LinePositions]:
     lines: List[LinePositions] = []
 
     for line in input_data:
@@ -69,7 +73,7 @@ def parse_input(input_data: List[str], filter_diagonal: bool = True) -> List[Lin
     return lines
 
 
-@solution_timer(2021, 5, 1)
+@register_solution(2021, 5, 1)
 def part_one(input_data: List[str]):
     parsed_input = parse_input(input_data)
     answer = count_intersections(parsed_input)
@@ -80,7 +84,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 5, 2)
+@register_solution(2021, 5, 2)
 def part_two(input_data: List[str]):
     parsed_input = parse_input(input_data, filter_diagonal=False)
     answer = count_intersections(parsed_input)
@@ -91,7 +95,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 5)
     part_one(data)
     part_two(data)

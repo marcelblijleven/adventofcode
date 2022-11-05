@@ -2,10 +2,10 @@ import re
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-line_pattern = re.compile(r'(\d+)')
+line_pattern = re.compile(r"(\d+)")
 
 
 def transpose_rows(rows: List[List[int]]) -> List[List[int]]:
@@ -67,11 +67,11 @@ class Board:
 
 
 def parse_input_data(input_data: List[str]) -> tuple[List[int], List[Board]]:
-    numbers = list(map(int, input_data[0].split(',')))
+    numbers = list(map(int, input_data[0].split(",")))
     boards: List[Board] = []
 
-    for chunk in '\n'.join(input_data[2:]).split('\n\n'):
-        lines = chunk.split('\n')
+    for chunk in "\n".join(input_data[2:]).split("\n\n"):
+        lines = chunk.split("\n")
         boards.append(Board(lines))
 
     return numbers, boards
@@ -103,7 +103,7 @@ def play_bingo(input_data: List[str], first_board=True) -> int:
     return last_board.unmarked_numbers * last_number
 
 
-@solution_timer(2021, 4, 1)
+@register_solution(2021, 4, 1)
 def part_one(input_data: List[str]):
     answer = play_bingo(input_data)
 
@@ -113,7 +113,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 4, 2)
+@register_solution(2021, 4, 2)
 def part_two(input_data: List[str]):
     answer = play_bingo(input_data, first_board=False)
 
@@ -123,7 +123,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 4)
     part_one(data)
     part_two(data)

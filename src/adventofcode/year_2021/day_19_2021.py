@@ -6,7 +6,7 @@ from itertools import combinations
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -26,7 +26,7 @@ def calculate_max_distance(scanners: list[Scanner]) -> int:
 
     for scanner_a, scanner_b in combinations(scanners, 2):
         if scanner_a.position is None or scanner_b.position is None:
-            raise ValueError('scanner position cannot be None')
+            raise ValueError("scanner position cannot be None")
 
         xa, ya, za = scanner_a.position
         xb, yb, zb = scanner_b.position
@@ -41,7 +41,9 @@ def get_offset(number: int, edges: tuple[Edges, Edges, Edges]) -> Coordinates:
 
 
 def apply_offset(
-    coord: Coordinates, axis_offsets: tuple[AxisOffset, AxisOffset, AxisOffset], offset: Coordinates
+    coord: Coordinates,
+    axis_offsets: tuple[AxisOffset, AxisOffset, AxisOffset],
+    offset: Coordinates,
 ) -> Coordinates:
     x = offset[0] + axis_offsets[0].sign * coord[axis_offsets[0].axis]
     y = offset[1] + axis_offsets[1].sign * coord[axis_offsets[1].axis]
@@ -57,11 +59,11 @@ class Scanner:
 
     @classmethod
     def from_input(cls, input_data: list[str]) -> Scanner:
-        number = int(input_data[0].lstrip('--- scanner ').rstrip(' ---'))
+        number = int(input_data[0].lstrip("--- scanner ").rstrip(" ---"))
         beacons: list[Coordinates] = []
 
         for beacon in input_data[1:]:
-            x, y, z = tuple(map(int, beacon.split(',')))
+            x, y, z = tuple(map(int, beacon.split(",")))
             beacons.append((x, y, z))
 
         return cls(number, beacons)
@@ -112,7 +114,9 @@ class Scanner:
         return edges_y, edges_z
 
     def apply_offset(
-        self, axis_offsets: tuple[AxisOffset, AxisOffset, AxisOffset], offset: Coordinates
+        self,
+        axis_offsets: tuple[AxisOffset, AxisOffset, AxisOffset],
+        offset: Coordinates,
     ) -> list[Coordinates]:
         offset_beacons: list[Coordinates] = []
 
@@ -132,12 +136,12 @@ ScannerMap = dict[int, Scanner]
 
 
 def get_scanners(input_data: list[str]) -> list[Scanner]:
-    input_str = '\n'.join(input_data)
-    scanner_blocks = input_str.split('\n\n')
+    input_str = "\n".join(input_data)
+    scanner_blocks = input_str.split("\n\n")
     scanners: list[Scanner] = []
 
     for block in scanner_blocks:
-        scanners.append(Scanner.from_input(block.split('\n')))
+        scanners.append(Scanner.from_input(block.split("\n")))
 
     return scanners
 
@@ -172,7 +176,7 @@ def count_unique_beacons(scanners: list[Scanner]) -> int:
     return len(beacons)
 
 
-@solution_timer(2021, 19, 1)
+@register_solution(2021, 19, 1)
 def part_one(input_data: List[str]):
     scanners = get_scanners(input_data)
     process_scanners(scanners)
@@ -184,7 +188,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2021, 19, 2)
+@register_solution(2021, 19, 2)
 def part_two(input_data: List[str]):
     scanners = get_scanners(input_data)
     process_scanners(scanners)
@@ -196,7 +200,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 19)
     part_one(data)
     part_two(data)

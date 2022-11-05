@@ -1,12 +1,12 @@
 from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.helpers import solution_timer
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
 def parse_input(input_data: List[str]) -> List[int]:
-    return list(map(int, input_data[0].split(',')))
+    return list(map(int, input_data[0].split(",")))
 
 
 def solve(input_data: List[int], rounds: int) -> int:
@@ -14,11 +14,14 @@ def solve(input_data: List[int], rounds: int) -> int:
     number = input_data[-1]
 
     for play_round in range(len(input_data), rounds):
-        seen[number], number = play_round, 0 if number not in seen else play_round - seen[number]
+        seen[number], number = (
+            play_round,
+            0 if number not in seen else play_round - seen[number],
+        )
     return number
 
 
-@solution_timer(2020, 15, 1)
+@register_solution(2020, 15, 1)
 def part_one(input_data: List[str]):
     answer = solve(parse_input(input_data), 2020)
 
@@ -28,7 +31,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@solution_timer(2020, 15, 2)
+@register_solution(2020, 15, 2)
 def part_two(input_data: List[str]):
     answer = solve(parse_input(input_data), 30000000)
 
@@ -38,7 +41,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 15)
     part_one(data)
     part_two(data)
