@@ -1,4 +1,6 @@
 import os
+import warnings
+
 from typing import List
 
 from adventofcode.config import ROOT_DIR
@@ -13,6 +15,10 @@ def get_input_for_day(year: int, day: int) -> List[str]:
 
 
 def get_input_for_day_as_str(year: int, day: int) -> str:
+    warnings.warn(
+        'get_input_for_day_as_str does not work with the registry, better to not use it',
+        stacklevel=2
+    )
     input_file = os.path.join(ROOT_DIR, 'inputs', str(year), f'day_{day:02}.txt')
     return _read_file(input_file)
 

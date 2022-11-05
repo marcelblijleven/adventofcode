@@ -6,7 +6,6 @@ from typing import Callable, Literal, Dict, Any
 
 from adventofcode.config import RUNNING_ALL, RUNNING_BENCHMARKS
 from adventofcode.util.console import console
-from adventofcode.util.exceptions import SolutionNotFoundException
 
 
 def _get_year_from_segment(segment: str) -> int:
@@ -42,35 +41,25 @@ def _get_prefix(year: int, day: int, part: int, version: str) -> str:
     return prefix
 
 
-def solution_timer(year: int, day: int, part: int, version: str = ''):  # noqa: C901, type: ignore
+def solution_timer(solution_input: Any, func: Callable, year: int, day: int, part: int, version: str):  # type: ignore
     prefix = _get_prefix(year, day, part, version)
+    try:
+        start = time.perf_counter()
+        solution = func(solution_input)
+        diff = (time.perf_counter() - start) * 1000
+    except (ValueError, ArithmeticError, TypeError):
+        console.print_exception()
+        return
 
-    def decorator(func: Callable):  # type: ignore
-        def wrapper(*args, **kwargs):
-            try:
-                start = time.perf_counter()
-                solution = func(*args, **kwargs)
+    if solution is None:
+        console.print(f'{prefix}[red]solution not found')
+        return
 
-                if solution is None:
-                    raise SolutionNotFoundException(year, day, part)
+    if not RUNNING_BENCHMARKS:
+        console.print(f'{prefix}{solution} in {diff:.2f} ms')
+        return solution
 
-                diff = (time.perf_counter() - start) * 1000
-
-                if not RUNNING_BENCHMARKS:
-                    console.print(f'{prefix}{solution} in {diff:.2f} ms')
-            except (ValueError, ArithmeticError, TypeError):
-                console.print_exception()
-            except SolutionNotFoundException:
-                console.print(f'{prefix}[red]solution not found')
-            else:
-                if RUNNING_BENCHMARKS:
-                    return diff
-
-                return solution
-
-        return wrapper
-
-    return decorator
+    return diff
 
 
 def solution_profiler(year: int, day: int, part: int, version: str = '', stats_amount: int = 10,
