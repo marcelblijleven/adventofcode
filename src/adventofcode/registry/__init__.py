@@ -1,9 +1,10 @@
 import os.path
 from importlib import import_module
+from typing import Callable, Any
 
 from adventofcode.config import ROOT_DIR
 
-registry = {}
+registry: dict[str, Callable[[Any], Any]] = {}
 
 
 def autodetect():
