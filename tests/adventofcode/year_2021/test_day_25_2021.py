@@ -1,4 +1,3 @@
-from adventofcode.util.helpers import grid_to_string
 from adventofcode.year_2021.day_25_2021 import part_one, get_values, do_step
 
 test_input = [
