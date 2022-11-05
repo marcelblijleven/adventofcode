@@ -6,7 +6,7 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-PATTERN = re.compile(r'(-?\d+)')
+PATTERN = re.compile(r"(-?\d+)")
 
 
 def count_all_numbers(input_data: str) -> int:
@@ -25,7 +25,7 @@ def traverser(input_data: Any):
         if isinstance(json_data, int):
             return json_data
         elif isinstance(json_data, dict):
-            if 'red' in json_data.values():
+            if "red" in json_data.values():
                 return 0
             return sum(map(recursive_sum, json_data.values()))
         elif isinstance(json_data, list):
@@ -56,7 +56,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 12)
     part_one(data)
     part_two(data)

@@ -6,7 +6,7 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 QUOTE_PATTERN = re.compile(r'(\\")')
-HEX_PATTERN = re.compile(r'(\\x[a-f0-9]{2})')
+HEX_PATTERN = re.compile(r"(\\x[a-f0-9]{2})")
 SLASH_PATTERN = re.compile(r'(\\[^a-z"])')
 
 
@@ -28,8 +28,8 @@ def parse_line(line: str) -> int:
 
 def parse_line_part_two(line: str) -> int:
     translation_table = {
-        '"': r'\"',
-        '\\': r'\\',
+        '"': r"\"",
+        "\\": r"\\",
     }
 
     old_length = len(line)
@@ -76,7 +76,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 8)
     part_one(data)
     part_two(data)

@@ -7,7 +7,7 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 
 def get_passports(batch_file: str) -> List[Dict[str, str]]:
-    _data = batch_file.split('\n\n')
+    _data = batch_file.split("\n\n")
     passports: List[Dict[str, str]] = []
 
     for value in _data:
@@ -19,9 +19,9 @@ def get_passports(batch_file: str) -> List[Dict[str, str]]:
 def get_passport_as_dict(passport: str) -> Dict[str, str]:
     values = {}
 
-    for i in passport.split(' '):
-        for j in i.split('\n'):
-            key, value = j.split(':')
+    for i in passport.split(" "):
+        for j in i.split("\n"):
+            key, value = j.split(":")
             values[key] = value
 
     return values
@@ -29,7 +29,7 @@ def get_passport_as_dict(passport: str) -> Dict[str, str]:
 
 def validate_passport(passport: Dict[str, str]) -> bool:
     keys = passport.keys()
-    return len(keys) == 8 or (len(keys) == 7 and 'cid' not in keys)
+    return len(keys) == 8 or (len(keys) == 7 and "cid" not in keys)
 
 
 def _range_check(value: str, low: int, high: int) -> bool:
@@ -52,25 +52,23 @@ def expiration_check(value: str) -> bool:
 
 
 def height_check(value: str) -> bool:
-    height = ''.join([char for char in value if char.isdigit()])
-    unit = ''.join([char for char in value if char.isalpha()])
-    return (
-        (unit == 'cm' and _range_check(height, 150, 193))
-        or
-        (unit == 'in' and _range_check(height, 59, 76))
+    height = "".join([char for char in value if char.isdigit()])
+    unit = "".join([char for char in value if char.isalpha()])
+    return (unit == "cm" and _range_check(height, 150, 193)) or (
+        unit == "in" and _range_check(height, 59, 76)
     )
 
 
 def hair_color_check(value: str) -> bool:
-    return re.compile(r'#[0-9a-f]{6}').match(value) is not None
+    return re.compile(r"#[0-9a-f]{6}").match(value) is not None
 
 
 def eye_color_check(value: str) -> bool:
-    return value in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
+    return value in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
 
 
 def pid_check(value):
-    return re.compile(r'\d{9}$').match(value) is not None
+    return re.compile(r"\d{9}$").match(value) is not None
 
 
 def deep_validation(passport: Dict[str, str]) -> bool:  # noqa C901
@@ -80,21 +78,21 @@ def deep_validation(passport: Dict[str, str]) -> bool:  # noqa C901
     checks = []
 
     for key, value in passport.items():
-        if key == 'byr':
+        if key == "byr":
             checks.append(dob_check(value))
-        elif key == 'iyr':
+        elif key == "iyr":
             checks.append(issue_check(value))
-        elif key == 'eyr':
+        elif key == "eyr":
             checks.append(expiration_check(value))
-        elif key == 'hgt':
+        elif key == "hgt":
             checks.append(height_check(value))
-        elif key == 'hcl':
+        elif key == "hcl":
             checks.append(hair_color_check(value))
-        elif key == 'ecl':
+        elif key == "ecl":
             checks.append(eye_color_check(value))
-        elif key == 'pid':
+        elif key == "pid":
             checks.append(pid_check(value))
-        elif key == 'cid':
+        elif key == "cid":
             checks.append(True)
 
     return all(checks)
@@ -102,7 +100,7 @@ def deep_validation(passport: Dict[str, str]) -> bool:  # noqa C901
 
 @register_solution(2020, 4, 1)
 def part_one(input_data: list[str]) -> int:
-    passports = get_passports('\n'.join(input_data))
+    passports = get_passports("\n".join(input_data))
     answer = len([passport for passport in passports if validate_passport(passport)])
 
     if not answer:
@@ -114,7 +112,7 @@ def part_one(input_data: list[str]) -> int:
 @register_solution(2020, 4, 2)
 def part_two(input_data: list[str]) -> int:
 
-    passports = get_passports('\n'.join(input_data))
+    passports = get_passports("\n".join(input_data))
     answer = len([passport for passport in passports if deep_validation(passport)])
 
     if not answer:
@@ -123,7 +121,7 @@ def part_two(input_data: list[str]) -> int:
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 4)
     part_one(data)
     part_two(data)

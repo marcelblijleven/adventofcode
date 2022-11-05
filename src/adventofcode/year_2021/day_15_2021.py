@@ -118,7 +118,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 15)
     part_one(data)
     part_two(data)

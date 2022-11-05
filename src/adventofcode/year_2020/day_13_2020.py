@@ -10,7 +10,9 @@ DepartureTimes = Dict[int, List[int]]
 
 def parse_input(input_data: List[str]) -> tuple[int, List[int]]:
     timestamp = int(input_data[0])
-    busses = list(map(int, [value for value in input_data[1].split(',') if value.isdigit()]))
+    busses = list(
+        map(int, [value for value in input_data[1].split(",") if value.isdigit()])
+    )
     return timestamp, busses
 
 
@@ -34,7 +36,9 @@ def get_sequential_departure_times(bus_schedule: str):
     timestamp = 1
     index = 0
 
-    for idx, bus in [(idx, bus) for idx, bus in enumerate(bus_schedule.split(',')) if bus.isdigit()]:
+    for idx, bus in [
+        (idx, bus) for idx, bus in enumerate(bus_schedule.split(",")) if bus.isdigit()
+    ]:
         while True:
             index += timestamp
 
@@ -84,7 +88,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 13)
     part_one(data)
     part_two(data)

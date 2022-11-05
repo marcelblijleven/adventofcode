@@ -10,7 +10,7 @@ def part_one(input_data: List[str]) -> int:
     floor = 0
 
     for char in input_data[0]:
-        if char == '(':
+        if char == "(":
             floor += 1
         else:
             floor -= 1
@@ -23,7 +23,7 @@ def part_two(input_data: List[str]) -> int:
     floor = 0
 
     for i, char in enumerate(input_data[0]):
-        if char == '(':
+        if char == "(":
             floor += 1
         else:
             floor -= 1
@@ -34,7 +34,7 @@ def part_two(input_data: List[str]) -> int:
     raise SolutionNotFoundException(2015, 1, 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 1)
     part_one(data)
     part_two(data)

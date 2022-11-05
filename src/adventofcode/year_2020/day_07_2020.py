@@ -5,9 +5,9 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-bag_type_pattern = re.compile(r'^([a-z]+ [a-z]+)')
-contents_pattern = re.compile(r'((\d) ([a-z]+ [a-z]+))')
-gold_bag = 'shiny gold'
+bag_type_pattern = re.compile(r"^([a-z]+ [a-z]+)")
+contents_pattern = re.compile(r"((\d) ([a-z]+ [a-z]+))")
+gold_bag = "shiny gold"
 
 BagType = Dict[str, Dict[str, int]]
 
@@ -76,7 +76,7 @@ def bag_counter(bag: str, bags: BagType, multiplier: int, total: int) -> int:
     return total
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 7)
     part_one(data)
     part_two(data)

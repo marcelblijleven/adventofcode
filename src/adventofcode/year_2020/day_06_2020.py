@@ -6,13 +6,13 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 
 def groups(input_data: List[str]) -> Generator[List[str], None, None]:
-    group = ''
+    group = ""
     for line in input_data:
         if line:
             group += line
         else:
             yield sorted(list(set(list(group))))
-            group = ''
+            group = ""
 
     yield sorted(list(set(list(group))))
 
@@ -64,7 +64,7 @@ def part_two(input_data):
     return total
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 6)
     part_one(data)
     part_two(data)

@@ -9,7 +9,7 @@ from adventofcode.util.input_helpers import get_input_for_day
 class PasswordHelper:
     def __init__(self, line: str):
         self.line: str = line
-        self.pattern = re.compile(r'(\d+)-(\d+) (\w+): (\w+)')
+        self.pattern = re.compile(r"(\d+)-(\d+) (\w+): (\w+)")
         self._matches: Sequence[str] = []
 
     @property
@@ -37,7 +37,9 @@ class PasswordHelper:
         return self._matches
 
     def is_valid(self) -> bool:
-        return self.password.count(self.letter) in range(self.lower_bound, self.upper_bound + 1)
+        return self.password.count(self.letter) in range(
+            self.lower_bound, self.upper_bound + 1
+        )
 
     def is_valid_part_two(self) -> bool:
         position_one = self.password[self.lower_bound - 1] == self.letter
@@ -67,7 +69,7 @@ def part_two(input_data: List[str]) -> int:
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 2)
     part_one(data)
     part_two(data)

@@ -4,16 +4,16 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-segment_0 = 'abcefg'
-segment_1 = 'cf'
-segment_2 = 'acdeg'
-segment_3 = 'acdfg'
-segment_4 = 'bcdf'
-segment_5 = 'abdfg'
-segment_6 = 'abdefg'
-segment_7 = 'acf'
-segment_8 = 'abcdefg'
-segment_9 = 'abcdfg'
+segment_0 = "abcefg"
+segment_1 = "cf"
+segment_2 = "acdeg"
+segment_3 = "acdfg"
+segment_4 = "bcdf"
+segment_5 = "abdfg"
+segment_6 = "abdefg"
+segment_7 = "acf"
+segment_8 = "abcdefg"
+segment_9 = "abcdfg"
 lengths = [len(segment_1), len(segment_4), len(segment_7), len(segment_8)]
 
 InputLine = tuple[str, str]
@@ -24,7 +24,7 @@ def parse_input(input_data: List[str]) -> List[InputLine]:
     lines: List[InputLine] = []
 
     for line in input_data:
-        input_segments, output = line.split(' | ')
+        input_segments, output = line.split(" | ")
         lines.append((input_segments, output))
 
     return lines
@@ -46,14 +46,14 @@ def count_unique_segments(lines: List[InputLine]) -> int:
 
 
 def get_digits(line: str) -> List[str]:
-    return line.split(' ')
+    return line.split(" ")
 
 
 def get_output_for_line(line: InputLine) -> int:
     output = 0
     input_data, output_data = line
-    output_sets = list(map(frozenset, output_data.split(' ')))  # type: ignore
-    patterns = patterns_as_frozen_sets(input_data.split(' '))
+    output_sets = list(map(frozenset, output_data.split(" ")))  # type: ignore
+    patterns = patterns_as_frozen_sets(input_data.split(" "))
     table = pattern_translation_table(patterns)
 
     output += table[output_sets[0]] * 1000  # type: ignore
@@ -77,7 +77,9 @@ def patterns_as_frozen_sets(patterns: List[str]) -> List[FrozenSet[str]]:
     return list(map(frozenset, patterns))  # type: ignore
 
 
-def _fill_table_with_know_patterns(patterns: List[FrozenSet[str]], table: TranslationTable):
+def _fill_table_with_know_patterns(
+    patterns: List[FrozenSet[str]], table: TranslationTable
+):
     for pattern in patterns:
         if len(pattern) == 2:
             table[pattern] = 1
@@ -136,7 +138,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 8)
     part_one(data)
     part_two(data)

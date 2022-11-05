@@ -7,11 +7,19 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-PATTERN = re.compile(r'(-?\d)')
+PATTERN = re.compile(r"(-?\d)")
 
 
 class Ingredient:
-    def __init__(self, name: str, capacity: int, durability: int, flavor: int, texture: int, calories: int):
+    def __init__(
+        self,
+        name: str,
+        capacity: int,
+        durability: int,
+        flavor: int,
+        texture: int,
+        calories: int,
+    ):
         self.name = name
         self.capacity = capacity
         self.durability = durability
@@ -24,7 +32,7 @@ class Ingredient:
         return str(self)
 
     def __str__(self):
-        return f'{self.name}: capacity: {self.capacity}, durability: {self.durability}, flavor: {self.flavor}, texture: {self.texture}'
+        return f"{self.name}: capacity: {self.capacity}, durability: {self.durability}, flavor: {self.flavor}, texture: {self.texture}"
 
     @property
     def quantity(self) -> int:
@@ -61,7 +69,9 @@ class Cookie:
     @property
     def score(self) -> int:
         capacity = sum([ingredient.get_capacity() for ingredient in self.ingredients])
-        durability = sum([ingredient.get_durability() for ingredient in self.ingredients])
+        durability = sum(
+            [ingredient.get_durability() for ingredient in self.ingredients]
+        )
         flavor = sum([ingredient.get_flavor() for ingredient in self.ingredients])
         texture = sum([ingredient.get_texture() for ingredient in self.ingredients])
 
@@ -81,15 +91,19 @@ def parse_ingredients(input_data: List[str]) -> List[Ingredient]:
     ingredients: List[Ingredient] = []
 
     for line in input_data:
-        name, content = line.split(': ')
-        capacity, durability, flavor, texture, calories = map(int, PATTERN.findall(content))
+        name, content = line.split(": ")
+        capacity, durability, flavor, texture, calories = map(
+            int, PATTERN.findall(content)
+        )
         ingredient = Ingredient(name, capacity, durability, flavor, texture, calories)
         ingredients.append(ingredient)
 
     return ingredients
 
 
-def find_highest_scoring_cookie(input_data: List[str], match_calories: bool = False) -> int:  # noqa: C901
+def find_highest_scoring_cookie(  # noqa: C901
+    input_data: List[str], match_calories: bool = False
+) -> int:  # noqa: C901
     highest_score = 0
     ingredients = parse_ingredients(input_data)
     max_ingredients = 100
@@ -148,7 +162,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 15)
     part_one(data)
     part_two(data)

@@ -5,8 +5,8 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-PATTERN = re.compile(r'(?:(\w+)?\s?(RSHIFT|LSHIFT|AND|OR|NOT) )?(\w+)')
-OP_PATTERN = re.compile(r'\b(RSHIFT|LSHIFT|AND|OR|NOT)\b')
+PATTERN = re.compile(r"(?:(\w+)?\s?(RSHIFT|LSHIFT|AND|OR|NOT) )?(\w+)")
+OP_PATTERN = re.compile(r"\b(RSHIFT|LSHIFT|AND|OR|NOT)\b")
 
 
 def is_operation(value: str) -> bool:
@@ -43,35 +43,35 @@ class Graph:
 
     def _parse_lines(self, lines: List[str]):
         for line in lines:
-            op, target = line.split(' -> ')
+            op, target = line.split(" -> ")
             self._values[target] = op
 
     def _execute_operation(self, left: str, operation: str, right: str) -> int:
-        if operation == 'NOT':
+        if operation == "NOT":
             right_value = self.get_value(right)
             return do_not(right_value)
 
-        if operation == 'OR':
+        if operation == "OR":
             left_value = self.get_value(left)
             right_value = self.get_value(right)
             return do_or(left_value, right_value)
 
-        if operation == 'AND':
+        if operation == "AND":
             left_value = self.get_value(left)
             right_value = self.get_value(right)
             return do_and(left_value, right_value)
 
-        if operation == 'LSHIFT':
+        if operation == "LSHIFT":
             left_value = self.get_value(left)
             right_value = int(self.get_value(right))
             return do_lshift(left_value, right_value)
 
-        if operation == 'RSHIFT':
+        if operation == "RSHIFT":
             left_value = self.get_value(left)
             right_value = int(self.get_value(right))
             return do_rshift(left_value, right_value)
 
-        raise ValueError(f'unknown operation: {operation}')
+        raise ValueError(f"unknown operation: {operation}")
 
     def get_value(self, key: Union[str, int]) -> int:
         """
@@ -102,7 +102,7 @@ class Graph:
                 self._seen[str(key)] = value
                 return value
 
-            raise ValueError('could not parse operation')
+            raise ValueError("could not parse operation")
         else:
             # Direct assignment, get value either via key or parsed int
             retrieved_value = self.get_value(value)
@@ -120,7 +120,7 @@ class Graph:
 @register_solution(2015, 7, 1)
 def part_one(input_data: List[str]):
     graph = Graph(input_data)
-    answer = graph.get_value('a')
+    answer = graph.get_value("a")
 
     if not answer:
         raise SolutionNotFoundException(2015, 7, 1)
@@ -131,9 +131,9 @@ def part_one(input_data: List[str]):
 @register_solution(2015, 7, 2)
 def part_two(input_data: List[str]):
     graph = Graph(input_data)
-    answer_part_one = graph.get_value('a')
-    graph.set_value('b', answer_part_one)
-    answer = graph.get_value('a')
+    answer_part_one = graph.get_value("a")
+    graph.set_value("b", answer_part_one)
+    answer = graph.get_value("a")
 
     if not answer:
         raise SolutionNotFoundException(2015, 7, 2)
@@ -141,7 +141,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 7)
     part_one(data)
     part_two(data)

@@ -5,7 +5,7 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-line_pattern = re.compile(r'(\d+)')
+line_pattern = re.compile(r"(\d+)")
 
 
 def transpose_rows(rows: List[List[int]]) -> List[List[int]]:
@@ -67,11 +67,11 @@ class Board:
 
 
 def parse_input_data(input_data: List[str]) -> tuple[List[int], List[Board]]:
-    numbers = list(map(int, input_data[0].split(',')))
+    numbers = list(map(int, input_data[0].split(",")))
     boards: List[Board] = []
 
-    for chunk in '\n'.join(input_data[2:]).split('\n\n'):
-        lines = chunk.split('\n')
+    for chunk in "\n".join(input_data[2:]).split("\n\n"):
+        lines = chunk.split("\n")
         boards.append(Board(lines))
 
     return numbers, boards
@@ -123,7 +123,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 4)
     part_one(data)
     part_two(data)

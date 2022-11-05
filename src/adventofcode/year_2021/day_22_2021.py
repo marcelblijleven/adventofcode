@@ -7,15 +7,15 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-pattern = re.compile(r'(-?\d+)')
+pattern = re.compile(r"(-?\d+)")
 
 CuboidNumbers = tuple[int, int, int, int, int, int]
 CubeDimensions = tuple[int, int, int]
 
 
 def get_cuboid_from_line(line: str) -> tuple[bool, CuboidNumbers]:
-    split = line.split(' ')
-    state = split[0] == 'on'
+    split = line.split(" ")
+    state = split[0] == "on"
     (xa, xb, ya, yb, za, zb) = tuple(map(int, pattern.findall(split[1])))
     return state, (xa, xb, ya, yb, za, zb)
 
@@ -37,7 +37,9 @@ def get_cuboid(line: str, limit: bool = True) -> dict[CubeDimensions, bool]:
     return cubes
 
 
-def apply_reboot_line(line: str, cuboids: dict[CubeDimensions, bool], limit: bool = True):
+def apply_reboot_line(
+    line: str, cuboids: dict[CubeDimensions, bool], limit: bool = True
+):
     cuboid = get_cuboid(line, limit)
     cuboids.update(cuboid)
 
@@ -58,13 +60,15 @@ class Cuboid:
 
     @property
     def volume(self) -> int:
-        return (self.xb - self.xa + 1) * (self.yb - self.ya + 1) * (self.zb - self.za + 1)
+        return (
+            (self.xb - self.xa + 1) * (self.yb - self.ya + 1) * (self.zb - self.za + 1)
+        )
 
     def intersects(self, other: Cuboid) -> bool:
         if (
-            not (self.xa <= other.xb and self.xb >= other.xa) or
-            not (self.ya <= other.yb and self.yb >= other.ya) or
-            not (self.za <= other.zb and self.zb >= other.za)
+            not (self.xa <= other.xb and self.xb >= other.xa)
+            or not (self.ya <= other.yb and self.yb >= other.ya)
+            or not (self.za <= other.zb and self.zb >= other.za)
         ):
             return False
 
@@ -122,7 +126,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 22)
     part_one(data)
     part_two(data)

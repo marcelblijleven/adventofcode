@@ -33,7 +33,7 @@ def part_two(input_data: List[str]) -> int:
     raise SolutionNotFoundException(2020, 1, 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 1)
     part_one(data)
     part_two(data)

@@ -6,7 +6,7 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 
 def parse_input(input_data: List[str]) -> List[int]:
-    return list(map(int, input_data[0].split(',')))
+    return list(map(int, input_data[0].split(",")))
 
 
 def solve(input_data: List[int], rounds: int) -> int:
@@ -14,7 +14,10 @@ def solve(input_data: List[int], rounds: int) -> int:
     number = input_data[-1]
 
     for play_round in range(len(input_data), rounds):
-        seen[number], number = play_round, 0 if number not in seen else play_round - seen[number]
+        seen[number], number = (
+            play_round,
+            0 if number not in seen else play_round - seen[number],
+        )
     return number
 
 
@@ -38,7 +41,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 15)
     part_one(data)
     part_two(data)

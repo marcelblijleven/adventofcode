@@ -22,7 +22,7 @@ def evaluate_slope(input_data: List[str], x_movement: int, y_movement: int) -> i
         if y >= len(input_data):
             break
 
-        if input_data[y][x] != '.':
+        if input_data[y][x] != ".":
             counter += 1
 
     return counter
@@ -41,6 +41,7 @@ def part_one(input_data: List[str]) -> int:
 @register_solution(2020, 3, 2)
 def part_two(input_data: List[str]) -> int:
     import math
+
     slopes = [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]]
     evaluated = []
 
@@ -51,7 +52,7 @@ def part_two(input_data: List[str]) -> int:
     return math.prod(evaluated)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2020, 3)
     part_one(data)
     part_two(data)

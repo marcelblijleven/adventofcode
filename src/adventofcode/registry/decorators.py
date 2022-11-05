@@ -5,7 +5,7 @@ from adventofcode.registry import registry
 from adventofcode.registry.util import get_registry_key
 
 
-def register_solution(year: int, day: int, part: int, version: str = 'normal'):
+def register_solution(year: int, day: int, part: int, version: str = "normal"):
     """Register a solution to the solution registry"""
 
     def decorator(func):

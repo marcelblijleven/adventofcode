@@ -14,9 +14,14 @@ def get_target_area(input_data: List[str]) -> TargetArea:
     """
     Get the target area from the input data
     """
-    found = re.findall(r'(-?\d+)', input_data[0])
+    found = re.findall(r"(-?\d+)", input_data[0])
     int_values = list(map(int, found))
-    return int_values[0], int_values[1], int_values[2], int_values[3],
+    return (
+        int_values[0],
+        int_values[1],
+        int_values[2],
+        int_values[3],
+    )
 
 
 def calculate_new_velocity(velocity: Velocity) -> Velocity:
@@ -131,7 +136,7 @@ def try_velocities(target: TargetArea, size: int = 100) -> tuple[int, int]:
     return max_y, sum(hits)
 
 
-@register_solution(2021, 17, 1, version='bruteforce')
+@register_solution(2021, 17, 1, version="bruteforce")
 def part_one(input_data: List[str]):
     target = get_target_area(input_data)
     max_y, _ = try_velocities(target, 73)
@@ -143,7 +148,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-@register_solution(2021, 17, 1, version='quick maths')
+@register_solution(2021, 17, 1, version="quick maths")
 def part_one_quick_maths(input_data: List[str]):
     """
     Learned about this solution after my bruteforce solution
@@ -169,7 +174,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 17)
     part_one(data)
     part_one_quick_maths(data)

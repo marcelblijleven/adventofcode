@@ -5,35 +5,35 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 POINTS_MAP = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137,
+    ")": 3,
+    "]": 57,
+    "}": 1197,
+    ">": 25137,
 }
 
 POINTS_MAP_AUTOCOMPLETE = {
-    ')': 1,
-    ']': 2,
-    '}': 3,
-    '>': 4,
+    ")": 1,
+    "]": 2,
+    "}": 3,
+    ">": 4,
 }
 
 PAIRS = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>',
+    "(": ")",
+    "[": "]",
+    "{": "}",
+    "<": ">",
 }
 
 PAIRS_REVERSED = {v: k for k, v in PAIRS.items()}
 
 
 def _is_open(character: str) -> bool:
-    return character in '([{<'
+    return character in "([{<"
 
 
 def _is_close(character: str) -> bool:
-    return character in ')]}>'
+    return character in ")]}>"
 
 
 def reduce_line(line: str) -> str:
@@ -48,9 +48,9 @@ def reduce_line(line: str) -> str:
             else:
                 return character
         else:
-            raise ValueError(f'unknown character received: {character}')
+            raise ValueError(f"unknown character received: {character}")
 
-    return ''
+    return ""
 
 
 def find_corrupted_characters(lines: List[str]) -> List[str]:
@@ -98,7 +98,7 @@ def find_closing_characters(lines: List[str]) -> List[str]:
 
         first_to_close.reverse()
         if len(first_to_close) > 0:
-            characters = ''.join(first_to_close).translate(str.maketrans(PAIRS))  # type: ignore
+            characters = "".join(first_to_close).translate(str.maketrans(PAIRS))  # type: ignore
             closing_characters.append(characters)
 
     return closing_characters
@@ -142,7 +142,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 10)
     part_one(data)
     part_two(data)

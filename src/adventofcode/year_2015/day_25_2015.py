@@ -40,7 +40,7 @@ def part_one(_: List[str]):
 
 @register_solution(2015, 25, 2)
 def part_two(input_data: List[str]):
-    answer = 'hooray'
+    answer = "hooray"
 
     if not answer:
         raise SolutionNotFoundException(2015, 25, 2)
@@ -48,7 +48,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 25)
     part_one(data)
     part_two(data)

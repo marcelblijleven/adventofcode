@@ -7,17 +7,17 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 
 def _check_vowels(line: str) -> bool:
-    a = line.count('a')
-    e = line.count('e')
-    i = line.count('i')
-    o = line.count('o')
-    u = line.count('u')
+    a = line.count("a")
+    e = line.count("e")
+    i = line.count("i")
+    o = line.count("o")
+    u = line.count("u")
 
     return a + e + i + o + u >= 3
 
 
 def _check_forbidden_characters(line: str) -> bool:
-    for chars in ['ab', 'cd', 'pq', 'xy']:
+    for chars in ["ab", "cd", "pq", "xy"]:
         if chars in line:
             return False
 
@@ -36,7 +36,11 @@ def _check_double_characters(line: str) -> bool:
 
 
 def is_nice(line: str) -> bool:
-    return _check_double_characters(line) and _check_forbidden_characters(line) and _check_vowels(line)
+    return (
+        _check_double_characters(line)
+        and _check_forbidden_characters(line)
+        and _check_vowels(line)
+    )
 
 
 @register_solution(2015, 5, 1)
@@ -50,14 +54,14 @@ def part_one(input_data: List[str]):
 
 
 def has_repeating_letter(line: str) -> bool:
-    pattern = re.compile(r'([a-z])[a-z]\1')
+    pattern = re.compile(r"([a-z])[a-z]\1")
     match = pattern.findall(line)
 
     return len(match) > 0
 
 
 def has_recurring_pairs(line: str) -> bool:
-    pattern = re.compile(r'([a-z]{2})[a-z]*\1')
+    pattern = re.compile(r"([a-z]{2})[a-z]*\1")
     match = pattern.findall(line)
 
     return len(match) > 0
@@ -77,7 +81,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 5)
     part_one(data)
     part_two(data)

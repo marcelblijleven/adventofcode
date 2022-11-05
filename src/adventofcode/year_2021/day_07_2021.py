@@ -8,7 +8,7 @@ from adventofcode.util.math_helpers import mean_floor, mean_ceil, gaussian_sum
 
 
 def get_crabs(input_data: List[str]) -> List[int]:
-    return list(map(int, input_data[0].split(',')))
+    return list(map(int, input_data[0].split(",")))
 
 
 def move_to_position(crabs: List[int], position: int) -> int:
@@ -42,7 +42,9 @@ def get_least_amount_of_fuel_part_two_slower(crabs: List[int]) -> int:
     fuel = sum(gaussian_sum(abs(crab - mid)) for crab in crabs)
 
     for position in range(min(crabs[mid:]), max(crabs) + 1):
-        position_fuel = min(fuel, sum(gaussian_sum(abs(crab - position)) for crab in crabs))
+        position_fuel = min(
+            fuel, sum(gaussian_sum(abs(crab - position)) for crab in crabs)
+        )
         fuel = min(fuel, position_fuel)
 
     return fuel
@@ -85,7 +87,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 7)
     part_one(data)
     part_two(data)

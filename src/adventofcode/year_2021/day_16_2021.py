@@ -8,22 +8,22 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 translation_dict: dict[str, str] = {
-    '0': '0000',
-    '1': '0001',
-    '2': '0010',
-    '3': '0011',
-    '4': '0100',
-    '5': '0101',
-    '6': '0110',
-    '7': '0111',
-    '8': '1000',
-    '9': '1001',
-    'A': '1010',
-    'B': '1011',
-    'C': '1100',
-    'D': '1101',
-    'E': '1110',
-    'F': '1111',
+    "0": "0000",
+    "1": "0001",
+    "2": "0010",
+    "3": "0011",
+    "4": "0100",
+    "5": "0101",
+    "6": "0110",
+    "7": "0111",
+    "8": "1000",
+    "9": "1001",
+    "A": "1010",
+    "B": "1011",
+    "C": "1100",
+    "D": "1101",
+    "E": "1110",
+    "F": "1111",
 }
 
 
@@ -45,11 +45,11 @@ def peek_version_and_type_id(buffer: io.StringIO) -> tuple[int, int]:
     version = buffer.read(3)
     type_id = buffer.read(3)
 
-    if version == '':
-        raise ValueError('could not read version from buffer')
+    if version == "":
+        raise ValueError("could not read version from buffer")
 
-    if type_id == '':
-        raise ValueError('could not read type id from buffer')
+    if type_id == "":
+        raise ValueError("could not read type id from buffer")
 
     buffer.seek(position)
     return int(version, 2), int(type_id, 2)
@@ -64,14 +64,14 @@ def peek_version_type_id_and_length_type(buffer: io.StringIO) -> tuple[int, int,
     type_id = buffer.read(3)
     length_type_id = buffer.read(1)
 
-    if version == '':
-        raise ValueError('could not read version from buffer')
+    if version == "":
+        raise ValueError("could not read version from buffer")
 
-    if type_id == '':
-        raise ValueError('could not read type id from buffer')
+    if type_id == "":
+        raise ValueError("could not read type id from buffer")
 
-    if length_type_id == '':
-        raise ValueError('could not read length type id from buffer')
+    if length_type_id == "":
+        raise ValueError("could not read length type id from buffer")
 
     buffer.seek(position)
     return int(version, 2), int(type_id, 2), int(length_type_id, 2)
@@ -127,7 +127,7 @@ def _process_type_ids_0123(type_id: int, values: list[int]) -> int:
     elif type_id == 3:
         return max(values)
     else:
-        raise ValueError('type id does not equal 0, 1, 2 or 3')
+        raise ValueError("type id does not equal 0, 1, 2 or 3")
 
 
 def _process_type_ids_567(type_id: int, values: list[int]) -> int:
@@ -135,7 +135,7 @@ def _process_type_ids_567(type_id: int, values: list[int]) -> int:
     Processes values with type id 5, 6 or 7
     """
     if len(values) != 2:
-        raise ValueError(f'values should have length of 2, got: {values}')
+        raise ValueError(f"values should have length of 2, got: {values}")
 
     if type_id == 5:
         return int(values[0] > values[1])
@@ -154,7 +154,7 @@ def process_values(type_id: int, values: list[int]) -> int:
     elif type_id in [5, 6, 7]:
         return _process_type_ids_567(type_id, values)
     else:
-        raise ValueError(f'unexpected type id received: {type_id}')
+        raise ValueError(f"unexpected type id received: {type_id}")
 
 
 def read_outer_packet(buffer: io.StringIO) -> tuple[list[int], int]:
@@ -175,18 +175,24 @@ def read_outer_packet(buffer: io.StringIO) -> tuple[list[int], int]:
 
         if length_type == 0:
             total_length = int(buffer.read(15), 2)
-            packet_versions, packet_value = read_packets_until_length(buffer, total_length, type_id)
+            packet_versions, packet_value = read_packets_until_length(
+                buffer, total_length, type_id
+            )
             versions += packet_versions
         else:
             number_of_packets = int(buffer.read(11), 2)
-            packet_versions, packet_value = read_packets_until_all_read(buffer, number_of_packets, type_id)
+            packet_versions, packet_value = read_packets_until_all_read(
+                buffer, number_of_packets, type_id
+            )
             versions += packet_versions
 
     read_garbage_bits(buffer)
     return versions, packet_value
 
 
-def read_packets_until_length(buffer: io.StringIO, total_length: int, parent_type_id: int) -> tuple[list[int], int]:
+def read_packets_until_length(
+    buffer: io.StringIO, total_length: int, parent_type_id: int
+) -> tuple[list[int], int]:
     """
     Reads packets from the buffer until the total amount of bits read equals the total length parameter
     """
@@ -206,7 +212,7 @@ def read_packets_until_length(buffer: io.StringIO, total_length: int, parent_typ
             values.append(packet_value)
 
         if buffer.tell() - start_position > total_length:
-            raise ValueError('read past total length of packet')
+            raise ValueError("read past total length of packet")
 
     value = process_values(parent_type_id, values)
     return versions, value
@@ -246,19 +252,21 @@ def read_type_four_packet(buffer: io.StringIO) -> int:
     """
     buffer.read(3)  # version
     buffer.read(3)  # type
-    value = ''
+    value = ""
 
     while True:
         group = buffer.read(5)
         value += group[1:]
 
-        if group.startswith('0'):
+        if group.startswith("0"):
             break
 
     return int(value, 2)
 
 
-def read_operator_packet(buffer: io.StringIO, parent_type_id: int) -> tuple[list[int], int]:
+def read_operator_packet(
+    buffer: io.StringIO, parent_type_id: int
+) -> tuple[list[int], int]:
     """
     Determines the length type id for the packet and calls the correct operator packet
     reader.
@@ -272,10 +280,14 @@ def read_operator_packet(buffer: io.StringIO, parent_type_id: int) -> tuple[list
 
     if length_type_id == 0:
         total_length = int(buffer.read(15), 2)
-        packet_versions, packet_value = read_packets_until_length(buffer, total_length, parent_type_id)
+        packet_versions, packet_value = read_packets_until_length(
+            buffer, total_length, parent_type_id
+        )
     elif length_type_id == 1:
         total_packets = int(buffer.read(11), 2)
-        packet_versions, packet_value = read_packets_until_all_read(buffer, total_packets, parent_type_id)
+        packet_versions, packet_value = read_packets_until_all_read(
+            buffer, total_packets, parent_type_id
+        )
     else:
         raise ValueError(f'unexpected length type "{length_type_id}" received')
 
@@ -322,7 +334,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 16)
     part_one(data)
     part_two(data)

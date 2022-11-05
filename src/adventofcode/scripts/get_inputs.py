@@ -15,25 +15,25 @@ def _download_input(year: int, day: int, session: str) -> bytes:
     """
     Downloads the input as text from the advent of code site
     """
-    cookies = {'session': session}
-    url = f'https://adventofcode.com/{year}/day/{day}/input'
+    cookies = {"session": session}
+    url = f"https://adventofcode.com/{year}/day/{day}/input"
     resp = requests.get(url, cookies=cookies)
     resp.raise_for_status()
     return resp.content  # type: ignore
 
 
 def _save_input(data: bytes, year: int, day: int) -> None:
-    inputs_path = os.path.join(ROOT_DIR, 'inputs')
+    inputs_path = os.path.join(ROOT_DIR, "inputs")
 
     if not os.path.exists((year_path := os.path.join(inputs_path, str(year)))):
         os.mkdir(year_path)
 
-    with open(os.path.join(year_path, f'day_{day:02}.txt'), 'wb') as file:
+    with open(os.path.join(year_path, f"day_{day:02}.txt"), "wb") as file:
         file.write(data)
 
 
 def _read_session():
-    target = os.path.join(ROOT_DIR, '../../.session')
+    target = os.path.join(ROOT_DIR, "../../.session")
     path = os.path.abspath(target)
 
     with open(path) as f:

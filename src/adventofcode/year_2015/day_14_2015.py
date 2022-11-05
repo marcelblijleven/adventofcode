@@ -5,7 +5,7 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-PATTERN = re.compile(r'(\w+)[^0-9]+(\d{1,2})[^0-9]+(\d{1,2})[^0-9]+(\d{2,3}).+')
+PATTERN = re.compile(r"(\w+)[^0-9]+(\d{1,2})[^0-9]+(\d{1,2})[^0-9]+(\d{2,3}).+")
 
 
 class Reindeer:
@@ -35,8 +35,10 @@ class Reindeer:
         return self > other or self == other
 
     def __str__(self):
-        return f'{self.name}. Speed: {self.speed} km/s, distance travelled: {self.distance_travelled}' \
-               f', points: {self.points}'
+        return (
+            f"{self.name}. Speed: {self.speed} km/s, distance travelled: {self.distance_travelled}"
+            f", points: {self.points}"
+        )
 
     def __repr__(self):
         return str(self)
@@ -80,14 +82,20 @@ def get_reindeer(input_data: List[str]) -> List[Reindeer]:
     for line in input_data:
         if (matched := PATTERN.match(line)) and matched is not None:
             name, speed, fly_duration, rest_duration = matched.groups()
-            reindeer.append(Reindeer(name, int(speed), int(fly_duration), int(rest_duration)))
+            reindeer.append(
+                Reindeer(name, int(speed), int(fly_duration), int(rest_duration))
+            )
 
     return reindeer
 
 
 def check_leaderboard_and_assign_points(reindeer: List[Reindeer]):
     leader = sorted(reindeer, reverse=True)[0]
-    tied_racers = [racer for racer in reindeer if racer.distance_travelled == leader.distance_travelled]
+    tied_racers = [
+        racer
+        for racer in reindeer
+        if racer.distance_travelled == leader.distance_travelled
+    ]
 
     for racer in tied_racers:
         racer.assign_point()
@@ -130,7 +138,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 14)
     part_one(data)
     part_two(data)

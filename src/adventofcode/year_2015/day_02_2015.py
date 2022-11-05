@@ -7,7 +7,7 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-pattern = re.compile(r'(\d+)x(\d+)x(\d+)')
+pattern = re.compile(r"(\d+)x(\d+)x(\d+)")
 
 
 class Box:
@@ -19,9 +19,9 @@ class Box:
     @property
     def surface(self) -> int:
         surface_area = (
-            2 * self.length * self.width +
-            2 * self.width * self.height +
-            2 * self.height * self.length
+            2 * self.length * self.width
+            + 2 * self.width * self.height
+            + 2 * self.height * self.length
         )
 
         extra = [
@@ -37,7 +37,7 @@ def parse_line(line: str) -> Box:
     match = pattern.match(line)
 
     if not match:
-        raise ValueError('could not parse line')
+        raise ValueError("could not parse line")
 
     groups = match.groups()
     return Box(int(groups[0]), int(groups[1]), int(groups[2]))
@@ -80,7 +80,7 @@ def part_two(input_data: List[str]):
     return sum(answer)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 2)
     part_one(data)
     part_two(data)

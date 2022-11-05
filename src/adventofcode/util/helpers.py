@@ -9,8 +9,8 @@ from adventofcode.util.console import console
 
 
 def _get_year_from_segment(segment: str) -> int:
-    if not segment.startswith('year_'):
-        raise ValueError(f'invalid year segment received: {segment}')
+    if not segment.startswith("year_"):
+        raise ValueError(f"invalid year segment received: {segment}")
 
     return int(segment[5:])
 
@@ -28,17 +28,17 @@ def get_year_from_file(file: str):
 
 def _get_prefix(year: int, day: int, part: int, version: str) -> str:
     if not day or not part:
-        raise ValueError('incorrect values provided for solution timer')
+        raise ValueError("incorrect values provided for solution timer")
 
-    if version and version != 'normal':
-        version = f' [yellow]{version}[/yellow]'
+    if version and version != "normal":
+        version = f" [yellow]{version}[/yellow]"
     else:
-        version = ''
+        version = ""
 
     if RUNNING_ALL:
-        prefix = f'[blue]  - day {day:02} part {part:02}[/blue]{version}: '
+        prefix = f"[blue]  - day {day:02} part {part:02}[/blue]{version}: "
     else:
-        prefix = f'[blue]{year} day {day:02} part {part:02}[/blue]{version}: '
+        prefix = f"[blue]{year} day {day:02} part {part:02}[/blue]{version}: "
 
     return prefix
 
@@ -54,18 +54,24 @@ def solution_timer(solution_input: Any, func: Callable, year: int, day: int, par
         return
 
     if solution is None:
-        console.print(f'{prefix}[red]solution not found')
+        console.print(f"{prefix}[red]solution not found")
         return
 
     if not RUNNING_BENCHMARKS:
-        console.print(f'{prefix}{solution} in {diff:.2f} ms')
+        console.print(f"{prefix}{solution} in {diff:.2f} ms")
         return solution
 
     return diff
 
 
-def solution_profiler(year: int, day: int, part: int, version: str = '', stats_amount: int = 10,
-                      sort: Literal['time', 'cumulative'] = 'time'):  # noqa: C901, type: ignore
+def solution_profiler(
+    year: int,
+    day: int,
+    part: int,
+    version: str = "",
+    stats_amount: int = 10,
+    sort: Literal["time", "cumulative"] = "time",
+):  # noqa: C901, type: ignore
     prefix = _get_prefix(year, day, part, version)
 
     def decorator(func: Callable):  # type: ignore
@@ -75,15 +81,15 @@ def solution_profiler(year: int, day: int, part: int, version: str = '', stats_a
 
             stats = pstats.Stats(profiler)
 
-            if sort == 'time':
+            if sort == "time":
                 stats.sort_stats(pstats.SortKey.TIME)
-            elif sort == 'cumulative':
+            elif sort == "cumulative":
                 stats.sort_stats(pstats.SortKey.CUMULATIVE)
             else:
                 raise ValueError('only "time" and "cumulative" are supported')
 
             stats.sort_stats(pstats.SortKey.TIME)
-            console.print(f'{prefix} profiling')
+            console.print(f"{prefix} profiling")
             stats.print_stats(stats_amount)
             return solution
 
@@ -117,10 +123,10 @@ def grid_to_string(grid: dict[tuple[int, int], Any]) -> str:
     max_x, max_y = max(grid.keys())
 
     for y in range(max_y + 1):
-        line = ''
+        line = ""
         for x in range(max_x + 1):
             line += str(grid[(x, y)])
 
         lines.append(line)
 
-    return '\n'.join(lines)
+    return "\n".join(lines)

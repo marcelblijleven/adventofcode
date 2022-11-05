@@ -22,20 +22,20 @@ def fold_position_along_x(position: Position, fold_x: int) -> Position:
 
 
 def parse_input(input_data: List[str]) -> tuple[Paper, List[Instruction]]:
-    text_input = '\n'.join(input_data)
+    text_input = "\n".join(input_data)
 
-    position_input, instruction_input = text_input.split('\n\n')
+    position_input, instruction_input = text_input.split("\n\n")
     paper: Paper = {}
 
-    for line in position_input.split('\n'):
-        x, y = map(int, line.split(','))
+    for line in position_input.split("\n"):
+        x, y = map(int, line.split(","))
         paper[(x, y)] = 1
 
     instructions: List[Instruction] = []
 
-    for instruction in instruction_input.split('\n'):
-        parts = instruction.split(' ')
-        axis, position = parts[-1].split('=')
+    for instruction in instruction_input.split("\n"):
+        parts = instruction.split(" ")
+        axis, position = parts[-1].split("=")
         instructions.append((axis, int(position)))
 
     return paper, instructions
@@ -83,12 +83,12 @@ def _fold_paper_along_y(paper: Paper, fold_position) -> Paper:
 def fold_paper(paper: Paper, fold_instruction: Instruction) -> Paper:
     axis, fold_position = fold_instruction
 
-    if axis == 'x':
+    if axis == "x":
         paper = _fold_paper_along_x(paper, fold_position)
-    elif axis == 'y':
+    elif axis == "y":
         paper = _fold_paper_along_y(paper, fold_position)
     else:
-        raise ValueError(f'invalid instruction received: {fold_instruction}')
+        raise ValueError(f"invalid instruction received: {fold_instruction}")
 
     return paper
 
@@ -99,15 +99,15 @@ def _paper_to_str(paper: Paper) -> str:
     lines: List[str] = []
 
     for y in range(max_y + 1):
-        line = ''
+        line = ""
         for x in range(max_x + 1):
             if (x, y) in paper:
-                line += '█'
+                line += "█"
             else:
-                line += ' '
+                line += " "
         lines.append(line)
 
-    return '\n'.join(lines)
+    return "\n".join(lines)
 
 
 def print_paper(paper: Paper) -> None:
@@ -134,7 +134,7 @@ def part_one(input_data: List[str]):
 def part_two(input_data: List[str]):
     paper, instructions = parse_input(input_data)
     paper = run_instructions(paper, instructions)
-    answer = '\n' + _paper_to_str(paper)
+    answer = "\n" + _paper_to_str(paper)
 
     if not answer:
         raise SolutionNotFoundException(2021, 13, 2)
@@ -142,7 +142,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 13)
     part_one(data)
     part_two(data)

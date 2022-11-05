@@ -33,19 +33,19 @@ class Fish:
 
     def spawn_offspring(self) -> Fish:
         if not self.can_spawn:
-            raise ValueError('cannot spawn offspring too quick')
+            raise ValueError("cannot spawn offspring too quick")
 
         self.can_spawn = False
         return Fish()
 
 
 def get_starting_fish(input_data: List[str]) -> Generator[Fish, None, None]:
-    for fish in map(int, input_data[0].split(',')):
+    for fish in map(int, input_data[0].split(",")):
         yield Fish(fish)
 
 
 def get_starting_fish_no_classes(input_data: List[str]) -> Generator[int, None, None]:
-    for fish in map(int, input_data[0].split(',')):
+    for fish in map(int, input_data[0].split(",")):
         yield fish
 
 
@@ -81,7 +81,9 @@ def count_fish_faster(input_data: List[str], stop_after: int) -> int:
         cyclic_days[f] += 1
 
     for day in range(stop_after):
-        target_day = day % len(cyclic_days)  # This will make it loop back to the start of the days list
+        target_day = day % len(
+            cyclic_days
+        )  # This will make it loop back to the start of the days list
         fish = cyclic_days[target_day]
 
         next_spawn_day_existing_fish = (target_day + 7) % number_of_days
@@ -117,7 +119,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-@register_solution(2021, 6, 2, version='faster')
+@register_solution(2021, 6, 2, version="faster")
 def part_two_faster(input_data: List[str]):
     starting_fish = [f for f in get_starting_fish_no_classes(input_data)]
     days = [starting_fish.count(i) for i in range(9)]
@@ -130,7 +132,7 @@ def part_two_faster(input_data: List[str]):
     return sum(days)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 6)
     part_one(data)
     part_two(data)

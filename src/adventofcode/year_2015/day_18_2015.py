@@ -8,8 +8,8 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 LightType = tuple[int, int]
 GridType = Dict[LightType, str]
-ON = '#'
-OFF = '.'
+ON = "#"
+OFF = "."
 
 
 def read_grid(input_data: List[str]) -> GridType:
@@ -66,7 +66,7 @@ def get_next_state(light: LightType, grid: GridType) -> str:
 
         return OFF
     else:
-        raise ValueError(f'unknown light state: {own_state}')
+        raise ValueError(f"unknown light state: {own_state}")
 
 
 def animate(grid: GridType) -> GridType:
@@ -103,7 +103,7 @@ def grid_to_list_str(grid: GridType) -> List[str]:
     lines = []
 
     for y in range(size):
-        line = ''
+        line = ""
         for x in range(size):
             line += grid[(x, y)]
 
@@ -119,7 +119,7 @@ def part_one(input_data: List[str]):
     for i in range(100):
         grid = animate(grid)
 
-    answer = ''.join(grid_to_list_str(grid)).count(ON)
+    answer = "".join(grid_to_list_str(grid)).count(ON)
 
     if not answer:
         raise SolutionNotFoundException(2015, 18, 1)
@@ -137,7 +137,7 @@ def part_two(input_data: List[str]):
     for i in range(100):
         grid = animate_stuck_corners(grid)
 
-    answer = ''.join(grid_to_list_str(grid)).count(ON)
+    answer = "".join(grid_to_list_str(grid)).count(ON)
 
     if not answer:
         raise SolutionNotFoundException(2015, 18, 2)
@@ -145,7 +145,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2015, 18)
     part_one(data)
     part_two(data)

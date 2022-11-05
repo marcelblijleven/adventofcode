@@ -78,7 +78,7 @@ def part_two(input_data: List[str]):
     return answer
 
 
-@register_solution(2021, 1, 1, version='re-use part one')
+@register_solution(2021, 1, 1, version="re-use part one")
 def part_two_reuse_part_one(input_data: List[str]):
     answer = sonar_sweep_sliding_window_reuse(list(map(int, input_data)))
 
@@ -88,7 +88,7 @@ def part_two_reuse_part_one(input_data: List[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2021, 1)
     part_one(data)
     part_two(data)
