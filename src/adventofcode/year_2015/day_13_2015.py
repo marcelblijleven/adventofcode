@@ -1,6 +1,6 @@
 import re
 from itertools import combinations, permutations
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -23,7 +23,7 @@ def parse_line(line: str, chart: HappinessChartType) -> None:
     raise ValueError(f"could not parse line: {line}")
 
 
-def get_happiness_chart(input_data: List[str]) -> HappinessChartType:
+def get_happiness_chart(input_data: list[str]) -> HappinessChartType:
     chart: HappinessChartType = {}
 
     for line in input_data:
@@ -32,7 +32,7 @@ def get_happiness_chart(input_data: List[str]) -> HappinessChartType:
     return chart
 
 
-def get_unique_persons(chart: HappinessChartType) -> List[str]:
+def get_unique_persons(chart: HappinessChartType) -> list[str]:
     persons = set()
 
     for keys in chart.keys():
@@ -41,8 +41,8 @@ def get_unique_persons(chart: HappinessChartType) -> List[str]:
     return list(persons)
 
 
-def get_all_combinations(persons: List[str]) -> List[tuple[str, str]]:
-    results: List[tuple[str, str]] = []
+def get_all_combinations(persons: list[str]) -> list[tuple[str, str]]:
+    results: list[tuple[str, str]] = []
 
     for combination in combinations(persons, 2):
         results.append(combination)
@@ -50,7 +50,7 @@ def get_all_combinations(persons: List[str]) -> List[tuple[str, str]]:
     return results
 
 
-def get_seating_happiness(persons: List[str], chart: HappinessChartType) -> int:
+def get_seating_happiness(persons: list[str], chart: HappinessChartType) -> int:
     permutations_list = permutations(persons, len(persons))
 
     max_happiness = 0
@@ -89,7 +89,7 @@ def update_happiness_chart(
 
 
 @register_solution(2015, 13, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     chart = get_happiness_chart(input_data)
     persons = get_unique_persons(chart)
 
@@ -102,7 +102,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 13, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     chart = get_happiness_chart(input_data)
     chart = update_happiness_chart(chart, "Marcel")
     persons = get_unique_persons(chart)

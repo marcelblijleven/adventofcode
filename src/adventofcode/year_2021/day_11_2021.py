@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -33,7 +32,7 @@ class Octopus:
         if not self._has_flashed:
             self.energy += 1
 
-    def _adjacent_octopuses(self) -> List[Position]:
+    def _adjacent_octopuses(self) -> list[Position]:
         x, y = self.position
         octopuses = [
             (x - 1, y - 1),
@@ -67,7 +66,7 @@ class Octopus:
 Grid = dict[Position, Octopus]
 
 
-def parse_input(input_data: List[str]) -> Grid:
+def parse_input(input_data: list[str]) -> Grid:
     grid: Grid = {}
 
     for y, line in enumerate(input_data):
@@ -93,9 +92,9 @@ def run_ticks_until_sync(grid: OctopusGrid) -> int:
 
 
 class OctopusGrid:
-    def __init__(self, input_data: List[str]):
+    def __init__(self, input_data: list[str]):
         self.grid = parse_input(input_data)
-        self.can_flash: List[Octopus] = []
+        self.can_flash: list[Octopus] = []
         self.flash_counter = 0
         self.total_octopuses = 100
 
@@ -138,7 +137,7 @@ class OctopusGrid:
 
 
 @register_solution(2021, 11, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     grid = OctopusGrid(input_data)
     run_ticks(grid, 100)
 
@@ -151,7 +150,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 11, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     grid = OctopusGrid(input_data)
     answer = run_ticks_until_sync(grid)
 

@@ -1,5 +1,5 @@
 from itertools import groupby
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -17,7 +17,7 @@ def iterate(value: str) -> str:
 
 
 @register_solution(2015, 10, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     value = input_data[0]
 
     for i in range(0, 40):
@@ -32,7 +32,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 10, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     value = input_data[0]
 
     for i in range(0, 50):

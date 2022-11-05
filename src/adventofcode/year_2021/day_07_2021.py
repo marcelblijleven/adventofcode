@@ -1,5 +1,5 @@
 from statistics import median
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -7,11 +7,11 @@ from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.util.math_helpers import mean_floor, mean_ceil, gaussian_sum
 
 
-def get_crabs(input_data: List[str]) -> List[int]:
+def get_crabs(input_data: list[str]) -> list[int]:
     return list(map(int, input_data[0].split(",")))
 
 
-def move_to_position(crabs: List[int], position: int) -> int:
+def move_to_position(crabs: list[int], position: int) -> int:
     fuel = 0
 
     for crab in crabs:
@@ -20,11 +20,11 @@ def move_to_position(crabs: List[int], position: int) -> int:
     return fuel
 
 
-def get_least_amount_of_fuel(crabs: List[int]) -> int:
+def get_least_amount_of_fuel(crabs: list[int]) -> int:
     return move_to_position(crabs, int(median(crabs)))
 
 
-def get_least_amount_of_fuel_part_two(crabs: List[int]) -> int:
+def get_least_amount_of_fuel_part_two(crabs: list[int]) -> int:
     crabs.sort()
     mean_crabs_floor = mean_floor(crabs)
     mean_crabs_ceil = mean_ceil(crabs)
@@ -35,7 +35,7 @@ def get_least_amount_of_fuel_part_two(crabs: List[int]) -> int:
     )
 
 
-def get_least_amount_of_fuel_part_two_slower(crabs: List[int]) -> int:
+def get_least_amount_of_fuel_part_two_slower(crabs: list[int]) -> int:
     crabs.sort()
     mid = crabs[len(crabs) // 2]
 
@@ -50,7 +50,7 @@ def get_least_amount_of_fuel_part_two_slower(crabs: List[int]) -> int:
     return fuel
 
 
-def try_all_positions(crabs: List[int]) -> int:
+def try_all_positions(crabs: list[int]) -> int:
     fuel = int(1e10)
     crabs.sort()
 
@@ -66,7 +66,7 @@ def try_all_positions(crabs: List[int]) -> int:
 
 
 @register_solution(2021, 7, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     crabs = get_crabs(input_data)
     answer = get_least_amount_of_fuel(crabs)
 
@@ -77,7 +77,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 7, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     crabs = get_crabs(input_data)
     answer = get_least_amount_of_fuel_part_two(crabs)
 

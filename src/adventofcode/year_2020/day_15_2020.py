@@ -1,15 +1,13 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def parse_input(input_data: List[str]) -> List[int]:
+def parse_input(input_data: list[str]) -> list[int]:
     return list(map(int, input_data[0].split(",")))
 
 
-def solve(input_data: List[int], rounds: int) -> int:
+def solve(input_data: list[int], rounds: int) -> int:
     seen = {value: index + 1 for index, value in enumerate(input_data[:-1])}
     number = input_data[-1]
 
@@ -22,7 +20,7 @@ def solve(input_data: List[int], rounds: int) -> int:
 
 
 @register_solution(2020, 15, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = solve(parse_input(input_data), 2020)
 
     if not answer:
@@ -32,7 +30,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2020, 15, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = solve(parse_input(input_data), 30000000)
 
     if not answer:

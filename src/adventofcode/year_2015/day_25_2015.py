@@ -1,5 +1,3 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -27,7 +25,7 @@ def get_next_code(current_code: int, coords: tuple[int, int]) -> int:
 
 
 @register_solution(2015, 25, 1)
-def part_one(_: List[str]):
+def part_one(_: list[str]):
     row = 2978
     column = 3083
     answer = get_next_code(20151125, (column, row))
@@ -39,7 +37,7 @@ def part_one(_: List[str]):
 
 
 @register_solution(2015, 25, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = "hooray"
 
     if not answer:

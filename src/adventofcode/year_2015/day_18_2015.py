@@ -1,5 +1,5 @@
 import math
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -12,7 +12,7 @@ ON = "#"
 OFF = "."
 
 
-def read_grid(input_data: List[str]) -> GridType:
+def read_grid(input_data: list[str]) -> GridType:
     grid: GridType = {}
 
     for y, line in enumerate(input_data):
@@ -30,7 +30,7 @@ def get_neighbours(light: LightType):
     678
     """
     x, y = light
-    neighbours: List[LightType] = []
+    neighbours: list[LightType] = []
 
     for y_diff in range(-1, 2):
         for x_diff in range(-1, 2):
@@ -44,7 +44,7 @@ def get_neighbours(light: LightType):
 def get_next_state(light: LightType, grid: GridType) -> str:
     own_state = grid[light]
     neighbours = get_neighbours(light)
-    neighbour_states: List[str] = []
+    neighbour_states: list[str] = []
 
     for neighbour in neighbours:
         if neighbour not in grid.keys():
@@ -91,13 +91,13 @@ def animate_stuck_corners(grid: GridType) -> GridType:
     return new_grid
 
 
-def get_corners(grid: GridType) -> List[LightType]:
+def get_corners(grid: GridType) -> list[LightType]:
     max_x = max([keys[0] for keys in grid.keys()])
     max_y = max([keys[1] for keys in grid.keys()])
     return [(0, 0), (0, max_y), (max_x, max_y), (max_x, 0)]
 
 
-def grid_to_list_str(grid: GridType) -> List[str]:
+def grid_to_list_str(grid: GridType) -> list[str]:
     # will only work on square grids
     size = int(math.sqrt(len(grid.keys())))
     lines = []
@@ -113,7 +113,7 @@ def grid_to_list_str(grid: GridType) -> List[str]:
 
 
 @register_solution(2015, 18, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     grid = read_grid(input_data)
 
     for i in range(100):
@@ -128,7 +128,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 18, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     grid = read_grid(input_data)
 
     for corner in get_corners(grid):

@@ -1,5 +1,5 @@
 from itertools import combinations
-from typing import List
+
 
 import math
 
@@ -8,11 +8,11 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def get_quantum_entanglement(packages: List[int]) -> int:
+def get_quantum_entanglement(packages: list[int]) -> int:
     return math.prod(packages)
 
 
-def move_packages_into_groups(all_packages: List[int], number_of_groups: int) -> int:
+def move_packages_into_groups(all_packages: list[int], number_of_groups: int) -> int:
     size = sum(all_packages) // number_of_groups
 
     for package_idx in range(len(all_packages)):
@@ -29,7 +29,7 @@ def move_packages_into_groups(all_packages: List[int], number_of_groups: int) ->
 
 
 @register_solution(2015, 24, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     packages = list(map(int, input_data))
     answer = move_packages_into_groups(packages, 3)
 
@@ -40,7 +40,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 24, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     packages = list(map(int, input_data))
     answer = move_packages_into_groups(packages, 4)
 

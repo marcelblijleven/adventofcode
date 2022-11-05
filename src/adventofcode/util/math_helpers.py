@@ -1,9 +1,7 @@
-from typing import List
-
 import math
 
 
-def mean(target_list: List[int], floor: bool = True) -> int:
+def mean(target_list: list[int], floor: bool = True) -> int:
     """
     Gets the mean value of the list, rounded down if floor is True, else rounded up
     """
@@ -13,14 +11,14 @@ def mean(target_list: List[int], floor: bool = True) -> int:
     return mean_ceil(target_list)
 
 
-def mean_floor(target_list: List[int]) -> int:
+def mean_floor(target_list: list[int]) -> int:
     """
     Gets the rounded down mean of the list
     """
     return sum(target_list) // len(target_list)
 
 
-def mean_ceil(target_list: List[int]) -> int:
+def mean_ceil(target_list: list[int]) -> int:
     """
     Gets the rounded up mean of the list
     """

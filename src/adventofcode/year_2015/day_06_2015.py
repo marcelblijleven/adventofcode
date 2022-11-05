@@ -1,5 +1,5 @@
 import re
-from typing import List, Callable, Dict
+from typing import Callable, Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -52,7 +52,7 @@ def read_instruction_part_two(
     raise ValueError("could not read instructions")
 
 
-def run_instructions(input_data: List[str]) -> int:
+def run_instructions(input_data: list[str]) -> int:
     lights = {}
 
     for line in input_data:
@@ -71,7 +71,7 @@ def run_instructions(input_data: List[str]) -> int:
     return count_lights(lights)
 
 
-def run_instructions_part_two(input_data: List[str]) -> int:
+def run_instructions_part_two(input_data: list[str]) -> int:
     lights = {}
 
     for line in input_data:
@@ -102,7 +102,7 @@ def count_brightness(lights: Dict[tuple[int, int], int]) -> int:
 
 
 @register_solution(2015, 6, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = run_instructions(input_data)
 
     if not answer:
@@ -112,7 +112,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 6, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = run_instructions_part_two(input_data)
 
     if not answer:

@@ -1,6 +1,6 @@
 import re
 from itertools import permutations
-from typing import List, Union
+from typing import Union
 
 import math
 
@@ -135,12 +135,12 @@ def calculate_magnitude(snailfish_number: str) -> int:
     raise ValueError(f"cannot parse snailfish number: {snailfish_number}")
 
 
-def solve_homework(input_data: List[str]) -> int:
+def solve_homework(input_data: list[str]) -> int:
     result = parse_snailfish_numbers(input_data)
     return calculate_magnitude(result)
 
 
-def solve_homework_part_two(input_data: List[str]) -> int:
+def solve_homework_part_two(input_data: list[str]) -> int:
     max_magnitude = 0
 
     for perm in permutations(input_data, 2):
@@ -152,7 +152,7 @@ def solve_homework_part_two(input_data: List[str]) -> int:
 
 
 @register_solution(2021, 18, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = solve_homework(input_data)
 
     if not answer:
@@ -162,7 +162,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 18, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = solve_homework_part_two(input_data)
 
     if not answer:

@@ -1,5 +1,5 @@
 import statistics
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -10,7 +10,7 @@ def get_midpoint(min_row: int, max_row: int) -> int:
     return round(statistics.median(range(min_row, max_row + 1)))
 
 
-def parse(sequence: List[str], min_row: int, max_row: int) -> int:
+def parse(sequence: list[str], min_row: int, max_row: int) -> int:
     next_step = sequence.pop(0)
 
     if next_step in ["F", "L"]:
@@ -29,7 +29,7 @@ def parse(sequence: List[str], min_row: int, max_row: int) -> int:
 
 
 @register_solution(2020, 5, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     ids = []
 
     for boarding_pass in input_data:
@@ -43,7 +43,7 @@ def part_one(input_data: List[str]):
     return max(ids)
 
 
-def _part_one_binary_version(input_data: List[str]) -> List[int]:
+def _part_one_binary_version(input_data: list[str]) -> list[int]:
     ids = []
 
     for boarding_pass in input_data:
@@ -69,7 +69,7 @@ def part_one_binary_version(input_data):
 
 
 @register_solution(2020, 5, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     ids = _part_one_binary_version(input_data)
 
     for i in range(0, max(ids)):

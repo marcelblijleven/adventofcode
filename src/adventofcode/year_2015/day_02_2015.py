@@ -1,6 +1,6 @@
 import math
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -61,7 +61,7 @@ def get_ribbon(line: str) -> int:
 
 
 @register_solution(2015, 2, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = map(get_surface, input_data)
 
     if not answer:
@@ -71,7 +71,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 2, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = map(get_ribbon, input_data)
 
     if not answer:

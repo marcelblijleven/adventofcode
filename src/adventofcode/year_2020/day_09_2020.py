@@ -1,11 +1,9 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def decipher_xmas(preamble: int, numbers: List[int]) -> int:
+def decipher_xmas(preamble: int, numbers: list[int]) -> int:
     idx = preamble
 
     while preamble < len(numbers):
@@ -28,7 +26,7 @@ def decipher_xmas(preamble: int, numbers: List[int]) -> int:
 
 
 @register_solution(2020, 9, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     preamble = 25
     int_data = list(map(int, input_data))
     answer = decipher_xmas(preamble, int_data)
@@ -39,7 +37,7 @@ def part_one(input_data: List[str]):
     return answer
 
 
-def find_group_sum(numbers: List[int], target: int) -> List[int]:
+def find_group_sum(numbers: list[int], target: int) -> list[int]:
     for left_edge in range(len(numbers)):
         for right_edge in range(len(numbers)):
             window = numbers[left_edge:right_edge]
@@ -50,7 +48,7 @@ def find_group_sum(numbers: List[int], target: int) -> List[int]:
 
 
 @register_solution(2020, 9, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     preamble = 25
     int_data = list(map(int, input_data))
     wrong_number = decipher_xmas(preamble, int_data)

@@ -3,7 +3,7 @@ import multiprocessing
 from asyncio import Queue
 from collections import defaultdict
 from itertools import repeat
-from typing import List, DefaultDict, Set
+from typing import DefaultDict, Set
 
 import math
 
@@ -19,7 +19,7 @@ def _cave_floor_factory() -> int:
     return 10
 
 
-def parse_input(input_data: List[str]) -> tuple[CaveFloor, int, int]:
+def parse_input(input_data: list[str]) -> tuple[CaveFloor, int, int]:
     cave_floor = defaultdict(_cave_floor_factory)
     height = 0
     width = 0
@@ -33,8 +33,8 @@ def parse_input(input_data: List[str]) -> tuple[CaveFloor, int, int]:
     return cave_floor, width, height
 
 
-def get_low_points(cave_floor: CaveFloor, width: int, height: int) -> List[Position]:
-    positions: List[Position] = []
+def get_low_points(cave_floor: CaveFloor, width: int, height: int) -> list[Position]:
+    positions: list[Position] = []
 
     for y in range(height + 1):
         for x in range(width + 1):
@@ -79,7 +79,7 @@ def calculate_basin(
 
 def find_basin_size_product(cave_floor: CaveFloor, width: int, height: int) -> int:
     low_points = get_low_points(cave_floor, width, height)
-    basin_sizes: List[int] = []
+    basin_sizes: list[int] = []
 
     for point in low_points:
         basin: Set[Position] = set()
@@ -135,7 +135,7 @@ def find_basin_size_product_mp(cave_floor: CaveFloor, width: int, height: int) -
 
 
 def get_risk_level(cave_floor: CaveFloor, width: int, height: int) -> int:
-    points: List[int] = []
+    points: list[int] = []
 
     for y in range(height + 1):
         for x in range(width + 1):
@@ -154,7 +154,7 @@ def get_risk_level(cave_floor: CaveFloor, width: int, height: int) -> int:
 
 
 @register_solution(2021, 9, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = get_risk_level(*parse_input(input_data))
 
     if not answer:
@@ -164,7 +164,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 9, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = find_basin_size_product(*parse_input(input_data))
 
     if not answer:
@@ -174,7 +174,7 @@ def part_two(input_data: List[str]):
 
 
 @register_solution(2021, 9, 2, version="async")
-def part_two_async(input_data: List[str]):
+def part_two_async(input_data: list[str]):
     answer = asyncio.run(find_basin_size_product_async(*parse_input(input_data)))
 
     if not answer:
@@ -184,7 +184,7 @@ def part_two_async(input_data: List[str]):
 
 
 @register_solution(2021, 9, 2, version="multiprocessing")
-def part_two_mp(input_data: List[str]):
+def part_two_mp(input_data: list[str]):
     answer = find_basin_size_product_mp(*parse_input(input_data))
 
     if not answer:

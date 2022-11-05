@@ -1,12 +1,10 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.registry.decorators import register_solution
 
 
 @register_solution(2015, 1, 1)
-def part_one(input_data: List[str]) -> int:
+def part_one(input_data: list[str]) -> int:
     floor = 0
 
     for char in input_data[0]:
@@ -19,7 +17,7 @@ def part_one(input_data: List[str]) -> int:
 
 
 @register_solution(2015, 1, 2)
-def part_two(input_data: List[str]) -> int:
+def part_two(input_data: list[str]) -> int:
     floor = 0
 
     for i, char in enumerate(input_data[0]):

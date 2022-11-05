@@ -1,12 +1,11 @@
 import os
 import warnings
 
-from typing import List
 
 from adventofcode.config import ROOT_DIR
 
 
-def get_input_for_day(year: int, day: int) -> List[str]:
+def get_input_for_day(year: int, day: int) -> list[str]:
     """
     Get the input for the year/day as list of strings
     """
@@ -23,7 +22,7 @@ def get_input_for_day_as_str(year: int, day: int) -> str:
     return _read_file(input_file)
 
 
-def _read_lines(file_name) -> List[str]:
+def _read_lines(file_name) -> list[str]:
     """
     Reads file to list of string
     """
@@ -33,7 +32,7 @@ def _read_lines(file_name) -> List[str]:
     return lines
 
 
-def _get_input(file_name) -> List[str]:
+def _get_input(file_name) -> list[str]:
     """
     Strips new lines from input file and returns it as list of string
     """

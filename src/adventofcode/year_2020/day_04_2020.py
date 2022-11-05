@@ -1,14 +1,14 @@
 import re
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def get_passports(batch_file: str) -> List[Dict[str, str]]:
+def get_passports(batch_file: str) -> list[Dict[str, str]]:
     _data = batch_file.split("\n\n")
-    passports: List[Dict[str, str]] = []
+    passports: list[Dict[str, str]] = []
 
     for value in _data:
         passports.append(get_passport_as_dict(value))

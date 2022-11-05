@@ -1,6 +1,6 @@
 import dataclasses
 import itertools
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -76,8 +76,8 @@ def get_shop_inventory():
 def calculate_cost(boss: Character):
     weapons, armor, rings = get_shop_inventory()
 
-    wins: List[int] = []
-    losses: List[int] = []
+    wins: list[int] = []
+    losses: list[int] = []
     max_cost: int = 0
 
     for weapon in weapons:
@@ -119,7 +119,7 @@ def get_damage(attacker: Character, defender: Character) -> int:
     return hit_points
 
 
-def get_boss(input_data: List[str]) -> Character:
+def get_boss(input_data: list[str]) -> Character:
     health = int(input_data[0].split(": ")[1])
     damage = int(input_data[1].split(": ")[1])
     armor = int(input_data[2].split(": ")[1])
@@ -145,7 +145,7 @@ def fight(player: Character, boss: Character) -> bool:
 
 
 @register_solution(2015, 21, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     boss = get_boss(input_data)
     answer, _ = calculate_cost(boss)
 
@@ -157,7 +157,7 @@ def part_one(input_data: List[str]):
 
 # Solution isn't correct for part 2
 @register_solution(2015, 21, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     boss = get_boss(input_data)
     _, answer = calculate_cost(boss)
 

@@ -1,6 +1,6 @@
 import re
 from itertools import permutations
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -11,7 +11,7 @@ PATTERN = re.compile(r"(\w+)")
 DistDictType = Dict[tuple[str, str], int]
 
 
-def get_all_cities(input_data: List[str], dist_dict: DistDictType) -> List[str]:
+def get_all_cities(input_data: list[str], dist_dict: DistDictType) -> list[str]:
     cities = set()
 
     for line in input_data:
@@ -27,7 +27,7 @@ def get_all_cities(input_data: List[str], dist_dict: DistDictType) -> List[str]:
     return list(cities)
 
 
-def get_all_routes(cities: List[str]) -> list[tuple[str, ...]]:
+def get_all_routes(cities: list[str]) -> list[tuple[str, ...]]:
     routes = []
 
     for route in permutations(cities, len(cities)):
@@ -37,8 +37,8 @@ def get_all_routes(cities: List[str]) -> list[tuple[str, ...]]:
 
 
 def _get_route_distances(
-    routes: List[tuple[str, ...]], dist_dict: DistDictType
-) -> List[int]:
+    routes: list[tuple[str, ...]], dist_dict: DistDictType
+) -> list[int]:
     distances = []
     for route in routes:
         distance = 0
@@ -59,16 +59,16 @@ def _get_route_distances(
     return distances
 
 
-def get_fastest_route(routes: List[tuple[str, ...]], dist_dict: DistDictType) -> int:
+def get_fastest_route(routes: list[tuple[str, ...]], dist_dict: DistDictType) -> int:
     return min(_get_route_distances(routes, dist_dict))
 
 
-def get_slowest_route(routes: List[tuple[str, ...]], dist_dict: DistDictType) -> int:
+def get_slowest_route(routes: list[tuple[str, ...]], dist_dict: DistDictType) -> int:
     return max(_get_route_distances(routes, dist_dict))
 
 
 @register_solution(2015, 9, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     dist_dict: DistDictType = {}
     cities = get_all_cities(input_data, dist_dict)
     routes = get_all_routes(cities)
@@ -82,7 +82,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 9, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     dist_dict: DistDictType = {}
     cities = get_all_cities(input_data, dist_dict)
     routes = get_all_routes(cities)

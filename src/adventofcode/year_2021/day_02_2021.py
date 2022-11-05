@@ -1,5 +1,3 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -17,8 +15,8 @@ def parse_instruction(instruction: str) -> Instruction:
     return direction, int(steps)
 
 
-def parse_instructions(input_data: List[str]) -> List[Instruction]:
-    instructions: List[Instruction] = []
+def parse_instructions(input_data: list[str]) -> list[Instruction]:
+    instructions: list[Instruction] = []
 
     for instruction in input_data:
         instructions.append(parse_instruction(instruction))
@@ -70,7 +68,7 @@ def get_new_position(
     return _get_new_position_with_aim(position, aim, instruction)
 
 
-def move_submarine(input_data: List[str], include_aim: bool) -> Position:
+def move_submarine(input_data: list[str], include_aim: bool) -> Position:
     position = (0, 0)
     aim = 0
     instructions = parse_instructions(input_data)
@@ -82,7 +80,7 @@ def move_submarine(input_data: List[str], include_aim: bool) -> Position:
 
 
 @register_solution(2021, 2, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     x, y = move_submarine(input_data, False)
     answer = x * y
 
@@ -93,7 +91,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 2, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     x, y = move_submarine(input_data, True)
     answer = x * y
 

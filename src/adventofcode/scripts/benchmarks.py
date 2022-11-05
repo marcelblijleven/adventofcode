@@ -81,8 +81,8 @@ def create_benchmark_text(benchmarks: Benchmarks) -> str:
     return "\n".join(text)
 
 
-def generate_rich_tables(benchmarks: Benchmarks) -> List[tuple[int, Table]]:
-    tables: List[tuple[int, Table]] = []
+def generate_rich_tables(benchmarks: Benchmarks) -> list[tuple[int, Table]]:
+    tables: list[tuple[int, Table]] = []
 
     for year, days in benchmarks.items():
         console.print(f"[bold]{year}")
@@ -197,7 +197,7 @@ def _retrieve_benchmarks() -> Benchmarks:
     return benchmarks
 
 
-def _get_extra_solutions_in_module(module: str) -> List[str]:
+def _get_extra_solutions_in_module(module: str) -> list[str]:
     def _eval_functions(f: str) -> bool:
         return f not in ["part_one", "part_two"] and (
             f.startswith("part_one") or f.startswith("part_two")

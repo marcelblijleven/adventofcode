@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import List, Set, DefaultDict
+from typing import Set, DefaultDict
 
 from adventofcode.util.console import console
 from adventofcode.util.exceptions import SolutionNotFoundException
@@ -17,11 +17,11 @@ def is_small_cave(cave: str) -> bool:
     return cave.lower() == cave
 
 
-def default_dict_factory() -> List[str]:
+def default_dict_factory() -> list[str]:
     return []
 
 
-def get_paths(input_data: List[str]) -> PathDict:
+def get_paths(input_data: list[str]) -> PathDict:
     path_dict: PathDict = defaultdict(default_dict_factory)
 
     for line in input_data:
@@ -94,7 +94,7 @@ class CaveExplorer3000:
 
 
 @register_solution(2021, 12, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     path_dict = get_paths(input_data)
     cave_explorer = CaveExplorer3000(path_dict)
     answer = cave_explorer.traverse("start", set())
@@ -106,7 +106,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 12, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     path_dict = get_paths(input_data)
     cave_explorer = CaveExplorer3000(path_dict, limit_small_caves=True)
     answer = cave_explorer.traverse_part_two("start", set())

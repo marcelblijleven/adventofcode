@@ -1,5 +1,3 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -21,7 +19,7 @@ def fold_position_along_x(position: Position, fold_x: int) -> Position:
     return x, y
 
 
-def parse_input(input_data: List[str]) -> tuple[Paper, List[Instruction]]:
+def parse_input(input_data: list[str]) -> tuple[Paper, list[Instruction]]:
     text_input = "\n".join(input_data)
 
     position_input, instruction_input = text_input.split("\n\n")
@@ -31,7 +29,7 @@ def parse_input(input_data: List[str]) -> tuple[Paper, List[Instruction]]:
         x, y = map(int, line.split(","))
         paper[(x, y)] = 1
 
-    instructions: List[Instruction] = []
+    instructions: list[Instruction] = []
 
     for instruction in instruction_input.split("\n"):
         parts = instruction.split(" ")
@@ -41,7 +39,7 @@ def parse_input(input_data: List[str]) -> tuple[Paper, List[Instruction]]:
     return paper, instructions
 
 
-def run_instructions(paper: Paper, instructions: List[Instruction]) -> Paper:
+def run_instructions(paper: Paper, instructions: list[Instruction]) -> Paper:
     for instruction in instructions:
         paper = fold_paper(paper, instruction)
 
@@ -96,7 +94,7 @@ def fold_paper(paper: Paper, fold_instruction: Instruction) -> Paper:
 def _paper_to_str(paper: Paper) -> str:
     max_x = max(key[0] for key in paper.keys())
     max_y = max(key[1] for key in paper.keys())
-    lines: List[str] = []
+    lines: list[str] = []
 
     for y in range(max_y + 1):
         line = ""
@@ -119,7 +117,7 @@ def count_visible_dots(paper: Paper) -> int:
 
 
 @register_solution(2021, 13, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     paper, instructions = parse_input(input_data)
     paper = run_instructions(paper, instructions[:1])
     answer = count_visible_dots(paper)
@@ -131,7 +129,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 13, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     paper, instructions = parse_input(input_data)
     paper = run_instructions(paper, instructions)
     answer = "\n" + _paper_to_str(paper)

@@ -1,19 +1,19 @@
 from collections import defaultdict
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def find_differences(input_data: List[int]) -> List[int]:
+def find_differences(input_data: list[int]) -> list[int]:
     working_list = sorted([0] + input_data + [max(input_data) + 3])
     differences = [y - x for x, y in zip(working_list[:-1], working_list[1:])]
     return differences
 
 
 @register_solution(2020, 10, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     int_data = list(map(int, input_data))
     differences = find_differences(int_data)
     ones = differences.count(1)
@@ -26,7 +26,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2020, 10, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     int_data = list(map(int, input_data))
     jolts = sorted([0] + int_data + [max(int_data) + 3])
     cache = defaultdict(int, {0: 1})

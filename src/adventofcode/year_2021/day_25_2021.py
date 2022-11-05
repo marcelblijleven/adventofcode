@@ -1,5 +1,5 @@
 import copy
-from typing import List, Union
+from typing import Union
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -118,7 +118,7 @@ def do_steps(input_data: list[str]) -> int:
 
 
 @register_solution(2021, 25, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = do_steps(input_data)
 
     if not answer:
@@ -128,7 +128,7 @@ def part_one(input_data: List[str]):
 
 
 # @register_solution(2021, 5, 2)
-# def part_two(input_data: List[str]):
+# def part_two(input_data: list[str]):
 #     answer = ...
 #
 #     if not answer:

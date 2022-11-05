@@ -1,14 +1,14 @@
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-DepartureTimes = Dict[int, List[int]]
+DepartureTimes = Dict[int, list[int]]
 
 
-def parse_input(input_data: List[str]) -> tuple[int, List[int]]:
+def parse_input(input_data: list[str]) -> tuple[int, list[int]]:
     timestamp = int(input_data[0])
     busses = list(
         map(int, [value for value in input_data[1].split(",") if value.isdigit()])
@@ -16,7 +16,7 @@ def parse_input(input_data: List[str]) -> tuple[int, List[int]]:
     return timestamp, busses
 
 
-def get_departure_times(timestamp: int, busses: List[int]) -> DepartureTimes:
+def get_departure_times(timestamp: int, busses: list[int]) -> DepartureTimes:
     departure_times: DepartureTimes = {}
 
     for bus in busses:
@@ -67,7 +67,7 @@ def get_earliest_bus(arrival: int, departure_times: DepartureTimes) -> tuple[int
 
 
 @register_solution(2020, 13, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     timestamp, busses = parse_input(input_data)
     answer = get_answer_part_one(timestamp, get_departure_times(timestamp, busses))
 
@@ -78,7 +78,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2020, 13, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     schedule = input_data[1]
     answer = get_sequential_departure_times(schedule)
 

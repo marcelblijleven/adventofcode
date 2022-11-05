@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict, Union
+from typing import Dict, Union
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -36,12 +36,12 @@ def do_rshift(left: int, right: int) -> int:
 
 
 class Graph:
-    def __init__(self, lines: List[str]):
+    def __init__(self, lines: list[str]):
         self._seen: Dict[str, int] = {}
         self._values: Dict[str, Union[str, int]] = {}
         self._parse_lines(lines)
 
-    def _parse_lines(self, lines: List[str]):
+    def _parse_lines(self, lines: list[str]):
         for line in lines:
             op, target = line.split(" -> ")
             self._values[target] = op
@@ -118,7 +118,7 @@ class Graph:
 
 
 @register_solution(2015, 7, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     graph = Graph(input_data)
     answer = graph.get_value("a")
 
@@ -129,7 +129,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 7, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     graph = Graph(input_data)
     answer_part_one = graph.get_value("a")
     graph.set_value("b", answer_part_one)

@@ -289,7 +289,7 @@ The solution timer times the solution using `time.perf_counter` and outputs the 
 Example:
 ```python
 @register_solution(2015, 9, 1)  # year, day, part
-def part_one(input_data: List[str]) -> int:
+def part_one(input_data: list[str]) -> int:
     ...
 ```
 
@@ -306,7 +306,7 @@ It takes an optional `amount` kwarg to set the amount of stats to display, and a
 Example:
 ```python
 @solution_profiler(2015, 9, 1)  # year, day, part
-def part_one(input_data: List[str]) -> int:
+def part_one(input_data: list[str]) -> int:
     ...
 ```
 

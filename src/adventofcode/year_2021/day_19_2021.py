@@ -3,7 +3,7 @@ from __future__ import annotations
 import dataclasses
 from collections import Counter
 from itertools import combinations
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -177,7 +177,7 @@ def count_unique_beacons(scanners: list[Scanner]) -> int:
 
 
 @register_solution(2021, 19, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     scanners = get_scanners(input_data)
     process_scanners(scanners)
     answer = count_unique_beacons(scanners)
@@ -189,7 +189,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 19, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     scanners = get_scanners(input_data)
     process_scanners(scanners)
     answer = calculate_max_distance(scanners)

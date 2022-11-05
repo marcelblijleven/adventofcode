@@ -1,13 +1,13 @@
 from collections import Counter
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def input_to_list_of_list(input_data: List[str]) -> List[List[str]]:
-    lists: List[List[str]] = []
+def input_to_list_of_list(input_data: list[str]) -> list[list[str]]:
+    lists: list[list[str]] = []
 
     for line in input_data:
         lists.append([num for num in line])
@@ -15,12 +15,12 @@ def input_to_list_of_list(input_data: List[str]) -> List[List[str]]:
     return lists
 
 
-def merge_lists(lists: List[List[str]]) -> list[tuple[str]]:
+def merge_lists(lists: list[list[str]]) -> list[tuple[str]]:
     merged = zip(*lists)
     return list(merged)  # type: ignore
 
 
-def change_list(input_data: List[str]) -> List[tuple[str]]:
+def change_list(input_data: list[str]) -> list[tuple[str]]:
     return merge_lists(input_to_list_of_list(input_data))
 
 
@@ -36,7 +36,7 @@ def get_power_consumption(values: list[tuple[str]]) -> int:
     return int(gamma_rate, 2) * int(epsilon_rate, 2)
 
 
-def filter_list(input_data: List[str], use_most_common: bool, idx: int = 0) -> int:
+def filter_list(input_data: list[str], use_most_common: bool, idx: int = 0) -> int:
     if len(input_data) == 1:
         return int(input_data[0], 2)
 
@@ -56,14 +56,14 @@ def filter_list(input_data: List[str], use_most_common: bool, idx: int = 0) -> i
     return filter_list(filtered_input_data, use_most_common, idx + 1)
 
 
-def get_life_support(input_data: List[str]) -> int:
+def get_life_support(input_data: list[str]) -> int:
     oxygen_generator = filter_list(input_data, use_most_common=True)
     co2_scrubber = filter_list(input_data, use_most_common=False)
     return oxygen_generator * co2_scrubber
 
 
 @register_solution(2021, 3, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     merged = change_list(input_data)
     answer = get_power_consumption(merged)
 
@@ -74,7 +74,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 3, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = get_life_support(input_data)
 
     if not answer:
