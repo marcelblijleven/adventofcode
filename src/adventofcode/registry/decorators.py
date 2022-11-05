@@ -9,7 +9,7 @@ def register_solution(year: int, day: int, part: int, version: str = "normal"):
     """Register a solution to the solution registry"""
 
     def decorator(func):
-        partial_func = partial(
+        partial_func = partial(  # type: ignore
             solution_timer, func=func, year=year, day=day, part=part, version=version
         )
         registry[get_registry_key(year, day, part, version)] = partial_func
