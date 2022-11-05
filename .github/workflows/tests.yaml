@@ -32,7 +32,7 @@ jobs:
       - name: Run tox on ${{ matrix.os }} with Python version ${{ matrix.python-version }}
         run: tox
       - name: "Upload coverage to Codecov"
-        if: matrix.python-version == 3.9  # Only upload coverage once per run
+        if: matrix.python-version == 3.11  # Only upload coverage once per run
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
