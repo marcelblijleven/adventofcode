@@ -1,5 +1,5 @@
 import heapq
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -98,7 +98,7 @@ def enlarge_grid(grid: Grid, factor: int = 5) -> Grid:
 
 
 @register_solution(2021, 15, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = find_route(parse_input(input_data))
 
     if not answer:
@@ -108,7 +108,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 15, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     grid = parse_input(input_data)
     answer = find_route(enlarge_grid(grid))
 

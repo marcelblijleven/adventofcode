@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -44,7 +44,7 @@ def is_nice(line: str) -> bool:
 
 
 @register_solution(2015, 5, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = len([line for line in input_data if is_nice(line)])
 
     if not answer:
@@ -72,7 +72,7 @@ def is_nice_part_two(line: str) -> bool:
 
 
 @register_solution(2015, 5, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = len([line for line in input_data if is_nice_part_two(line)])
 
     if not answer:

@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict
+from typing import Dict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -13,7 +13,7 @@ BagType = Dict[str, Dict[str, int]]
 
 
 @register_solution(2020, 7, 1)
-def part_one(input_data: List[str]) -> int:
+def part_one(input_data: list[str]) -> int:
     bags = get_bags(input_data)
     gold_holders = []
     for bag in bags:
@@ -27,7 +27,7 @@ def part_one(input_data: List[str]) -> int:
 
 
 @register_solution(2020, 7, 2)
-def part_two(input_data: List[str]) -> int:
+def part_two(input_data: list[str]) -> int:
     bags = get_bags(input_data)
 
     answer = bag_counter(gold_bag, bags, 1, 0)
@@ -38,7 +38,7 @@ def part_two(input_data: List[str]) -> int:
     return answer
 
 
-def get_bags(input_data: List[str]) -> BagType:
+def get_bags(input_data: list[str]) -> BagType:
     bags: BagType = {}
 
     for line in input_data:

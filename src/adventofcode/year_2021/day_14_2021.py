@@ -1,5 +1,5 @@
 from collections import Counter, defaultdict
-from typing import List, DefaultDict
+from typing import DefaultDict
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -8,7 +8,7 @@ from adventofcode.util.input_helpers import get_input_for_day
 Rules = dict[str, str]
 
 
-def parse_input(input_data: List[str]) -> tuple[str, Rules]:
+def parse_input(input_data: list[str]) -> tuple[str, Rules]:
     template = input_data[0]
     rules: Rules = {}
 
@@ -29,7 +29,7 @@ def process(template: str, rules: Rules) -> str:
     return new_template + template[-1]
 
 
-def get_answer_slow(input_data: List[str], steps: int) -> int:
+def get_answer_slow(input_data: list[str], steps: int) -> int:
     """
     The iteration in process(template, rules) causes the program to run out of memory on large steps
     Use get_answer instead
@@ -62,7 +62,7 @@ def get_new_pairs(pair: str, target: str):
     return a + target, target + b
 
 
-def get_answer(input_data: List[str], steps: int) -> int:
+def get_answer(input_data: list[str], steps: int) -> int:
     """
     Get answer uses hash tables (dicts) instead of iterations, which are a lot faster O(1) compared to O(n).
     It creates a new dict after each step with the updated count and fills a Counter to keep track of the occurrences of
@@ -91,7 +91,7 @@ def get_answer(input_data: List[str], steps: int) -> int:
 
 
 @register_solution(2021, 14, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = get_answer(input_data, 10)
 
     if not answer:
@@ -101,7 +101,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 14, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = get_answer(input_data, 40)
 
     if not answer:

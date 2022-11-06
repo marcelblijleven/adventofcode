@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import dataclasses
 from copy import deepcopy
-from typing import List, Callable
+from typing import Callable
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -192,7 +192,7 @@ def fight(
 
 
 @register_solution(2015, 22, 1)
-def part_one(_: List[str]):
+def part_one(_: list[str]):
     answer = fight(50, 500, 58, 9, False)
 
     if not answer:
@@ -202,7 +202,7 @@ def part_one(_: List[str]):
 
 
 @register_solution(2015, 22, 2)
-def part_two(_: List[str]):
+def part_two(_: list[str]):
     answer = fight(50, 500, 58, 9, True)
 
     if not answer:

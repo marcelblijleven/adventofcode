@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Generator
+from typing import Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -39,18 +39,18 @@ class Fish:
         return Fish()
 
 
-def get_starting_fish(input_data: List[str]) -> Generator[Fish, None, None]:
+def get_starting_fish(input_data: list[str]) -> Generator[Fish, None, None]:
     for fish in map(int, input_data[0].split(",")):
         yield Fish(fish)
 
 
-def get_starting_fish_no_classes(input_data: List[str]) -> Generator[int, None, None]:
+def get_starting_fish_no_classes(input_data: list[str]) -> Generator[int, None, None]:
     for fish in map(int, input_data[0].split(",")):
         yield fish
 
 
-def iterate_day(fish: List[Fish]) -> List[Fish]:
-    new_fish: List[Fish] = []
+def iterate_day(fish: list[Fish]) -> list[Fish]:
+    new_fish: list[Fish] = []
 
     for f in fish:
         f.live_a_day()
@@ -64,7 +64,7 @@ def iterate_day(fish: List[Fish]) -> List[Fish]:
     return fish + new_fish
 
 
-def count_fish_after_days(input_data: List[str], days: int) -> int:
+def count_fish_after_days(input_data: list[str], days: int) -> int:
     fish = [fish for fish in get_starting_fish(input_data)]
 
     for day in range(days):
@@ -73,7 +73,7 @@ def count_fish_after_days(input_data: List[str], days: int) -> int:
     return len(fish)
 
 
-def count_fish_faster(input_data: List[str], stop_after: int) -> int:
+def count_fish_faster(input_data: list[str], stop_after: int) -> int:
     number_of_days = 9
     cyclic_days = [0] * number_of_days
 
@@ -98,7 +98,7 @@ def count_fish_faster(input_data: List[str], stop_after: int) -> int:
 
 
 @register_solution(2021, 6, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     # answer = count_fish_after_days(input_data, 80)
     answer = count_fish_faster(input_data, 80)
 
@@ -109,7 +109,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 6, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     # answer = count_fish_after_days(input_data, 256) <- don't run this :)
     answer = count_fish_faster(input_data, 256)
 
@@ -120,7 +120,7 @@ def part_two(input_data: List[str]):
 
 
 @register_solution(2021, 6, 2, version="faster")
-def part_two_faster(input_data: List[str]):
+def part_two_faster(input_data: list[str]):
     starting_fish = [f for f in get_starting_fish_no_classes(input_data)]
     days = [starting_fish.count(i) for i in range(9)]
 

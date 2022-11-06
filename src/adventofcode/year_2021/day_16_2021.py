@@ -1,5 +1,5 @@
 import io
-from typing import List
+
 
 import math
 
@@ -309,7 +309,7 @@ def read_garbage_bits(buffer: io.StringIO) -> None:
 
 
 @register_solution(2021, 16, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     binary_string = input_to_binary_string(input_data[0])
     buffer = io.StringIO(binary_string)
     versions, _ = read_outer_packet(buffer)
@@ -322,7 +322,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 16, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     binary_string = input_to_binary_string(input_data[0])
     buffer = io.StringIO(binary_string)
     _, value = read_outer_packet(buffer)

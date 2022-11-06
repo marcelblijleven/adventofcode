@@ -1,4 +1,4 @@
-from typing import List, Dict, FrozenSet
+from typing import Dict, FrozenSet
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -20,8 +20,8 @@ InputLine = tuple[str, str]
 TranslationTable = Dict[FrozenSet[str], int]
 
 
-def parse_input(input_data: List[str]) -> List[InputLine]:
-    lines: List[InputLine] = []
+def parse_input(input_data: list[str]) -> list[InputLine]:
+    lines: list[InputLine] = []
 
     for line in input_data:
         input_segments, output = line.split(" | ")
@@ -30,12 +30,12 @@ def parse_input(input_data: List[str]) -> List[InputLine]:
     return lines
 
 
-def get_unique_segments(line: str) -> List[str]:
+def get_unique_segments(line: str) -> list[str]:
     unique = [inp for inp in get_digits(line) if len(inp) in lengths]
     return unique
 
 
-def count_unique_segments(lines: List[InputLine]) -> int:
+def count_unique_segments(lines: list[InputLine]) -> int:
     count = 0
 
     for line in lines:
@@ -45,7 +45,7 @@ def count_unique_segments(lines: List[InputLine]) -> int:
     return count
 
 
-def get_digits(line: str) -> List[str]:
+def get_digits(line: str) -> list[str]:
     return line.split(" ")
 
 
@@ -64,8 +64,8 @@ def get_output_for_line(line: InputLine) -> int:
     return output
 
 
-def get_all_outputs(lines: List[InputLine]) -> List[int]:
-    outputs: List[int] = []
+def get_all_outputs(lines: list[InputLine]) -> list[int]:
+    outputs: list[int] = []
 
     for line in lines:
         outputs.append(get_output_for_line(line))
@@ -73,12 +73,12 @@ def get_all_outputs(lines: List[InputLine]) -> List[int]:
     return outputs
 
 
-def patterns_as_frozen_sets(patterns: List[str]) -> List[FrozenSet[str]]:
+def patterns_as_frozen_sets(patterns: list[str]) -> list[FrozenSet[str]]:
     return list(map(frozenset, patterns))  # type: ignore
 
 
 def _fill_table_with_know_patterns(
-    patterns: List[FrozenSet[str]], table: TranslationTable
+    patterns: list[FrozenSet[str]], table: TranslationTable
 ):
     for pattern in patterns:
         if len(pattern) == 2:
@@ -91,7 +91,7 @@ def _fill_table_with_know_patterns(
             table[pattern] = 8
 
 
-def pattern_translation_table(patterns: List[FrozenSet[str]]) -> TranslationTable:
+def pattern_translation_table(patterns: list[FrozenSet[str]]) -> TranslationTable:
     translation_table: TranslationTable = {}
     _fill_table_with_know_patterns(patterns, translation_table)
 
@@ -117,7 +117,7 @@ def pattern_translation_table(patterns: List[FrozenSet[str]]) -> TranslationTabl
 
 
 @register_solution(2021, 8, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     parsed = parse_input(input_data)
     answer = count_unique_segments(parsed)
 
@@ -128,7 +128,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 8, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     parsed = parse_input(input_data)
     answer = sum(get_all_outputs(parsed))
 

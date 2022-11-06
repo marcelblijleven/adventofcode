@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -8,8 +8,8 @@ from adventofcode.util.input_helpers import get_input_for_day
 REPLACEMENT_PATTERN = re.compile(r"(\w+) => (\w+)")
 
 
-def get_replacements(input_data: List[str]) -> list[tuple[str, str]]:
-    replacements: List[tuple[str, str]] = []
+def get_replacements(input_data: list[str]) -> list[tuple[str, str]]:
+    replacements: list[tuple[str, str]] = []
 
     # skip last two rows because it doesn't contain replacements
     for line in input_data[:-2]:
@@ -44,7 +44,7 @@ def count_time(replacements: list[tuple[str, str]], medicine: str) -> int:
 
 
 @register_solution(2015, 19, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     replacements = get_replacements(input_data)
     answer = find_unique_replacements(replacements, input_data[-1])
 
@@ -55,7 +55,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 19, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = count_time(get_replacements(input_data), input_data[-1])
 
     if not answer:

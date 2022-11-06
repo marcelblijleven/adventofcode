@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -112,7 +112,7 @@ def increment_password_part_two(password: str) -> str:
 
 
 @register_solution(2015, 11, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = increment_password(input_data[0])
 
     if not answer:
@@ -122,7 +122,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 11, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = increment_password_part_two(input_data[0])
 
     if not answer:

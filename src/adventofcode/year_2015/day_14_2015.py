@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -76,8 +76,8 @@ class Reindeer:
                 self._current_fly_count = self.fly_duration
 
 
-def get_reindeer(input_data: List[str]) -> List[Reindeer]:
-    reindeer: List[Reindeer] = []
+def get_reindeer(input_data: list[str]) -> list[Reindeer]:
+    reindeer: list[Reindeer] = []
 
     for line in input_data:
         if (matched := PATTERN.match(line)) and matched is not None:
@@ -89,7 +89,7 @@ def get_reindeer(input_data: List[str]) -> List[Reindeer]:
     return reindeer
 
 
-def check_leaderboard_and_assign_points(reindeer: List[Reindeer]):
+def check_leaderboard_and_assign_points(reindeer: list[Reindeer]):
     leader = sorted(reindeer, reverse=True)[0]
     tied_racers = [
         racer
@@ -101,7 +101,7 @@ def check_leaderboard_and_assign_points(reindeer: List[Reindeer]):
         racer.assign_point()
 
 
-def race(reindeer: List[Reindeer], race_duration: int) -> Reindeer:
+def race(reindeer: list[Reindeer], race_duration: int) -> Reindeer:
     time_raced = 0
 
     while time_raced < race_duration:
@@ -116,7 +116,7 @@ def race(reindeer: List[Reindeer], race_duration: int) -> Reindeer:
 
 
 @register_solution(2015, 14, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     reindeer = get_reindeer(input_data)
     answer = race(reindeer, 2503)
 
@@ -127,7 +127,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 14, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     reindeer = get_reindeer(input_data)
     _ = race(reindeer, 2503)
     answer = sorted(reindeer, key=lambda x: x.points, reverse=True)[0]

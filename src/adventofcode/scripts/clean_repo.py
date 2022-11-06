@@ -1,7 +1,7 @@
 import argparse
 import os
 import sys
-from typing import List
+
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.util.console import console
@@ -13,7 +13,7 @@ def clean_repo():
     _clean_inputs(dry_run)
 
 
-def _parser(args: List[str]) -> bool:
+def _parser(args: list[str]) -> bool:
     parser = argparse.ArgumentParser(description="Clean repository")
     parser.add_argument(
         "--dry-run",

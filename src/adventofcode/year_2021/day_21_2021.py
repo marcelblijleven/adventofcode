@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from typing import List
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -123,7 +122,7 @@ def quantum_game(player_one_pos, player_two_pos, player_one_score, player_two_sc
 
 
 @register_solution(2021, 21, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     positions = parse_input(input_data)
     answer = game(Player(1, positions[0]), Player(2, positions[1]))
 
@@ -134,7 +133,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 21, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     positions = parse_input(input_data)
     seen: dict[tuple[Player, Player], tuple[int, int]]
     answer = max(quantum_game(positions[0], positions[1], 0, 0))

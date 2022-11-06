@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict, Set
+from typing import Dict, Set
 
 import math
 
@@ -7,12 +7,12 @@ from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-Rules = Dict[str, List[int]]
-Ticket = List[int]
+Rules = Dict[str, list[int]]
+Ticket = list[int]
 rules_pattern = re.compile(r"^([a-z ]+): (?:(\d+)-(\d+)) or (?:(\d+)-(\d+))")
 
 
-def parse_input(input_data: str) -> tuple[Rules, Ticket, List[Ticket]]:
+def parse_input(input_data: str) -> tuple[Rules, Ticket, list[Ticket]]:
     parsed = input_data.split("\n\n")
     rules = get_rules(parsed[0].split("\n"))
     ticket = get_ticket(parsed[1].split("\n")[1])
@@ -20,7 +20,7 @@ def parse_input(input_data: str) -> tuple[Rules, Ticket, List[Ticket]]:
     return rules, ticket, tickets
 
 
-def get_rules(input_data: List[str]) -> Rules:
+def get_rules(input_data: list[str]) -> Rules:
     rules: Rules = {}
 
     for line in input_data:
@@ -51,12 +51,12 @@ def get_ticket(line: str) -> Ticket:
     return list(map(int, line.split(",")))
 
 
-def get_tickets(lines: List[str]) -> List[Ticket]:
+def get_tickets(lines: list[str]) -> list[Ticket]:
     return list(map(get_ticket, lines))
 
 
-def evaluate_tickets(tickets: List[Ticket], rules: Rules) -> int:
-    seen_invalid_numbers: List[int] = []
+def evaluate_tickets(tickets: list[Ticket], rules: Rules) -> int:
+    seen_invalid_numbers: list[int] = []
 
     for ticket in tickets:
         for number in ticket:
@@ -105,7 +105,7 @@ def reduce_column_rules(
         return {list(v)[0]: k for k, v in column_rules.items()}
 
 
-def find_order(tickets: List[Ticket], rules: Rules) -> Dict[str, int]:
+def find_order(tickets: list[Ticket], rules: Rules) -> Dict[str, int]:
     columns = list(zip(*tickets))
     available_rules = {rule for rule in rules.keys()}
     column_rules: Dict[str, int] = reduce_column_rules(
@@ -115,7 +115,7 @@ def find_order(tickets: List[Ticket], rules: Rules) -> Dict[str, int]:
 
 
 def parse_own_ticket(ticket: Ticket, order: Dict[str, int], test: bool = False) -> int:
-    departures: List[int] = []
+    departures: list[int] = []
 
     for rule, position in order.items():
         if not test:
@@ -134,8 +134,8 @@ def get_departures(input_data: str, test: bool = False) -> int:
     return parse_own_ticket(ticket, order, test)
 
 
-def filter_tickets(tickets: List[Ticket], rules: Rules) -> List[Ticket]:
-    valid_tickets: List[Ticket] = []
+def filter_tickets(tickets: list[Ticket], rules: Rules) -> list[Ticket]:
+    valid_tickets: list[Ticket] = []
 
     for ticket in tickets:
         if all([number_is_valid(number, rules) for number in ticket]):
@@ -145,7 +145,7 @@ def filter_tickets(tickets: List[Ticket], rules: Rules) -> List[Ticket]:
 
 
 @register_solution(2020, 16, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     input_as_string = "\n".join(input_data)
     rules, ticket, tickets = parse_input(input_as_string)
     print(len(tickets))
@@ -158,7 +158,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2020, 16, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     input_as_string = "\n".join(input_data)
     answer = get_departures(input_as_string)
 

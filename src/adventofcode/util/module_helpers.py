@@ -1,11 +1,11 @@
 import ast
 import os
-from typing import List
+
 
 from adventofcode.config import ROOT_DIR
 
 
-def get_full_year_paths() -> List[str]:
+def get_full_year_paths() -> list[str]:
     """
     Retrieves all directories in the ROOT_DIR that start with 'year_'
     """
@@ -17,7 +17,7 @@ def get_full_year_paths() -> List[str]:
     return sorted(paths)
 
 
-def get_full_day_paths(year_path: str) -> List[str]:
+def get_full_day_paths(year_path: str) -> list[str]:
     """
     Retrieves all files in the ROOT_DIR/year_{year} directory that start with 'day_'
     """

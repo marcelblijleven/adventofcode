@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -38,7 +38,7 @@ def parse_line_part_two(line: str) -> int:
     return new_length - old_length
 
 
-def parse_lines(input_data: List[str]) -> int:
+def parse_lines(input_data: list[str]) -> int:
     count = 0
 
     for line in input_data:
@@ -47,7 +47,7 @@ def parse_lines(input_data: List[str]) -> int:
     return count
 
 
-def parse_lines_part_two(input_data: List[str]) -> int:
+def parse_lines_part_two(input_data: list[str]) -> int:
     count = 0
 
     for line in input_data:
@@ -57,7 +57,7 @@ def parse_lines_part_two(input_data: List[str]) -> int:
 
 
 @register_solution(2015, 8, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = parse_lines(input_data)
 
     if not answer:
@@ -67,7 +67,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 8, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = parse_lines_part_two(input_data)
 
     if not answer:

@@ -1,4 +1,4 @@
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.registry import register_solution
@@ -6,7 +6,7 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 
 @register_solution({year}, {day}, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = ...
 
     if not answer:
@@ -16,7 +16,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution({year}, {day}, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = ...
 
     if not answer:

@@ -1,16 +1,16 @@
 import itertools
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def get_containers(input_data: List[str]) -> List[int]:
+def get_containers(input_data: list[str]) -> list[int]:
     return list(map(int, input_data))
 
 
-def find_combinations(input_data: List[str], liters: int = 150) -> int:
+def find_combinations(input_data: list[str], liters: int = 150) -> int:
     # Only have one container of each size, so we can get all combinations of all containers
     # with varying lengths and calculate which combination equals 150 liters
     total_combinations = 0
@@ -27,7 +27,7 @@ def find_combinations(input_data: List[str], liters: int = 150) -> int:
     return total_combinations
 
 
-def find_different_ways(input_data: List[str], liters: int = 150) -> int:
+def find_different_ways(input_data: list[str], liters: int = 150) -> int:
     possible_combinations = []
     minimum_containers = 0
     containers = get_containers(input_data)
@@ -55,7 +55,7 @@ def find_different_ways(input_data: List[str], liters: int = 150) -> int:
 
 
 @register_solution(2015, 17, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = find_combinations(input_data)
 
     if not answer:
@@ -65,7 +65,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 17, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = find_different_ways(input_data)
 
     if not answer:

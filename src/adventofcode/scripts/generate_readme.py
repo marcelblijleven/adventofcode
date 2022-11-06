@@ -1,6 +1,5 @@
 import os
 import re
-from typing import Dict, List
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.util.module_helpers import (
@@ -11,7 +10,7 @@ from adventofcode.util.module_helpers import (
     clean_year,
 )
 
-YearDayType = Dict[int, Dict[int, Dict[str, bool]]]
+YearDayType = dict[int, dict[int, dict[str, bool]]]
 
 
 def generate_readme():
@@ -99,11 +98,11 @@ def _count_stars() -> int:
 
 def _update_year_readme(year: int) -> None:
     found = _find_completed_days()[year]
-    header: List[str] = [f"# {year}"]
+    header: list[str] = [f"# {year}"]
 
     days = found.keys()
     completed_parts = sum([len(parts.keys()) for parts in found.values()])
-    body: List[str] = [
+    body: list[str] = [
         f'Solutions for {len(days)} {"day" if len(days) == 0 else "days"} in {year} '
         f"with a total of {completed_parts} stars collected",
         "",
@@ -117,8 +116,8 @@ def _update_year_readme(year: int) -> None:
         f.write("\n".join(text))
 
 
-def _create_year_overview(completed_days: dict[int, dict[str, bool]]) -> List[str]:
-    text: List[str] = [
+def _create_year_overview(completed_days: dict[int, dict[str, bool]]) -> list[str]:
+    text: list[str] = [
         "| day   | part one | part two |",
         "| :---: | :------: | :------: |",
     ]

@@ -1,5 +1,3 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -115,7 +113,7 @@ def move_waypoint(
     return x, y
 
 
-def parse_instructions(instructions: List[str]) -> int:
+def parse_instructions(instructions: list[str]) -> int:
     position = (0, 0)
     direction = EAST
 
@@ -135,7 +133,7 @@ def parse_instructions(instructions: List[str]) -> int:
     return abs(position[0]) + abs(position[1])
 
 
-def parse_instructions_part_two(instructions: List[str]) -> int:
+def parse_instructions_part_two(instructions: list[str]) -> int:
     position = (0, 0)
     waypoint = (10, 1)
 
@@ -159,7 +157,7 @@ def parse_instructions_part_two(instructions: List[str]) -> int:
 
 
 @register_solution(2020, 12, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = parse_instructions(input_data)
 
     if not answer:
@@ -169,7 +167,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2020, 12, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = parse_instructions_part_two(input_data)
 
     if not answer:

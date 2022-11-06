@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -59,7 +59,7 @@ class Ingredient:
 
 
 class Cookie:
-    def __init__(self, ingredients: List[Ingredient]):
+    def __init__(self, ingredients: list[Ingredient]):
         self.ingredients = ingredients
 
     @property
@@ -87,8 +87,8 @@ class Cookie:
         return capacity * durability * flavor * texture
 
 
-def parse_ingredients(input_data: List[str]) -> List[Ingredient]:
-    ingredients: List[Ingredient] = []
+def parse_ingredients(input_data: list[str]) -> list[Ingredient]:
+    ingredients: list[Ingredient] = []
 
     for line in input_data:
         name, content = line.split(": ")
@@ -102,7 +102,7 @@ def parse_ingredients(input_data: List[str]) -> List[Ingredient]:
 
 
 def find_highest_scoring_cookie(  # noqa: C901
-    input_data: List[str], match_calories: bool = False
+    input_data: list[str], match_calories: bool = False
 ) -> int:  # noqa: C901
     highest_score = 0
     ingredients = parse_ingredients(input_data)
@@ -143,7 +143,7 @@ def find_highest_scoring_cookie(  # noqa: C901
 
 
 @register_solution(2015, 15, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = find_highest_scoring_cookie(input_data)
 
     if not answer:
@@ -153,7 +153,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 15, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = find_highest_scoring_cookie(input_data, match_calories=True)
 
     if not answer:

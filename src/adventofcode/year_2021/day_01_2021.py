@@ -1,12 +1,12 @@
 from collections import deque
-from typing import List, Optional
+from typing import Optional
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def sonar_sweep(measurements: List[int]) -> int:
+def sonar_sweep(measurements: list[int]) -> int:
     previous: Optional[int] = None
     count = 0
 
@@ -19,7 +19,7 @@ def sonar_sweep(measurements: List[int]) -> int:
     return count
 
 
-def count_increasing_windows(windows: List[List[int]]) -> int:
+def count_increasing_windows(windows: list[list[int]]) -> int:
     previous: Optional[int] = None
     count = 0
 
@@ -32,8 +32,8 @@ def count_increasing_windows(windows: List[List[int]]) -> int:
     return count
 
 
-def sonar_sweep_sliding_window(measurements: List[int]) -> int:
-    windows: List[List[int]] = []
+def sonar_sweep_sliding_window(measurements: list[int]) -> int:
+    windows: list[list[int]] = []
     window: deque[int] = deque(maxlen=3)
 
     for measurement in measurements:
@@ -45,8 +45,8 @@ def sonar_sweep_sliding_window(measurements: List[int]) -> int:
     return count_increasing_windows(windows)
 
 
-def sonar_sweep_sliding_window_reuse(measurements: List[int]) -> int:
-    windows: List[List[int]] = []
+def sonar_sweep_sliding_window_reuse(measurements: list[int]) -> int:
+    windows: list[list[int]] = []
     window: deque[int] = deque(maxlen=3)
 
     for measurement in measurements:
@@ -55,11 +55,11 @@ def sonar_sweep_sliding_window_reuse(measurements: List[int]) -> int:
         if len(window) == 3:
             windows.append(list(window))
 
-    return sonar_sweep(list(map(sum, windows)))
+    return sonar_sweep(list(map(sum, windows)))  # type: ignore
 
 
 @register_solution(2021, 1, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = sonar_sweep(list(map(int, input_data)))
 
     if not answer:
@@ -69,7 +69,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 1, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = sonar_sweep_sliding_window(list(map(int, input_data)))
 
     if not answer:
@@ -79,7 +79,7 @@ def part_two(input_data: List[str]):
 
 
 @register_solution(2021, 1, 1, version="re-use part one")
-def part_two_reuse_part_one(input_data: List[str]):
+def part_two_reuse_part_one(input_data: list[str]):
     answer = sonar_sweep_sliding_window_reuse(list(map(int, input_data)))
 
     if not answer:

@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -116,7 +116,7 @@ def parse_input(input_data: list[str]) -> Image:
 
 
 @register_solution(2021, 20, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     image = parse_input(input_data)
     answer = image.enhance(2)
 
@@ -127,7 +127,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 20, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     image = parse_input(input_data)
     answer = image.enhance(50)
 

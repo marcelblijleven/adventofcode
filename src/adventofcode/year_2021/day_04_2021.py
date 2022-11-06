@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -8,8 +8,8 @@ from adventofcode.util.input_helpers import get_input_for_day
 line_pattern = re.compile(r"(\d+)")
 
 
-def transpose_rows(rows: List[List[int]]) -> List[List[int]]:
-    columns: List[List[int]] = []
+def transpose_rows(rows: list[list[int]]) -> list[list[int]]:
+    columns: list[list[int]] = []
 
     for sublist in zip(*rows):
         columns.append(list(sublist))
@@ -17,8 +17,8 @@ def transpose_rows(rows: List[List[int]]) -> List[List[int]]:
     return columns
 
 
-def flatten(list_of_lists: List[List[int]]) -> List[int]:
-    flat: List[int] = []
+def flatten(list_of_lists: list[list[int]]) -> list[int]:
+    flat: list[int] = []
 
     for sublist in list_of_lists:
         for value in sublist:
@@ -28,19 +28,19 @@ def flatten(list_of_lists: List[List[int]]) -> List[int]:
 
 
 class Board:
-    columns: List[List[int]]
-    rows: List[List[int]]
-    drawn_numbers: List[int]
+    columns: list[list[int]]
+    rows: list[list[int]]
+    drawn_numbers: list[int]
     has_bingo: bool
 
-    def __init__(self, lines: List[str]):
+    def __init__(self, lines: list[str]):
         self.has_bingo = False
         self.rows = []
         self.columns = []
         self.drawn_numbers = []
         self._parse_lines(lines)
 
-    def _parse_lines(self, lines: List[str]) -> None:
+    def _parse_lines(self, lines: list[str]) -> None:
         for line in lines:
             self.rows.append(list(map(int, line_pattern.findall(line))))
 
@@ -66,9 +66,9 @@ class Board:
             index += 1
 
 
-def parse_input_data(input_data: List[str]) -> tuple[List[int], List[Board]]:
+def parse_input_data(input_data: list[str]) -> tuple[list[int], list[Board]]:
     numbers = list(map(int, input_data[0].split(",")))
-    boards: List[Board] = []
+    boards: list[Board] = []
 
     for chunk in "\n".join(input_data[2:]).split("\n\n"):
         lines = chunk.split("\n")
@@ -77,10 +77,10 @@ def parse_input_data(input_data: List[str]) -> tuple[List[int], List[Board]]:
     return numbers, boards
 
 
-def play_bingo(input_data: List[str], first_board=True) -> int:
+def play_bingo(input_data: list[str], first_board=True) -> int:
     numbers, boards = parse_input_data(input_data)
-    winning_boards: List[Board] = []
-    drawn_numbers: List[int] = []
+    winning_boards: list[Board] = []
+    drawn_numbers: list[int] = []
 
     for number in numbers:
         drawn_numbers.append(number)
@@ -104,7 +104,7 @@ def play_bingo(input_data: List[str], first_board=True) -> int:
 
 
 @register_solution(2021, 4, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = play_bingo(input_data)
 
     if not answer:
@@ -114,7 +114,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 4, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = play_bingo(input_data, first_board=False)
 
     if not answer:

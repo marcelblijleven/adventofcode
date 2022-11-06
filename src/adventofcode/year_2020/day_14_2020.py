@@ -1,6 +1,6 @@
 import re
 from itertools import combinations
-from typing import List, Dict, Generator
+from typing import Dict, Generator
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -29,7 +29,7 @@ def apply_mask_to_value(value: str, mask: str) -> int:
 
 
 def apply_mask_to_address(address: str, mask: str) -> Generator[int, None, None]:
-    addresses: List[str] = []
+    addresses: list[str] = []
     floating_bits = mask.count("X")
     bits = ["0", "1"] * floating_bits
 
@@ -51,7 +51,7 @@ def apply_mask_to_address(address: str, mask: str) -> Generator[int, None, None]
         yield int(address, 2)
 
 
-def parse_program(input_data: List[str]) -> Dict[int, int]:
+def parse_program(input_data: list[str]) -> Dict[int, int]:
     current_mask = ""
     memory: Dict[int, int] = {}
 
@@ -66,7 +66,7 @@ def parse_program(input_data: List[str]) -> Dict[int, int]:
     return memory
 
 
-def parse_program_version_2(input_data: List[str]) -> Dict[int, int]:
+def parse_program_version_2(input_data: list[str]) -> Dict[int, int]:
     current_mask = ""
     memory: Dict[int, int] = {}
 
@@ -89,7 +89,7 @@ def count_memory(memory: Dict[int, int]) -> int:
 
 
 @register_solution(2020, 14, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     memory = parse_program(input_data)
     answer = count_memory(memory)
 
@@ -100,7 +100,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2020, 14, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     memory = parse_program_version_2(input_data)
     answer = count_memory(memory)
 

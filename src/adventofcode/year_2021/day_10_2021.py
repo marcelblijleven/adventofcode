@@ -1,5 +1,3 @@
-from typing import List
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -37,7 +35,7 @@ def _is_close(character: str) -> bool:
 
 
 def reduce_line(line: str) -> str:
-    first_to_close: List[str] = []
+    first_to_close: list[str] = []
 
     for character in line:
         if _is_open(character):
@@ -53,8 +51,8 @@ def reduce_line(line: str) -> str:
     return ""
 
 
-def find_corrupted_characters(lines: List[str]) -> List[str]:
-    corrupted_characters: List[str] = []
+def find_corrupted_characters(lines: list[str]) -> list[str]:
+    corrupted_characters: list[str] = []
 
     for line in lines:
         if len(character := reduce_line(line)) == 0:
@@ -65,7 +63,7 @@ def find_corrupted_characters(lines: List[str]) -> List[str]:
     return corrupted_characters
 
 
-def count_points_corrupted_characters(corrupted_characters: List[str]) -> int:
+def count_points_corrupted_characters(corrupted_characters: list[str]) -> int:
     total = 0
 
     for key, value in POINTS_MAP.items():
@@ -74,16 +72,16 @@ def count_points_corrupted_characters(corrupted_characters: List[str]) -> int:
     return total
 
 
-def filter_lines(lines: List[str]) -> List[str]:
+def filter_lines(lines: list[str]) -> list[str]:
     return list(filter(lambda line: len(reduce_line(line)) == 0, lines))
 
 
-def find_closing_characters(lines: List[str]) -> List[str]:
+def find_closing_characters(lines: list[str]) -> list[str]:
     lines = filter_lines(lines)
-    closing_characters: List[str] = []
+    closing_characters: list[str] = []
 
     for line in lines:
-        first_to_close: List[str] = []
+        first_to_close: list[str] = []
         for character in line:
             if _is_open(character):
                 first_to_close.append(character)
@@ -104,8 +102,8 @@ def find_closing_characters(lines: List[str]) -> List[str]:
     return closing_characters
 
 
-def count_points_autocomplete(closing_characters: List[str]) -> int:
-    total: List[int] = []
+def count_points_autocomplete(closing_characters: list[str]) -> int:
+    total: list[int] = []
 
     for line in closing_characters:
         subtotal = 0
@@ -121,7 +119,7 @@ def count_points_autocomplete(closing_characters: List[str]) -> int:
 
 
 @register_solution(2021, 10, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     corrupted_characters = find_corrupted_characters(input_data)
     answer = count_points_corrupted_characters(corrupted_characters)
 
@@ -132,7 +130,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 10, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     closing_characters = find_closing_characters(input_data)
     answer = count_points_autocomplete(closing_characters)
 

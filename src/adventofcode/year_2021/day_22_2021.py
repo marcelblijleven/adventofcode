@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from typing import List, Optional
+from typing import Optional
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -107,7 +107,7 @@ def apply_reboot_without_limit(input_data: list[str]):
 
 
 @register_solution(2021, 22, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     answer = apply_reboot(input_data, limit=True)
 
     if not answer:
@@ -117,7 +117,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 22, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     answer = apply_reboot_without_limit(input_data)
 
     if not answer:

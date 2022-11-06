@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional
+from typing import Dict, Optional
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -28,8 +28,8 @@ class Aunt:
         return int(self.name.split("Sue ")[1])
 
 
-def parse_lines(input_data: List[str]) -> List[Aunt]:
-    aunts: List[Aunt] = []
+def parse_lines(input_data: list[str]) -> list[Aunt]:
+    aunts: list[Aunt] = []
 
     for line in input_data:
         name, property_content = line.split(": ", 1)
@@ -44,7 +44,7 @@ def parse_lines(input_data: List[str]) -> List[Aunt]:
     return aunts
 
 
-def find_aunt_sue(aunts: List[Aunt]) -> Optional[Aunt]:
+def find_aunt_sue(aunts: list[Aunt]) -> Optional[Aunt]:
     for aunt in aunts:
         if all_properties_match(aunt):
             return aunt
@@ -52,7 +52,7 @@ def find_aunt_sue(aunts: List[Aunt]) -> Optional[Aunt]:
     return None
 
 
-def find_aunt_sue_part_two(aunts: List[Aunt]) -> Aunt:
+def find_aunt_sue_part_two(aunts: list[Aunt]) -> Aunt:
     aunts = [aunt for aunt in aunts if matches_part_two(aunt)]
 
     if len(aunts) != 1:
@@ -84,7 +84,7 @@ def matches_part_two(aunt: Aunt) -> bool:
 
 
 @register_solution(2015, 16, 1)
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     aunts = parse_lines(input_data)
     aunt = find_aunt_sue(aunts)
 
@@ -100,7 +100,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2015, 16, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     aunts = parse_lines(input_data)
     answer = find_aunt_sue_part_two(aunts).number
 

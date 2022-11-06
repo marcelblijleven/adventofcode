@@ -1,5 +1,5 @@
 import re
-from typing import List
+
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -10,7 +10,7 @@ Velocity = tuple[int, int]
 TargetArea = tuple[int, int, int, int]
 
 
-def get_target_area(input_data: List[str]) -> TargetArea:
+def get_target_area(input_data: list[str]) -> TargetArea:
     """
     Get the target area from the input data
     """
@@ -137,7 +137,7 @@ def try_velocities(target: TargetArea, size: int = 100) -> tuple[int, int]:
 
 
 @register_solution(2021, 17, 1, version="bruteforce")
-def part_one(input_data: List[str]):
+def part_one(input_data: list[str]):
     target = get_target_area(input_data)
     max_y, _ = try_velocities(target, 73)
     answer = max_y
@@ -149,7 +149,7 @@ def part_one(input_data: List[str]):
 
 
 @register_solution(2021, 17, 1, version="quick maths")
-def part_one_quick_maths(input_data: List[str]):
+def part_one_quick_maths(input_data: list[str]):
     """
     Learned about this solution after my bruteforce solution
     """
@@ -163,7 +163,7 @@ def part_one_quick_maths(input_data: List[str]):
 
 
 @register_solution(2021, 17, 2)
-def part_two(input_data: List[str]):
+def part_two(input_data: list[str]):
     target = get_target_area(input_data)
     _, hit_count = try_velocities(target, target[1] + 1)
     answer = hit_count

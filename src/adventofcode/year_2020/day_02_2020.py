@@ -1,5 +1,5 @@
 import re
-from typing import Sequence, List
+from typing import Sequence
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
@@ -48,7 +48,7 @@ class PasswordHelper:
 
 
 @register_solution(2020, 2, 1)
-def part_one(input_data: List[str]) -> int:
+def part_one(input_data: list[str]) -> int:
     passwords = map(PasswordHelper, input_data)
     answer = len([password for password in passwords if password.is_valid()])
 
@@ -59,7 +59,7 @@ def part_one(input_data: List[str]) -> int:
 
 
 @register_solution(2020, 2, 2)
-def part_two(input_data: List[str]) -> int:
+def part_two(input_data: list[str]) -> int:
     passwords = map(PasswordHelper, input_data)
     answer = len([password for password in passwords if password.is_valid_part_two()])
 

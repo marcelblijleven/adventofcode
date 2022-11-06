@@ -1,6 +1,6 @@
 import os
 from concurrent.futures import ProcessPoolExecutor
-from typing import Dict, List
+from typing import Any
 
 from rich.table import Table
 
@@ -18,7 +18,7 @@ from adventofcode.util.module_helpers import (
     get_full_module_from_day_file,
 )
 
-Benchmarks = Dict[int, Dict[int, Dict[str, float]]]
+Benchmarks = dict[int, dict[int, dict[str, float]]]
 
 
 def generate_benchmarks() -> None:
@@ -81,8 +81,8 @@ def create_benchmark_text(benchmarks: Benchmarks) -> str:
     return "\n".join(text)
 
 
-def generate_rich_tables(benchmarks: Benchmarks) -> List[tuple[int, Table]]:
-    tables: List[tuple[int, Table]] = []
+def generate_rich_tables(benchmarks: Benchmarks) -> list[tuple[int, Table]]:
+    tables: list[tuple[int, Table]] = []
 
     for year, days in benchmarks.items():
         console.print(f"[bold]{year}")
@@ -135,7 +135,7 @@ def _retrieve_benchmarks_for_day_mp(
 ) -> dict[int, dict[str, float]]:
     config.RUNNING_BENCHMARKS = True
     day = clean_day(day_file)
-    benchmarks: Dict[int, Dict[str, float]] = {day: {}}
+    benchmarks: dict[int, dict[str, float]] = {day: {}}
 
     module_name = get_full_module_from_day_file(day_file)
     module = __import__(module_name, fromlist=["object"])
@@ -197,7 +197,7 @@ def _retrieve_benchmarks() -> Benchmarks:
     return benchmarks
 
 
-def _get_extra_solutions_in_module(module: str) -> List[str]:
+def _get_extra_solutions_in_module(module: str) -> list[str]:
     def _eval_functions(f: str) -> bool:
         return f not in ["part_one", "part_two"] and (
             f.startswith("part_one") or f.startswith("part_two")
@@ -207,7 +207,7 @@ def _get_extra_solutions_in_module(module: str) -> List[str]:
     return [f for f in functions if _eval_functions(f)]
 
 
-def _run_day(module: str, year: int, day: int, benchmarks: Benchmarks):
+def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
     """
     Runs all solutions in the given day
     """
@@ -239,7 +239,7 @@ def _run_day(module: str, year: int, day: int, benchmarks: Benchmarks):
 
 
 def _run_day_mp(
-    module: str, year: int, day: int, benchmarks: Dict[int, Dict[str, float]]
+    module: Any, year: int, day: int, benchmarks: dict[int, dict[str, float]]
 ):
     """
     Runs all solutions in the given day
