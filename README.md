@@ -25,7 +25,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
   - A `run-all` script, which dynamically calls every solution in every `adventofcode.year_*.day_*` module
   - An `add-day` script, which add a solution day file using a template and downloads the input data from the AOC site automatically
 - Type checked (`mypy`) and linted (`flake8`)
-- Tested against multiple python versions using `tox` on each push to master and pull request
+- Tested against multiple python versions on each push to master and pull request
 
 <!-- start completed section -->
 ## Completed ⭐️
