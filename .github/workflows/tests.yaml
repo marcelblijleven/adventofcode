@@ -34,7 +34,7 @@ jobs:
       - name: Run mypy
         run: mypy src
       - name: Run tests
-        run: pytest --cov=./ --cov-report=xml
+        run: pytest --cov=./ --cov-report=xml --durations=10
       - name: "Upload coverage to Codecov"
         if: matrix.python-version == 3.11  # Only upload coverage once per run
         uses: codecov/codecov-action@v2
