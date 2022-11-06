@@ -1,8 +1,11 @@
+import sys
+
 import pytest
 
 from adventofcode.year_2015.day_10_2015 import iterate, part_two, part_one, get_input_for_day
 
 
+@pytest.mark.skipif(sys.version_info > (3,10))
 @pytest.mark.parametrize(['value', 'expected'], [
     ('1', '11'),
     ('11', '21'),
@@ -15,10 +18,10 @@ from adventofcode.year_2015.day_10_2015 import iterate, part_two, part_one, get_
 def test_iterate(value, expected):
     assert expected == iterate(value)
 
-
+@pytest.mark.skipif(sys.version_info > (3,10))
 def test_part_one():
     assert part_one(get_input_for_day(2015, 10)) == 329356
 
-
+@pytest.mark.skipif(sys.version_info > (3,10))
 def test_part_two():
     assert part_two(get_input_for_day(2015, 10)) == 4666278
