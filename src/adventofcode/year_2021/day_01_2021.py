@@ -55,7 +55,7 @@ def sonar_sweep_sliding_window_reuse(measurements: list[int]) -> int:
         if len(window) == 3:
             windows.append(list(window))
 
-    return sonar_sweep(list(map(sum, windows)))
+    return sonar_sweep(list(map(sum, windows)))  # type: ignore
 
 
 @register_solution(2021, 1, 1)

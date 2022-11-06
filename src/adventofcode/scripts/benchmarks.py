@@ -1,5 +1,6 @@
 import os
 from concurrent.futures import ProcessPoolExecutor
+from typing import Any
 
 from rich.table import Table
 
@@ -206,7 +207,7 @@ def _get_extra_solutions_in_module(module: str) -> list[str]:
     return [f for f in functions if _eval_functions(f)]
 
 
-def _run_day(module: str, year: int, day: int, benchmarks: Benchmarks):
+def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
     """
     Runs all solutions in the given day
     """
@@ -238,7 +239,7 @@ def _run_day(module: str, year: int, day: int, benchmarks: Benchmarks):
 
 
 def _run_day_mp(
-    module: str, year: int, day: int, benchmarks: dict[int, dict[str, float]]
+    module: Any, year: int, day: int, benchmarks: dict[int, dict[str, float]]
 ):
     """
     Runs all solutions in the given day
