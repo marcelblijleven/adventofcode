@@ -1,5 +1,5 @@
 import re
-from typing import Sequence, List
+from typing import Sequence
 
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution

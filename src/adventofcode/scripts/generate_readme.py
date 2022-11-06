@@ -1,6 +1,5 @@
 import os
 import re
-from typing import Dict, List
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.util.module_helpers import (
@@ -11,7 +10,7 @@ from adventofcode.util.module_helpers import (
     clean_year,
 )
 
-YearDayType = Dict[int, Dict[int, Dict[str, bool]]]
+YearDayType = dict[int, dict[int, dict[str, bool]]]
 
 
 def generate_readme():

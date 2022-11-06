@@ -1,6 +1,5 @@
 import os
 from concurrent.futures import ProcessPoolExecutor
-from typing import Dict, List
 
 from rich.table import Table
 
@@ -18,7 +17,7 @@ from adventofcode.util.module_helpers import (
     get_full_module_from_day_file,
 )
 
-Benchmarks = Dict[int, Dict[int, Dict[str, float]]]
+Benchmarks = dict[int, dict[int, dict[str, float]]]
 
 
 def generate_benchmarks() -> None:
@@ -135,7 +134,7 @@ def _retrieve_benchmarks_for_day_mp(
 ) -> dict[int, dict[str, float]]:
     config.RUNNING_BENCHMARKS = True
     day = clean_day(day_file)
-    benchmarks: Dict[int, Dict[str, float]] = {day: {}}
+    benchmarks: dict[int, dict[str, float]] = {day: {}}
 
     module_name = get_full_module_from_day_file(day_file)
     module = __import__(module_name, fromlist=["object"])
@@ -239,7 +238,7 @@ def _run_day(module: str, year: int, day: int, benchmarks: Benchmarks):
 
 
 def _run_day_mp(
-    module: str, year: int, day: int, benchmarks: Dict[int, Dict[str, float]]
+    module: str, year: int, day: int, benchmarks: dict[int, dict[str, float]]
 ):
     """
     Runs all solutions in the given day
