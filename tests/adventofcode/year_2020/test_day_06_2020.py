@@ -1,21 +1,21 @@
 from adventofcode.year_2020.day_06_2020 import part_one, part_two
 
 test_input = [
-    'abc',
-    '',
-    'a',
-    'b',
-    'c',
-    '',
-    'ab',
-    'ac',
-    '',
-    'a',
-    'a',
-    'a',
-    'a',
-    '',
-    'b',
+    "abc",
+    "",
+    "a",
+    "b",
+    "c",
+    "",
+    "ab",
+    "ac",
+    "",
+    "a",
+    "a",
+    "a",
+    "a",
+    "",
+    "b",
 ]
 
 

@@ -1,105 +1,113 @@
 import pytest
 
-from adventofcode.year_2015.day_18_2015 import read_grid, get_neighbours, get_next_state, ON, OFF, animate, \
-    grid_to_list_str, animate_stuck_corners
+from adventofcode.year_2015.day_18_2015 import (
+    read_grid,
+    get_neighbours,
+    get_next_state,
+    ON,
+    OFF,
+    animate,
+    grid_to_list_str,
+    animate_stuck_corners,
+)
 
 test_input = [
-    '.#.#.#',
-    '...##.',
-    '#....#',
-    '..#...',
-    '#.#..#',
-    '####..',
+    ".#.#.#",
+    "...##.",
+    "#....#",
+    "..#...",
+    "#.#..#",
+    "####..",
 ]
 
 test_input_step_1 = [
-    '..##..',
-    '..##.#',
-    '...##.',
-    '......',
-    '#.....',
-    '#.##..',
+    "..##..",
+    "..##.#",
+    "...##.",
+    "......",
+    "#.....",
+    "#.##..",
 ]
 
 test_input_step_2 = [
-    '..###.',
-    '......',
-    '..###.',
-    '......',
-    '.#....',
-    '.#....',
+    "..###.",
+    "......",
+    "..###.",
+    "......",
+    ".#....",
+    ".#....",
 ]
 
 test_input_step_3 = [
-    '...#..',
-    '......',
-    '...#..',
-    '..##..',
-    '......',
-    '......',
+    "...#..",
+    "......",
+    "...#..",
+    "..##..",
+    "......",
+    "......",
 ]
 
 test_input_step_4 = [
-    '......',
-    '......',
-    '..##..',
-    '..##..',
-    '......',
-    '......',
+    "......",
+    "......",
+    "..##..",
+    "..##..",
+    "......",
+    "......",
 ]
 
 test_input_part_two = [
-    '##.#.#',
-    '...##.',
-    '#....#',
-    '..#...',
-    '#.#..#',
-    '####.#',
+    "##.#.#",
+    "...##.",
+    "#....#",
+    "..#...",
+    "#.#..#",
+    "####.#",
 ]
 
 test_input_part_two_step_1 = [
-    '#.##.#',
-    '####.#',
-    '...##.',
-    '......',
-    '#...#.',
-    '#.####',
+    "#.##.#",
+    "####.#",
+    "...##.",
+    "......",
+    "#...#.",
+    "#.####",
 ]
 
 test_input_part_two_step_2 = [
-    '#..#.#',
-    '#....#',
-    '.#.##.',
-    '...##.',
-    '.#..##',
-    '##.###',
+    "#..#.#",
+    "#....#",
+    ".#.##.",
+    "...##.",
+    ".#..##",
+    "##.###",
 ]
 
 test_input_part_two_step_3 = [
-    '#...##',
-    '####.#',
-    '..##.#',
-    '......',
-    '##....',
-    '####.#',
+    "#...##",
+    "####.#",
+    "..##.#",
+    "......",
+    "##....",
+    "####.#",
 ]
 
 test_input_part_two_step_4 = [
-    '#.####',
-    '#....#',
-    '...#..',
-    '.##...',
-    '#.....',
-    '#.#..#',
+    "#.####",
+    "#....#",
+    "...#..",
+    ".##...",
+    "#.....",
+    "#.#..#",
 ]
 
 test_input_part_two_step_5 = [
-    '##.###',
-    '.##..#',
-    '.##...',
-    '.##...',
-    '#.#...',
-    '##...#',
+    "##.###",
+    ".##..#",
+    ".##...",
+    ".##...",
+    "#.#...",
+    "##...#",
 ]
 
 
@@ -160,15 +168,18 @@ def test_get_neighbours():
     assert (x + 1, y + 1) in neighbours
 
 
-@pytest.mark.parametrize(['own_value', 'neighbours_on', 'expected'], [
-    (ON, 1, OFF),
-    (ON, 2, ON),
-    (ON, 3, ON),
-    (ON, 4, OFF),
-    (OFF, 2, OFF),
-    (OFF, 3, ON),
-    (OFF, 4, OFF),
-])
+@pytest.mark.parametrize(
+    ["own_value", "neighbours_on", "expected"],
+    [
+        (ON, 1, OFF),
+        (ON, 2, ON),
+        (ON, 3, ON),
+        (ON, 4, OFF),
+        (OFF, 2, OFF),
+        (OFF, 3, ON),
+        (OFF, 4, OFF),
+    ],
+)
 def test_get_next_state(own_value, neighbours_on, expected):
     light = (10, 10)
     grid = {light: own_value}
@@ -187,7 +198,7 @@ def test_get_next_state(own_value, neighbours_on, expected):
 
 def test_get_next_state_raises():
     light = (10, 10)
-    grid = {light: '!'}
+    grid = {light: "!"}
 
     # Setup neighbours
     on_values = [ON] * 4
@@ -201,15 +212,18 @@ def test_get_next_state_raises():
     with pytest.raises(ValueError) as wrapped_e:
         _ = get_next_state(light, grid)
 
-    assert str(wrapped_e.value) == 'unknown light state: !'
+    assert str(wrapped_e.value) == "unknown light state: !"
 
 
-@pytest.mark.parametrize(['steps', 'expected'], [
-    (1, test_input_step_1),
-    (2, test_input_step_2),
-    (3, test_input_step_3),
-    (4, test_input_step_4),
-])
+@pytest.mark.parametrize(
+    ["steps", "expected"],
+    [
+        (1, test_input_step_1),
+        (2, test_input_step_2),
+        (3, test_input_step_3),
+        (4, test_input_step_4),
+    ],
+)
 def test_animate(steps, expected):
     grid = read_grid(test_input)
 
@@ -219,13 +233,16 @@ def test_animate(steps, expected):
     assert grid_to_list_str(grid) == expected
 
 
-@pytest.mark.parametrize(['steps', 'expected'], [
-    (1, test_input_part_two_step_1),
-    (2, test_input_part_two_step_2),
-    (3, test_input_part_two_step_3),
-    (4, test_input_part_two_step_4),
-    (5, test_input_part_two_step_5),
-])
+@pytest.mark.parametrize(
+    ["steps", "expected"],
+    [
+        (1, test_input_part_two_step_1),
+        (2, test_input_part_two_step_2),
+        (3, test_input_part_two_step_3),
+        (4, test_input_part_two_step_4),
+        (5, test_input_part_two_step_5),
+    ],
+)
 def test_animate_stuck_corners(steps, expected):
     grid = read_grid(test_input_part_two)
 

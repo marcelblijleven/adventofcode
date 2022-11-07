@@ -1,12 +1,20 @@
 import pytest
 
-from adventofcode.year_2015.day_20_2015 import most_presents_at_house, visit_houses, visit_houses_part_two, part_one
+from adventofcode.year_2015.day_20_2015 import (
+    most_presents_at_house,
+    visit_houses,
+    visit_houses_part_two,
+    part_one,
+)
 
 
-@pytest.mark.parametrize(['houses', 'expected'], [
-    ({1: 10, 2: 15, 3: 5}, 15),
-    ({1: 10, 2: 10, 3: 3}, 10),
-])
+@pytest.mark.parametrize(
+    ["houses", "expected"],
+    [
+        ({1: 10, 2: 15, 3: 5}, 15),
+        ({1: 10, 2: 10, 3: 3}, 10),
+    ],
+)
 def test_most_presents_at_house(houses, expected):
     assert most_presents_at_house(houses) == expected
 
@@ -22,8 +30,8 @@ def test_visit_houses_part_two():
 
 
 def test_part_one():
-    assert part_one(['2500']) == 96
+    assert part_one(["2500"]) == 96
 
 
 def test_part_two():
-    assert part_one(['2500']) == 96
+    assert part_one(["2500"]) == 96
