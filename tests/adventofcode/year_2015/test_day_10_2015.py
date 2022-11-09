@@ -11,7 +11,14 @@ from adventofcode.year_2015.day_10_2015 import (
 )
 
 
-@pytest.mark.skipif(sys.version_info > (3, 10))
+def should_skip() -> bool:
+    major, minor, micro, releaselevel, serial = sys.version_info
+    if major == 3 and minor == 11 and os.getenv('CI', False):
+        return True
+
+    return False
+
+
 @pytest.mark.parametrize(
     ["value", "expected"],
     [
@@ -33,8 +40,7 @@ def test_part_one():
 
 
 @pytest.mark.skipif(
-    sys.version_info >= (3, 11),
-    os.getenv("CI", False),
+    should_skip() == 'true',
     reason="For some reason, this test takes 23 minutes on 3.11 in Github Actions, but runs fine on earlier versions",
 )
 def test_part_two():
