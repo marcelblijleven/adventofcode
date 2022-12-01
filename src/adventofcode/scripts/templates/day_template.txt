@@ -1,7 +1,7 @@
 
 
 from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.registry import register_solution
+from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
 

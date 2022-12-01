@@ -1,9 +1,15 @@
-from adventofcode.year_2020.day_13_2020 import part_two, part_one, parse_input, get_departure_times, \
-    get_answer_part_one, get_sequential_departure_times
+from adventofcode.year_2020.day_13_2020 import (
+    part_two,
+    part_one,
+    parse_input,
+    get_departure_times,
+    get_answer_part_one,
+    get_sequential_departure_times,
+)
 
 test_input = [
-    '939',
-    '7,13,x,x,59,x,31,19',
+    "939",
+    "7,13,x,x,59,x,31,19",
 ]
 
 

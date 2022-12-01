@@ -7,4 +7,4 @@ def test_part_one():
 
 
 def test_part_two():
-    assert part_two(get_input_for_day(2015, 25)) == 'hooray'
+    assert part_two(get_input_for_day(2015, 25)) == "hooray"
