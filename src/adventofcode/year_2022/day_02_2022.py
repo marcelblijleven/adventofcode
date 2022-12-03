@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Type
-
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -16,33 +14,33 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 ROUND_ONE_MAPPING = {
     # Draws
-    'A X': 1 + 3,
-    'B Y': 2 + 3,
-    'C Z': 3 + 3,
+    "A X": 1 + 3,
+    "B Y": 2 + 3,
+    "C Z": 3 + 3,
     # Losses
-    'B X': 1 + 0,
-    'C Y': 2 + 0,
-    'A Z': 3 + 0,
+    "B X": 1 + 0,
+    "C Y": 2 + 0,
+    "A Z": 3 + 0,
     # Wins:
-    'C X': 1 + 6,
-    'A Y': 2 + 6,
-    'B Z': 3 + 6
+    "C X": 1 + 6,
+    "A Y": 2 + 6,
+    "B Z": 3 + 6,
 }
 
 
 ROUND_TWO_MAPPING = {
     # Losses
-    'A X': 3 + 0,  # Player chooses Z
-    'B X': 1 + 0,  # Player chooses X
-    'C X': 2 + 0,  # Player chooses Y
+    "A X": 3 + 0,  # Player chooses Z
+    "B X": 1 + 0,  # Player chooses X
+    "C X": 2 + 0,  # Player chooses Y
     # Draws
-    'A Y': 1 + 3,  # Player chooses X
-    'B Y': 2 + 3,  # Player chooses Y
-    'C Y': 3 + 3,  # Player chooses Z
+    "A Y": 1 + 3,  # Player chooses X
+    "B Y": 2 + 3,  # Player chooses Y
+    "C Y": 3 + 3,  # Player chooses Z
     # Wins
-    'A Z': 2 + 6,  # Player chooses Y
-    'B Z': 3 + 6,  # Player chooses Z
-    'C Z': 1 + 6,  # Player chooses X
+    "A Z": 2 + 6,  # Player chooses Y
+    "B Z": 3 + 6,  # Player chooses Z
+    "C Z": 1 + 6,  # Player chooses X
 }
 
 
@@ -60,7 +58,7 @@ class Shape:
 
 class Rock(Shape):
     value = 1
-    
+
     @property
     def nemesis(self) -> Shape:
         return Paper()
@@ -102,7 +100,7 @@ class Paper(Shape):
 
 class Scissors(Shape):
     value = 3
-    
+
     @property
     def nemesis(self) -> Shape:
         return Rock()
@@ -122,11 +120,11 @@ class Scissors(Shape):
 
 
 def get_shape(letter: str) -> Shape:
-    if letter in ['A', 'X']:
+    if letter in ["A", "X"]:
         return Rock()
-    if letter in ['B', 'Y']:
+    if letter in ["B", "Y"]:
         return Paper()
-    if letter in ['C', 'Z']:
+    if letter in ["C", "Z"]:
         return Scissors()
 
 
@@ -134,7 +132,7 @@ def play_round_one(input_data: list[str]) -> int:
     score = 0
 
     for row in input_data:
-        their_move, your_move = row.split(' ')
+        their_move, your_move = row.split(" ")
         theirs = get_shape(their_move)
         yours = get_shape(your_move)
 
@@ -149,14 +147,14 @@ def play_round_one(input_data: list[str]) -> int:
 
 
 def get_shapes_round_two(row: str):
-    theirs, yours = row.split(' ')
+    theirs, yours = row.split(" ")
     their_shape = get_shape(theirs)
-    
-    if yours == 'X':  # lose
+
+    if yours == "X":  # lose
         return their_shape, their_shape.easy_win
-    if yours == 'Y':  # draw
+    if yours == "Y":  # draw
         return their_shape, their_shape
-    if yours == 'Z':  # win
+    if yours == "Z":  # win
         return their_shape, their_shape.nemesis
 
 
@@ -200,7 +198,7 @@ def part_one(input_data: list[str]):
     return answer
 
 
-@register_solution(2022, 2, 1, 'mapping')
+@register_solution(2022, 2, 1, "mapping")
 def part_one_with_mapping(input_data: list[str]):
     answer = play_round_one_with_mapping(input_data)
 
@@ -220,7 +218,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-@register_solution(2022, 2, 2, 'mapping')
+@register_solution(2022, 2, 2, "mapping")
 def part_two_with_mapping(input_data: list[str]):
     answer = play_round_two_with_mapping(input_data)
 
@@ -230,7 +228,7 @@ def part_two_with_mapping(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2022, 2)
     part_one(data)
     part_one_with_mapping(data)

@@ -13,7 +13,7 @@ from adventofcode.year_2015.day_10_2015 import (
 
 def should_skip() -> bool:
     major, minor, micro, releaselevel, serial = sys.version_info
-    if major == 3 and minor == 11 and os.getenv('CI', False):
+    if major == 3 and minor == 11 and os.getenv("CI", False):
         return True
 
     return False
@@ -40,7 +40,7 @@ def test_part_one():
 
 
 @pytest.mark.skipif(
-    should_skip() == 'true',
+    should_skip() == "true",
     reason="For some reason, this test takes 23 minutes on 3.11 in Github Actions, but runs fine on earlier versions",
 )
 def test_part_two():
