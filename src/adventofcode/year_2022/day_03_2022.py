@@ -26,9 +26,9 @@ def rucksacks_part_one(input_data: list[str]) -> int:
     score: int = 0
 
     for rucksack in input_data:
-        if (matched_letter := compare_compartments(
-            *split_rucksack(rucksack)
-        )) is not None:
+        if (
+            matched_letter := compare_compartments(*split_rucksack(rucksack))
+        ) is not None:
             score += get_letter_value(matched_letter)
 
     return score
@@ -36,7 +36,7 @@ def rucksacks_part_one(input_data: list[str]) -> int:
 
 def get_groups_of_three(input_data: list[str]):
     for idx in range(0, len(input_data), 3):
-        yield input_data[idx:idx+3]
+        yield input_data[idx : idx + 3]
 
 
 def compare_rucksacks(a: str, b: str, c: str) -> Optional[str]:
@@ -76,7 +76,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2022, 3)
     part_one(data)
     part_two(data)

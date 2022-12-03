@@ -29,7 +29,6 @@ ROUND_ONE_MAPPING = {
     "B Z": 3 + 6,
 }
 
-
 ROUND_TWO_MAPPING = {
     # Losses
     "A X": 3 + 0,  # Player chooses Z
@@ -128,8 +127,8 @@ def get_shape(letter: str) -> Union[Rock, Paper, Scissors]:
         return Paper()
     if letter in ["C", "Z"]:
         return Scissors()
-    
-    raise ValueError('unknow letter received')
+
+    raise ValueError("unknown letter received")
 
 
 def play_round_one(input_data: list[str]) -> int:
