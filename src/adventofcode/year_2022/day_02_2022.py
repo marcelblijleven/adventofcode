@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Union
+
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -119,13 +121,15 @@ class Scissors(Shape):
         return isinstance(other, Scissors)
 
 
-def get_shape(letter: str) -> Shape:
+def get_shape(letter: str) -> Union[Rock, Paper, Scissors]:
     if letter in ["A", "X"]:
         return Rock()
     if letter in ["B", "Y"]:
         return Paper()
     if letter in ["C", "Z"]:
         return Scissors()
+    
+    raise ValueError('unknow letter received')
 
 
 def play_round_one(input_data: list[str]) -> int:
