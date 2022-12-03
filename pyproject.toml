@@ -7,6 +7,22 @@ testpaths = [
     "tests",
 ]
 
+[tool.black]
+line-length = 88
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
 [tool.mypy]
 mypy_path = "src"
 check_untyped_defs = true
