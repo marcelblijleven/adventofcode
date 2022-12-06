@@ -16,6 +16,10 @@ def iterate(value: str) -> str:
     return new_value
 
 
+def iterate_method_2(value: str) -> str:
+    return "".join(str(len(list(group))) + key for key, group in groupby(value))
+
+
 @register_solution(2015, 10, 1)
 def part_one(input_data: list[str]):
     value = input_data[0]
@@ -46,7 +50,23 @@ def part_two(input_data: list[str]):
     return answer
 
 
+@register_solution(2015, 10, 2, "method 2")
+def part_two_method_2(input_data: list[str]):
+    value = input_data[0]
+
+    for i in range(0, 50):
+        value = iterate_method_2(value)
+
+    answer = len(value)
+
+    if not answer:
+        raise SolutionNotFoundException(2015, 10, 2)
+
+    return answer
+
+
 if __name__ == "__main__":
     data = get_input_for_day(2015, 10)
     part_one(data)
     part_two(data)
+    part_two_method_2(data)

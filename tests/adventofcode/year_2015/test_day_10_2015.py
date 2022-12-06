@@ -1,22 +1,12 @@
-import os
-import sys
-
 import pytest
 
+from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.year_2015.day_10_2015 import (
     iterate,
     part_two,
     part_one,
-    get_input_for_day,
-)
-
-
-def should_skip() -> bool:
-    major, minor, micro, releaselevel, serial = sys.version_info
-    if major == 3 and minor == 11 and os.getenv("CI", False):
-        return True
-
-    return False
+    part_two_method_2,
+)  # noqa
 
 
 @pytest.mark.parametrize(
@@ -39,9 +29,10 @@ def test_part_one():
     assert part_one(get_input_for_day(2015, 10)) == 329356
 
 
-@pytest.mark.skipif(
-    should_skip() == "true",
-    reason="For some reason, this test takes 23 minutes on 3.11 in Github Actions, but runs fine on earlier versions",
-)
+@pytest.mark.skip(reason="extremely slow in CI with Python 3.11")
 def test_part_two():
     assert part_two(get_input_for_day(2015, 10)) == 4666278
+
+
+def test_part_two_method_2():
+    assert part_two_method_2(get_input_for_day(2015, 10)) == 4666278
