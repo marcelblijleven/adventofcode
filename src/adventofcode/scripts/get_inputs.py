@@ -1,6 +1,6 @@
 import os
 
-import requests  # noqa
+from httpx import get  # noqa
 
 from adventofcode.config import ROOT_DIR
 
@@ -17,7 +17,7 @@ def _download_input(year: int, day: int, session: str) -> bytes:
     """
     cookies = {"session": session}
     url = f"https://adventofcode.com/{year}/day/{day}/input"
-    resp = requests.get(url, cookies=cookies)
+    resp = get(url, cookies=cookies)
     resp.raise_for_status()
     return resp.content  # type: ignore
 
