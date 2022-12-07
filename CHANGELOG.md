@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/marcelblijleven/adventofcode/compare/v1.7.0...v1.8.0) (2022-12-07)
+
+
+### ✨ Features
+
+* add registry ([1abb093](https://github.com/marcelblijleven/adventofcode/commit/1abb0930560d969feb755770c7d88813924d8927))
+
+
+### 🛠 CI
+
+* add python 3.11 ([deb0478](https://github.com/marcelblijleven/adventofcode/commit/deb04782259fbfca6af68b2a48c1111265c4dfe8))
+* add Python 3.11 ([33b849e](https://github.com/marcelblijleven/adventofcode/commit/33b849e47290f6139e9a49e1429d6f80194e0613))
+* adjust pip install file ([60ee4f1](https://github.com/marcelblijleven/adventofcode/commit/60ee4f1df6bddb790dbbec85d510e507baec37e3))
+* allow manual runs of tests ([6247b53](https://github.com/marcelblijleven/adventofcode/commit/6247b53e1fd933ad695e939cec4f51164033ff03))
+* don't run flake8 on test dir ([61d89a6](https://github.com/marcelblijleven/adventofcode/commit/61d89a6c7fe0e91a7b05a37d359b5f98d0399978))
+* remove python 3.8 from tox setup ([4d1bdae](https://github.com/marcelblijleven/adventofcode/commit/4d1bdae3d4abe2a29a19e1deb16fba2c92311bff))
+* skip specific test if running in Github Actions and version is 3.11 ([bdc80c8](https://github.com/marcelblijleven/adventofcode/commit/bdc80c8c044f7fad1a9cefaf672de97c3832a33c))
+* temporarily run on macos ([915e929](https://github.com/marcelblijleven/adventofcode/commit/915e929d0a462962dcb6a5a52d9c907ece9f3b4a))
+* update pipelines ([b69dec1](https://github.com/marcelblijleven/adventofcode/commit/b69dec197430b1f0d597fc272606a7d0f4964a92))
+
+
+### 🐛 Bug Fixes
+
+* don't use None as default for str type ([74d4b93](https://github.com/marcelblijleven/adventofcode/commit/74d4b93d4e85f103e29c406c8026f0d666650647))
+* flake8 and black ([9a2835b](https://github.com/marcelblijleven/adventofcode/commit/9a2835b07ce4c688dac36754e6eca9cacb070140))
+* flake8 errors ([0d89957](https://github.com/marcelblijleven/adventofcode/commit/0d899572590c1fea20e9006cfcc14ee15b692297))
+* mypy errors ([01f52e5](https://github.com/marcelblijleven/adventofcode/commit/01f52e501c2fb25ac741412fdcbf744f1eeb8494))
+* mypy issues ([74864bd](https://github.com/marcelblijleven/adventofcode/commit/74864bd9a46a3c048ae20d16caf98b59bde13ac6))
+
+
+### 🚦Tests
+
+* log slowest tests ([2ef95e9](https://github.com/marcelblijleven/adventofcode/commit/2ef95e933865f8126ca1ca2ba3b81ba54c6a5d96))
+* parametrize test ([6b5bea4](https://github.com/marcelblijleven/adventofcode/commit/6b5bea40b78da2540e72b4171d751897be2bae31))
+* remove unused import ([dbb5e90](https://github.com/marcelblijleven/adventofcode/commit/dbb5e9064df367098e5fb5013b7a21416dc6aab7))
+* update test to match unit signature ([0879c3b](https://github.com/marcelblijleven/adventofcode/commit/0879c3b53db39f241ae87c813eafff0ffad4e9c4))
+
+
+### 🔨 Refactor
+
+* use httpx instead of requests and add docstrings ([97815d0](https://github.com/marcelblijleven/adventofcode/commit/97815d07a4509c81a51c2a26e0e0447607f4819c))
+
+
+### ⭐️ Solutions
+
+* add 2021 day 18 ([ef90ce9](https://github.com/marcelblijleven/adventofcode/commit/ef90ce98d687769feab1dff5300b60ab0857d289))
+* add 2021 day 19 ([a96ad1b](https://github.com/marcelblijleven/adventofcode/commit/a96ad1b5e922e625e0fe1d2fa3917319287ee00e))
+* add 2021 day 20, 21 and 22 ([c62ad59](https://github.com/marcelblijleven/adventofcode/commit/c62ad594c33018e09819bda8c6a49d6518542952))
+* add 2021 day 25 ([77579f9](https://github.com/marcelblijleven/adventofcode/commit/77579f954a64819c2ef00ac4d64c6994b19fce63))
+* add day 1 of 2022 ([cefbe22](https://github.com/marcelblijleven/adventofcode/commit/cefbe2290aa2e382162f86a6b0c3302677d7ec68))
+* add day 2 of 2022 ([8b3e42a](https://github.com/marcelblijleven/adventofcode/commit/8b3e42a1a276a5b8ef97954828e928a8cd78ac50))
+* add day 3 of 2022 ([b6a6df1](https://github.com/marcelblijleven/adventofcode/commit/b6a6df17981bab630a71289efa38ec1a3c597dfb))
+* add day 4 of 2022 ([9f2059c](https://github.com/marcelblijleven/adventofcode/commit/9f2059c6a6a97e56a25af48619487114d8d8dc17))
+* add day 5 of 2022 ([b04aa17](https://github.com/marcelblijleven/adventofcode/commit/b04aa173e5e4390f0c961c1cf6e55ab8d8169b6c))
+* add day 6 of 2022 ([04a05f3](https://github.com/marcelblijleven/adventofcode/commit/04a05f3875a31ba69735e0b8a3f4c3c7d745edc7))
+
 ## [1.7.0](https://github.com/marcelblijleven/adventofcode/compare/v1.6.0...v1.7.0) (2021-12-17)
 
 
