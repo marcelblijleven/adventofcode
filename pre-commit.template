@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Simple pre commit file which takes all staged files
+# and runs various checks and linters
+
+STAGED=$(git diff --name-only --diff-filter=ACMR --staged | tr '\n' ' ')
+
+echo $STAGED | xargs isort
+echo $STAGED | xargs flake8
+echo $STAGED | xargs mypy
+echo $STAGED | xargs black
+
+# Add all staged files with changes
+echo $STAGED | xargs git add
