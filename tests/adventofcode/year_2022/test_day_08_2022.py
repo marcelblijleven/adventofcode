@@ -1,5 +1,4 @@
 from adventofcode.year_2022.day_08_2022 import (
-    filter_grid,
     get_grid,
     get_grid_size,
     get_scenic_scores,
@@ -51,40 +50,8 @@ def test_get_grid():
     }
 
 
-def test_filter_grid():
-    grid = {
-        (0, 0): 3,
-        (0, 1): 2,
-        (0, 2): 6,
-        (0, 3): 3,
-        (0, 4): 3,
-        (1, 0): 0,
-        (1, 1): 5,
-        (1, 2): 5,
-        (1, 3): 3,
-        (1, 4): 5,
-        (2, 0): 3,
-        (2, 1): 5,
-        (2, 2): 3,
-        (2, 3): 5,
-        (2, 4): 3,
-        (3, 0): 7,
-        (3, 1): 1,
-        (3, 2): 3,
-        (3, 3): 4,
-        (3, 4): 9,
-        (4, 0): 3,
-        (4, 1): 2,
-        (4, 2): 2,
-        (4, 3): 9,
-        (4, 4): 0,
-    }
-
-    print(filter_grid(grid, (2, 2)))
-
-
 def test_get_visible_trees():
-    assert get_visible_trees(test_input) == 16
+    assert get_visible_trees(test_input) == 21
 
 
 def test_get_scenic_scores():
@@ -92,8 +59,8 @@ def test_get_scenic_scores():
 
 
 def test_part_one():
-    assert part_one(test_input) == "x"
+    assert part_one(test_input) == 21
 
 
 def test_part_two():
-    assert part_two(test_input) == "x"
+    assert part_two(test_input) == 8
