@@ -2,12 +2,12 @@ import pytest
 
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.year_2021.day_13_2021 import (
-    part_two,
-    part_one,
-    fold_position_along_y,
-    fold_position_along_x,
-    parse_input,
     fold_paper,
+    fold_position_along_x,
+    fold_position_along_y,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -110,10 +110,10 @@ def test_part_two():
     assert (
         part_two(get_input_for_day(2021, 13))
         == """
-███   ██  ████ █    ███  █  █ ████ ███ 
+███   ██  ████ █    ███  █  █ ████ ███
 █  █ █  █    █ █    █  █ █  █ █    █  █
 █  █ █      █  █    ███  ████ ███  █  █
-███  █ ██  █   █    █  █ █  █ █    ███ 
-█ █  █  █ █    █    █  █ █  █ █    █   
+███  █ ██  █   █    █  █ █  █ █    ███
+█ █  █  █ █    █    █  █ █  █ █    █
 █  █  ███ ████ ████ ███  █  █ █    █   """
     )  # noqa
