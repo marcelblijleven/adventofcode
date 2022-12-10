@@ -40,34 +40,30 @@ def _move_in_direction(
     return x, y
 
 
+def get_allowed_distance(pos_a: tuple[int, int], pos_b: tuple[int, int]) -> int:
+    """Diagonally is two steps, but shouldn't invoke a move from tail"""
+    return 1 if pos_a[0] == pos_b[0] or pos_a[1] == pos_b[1] else 2
+
+
 def move(
     instruction: tuple[str, int],
     position_head: tuple[int, int],
     position_tail: tuple[int, int],
     tail_locations: dict[tuple[int, int], int],
-) -> tuple[int, int, int, int]:
+) -> tuple[tuple[int, int], tuple[int, int]]:
     """Apply the move instruction and update the head and tail positions"""
     direction, steps = instruction
-    head_x, head_y = position_head
-    tail_x, tail_y = position_tail
-    new_head_x, new_head_y = head_x, head_y
 
     for _ in range(steps):
-        new_head_x, new_head_y = _move_in_direction((head_x, head_y), direction, 1)
+        position_head = _move_in_direction(position_head, direction, 1)
 
-        # Diagonally is two steps, but shouldn't invoke a move from tail
-        allowed_distance = 1 if new_head_x == tail_x or new_head_y == tail_y else 2
-
-        if (
-            manhattan_distance((new_head_x, new_head_y), (tail_x, tail_y))
-            > allowed_distance
+        if manhattan_distance(position_head, position_tail) > get_allowed_distance(
+            position_head, position_tail
         ):
-            tail_x, tail_y = determine_move((tail_x, tail_y), (new_head_x, new_head_y))
-            tail_locations[tail_x, tail_y] += 1
+            position_tail = determine_move(position_tail, position_head)
+            tail_locations[position_tail] += 1
 
-        head_x, head_y = (new_head_x, new_head_y)
-
-    return new_head_x, new_head_y, tail_x, tail_y
+    return position_head, position_tail
 
 
 def determine_move(
@@ -111,11 +107,9 @@ def move_snake(
             if key == 0:  # Head
                 positions[key] = _move_in_direction(position, direction, 1)
             else:
-                x, y = position
-                x_prev, y_prev = positions[key - 1]
-                allowed_distance = 1 if x_prev == x or y_prev == y else 2
-
-                if manhattan_distance(position, positions[key - 1]) > allowed_distance:
+                if manhattan_distance(
+                    position, positions[key - 1]
+                ) > get_allowed_distance(positions[key - 1], position):
                     positions[key] = determine_move(position, positions[key - 1])
 
                     if key == 9:  # Tail
@@ -128,15 +122,13 @@ def simulate_rope(input_data: list[str]) -> int:
     the tail has visited at least once
     """
     tail_locations: defaultdict[tuple[int, int], int] = defaultdict(int)
-    head_x, head_y = 0, 0
-    tail_x, tail_y = 0, 0
+    head = (0, 0)
+    tail = (0, 0)
 
-    tail_locations[tail_x, tail_y] += 1
+    tail_locations[tail] += 1
 
     for instruction in get_instructions(input_data):
-        head_x, head_y, tail_x, tail_y = move(
-            instruction, (head_x, head_y), (tail_x, tail_y), tail_locations
-        )
+        head, tail = move(instruction, head, tail, tail_locations)
 
     return len(tail_locations.keys())
 
