@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/marcelblijleven/adventofcode/compare/v1.8.0...v1.8.1) (2022-12-11)
+
+
+### 🚦Tests
+
+* update tests for day 8 of 2022 ([8191ad7](https://github.com/marcelblijleven/adventofcode/commit/8191ad7e7a141fb0eb484d5a940c4ff89f059f93))
+
+
+### ⭐️ Solutions
+
+* add day 10 of 2022 ([e374ff8](https://github.com/marcelblijleven/adventofcode/commit/e374ff88ee188e7dc57143367f947f7132607658))
+* add day 11 of 2022 ([90ace44](https://github.com/marcelblijleven/adventofcode/commit/90ace441b317a7df6d13d5e083c4a9f14b3f110c))
+* add day 7 of 2022 ([898ec62](https://github.com/marcelblijleven/adventofcode/commit/898ec62067561cfb0cb5c0669d7e46ac5d9f37db))
+* add day 8 of 2022 ([2ed5472](https://github.com/marcelblijleven/adventofcode/commit/2ed54720849c88caeebd25bd0cd034725d2c178e))
+* add day 9 of 2022 ([0ea6323](https://github.com/marcelblijleven/adventofcode/commit/0ea6323185565fc0c68cb76389c3a741557c8a5b))
+* clean up day 9 of 2022 ([19da6a0](https://github.com/marcelblijleven/adventofcode/commit/19da6a066f0f2d6c4ae14aaae964add8de7b705f))
+* make day 11 of 2022 2x faster ([439237e](https://github.com/marcelblijleven/adventofcode/commit/439237ef21c774add6fc76d1d7c291eb1244964c))
+
+
+### 🛠 CI
+
+* fix auto bumping of VERSION.txt ([5216cc4](https://github.com/marcelblijleven/adventofcode/commit/5216cc4d3f6766ae76f321fef88e3c147fb54abb))
+* fix auto bumping of VERSION.txt ([0749db2](https://github.com/marcelblijleven/adventofcode/commit/0749db24644e5cbd18327a97e53b8cd6286bf81a))
+
 ## [1.8.0](https://github.com/marcelblijleven/adventofcode/compare/v1.7.0...v1.8.0) (2022-12-07)
 
 

@@ -2,7 +2,7 @@
 # Simple pre commit file which takes all staged files
 # and runs various checks and linters
 
-STAGED=$(git diff --name-only --diff-filter=ACMR --staged | tr '\n' ' ')
+STAGED=$(git diff --name-only --diff-filter=ACMR --staged *.py | tr '\n' ' ')
 
 echo $STAGED | xargs isort
 echo $STAGED | xargs flake8

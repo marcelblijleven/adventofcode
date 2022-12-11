@@ -22,6 +22,7 @@ exclude = '''
   | dist
 )/
 '''
+force-exclude = '.versionrc'
 
 [tool.mypy]
 mypy_path = "src"
