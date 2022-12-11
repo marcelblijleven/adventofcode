@@ -18,6 +18,7 @@ class Monkey:
     other_monkeys: dict[int, Monkey]
     inspected: int
     allow_relief: bool
+    common_modulo: int
 
     def __init__(
         self,
@@ -56,10 +57,7 @@ class Monkey:
             if self.allow_relief:
                 worry_level = math.floor(worry_level / 3)
             else:
-                common_modulo = math.prod(
-                    [monkey.test[0] for monkey in self.other_monkeys.values()]
-                )
-                worry_level = worry_level % common_modulo
+                worry_level = worry_level % self.common_modulo
 
             if worry_level % self.test[0] == 0:
                 self.other_monkeys[self.test[1]].catch(worry_level)
@@ -74,18 +72,21 @@ class Monkey:
 
 
 def old_operand_number(old: int, operand: Literal["+", "*"], number: int) -> int:
+    """Operation that performs the operand on the item value and the provided number"""
     if operand == "+":
         return old + number
     return old * number
 
 
 def old_operand_old(old: int, operand: Literal["+", "*"]) -> int:
+    """Operation that performs the operand on the item value with the item value"""
     if operand == "+":
         return old + old
     return old * old
 
 
 def parse_instructions(input_data: list[str], allow_relief=True) -> dict[int, Monkey]:
+    """Parse instructions into a dict of Monkeys"""
     monkeys: dict[int, Monkey] = {}
 
     idx = 0
@@ -111,6 +112,10 @@ def parse_instructions(input_data: list[str], allow_relief=True) -> dict[int, Mo
             number, starting_items, operation, test, monkeys, allow_relief
         )
         idx += 7
+
+    common_modulo = math.prod([monkey.test[0] for monkey in monkeys.values()])
+    for monkey in monkeys.values():
+        monkey.common_modulo = common_modulo
 
     return monkeys
 
