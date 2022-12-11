@@ -20,9 +20,9 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | .versionrc
 )/
 '''
+force-exclude = '.versionrc'
 
 [tool.mypy]
 mypy_path = "src"

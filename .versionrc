@@ -15,6 +15,6 @@
         {"hidden": false, "type": "style", "section": "💅 Style"},
         {"hidden": false, "type": "refactor", "section": "🔨 Refactor"},
         {"hidden": false, "type": "revert", "section": "♻️ Revert"},
-        {"hidden": false, "type": "hotfix", "section": "🔥 Hotfix"},
-    ],
+        {"hidden": false, "type": "hotfix", "section": "🔥 Hotfix"}
+    ]
 }
