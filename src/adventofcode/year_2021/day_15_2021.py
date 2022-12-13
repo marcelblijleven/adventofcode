@@ -1,8 +1,7 @@
 import heapq
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.helpers import manhattan_distance
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -60,7 +59,7 @@ def find_route(grid: Grid):
                 visited[route] = risk
                 cost = manhattan_distance(route, end) + risk
                 heapq.heappush(heap, (cost, route))
-    print(heap)
+
     return visited[end]
 
 
