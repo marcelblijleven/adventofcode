@@ -1,32 +1,32 @@
 import json
 from functools import cmp_to_key
 from itertools import zip_longest
-from typing import Optional, Union
+from typing import Optional, Sequence, Union, cast
 
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.util.input_helpers import get_input_for_day
 
-Packet = Union[list[int], list["Packet"]]
+Packet = Union[Sequence[int], Sequence["Packet"]]
 Pair = tuple[Packet, Packet]
 
 
 def parse_line(line: str) -> Packet:
     """Parse line into Packet"""
-    return json.loads(line)
+    return cast(Packet, json.loads(line))
 
 
 def parse_pairs(input_data: list[str]) -> list[Pair]:
     """Parse input into list of Pair"""
     pairs: list[tuple[Packet, Packet]] = []
-    current_pair: Pair = ()  # noqa
+    current_pair: Pair = ()  # type: ignore
 
     for line in input_data + [""]:
         if not line:
             pairs.append(current_pair)
-            current_pair: Pair = ()  # noqa
+            current_pair: Pair = ()  # type: ignore
         else:
-            current_pair += (parse_line(line),)
+            current_pair += (parse_line(line),)  # type: ignore
 
     return pairs
 
@@ -64,8 +64,14 @@ def compare_pairs(left: Packet, right: Packet) -> Optional[bool]:
         left_value = left_value if isinstance(left_value, list) else [left_value]
         right_value = right_value if isinstance(right_value, list) else [right_value]
 
-        if (outcome := compare_pairs(left_value, right_value)) is not None:
+        if (
+            outcome := compare_pairs(
+                cast(Packet, left_value), cast(Packet, right_value)
+            )
+        ) is not None:  # type: ignore
             return outcome
+
+    return None
 
 
 def find_packets(input_data: list[str]) -> int:
