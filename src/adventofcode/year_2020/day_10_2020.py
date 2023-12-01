@@ -30,7 +30,7 @@ def part_two(input_data: list[str]):
     jolts = sorted([0, *int_data, max(int_data) + 3])
     cache = defaultdict(int, {0: 1})
 
-    for a, _ in zip(jolts[1:], jolts, strict=True):
+    for a, _ in zip(jolts[1:], jolts, strict=False):
         cache[a] = cache[a - 3] + cache[a - 2] + cache[a - 1]
 
     answer = cache[jolts[-1]]
