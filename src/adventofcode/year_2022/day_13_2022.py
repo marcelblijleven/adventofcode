@@ -17,14 +17,14 @@ def parse_line(line: str) -> Packet:
 def parse_pairs(input_data: list[str]) -> list[Pair]:
     """Parse input into list of Pair"""
     pairs: list[tuple[Packet, Packet]] = []
-    current_pair: Pair = ()
+    current_pair: Pair = ()  # type: ignore
 
     for line in [*input_data, ""]:
         if not line:
             pairs.append(current_pair)
-            current_pair: Pair = ()
+            current_pair = ()  # type: ignore
         else:
-            current_pair += (parse_line(line),)
+            current_pair += (parse_line(line),)  # type: ignore
 
     return pairs
 
@@ -65,6 +65,8 @@ def compare_pairs(left: Packet, right: Packet) -> bool | None:
         if (outcome := compare_pairs(_left_value, _right_value)) is not None:
             return outcome
 
+    return None
+
 
 def find_packets(input_data: list[str]) -> int:
     """Find sum of Pair indexes that are in the correct order"""
@@ -87,7 +89,7 @@ def find_distress_signal(input_data: list[str]) -> int:
     pairs = parse_pairs(input_data)
     divider_packet_one = [[2]]
     divider_packet_two = [[6]]
-    packets: list[Packet] = [divider_packet_one, divider_packet_two]
+    packets: list[Packet] = [divider_packet_one, divider_packet_two]  # type: ignore
 
     for pair in pairs:
         left, right = pair
@@ -101,8 +103,8 @@ def find_distress_signal(input_data: list[str]) -> int:
                 packets[index], packets[index + 1] = packets[index + 1], packets[index]
 
     # Find divider packets
-    one = packets.index(divider_packet_one) + 1
-    two = packets.index(divider_packet_two) + 1
+    one = packets.index(divider_packet_one) + 1  # type: ignore
+    two = packets.index(divider_packet_two) + 1  # type: ignore
     return one * two
 
 

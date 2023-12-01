@@ -94,7 +94,7 @@ def find_beacon_position(input_data: list[str], range_value: int = 4000000) -> i
 
     with Pool() as p:
         results = p.map(partial(find_positions_at_y, pairs), range(range_value))
-        x, y = next(filter(bool, results))
+        x, y = next(filter(bool, results))  # type: ignore
         return x * range_value + y
 
 

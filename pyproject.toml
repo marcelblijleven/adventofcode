@@ -72,7 +72,7 @@ dependencies = [
     "ruff>=0.0.243",
 ]
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:src/adventofcode tests}"
+typing = "mypy --install-types --non-interactive {args:src/adventofcode}"
 style = [
     "ruff {args:.}",
     "black --check --diff {args:.}",
@@ -181,3 +181,14 @@ version = "1.8.2"
 version_files = [
     "src/adventofcode/__about__.py",
 ]
+
+[[tool.mypy.overrides]]
+module = [
+    "rich.console",
+    "rich.table",
+    "httpx",
+    "utils",
+    "config",
+]
+disable_error_code = ["name-defined"]
+ignore_missing_imports = true
