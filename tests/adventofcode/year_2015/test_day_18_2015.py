@@ -1,14 +1,14 @@
 import pytest
 
 from adventofcode.year_2015.day_18_2015 import (
-    read_grid,
+    OFF,
+    ON,
+    animate,
+    animate_stuck_corners,
     get_neighbours,
     get_next_state,
-    ON,
-    OFF,
-    animate,
     grid_to_list_str,
-    animate_stuck_corners,
+    read_grid,
 )
 
 test_input = [
@@ -190,7 +190,7 @@ def test_get_next_state(own_value, neighbours_on, expected):
     values = on_values + off_values
     neighbours = get_neighbours(light)
 
-    for neighbours in neighbours:
+    for neighbours in neighbours:  # noqa
         grid[neighbours] = values.pop(0)
 
     assert get_next_state(light, grid) == expected
@@ -206,7 +206,7 @@ def test_get_next_state_raises():
     values = on_values + off_values
     neighbours = get_neighbours(light)
 
-    for neighbours in neighbours:
+    for neighbours in neighbours:  # noqa
         grid[neighbours] = values.pop(0)
 
     with pytest.raises(ValueError) as wrapped_e:
@@ -227,7 +227,7 @@ def test_get_next_state_raises():
 def test_animate(steps, expected):
     grid = read_grid(test_input)
 
-    for step in range(steps):
+    for step in range(steps):  # noqa
         grid = animate(grid)
 
     assert grid_to_list_str(grid) == expected
@@ -246,7 +246,7 @@ def test_animate(steps, expected):
 def test_animate_stuck_corners(steps, expected):
     grid = read_grid(test_input_part_two)
 
-    for step in range(steps):
+    for step in range(steps):  # noqa
         grid = animate_stuck_corners(grid)
 
     assert grid_to_list_str(grid) == expected

@@ -2,7 +2,6 @@ from adventofcode.year_2022.day_10_2022 import (
     parse_instruction,
     part_one,
     part_two,
-    start_cycles,
 )
 
 test_input = [

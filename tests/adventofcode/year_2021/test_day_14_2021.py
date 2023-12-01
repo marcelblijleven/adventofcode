@@ -1,4 +1,4 @@
-from adventofcode.year_2021.day_14_2021 import part_two, part_one, get_answer_slow
+from adventofcode.year_2021.day_14_2021 import get_answer_slow, part_one, part_two
 
 test_input = [
     "NNCB",

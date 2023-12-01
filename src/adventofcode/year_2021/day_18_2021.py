@@ -1,11 +1,9 @@
+import math
 import re
 from itertools import permutations
-from typing import Union
 
-import math
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 pair_pattern = re.compile(r"(\[\d+,\d+])")
@@ -106,9 +104,7 @@ def parse_snailfish_number(snailfish_number: str, next_value: str) -> str:
     return reduce_snailfish_number(snailfish_number)
 
 
-def parse_snailfish_numbers(
-    snailfish_numbers: Union[list[str], tuple[str, ...]]
-) -> str:
+def parse_snailfish_numbers(snailfish_numbers: list[str] | tuple[str, ...]) -> str:
     result = snailfish_numbers[0]
 
     for number in snailfish_numbers[1:]:
@@ -127,9 +123,7 @@ def calculate_magnitude(snailfish_number: str) -> int:
         left, right = get_pair_numbers(pair.group())
         pair_value = left * 3 + right * 2
         span = pair.span()
-        snailfish_number = (
-            f"{snailfish_number[:span[0]]}{pair_value}{snailfish_number[span[1]:]}"
-        )
+        snailfish_number = f"{snailfish_number[:span[0]]}{pair_value}{snailfish_number[span[1]:]}"
         return calculate_magnitude(snailfish_number)
 
     raise ValueError(f"cannot parse snailfish number: {snailfish_number}")
@@ -156,7 +150,7 @@ def part_one(input_data: list[str]):
     answer = solve_homework(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 18, 1)
+        raise SolutionNotFoundError(2021, 18, 1)
 
     return answer
 
@@ -166,7 +160,7 @@ def part_two(input_data: list[str]):
     answer = solve_homework_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 18, 2)
+        raise SolutionNotFoundError(2021, 18, 2)
 
     return answer
 

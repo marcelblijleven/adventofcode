@@ -1,12 +1,12 @@
 import pytest
 
 from adventofcode.year_2020.day_08_2020 import (
+    correcting_run,
+    isolation_run,
+    parse_instruction,
     part_one,
     part_two,
-    parse_instruction,
-    isolation_run,
     verify_correction,
-    correcting_run,
 )
 
 test_input = [

@@ -1,13 +1,11 @@
-import re
-from typing import Dict, Set
-
 import math
+import re
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
-Rules = Dict[str, list[int]]
+Rules = dict[str, list[int]]
 Ticket = list[int]
 rules_pattern = re.compile(r"^([a-z ]+): (?:(\d+)-(\d+)) or (?:(\d+)-(\d+))")
 
@@ -31,9 +29,7 @@ def get_rules(input_data: list[str]) -> Rules:
 
         matches = match.groups()
         rule = matches[0]
-        lower_bound_a, upper_bound_a, lower_bound_b, upper_bound_b = map(
-            int, matches[1:]
-        )
+        lower_bound_a, upper_bound_a, lower_bound_b, upper_bound_b = map(int, matches[1:])
         rules[rule] = [lower_bound_a, upper_bound_a, lower_bound_b, upper_bound_b]
 
     return rules
@@ -66,55 +62,44 @@ def evaluate_tickets(tickets: list[Ticket], rules: Rules) -> int:
     return sum(seen_invalid_numbers)
 
 
-def find_rules_for_columns(
-    columns: list[tuple[int, ...]], rules: Rules
-) -> dict[int, Set[str]]:
-    rules_for_columns: dict[int, Set[str]] = {}
+def find_rules_for_columns(columns: list[tuple[int, ...]], rules: Rules) -> dict[int, set[str]]:
+    rules_for_columns: dict[int, set[str]] = {}
 
     for index, column in enumerate(columns):
         rules_for_columns[index] = set()
 
         for rule, bounds in rules.items():
             lower_a, upper_a, lower_b, upper_b = bounds
-            if all(
-                [
-                    lower_a <= number <= upper_a or lower_b <= number <= upper_b
-                    for number in column
-                ]
-            ):
+            if all([lower_a <= number <= upper_a or lower_b <= number <= upper_b for number in column]):  # noqa
                 rules_for_columns[index].add(rule)
 
     return rules_for_columns
 
 
-def reduce_column_rules(
-    column_rules: Dict[int, Set[str]], available_rules: Set[str]
-) -> Dict[str, int]:
+def reduce_column_rules(column_rules: dict[int, set[str]], available_rules: set[str]) -> dict[str, int]:
     for column, rules in column_rules.items():
         if len(rules) == 1:
             try:
-                available_rules.remove(list(rules)[0])
+                available_rules.remove(list(rules)[0])  # noqa
             except KeyError:
                 pass
         else:
             column_rules[column] = rules.intersection(available_rules)
 
-    if any([len(rules) > 1 for rules in column_rules.values()]):
+    if any([len(rules) > 1 for rules in column_rules.values()]):  # noqa
         return reduce_column_rules(column_rules, available_rules)
     else:
-        return {list(v)[0]: k for k, v in column_rules.items()}
+        return {list(v)[0]: k for k, v in column_rules.items()}  # noqa
 
 
-def find_order(tickets: list[Ticket], rules: Rules) -> Dict[str, int]:
-    columns = list(zip(*tickets))
-    available_rules = {rule for rule in rules.keys()}
-    column_rules: Dict[str, int] = reduce_column_rules(
-        find_rules_for_columns(columns, rules), available_rules
-    )
+def find_order(tickets: list[Ticket], rules: Rules) -> dict[str, int]:
+    columns = list(zip(*tickets, strict=True))
+    available_rules = set(rules.keys())
+    column_rules: dict[str, int] = reduce_column_rules(find_rules_for_columns(columns, rules), available_rules)
     return column_rules
 
 
-def parse_own_ticket(ticket: Ticket, order: Dict[str, int], test: bool = False) -> int:
+def parse_own_ticket(ticket: Ticket, order: dict[str, int], test: bool = False) -> int:
     departures: list[int] = []
 
     for rule, position in order.items():
@@ -138,7 +123,7 @@ def filter_tickets(tickets: list[Ticket], rules: Rules) -> list[Ticket]:
     valid_tickets: list[Ticket] = []
 
     for ticket in tickets:
-        if all([number_is_valid(number, rules) for number in ticket]):
+        if all([number_is_valid(number, rules) for number in ticket]):  # noqa
             valid_tickets.append(ticket)
 
     return valid_tickets
@@ -148,11 +133,11 @@ def filter_tickets(tickets: list[Ticket], rules: Rules) -> list[Ticket]:
 def part_one(input_data: list[str]):
     input_as_string = "\n".join(input_data)
     rules, ticket, tickets = parse_input(input_as_string)
-    print(len(tickets))
+    print(len(tickets))  # noqa
     answer = evaluate_tickets(tickets, rules)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 16, 1)
+        raise SolutionNotFoundError(2020, 16, 1)
 
     return answer
 
@@ -163,7 +148,7 @@ def part_two(input_data: list[str]):
     answer = get_departures(input_as_string)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 16, 2)
+        raise SolutionNotFoundError(2020, 16, 2)
 
     return answer
 

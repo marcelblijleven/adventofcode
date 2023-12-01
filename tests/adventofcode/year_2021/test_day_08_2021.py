@@ -1,12 +1,12 @@
 from adventofcode.year_2021.day_08_2021 import (
-    part_two,
-    part_one,
-    parse_input,
     count_unique_segments,
+    get_output_for_line,
     get_unique_segments,
+    parse_input,
+    part_one,
+    part_two,
     pattern_translation_table,
     patterns_as_frozen_sets,
-    get_output_for_line,
 )
 
 test_input = [

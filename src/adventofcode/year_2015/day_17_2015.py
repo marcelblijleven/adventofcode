@@ -1,8 +1,7 @@
 import itertools
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -45,13 +44,7 @@ def find_different_ways(input_data: list[str], liters: int = 150) -> int:
                 )
                 possible_combinations.append(combination)
 
-    return len(
-        [
-            container
-            for container in possible_combinations
-            if len(container) == minimum_containers
-        ]
-    )
+    return len([container for container in possible_combinations if len(container) == minimum_containers])
 
 
 @register_solution(2015, 17, 1)
@@ -59,7 +52,7 @@ def part_one(input_data: list[str]):
     answer = find_combinations(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 17, 1)
+        raise SolutionNotFoundError(2015, 17, 1)
 
     return answer
 
@@ -69,7 +62,7 @@ def part_two(input_data: list[str]):
     answer = find_different_ways(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 17, 2)
+        raise SolutionNotFoundError(2015, 17, 2)
 
     return answer
 

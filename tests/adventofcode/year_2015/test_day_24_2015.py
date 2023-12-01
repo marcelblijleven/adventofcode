@@ -4,8 +4,8 @@ from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.year_2015.day_24_2015 import (
     get_quantum_entanglement,
     move_packages_into_groups,
-    part_two,
     part_one,
+    part_two,
 )
 
 test_input = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11]

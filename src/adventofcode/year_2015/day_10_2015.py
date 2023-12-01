@@ -1,8 +1,7 @@
 from itertools import groupby
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -24,13 +23,13 @@ def iterate_method_2(value: str) -> str:
 def part_one(input_data: list[str]):
     value = input_data[0]
 
-    for i in range(0, 40):
+    for _ in range(0, 40):
         value = iterate(value)
 
     answer = len(value)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 10, 1)
+        raise SolutionNotFoundError(2015, 10, 1)
 
     return answer
 
@@ -39,13 +38,13 @@ def part_one(input_data: list[str]):
 def part_two(input_data: list[str]):
     value = input_data[0]
 
-    for i in range(0, 50):
+    for _ in range(0, 50):
         value = iterate(value)
 
     answer = len(value)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 10, 2)
+        raise SolutionNotFoundError(2015, 10, 2)
 
     return answer
 
@@ -54,13 +53,13 @@ def part_two(input_data: list[str]):
 def part_two_method_2(input_data: list[str]):
     value = input_data[0]
 
-    for i in range(0, 50):
+    for _ in range(0, 50):
         value = iterate_method_2(value)
 
     answer = len(value)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 10, 2)
+        raise SolutionNotFoundError(2015, 10, 2)
 
     return answer
 

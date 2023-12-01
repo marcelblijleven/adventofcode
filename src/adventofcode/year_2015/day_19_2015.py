@@ -1,8 +1,7 @@
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 REPLACEMENT_PATTERN = re.compile(r"(\w+) => (\w+)")
@@ -49,7 +48,7 @@ def part_one(input_data: list[str]):
     answer = find_unique_replacements(replacements, input_data[-1])
 
     if not answer:
-        raise SolutionNotFoundException(2015, 19, 1)
+        raise SolutionNotFoundError(2015, 19, 1)
 
     return answer
 
@@ -59,7 +58,7 @@ def part_two(input_data: list[str]):
     answer = count_time(get_replacements(input_data), input_data[-1])
 
     if not answer:
-        raise SolutionNotFoundException(2015, 19, 2)
+        raise SolutionNotFoundError(2015, 19, 2)
 
     return answer
 

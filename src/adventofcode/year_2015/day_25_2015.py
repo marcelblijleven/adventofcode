@@ -1,5 +1,5 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 mul = 252533
@@ -31,17 +31,17 @@ def part_one(_: list[str]):
     answer = get_next_code(20151125, (column, row))
 
     if not answer:
-        raise SolutionNotFoundException(2015, 25, 1)
+        raise SolutionNotFoundError(2015, 25, 1)
 
     return answer
 
 
 @register_solution(2015, 25, 2)
-def part_two(input_data: list[str]):
+def part_two(input_data: list[str]):  # noqa
     answer = "hooray"
 
     if not answer:
-        raise SolutionNotFoundException(2015, 25, 2)
+        raise SolutionNotFoundError(2015, 25, 2)
 
     return answer
 

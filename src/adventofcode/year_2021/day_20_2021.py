@@ -1,8 +1,7 @@
 from collections import defaultdict
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Algorithm = list[int]
@@ -12,9 +11,7 @@ DARK = 0
 STEP = 0
 
 
-def get_algorithm_position_for_pixel_simplified(
-    pixel: Pixel, infinity_grid: defaultdict[Pixel, int]
-) -> int:
+def get_algorithm_position_for_pixel_simplified(pixel: Pixel, infinity_grid: defaultdict[Pixel, int]) -> int:
     pixel_grid = [
         (-1, -1),
         (+0, -1),
@@ -26,18 +23,11 @@ def get_algorithm_position_for_pixel_simplified(
         (+0, +1),
         (+1, +1),
     ]
-    algo_position = "".join(
-        [
-            str(infinity_grid[pixel[0] + offset[0], pixel[1] + offset[1]])
-            for offset in pixel_grid
-        ]
-    )
+    algo_position = "".join([str(infinity_grid[pixel[0] + offset[0], pixel[1] + offset[1]]) for offset in pixel_grid])
     return int(algo_position, 2)
 
 
-def get_algorithm_position_for_pixel(
-    pixel: Pixel, infinity_grid: defaultdict[Pixel, int]
-) -> int:
+def get_algorithm_position_for_pixel(pixel: Pixel, infinity_grid: defaultdict[Pixel, int]) -> int:
     pixel_grid = [
         (-1, -1),
         (+0, -1),
@@ -121,7 +111,7 @@ def part_one(input_data: list[str]):
     answer = image.enhance(2)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 20, 1)
+        raise SolutionNotFoundError(2021, 20, 1)
 
     return answer
 
@@ -132,7 +122,7 @@ def part_two(input_data: list[str]):
     answer = image.enhance(50)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 20, 2)
+        raise SolutionNotFoundError(2021, 20, 2)
 
     return answer
 

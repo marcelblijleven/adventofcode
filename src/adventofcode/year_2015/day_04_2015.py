@@ -1,14 +1,13 @@
 import hashlib
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
 def find_number(secret: str, target: str, range_size: int) -> int:
     for i in range(range_size):
-        h = hashlib.md5((secret + str(i)).encode("utf-8")).hexdigest()
+        h = hashlib.md5((secret + str(i)).encode("utf-8")).hexdigest()  # noqa: S324
         if h[: len(target)] == target:
             return i
 
@@ -21,7 +20,7 @@ def part_one(input_data: list[str]) -> int:
     number = find_number(secret, "00000", 1000000)
 
     if not number:
-        raise SolutionNotFoundException(2015, 4, 1)
+        raise SolutionNotFoundError(2015, 4, 1)
 
     return number
 
@@ -32,7 +31,7 @@ def part_two(input_data: list[str]) -> int:
     number = find_number(secret, "000000", 10000000)
 
     if not number:
-        raise SolutionNotFoundException(2015, 4, 1)
+        raise SolutionNotFoundError(2015, 4, 1)
 
     return number
 

@@ -1,10 +1,10 @@
 import pytest
 
 from adventofcode.year_2021.day_03_2021 import (
-    part_two,
-    part_one,
-    get_life_support,
     filter_list,
+    get_life_support,
+    part_one,
+    part_two,
 )
 
 test_input = [

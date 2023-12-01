@@ -1,9 +1,7 @@
-from typing import Dict
-
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
-GridType = Dict[tuple[int, int], int]
+GridType = dict[tuple[int, int], int]
 
 
 def get_new_position(current: tuple[int, int], instruction: str) -> tuple[int, int]:

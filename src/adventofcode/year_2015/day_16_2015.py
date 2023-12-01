@@ -1,7 +1,5 @@
-from typing import Dict, Optional
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 mfcsam = {
@@ -33,7 +31,7 @@ def parse_lines(input_data: list[str]) -> list[Aunt]:
 
     for line in input_data:
         name, property_content = line.split(": ", 1)
-        properties: Dict[str, int] = {}
+        properties: dict[str, int] = {}
 
         for prop in property_content.split(", "):
             key, value = prop.split(": ")
@@ -44,7 +42,7 @@ def parse_lines(input_data: list[str]) -> list[Aunt]:
     return aunts
 
 
-def find_aunt_sue(aunts: list[Aunt]) -> Optional[Aunt]:
+def find_aunt_sue(aunts: list[Aunt]) -> Aunt | None:
     for aunt in aunts:
         if all_properties_match(aunt):
             return aunt
@@ -77,9 +75,8 @@ def matches_part_two(aunt: Aunt) -> bool:
         elif key in ["pomeranians", "goldfish"]:
             if mfcsam[key] <= value:
                 return False
-        else:
-            if mfcsam[key] != value:
-                return False
+        elif mfcsam[key] != value:
+            return False
     return True
 
 
@@ -89,12 +86,12 @@ def part_one(input_data: list[str]):
     aunt = find_aunt_sue(aunts)
 
     if not aunt:
-        raise SolutionNotFoundException(2015, 16, 1)
+        raise SolutionNotFoundError(2015, 16, 1)
 
     answer = aunt.number
 
     if not answer:
-        raise SolutionNotFoundException(2015, 16, 1)
+        raise SolutionNotFoundError(2015, 16, 1)
 
     return answer
 
@@ -105,7 +102,7 @@ def part_two(input_data: list[str]):
     answer = find_aunt_sue_part_two(aunts).number
 
     if not answer:
-        raise SolutionNotFoundException(2015, 16, 2)
+        raise SolutionNotFoundError(2015, 16, 2)
 
     return answer
 

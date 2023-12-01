@@ -1,8 +1,7 @@
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -131,7 +130,7 @@ def try_velocities(target: TargetArea, size: int = 100) -> tuple[int, int]:
             if hit:
                 max_y = max(y, max_y)
 
-            vx += 1
+            vx += 1  # noqa
 
     return max_y, sum(hits)
 
@@ -143,7 +142,7 @@ def part_one(input_data: list[str]):
     answer = max_y
 
     if not answer:
-        raise SolutionNotFoundException(2021, 17, 1)
+        raise SolutionNotFoundError(2021, 17, 1)
 
     return answer
 
@@ -157,7 +156,7 @@ def part_one_quick_maths(input_data: list[str]):
     answer = int(target[2] * (target[2] + 1) / 2)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 17, 1)
+        raise SolutionNotFoundError(2021, 17, 1)
 
     return answer
 
@@ -169,7 +168,7 @@ def part_two(input_data: list[str]):
     answer = hit_count
 
     if not answer:
-        raise SolutionNotFoundException(2021, 17, 2)
+        raise SolutionNotFoundError(2021, 17, 2)
 
     return answer
 

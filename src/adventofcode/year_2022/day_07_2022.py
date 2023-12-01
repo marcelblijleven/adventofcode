@@ -3,7 +3,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -44,9 +44,7 @@ def get_dir_sizes(files: dict[Path, int]) -> dict[Path, int]:
     return dirs
 
 
-def get_sum_of_dirs_below_threshold(
-    dirs: dict[Path, int], threshold: int = 100000
-) -> int:
+def get_sum_of_dirs_below_threshold(dirs: dict[Path, int], threshold: int = 100000) -> int:
     """Sum the size of all dirs with a size below threshold"""
     total: int = 0
 
@@ -107,7 +105,7 @@ def part_one(input_data: list[str]):
     answer = find_sum_of_dirs_below_threshold(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 7, 1)
+        raise SolutionNotFoundError(2022, 7, 1)
 
     return answer
 
@@ -117,7 +115,7 @@ def part_two(input_data: list[str]):
     answer = find_directory_to_delete(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 7, 2)
+        raise SolutionNotFoundError(2022, 7, 2)
 
     return answer
 

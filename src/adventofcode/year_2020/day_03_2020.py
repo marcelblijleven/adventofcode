@@ -1,5 +1,5 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -31,7 +31,7 @@ def part_one(input_data: list[str]) -> int:
     answer = evaluate_slope(input_data, 3, 1)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 3, 1)
+        raise SolutionNotFoundError(2020, 3, 1)
 
     return answer
 

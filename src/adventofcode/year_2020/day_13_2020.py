@@ -1,18 +1,13 @@
-from typing import Dict
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
-
-DepartureTimes = Dict[int, list[int]]
+DepartureTimes = dict[int, list[int]]
 
 
 def parse_input(input_data: list[str]) -> tuple[int, list[int]]:
     timestamp = int(input_data[0])
-    busses = list(
-        map(int, [value for value in input_data[1].split(",") if value.isdigit()])
-    )
+    busses = list(map(int, [value for value in input_data[1].split(",") if value.isdigit()]))
     return timestamp, busses
 
 
@@ -22,7 +17,7 @@ def get_departure_times(timestamp: int, busses: list[int]) -> DepartureTimes:
     for bus in busses:
         departure_times[bus] = []
 
-    while not all([len(value) for value in departure_times.values()]):
+    while not all([len(value) for value in departure_times.values()]):  # noqa
         for bus in busses:
             if timestamp % bus == 0:
                 departure_times[bus].append(timestamp)
@@ -36,9 +31,7 @@ def get_sequential_departure_times(bus_schedule: str):
     timestamp = 1
     index = 0
 
-    for idx, bus in [
-        (idx, bus) for idx, bus in enumerate(bus_schedule.split(",")) if bus.isdigit()
-    ]:
+    for idx, bus in [(idx, bus) for idx, bus in enumerate(bus_schedule.split(",")) if bus.isdigit()]:
         while True:
             index += timestamp
 
@@ -72,7 +65,7 @@ def part_one(input_data: list[str]):
     answer = get_answer_part_one(timestamp, get_departure_times(timestamp, busses))
 
     if not answer:
-        raise SolutionNotFoundException(2020, 13, 1)
+        raise SolutionNotFoundError(2020, 13, 1)
 
     return answer
 
@@ -83,7 +76,7 @@ def part_two(input_data: list[str]):
     answer = get_sequential_departure_times(schedule)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 13, 2)
+        raise SolutionNotFoundError(2020, 13, 2)
 
     return answer
 

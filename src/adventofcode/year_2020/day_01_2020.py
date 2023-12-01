@@ -1,5 +1,5 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -14,7 +14,7 @@ def part_one(input_data: list[str]) -> int:
             return need * number
         seen.append(number)
 
-    raise SolutionNotFoundException(2020, 1, 1)
+    raise SolutionNotFoundError(2020, 1, 1)
 
 
 @register_solution(2020, 1, 2)
@@ -28,7 +28,7 @@ def part_two(input_data: list[str]) -> int:
         if sum(c) == 2020:
             return math.prod(c)
 
-    raise SolutionNotFoundException(2020, 1, 2)
+    raise SolutionNotFoundError(2020, 1, 2)
 
 
 if __name__ == "__main__":

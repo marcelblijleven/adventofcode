@@ -1,8 +1,8 @@
 import pytest
 
 from adventofcode.year_2015.day_08_2015 import (
-    parse_line,
     get_hex_character,
+    parse_line,
     parse_line_part_two,
 )
 

@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2021.day_17_2021 import (
-    part_two,
-    part_one,
     in_target,
     is_out_of_bounds,
+    part_one,
     part_one_quick_maths,
+    part_two,
 )
 
 test_input = []

@@ -1,6 +1,7 @@
 from collections import deque
-from adventofcode.util.exceptions import SolutionNotFoundException
+
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -31,8 +32,8 @@ def find_message_marker(input_str: str) -> int:
 
         if idx > 3 and is_marker(checker, expected_len=14):
             return idx + 1
-
-    raise ValueError("invalid message")
+    err = "invalid_message"
+    raise ValueError(err)
 
 
 @register_solution(2022, 6, 1)
@@ -40,7 +41,7 @@ def part_one(input_data: list[str]):
     answer = find_marker(input_data[0])
 
     if not answer:
-        raise SolutionNotFoundException(2022, 6, 1)
+        raise SolutionNotFoundError(2022, 6, 1)
 
     return answer
 
@@ -50,7 +51,7 @@ def part_two(input_data: list[str]):
     answer = find_message_marker(input_data[0])
 
     if not answer:
-        raise SolutionNotFoundException(2022, 6, 2)
+        raise SolutionNotFoundError(2022, 6, 2)
 
     return answer
 

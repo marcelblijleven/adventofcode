@@ -1,10 +1,10 @@
 import pytest
 
 from adventofcode.year_2015.day_13_2015 import (
+    get_all_combinations,
+    get_happiness_chart,
     get_seating_happiness,
     get_unique_persons,
-    get_happiness_chart,
-    get_all_combinations,
     update_happiness_chart,
 )
 
@@ -77,6 +77,4 @@ def test_get_all_combinations(value, expected):
 
 def test_get_unique_persons():
     chart = get_happiness_chart(test_input)
-    assert sorted(["Carol", "Alice", "Bob", "David"]) == sorted(
-        get_unique_persons(chart)
-    )
+    assert sorted(["Carol", "Alice", "Bob", "David"]) == sorted(get_unique_persons(chart))

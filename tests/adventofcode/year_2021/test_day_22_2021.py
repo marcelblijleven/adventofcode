@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2021.day_22_2021 import (
-    part_two,
-    part_one,
-    get_cuboid,
-    apply_reboot_line,
     apply_reboot,
+    apply_reboot_line,
+    get_cuboid,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -116,7 +116,7 @@ test_input_even_larger = [
 def test_get_cuboid(line, expected_len, expected_state):
     cuboid = get_cuboid(line)
     assert len(cuboid.keys()) == expected_len
-    assert all([state == expected_state for state in cuboid.values()])
+    assert all([state == expected_state for state in cuboid.values()])  # noqa
 
 
 def test_apply_reboot_line():

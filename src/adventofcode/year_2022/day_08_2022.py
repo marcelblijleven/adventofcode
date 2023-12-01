@@ -1,5 +1,5 @@
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -19,36 +19,34 @@ def get_grid(input_data: list[str]) -> dict[tuple[int, int], int]:
     return grid
 
 
-def is_visible(
-    grid: dict[tuple[int, int], int], tree: tuple[int, int], grid_size: tuple[int, int]
-) -> bool:
+def is_visible(grid: dict[tuple[int, int], int], tree: tuple[int, int], grid_size: tuple[int, int]) -> bool:
     """Check if the tree is visible from the outside"""
     x, y = tree
     horizontal, vertical = grid_size
     tree_size = grid[tree]
 
     # First check if the tree is on the outer edges
-    if x == 0 or x == horizontal - 1:
+    if x == 0 or x == horizontal - 1:  # noqa: PLR1714
         return True
-    if y == 0 or y == vertical - 1:
+    if y == 0 or y == vertical - 1:  # noqa: PLR1714
         return True
 
     # Check horizontal
     # - Check all left
-    if all([grid[check_x, y] < tree_size for check_x in range(0, x)]):
+    if all([grid[check_x, y] < tree_size for check_x in range(0, x)]):  # noqa: C419
         return True
 
     # - Check all right
-    if all([grid[check_x, y] < tree_size for check_x in range(x + 1, horizontal)]):
+    if all([grid[check_x, y] < tree_size for check_x in range(x + 1, horizontal)]):  # noqa: C419
         return True
 
     # Check vertical
     # - Check all above
-    if all([grid[x, check_y] < tree_size for check_y in range(0, y)]):
+    if all([grid[x, check_y] < tree_size for check_y in range(0, y)]):  # noqa: C419
         return True
 
     # - Check all below
-    if all([grid[x, check_y] < tree_size for check_y in range(y + 1, vertical)]):
+    if all([grid[x, check_y] < tree_size for check_y in range(y + 1, vertical)]):  # noqa: C419
         return True
 
     return False
@@ -115,9 +113,7 @@ def get_scenic_scores(input_data: list[str]) -> int:
 
     for y in range(grid_size[1]):
         for x in range(grid_size[0]):
-            max_scenic_score = max(
-                max_scenic_score, get_scenic_score_for_tree(grid, (x, y), grid_size)
-            )
+            max_scenic_score = max(max_scenic_score, get_scenic_score_for_tree(grid, (x, y), grid_size))
 
     return max_scenic_score
 
@@ -127,7 +123,7 @@ def part_one(input_data: list[str]):
     answer = get_visible_trees(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 8, 1)
+        raise SolutionNotFoundError(2022, 8, 1)
 
     return answer
 
@@ -137,7 +133,7 @@ def part_two(input_data: list[str]):
     answer = get_scenic_scores(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 8, 2)
+        raise SolutionNotFoundError(2022, 8, 2)
 
     return answer
 

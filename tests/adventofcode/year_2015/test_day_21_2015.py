@@ -1,13 +1,13 @@
 import pytest
 
 from adventofcode.year_2015.day_21_2015 import (
-    get_boss,
-    get_shop_inventory,
-    get_damage,
-    Character,
-    Weapon,
     Armor,
+    Character,
     Ring,
+    Weapon,
+    get_boss,
+    get_damage,
+    get_shop_inventory,
     part_one,
 )
 

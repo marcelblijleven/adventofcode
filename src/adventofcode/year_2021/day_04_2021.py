@@ -1,8 +1,7 @@
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 line_pattern = re.compile(r"(\d+)")
@@ -11,7 +10,7 @@ line_pattern = re.compile(r"(\d+)")
 def transpose_rows(rows: list[list[int]]) -> list[list[int]]:
     columns: list[list[int]] = []
 
-    for sublist in zip(*rows):
+    for sublist in zip(*rows, strict=True):
         columns.append(list(sublist))
 
     return columns
@@ -54,7 +53,7 @@ class Board:
         self.drawn_numbers.append(number)
         index = 0
 
-        for row, column in zip(self.rows, self.columns):
+        for row, column in zip(self.rows, self.columns, strict=True):
             new_row = [value for value in row if value != number]
             new_column = [value for value in column if value != number]
             self.rows[index] = new_row
@@ -94,7 +93,7 @@ def play_bingo(input_data: list[str], first_board=True) -> int:
                 if first_board:
                     return board.unmarked_numbers * number
 
-        if all([board.has_bingo for board in boards]):
+        if all([board.has_bingo for board in boards]):  # noqa
             break
 
     last_board = winning_boards[-1]
@@ -108,7 +107,7 @@ def part_one(input_data: list[str]):
     answer = play_bingo(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 4, 1)
+        raise SolutionNotFoundError(2021, 4, 1)
 
     return answer
 
@@ -118,7 +117,7 @@ def part_two(input_data: list[str]):
     answer = play_bingo(input_data, first_board=False)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 4, 2)
+        raise SolutionNotFoundError(2021, 4, 2)
 
     return answer
 

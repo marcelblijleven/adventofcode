@@ -1,10 +1,10 @@
 import re
 import string
-
-from typing import DefaultDict, Callable, Generator
 from collections import defaultdict
-from adventofcode.util.exceptions import SolutionNotFoundException
+from collections.abc import Callable, Generator
+
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 INSTRUCTIONS_PATTERN = re.compile(r"(\d+)")
@@ -27,7 +27,7 @@ def parse_crates(lines: list[str]) -> defaultdict[int, list[str]]:
 
     There are max 9 stacks of crates
     """
-    stacks: DefaultDict[int, list[str]] = defaultdict(list)
+    stacks: defaultdict[int, list[str]] = defaultdict(list)
     number_of_crates = max(int(x) for x in INSTRUCTIONS_PATTERN.findall(lines[-1]))
 
     indices = [1 + (idx * 4) for idx in range(0, number_of_crates)]
@@ -55,7 +55,7 @@ def parse_crates_option_two(lines: list[str]) -> defaultdict[int, list[str]]:
 
     Different approach to filling the stacks, 0 to 2ms faster
     """
-    stacks: DefaultDict[int, list[str]] = defaultdict(list)
+    stacks: defaultdict[int, list[str]] = defaultdict(list)
     number_of_crates = max(int(x) for x in INSTRUCTIONS_PATTERN.findall(lines[-1]))
 
     indices = {1 + (idx * 4): idx + 1 for idx in range(number_of_crates)}
@@ -95,14 +95,11 @@ def execute_instruction(crates: defaultdict[int, list[str]], instructions) -> No
     """Executes instructions for the CrateMover 9000"""
     amount, source, destination = instructions
 
-    for i in range(amount):
+    for _ in range(amount):
         try:
             crates[destination].append(crates[source].pop())
         except IndexError as exc:
-            raise ValueError(
-                f"tried to move a crate from an empty stack "
-                f"with instruction {instructions}"
-            ) from exc
+            raise ValueError(f"tried to move a crate from an empty stack with instruction {instructions}") from exc
 
 
 def execute_instruction_9001(crates: defaultdict[int, list[str]], instructions) -> None:
@@ -125,7 +122,7 @@ def move_crates(
         executor_func(crates, instruction)
 
     output = ""
-    for key, value in sorted(crates.items()):
+    for _, value in sorted(crates.items()):
         output += value[-1]
 
     return output
@@ -136,7 +133,7 @@ def part_one(input_data: list[str]):
     answer = move_crates(input_data, execute_instruction)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 5, 1)
+        raise SolutionNotFoundError(2022, 5, 1)
 
     return answer
 
@@ -146,7 +143,7 @@ def part_two(input_data: list[str]):
     answer = move_crates(input_data, execute_instruction_9001)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 5, 2)
+        raise SolutionNotFoundError(2022, 5, 2)
 
     return answer
 

@@ -1,11 +1,9 @@
 import math
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
-
 
 pattern = re.compile(r"(\d+)x(\d+)x(\d+)")
 
@@ -18,11 +16,7 @@ class Box:
 
     @property
     def surface(self) -> int:
-        surface_area = (
-            2 * self.length * self.width
-            + 2 * self.width * self.height
-            + 2 * self.height * self.length
-        )
+        surface_area = 2 * self.length * self.width + 2 * self.width * self.height + 2 * self.height * self.length
 
         extra = [
             self.length * self.width,
@@ -65,7 +59,7 @@ def part_one(input_data: list[str]):
     answer = map(get_surface, input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 2, 1)
+        raise SolutionNotFoundError(2015, 2, 1)
 
     return sum(answer)
 
@@ -75,7 +69,7 @@ def part_two(input_data: list[str]):
     answer = map(get_ribbon, input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 2, 2)
+        raise SolutionNotFoundError(2015, 2, 2)
 
     return sum(answer)
 

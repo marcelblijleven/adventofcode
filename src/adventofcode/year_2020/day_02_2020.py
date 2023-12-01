@@ -1,8 +1,8 @@
 import re
-from typing import Sequence
+from collections.abc import Sequence
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -37,9 +37,7 @@ class PasswordHelper:
         return self._matches
 
     def is_valid(self) -> bool:
-        return self.password.count(self.letter) in range(
-            self.lower_bound, self.upper_bound + 1
-        )
+        return self.password.count(self.letter) in range(self.lower_bound, self.upper_bound + 1)
 
     def is_valid_part_two(self) -> bool:
         position_one = self.password[self.lower_bound - 1] == self.letter
@@ -53,7 +51,7 @@ def part_one(input_data: list[str]) -> int:
     answer = len([password for password in passwords if password.is_valid()])
 
     if not answer:
-        raise SolutionNotFoundException(2020, 2, 1)
+        raise SolutionNotFoundError(2020, 2, 1)
 
     return answer
 
@@ -64,7 +62,7 @@ def part_two(input_data: list[str]) -> int:
     answer = len([password for password in passwords if password.is_valid_part_two()])
 
     if not answer:
-        raise SolutionNotFoundException(2020, 2, 1)
+        raise SolutionNotFoundError(2020, 2, 1)
 
     return answer
 

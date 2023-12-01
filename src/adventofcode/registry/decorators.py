@@ -1,8 +1,8 @@
 from functools import partial, wraps
 
-from adventofcode.util.helpers import solution_timer
 from adventofcode.registry import registry
 from adventofcode.registry.util import get_registry_key
+from adventofcode.util.helpers import solution_timer
 
 
 def register_solution(year: int, day: int, part: int, version: str = "normal"):

@@ -1,13 +1,11 @@
 import json
-from functools import cmp_to_key
 from itertools import zip_longest
-from typing import Optional, Union
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
-Packet = Union[list[int], list["Packet"]]
+Packet = list[int] | list["Packet"]
 Pair = tuple[Packet, Packet]
 
 
@@ -19,19 +17,19 @@ def parse_line(line: str) -> Packet:
 def parse_pairs(input_data: list[str]) -> list[Pair]:
     """Parse input into list of Pair"""
     pairs: list[tuple[Packet, Packet]] = []
-    current_pair: Pair = ()  # noqa
+    current_pair: Pair = ()
 
-    for line in input_data + [""]:
+    for line in [*input_data, ""]:
         if not line:
             pairs.append(current_pair)
-            current_pair: Pair = ()  # noqa
+            current_pair: Pair = ()
         else:
             current_pair += (parse_line(line),)
 
     return pairs
 
 
-def compare_pairs(left: Packet, right: Packet) -> Optional[bool]:
+def compare_pairs(left: Packet, right: Packet) -> bool | None:
     """
     Check if the packets in the pair are in the correct order
 
@@ -61,10 +59,10 @@ def compare_pairs(left: Packet, right: Packet) -> Optional[bool]:
             return left_value < right_value
 
         # Either left or right is an int, or both are list
-        left_value = left_value if isinstance(left_value, list) else [left_value]
-        right_value = right_value if isinstance(right_value, list) else [right_value]
+        _left_value = left_value if isinstance(left_value, list) else [left_value]
+        _right_value = right_value if isinstance(right_value, list) else [right_value]
 
-        if (outcome := compare_pairs(left_value, right_value)) is not None:
+        if (outcome := compare_pairs(_left_value, _right_value)) is not None:
             return outcome
 
 
@@ -113,7 +111,7 @@ def part_one(input_data: list[str]):
     answer = find_packets(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 13, 1)
+        raise SolutionNotFoundError(2022, 13, 1)
 
     return answer
 
@@ -123,7 +121,7 @@ def part_two(input_data: list[str]):
     answer = find_distress_signal(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 13, 2)
+        raise SolutionNotFoundError(2022, 13, 2)
 
     return answer
 

@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r"(-?\d)")
@@ -32,7 +31,7 @@ class Ingredient:
         return str(self)
 
     def __str__(self):
-        return f"{self.name}: capacity: {self.capacity}, durability: {self.durability}, flavor: {self.flavor}, texture: {self.texture}"
+        return f"{self.name}: capacity: {self.capacity}, durability: {self.durability}, flavor: {self.flavor}, texture: {self.texture}"  # noqa
 
     @property
     def quantity(self) -> int:
@@ -69,9 +68,7 @@ class Cookie:
     @property
     def score(self) -> int:
         capacity = sum([ingredient.get_capacity() for ingredient in self.ingredients])
-        durability = sum(
-            [ingredient.get_durability() for ingredient in self.ingredients]
-        )
+        durability = sum([ingredient.get_durability() for ingredient in self.ingredients])
         flavor = sum([ingredient.get_flavor() for ingredient in self.ingredients])
         texture = sum([ingredient.get_texture() for ingredient in self.ingredients])
 
@@ -92,28 +89,24 @@ def parse_ingredients(input_data: list[str]) -> list[Ingredient]:
 
     for line in input_data:
         name, content = line.split(": ")
-        capacity, durability, flavor, texture, calories = map(
-            int, PATTERN.findall(content)
-        )
+        capacity, durability, flavor, texture, calories = map(int, PATTERN.findall(content))
         ingredient = Ingredient(name, capacity, durability, flavor, texture, calories)
         ingredients.append(ingredient)
 
     return ingredients
 
 
-def find_highest_scoring_cookie(  # noqa: C901
-    input_data: list[str], match_calories: bool = False
-) -> int:  # noqa: C901
+def find_highest_scoring_cookie(input_data: list[str], match_calories: bool = False) -> int:
     highest_score = 0
     ingredients = parse_ingredients(input_data)
     max_ingredients = 100
 
     if len(ingredients) == 2:
         for a in range(max_ingredients):
-            for b in range(max_ingredients - a):
-                b = 100 - a
+            for _ in range(max_ingredients - a):
+                _b = 100 - a
                 ingredients[0].set_quantity(a)
-                ingredients[1].set_quantity(b)
+                ingredients[1].set_quantity(_b)
 
                 cookie = Cookie(ingredients)
 
@@ -147,7 +140,7 @@ def part_one(input_data: list[str]):
     answer = find_highest_scoring_cookie(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 15, 1)
+        raise SolutionNotFoundError(2015, 15, 1)
 
     return answer
 
@@ -157,7 +150,7 @@ def part_two(input_data: list[str]):
     answer = find_highest_scoring_cookie(input_data, match_calories=True)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 15, 2)
+        raise SolutionNotFoundError(2015, 15, 2)
 
     return answer
 

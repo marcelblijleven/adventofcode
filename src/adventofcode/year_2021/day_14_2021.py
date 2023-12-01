@@ -1,8 +1,8 @@
+import itertools
 from collections import Counter, defaultdict
-from typing import DefaultDict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Rules = dict[str, str]
@@ -22,7 +22,7 @@ def parse_input(input_data: list[str]) -> tuple[str, Rules]:
 def process(template: str, rules: Rules) -> str:
     new_template = ""
 
-    for pair in zip(template, template[1:]):
+    for pair in itertools.pairwise(template):
         key = "".join(pair)
         new_template += f"{pair[0]}{rules[key]}"
 
@@ -36,7 +36,7 @@ def get_answer_slow(input_data: list[str], steps: int) -> int:
     """
     template, rules = parse_input(input_data)
 
-    for i in range(steps):
+    for _ in range(steps):
         template = process(template, rules)
 
     counter = Counter(template)
@@ -47,10 +47,10 @@ def get_answer_slow(input_data: list[str], steps: int) -> int:
     return most - least
 
 
-def pair_counter_in_template(template: str) -> DefaultDict[str, int]:
-    pair_counter: DefaultDict[str, int] = defaultdict(int)
+def pair_counter_in_template(template: str) -> defaultdict[str, int]:
+    pair_counter: defaultdict[str, int] = defaultdict(int)
 
-    for pair in zip(template, template[1:]):
+    for pair in itertools.pairwise(template):
         pair_counter["".join(pair)] += 1
 
     return pair_counter
@@ -72,11 +72,10 @@ def get_answer(input_data: list[str], steps: int) -> int:
     counter = Counter(template)
     pairs = pair_counter_in_template(template)
 
-    for i in range(steps):
-        pair_counter_in_step: DefaultDict[str, int] = defaultdict(int)
+    for _ in range(steps):
+        pair_counter_in_step: defaultdict[str, int] = defaultdict(int)
 
         for pair, count in pairs.items():
-
             if pair in pairs and count > 0:
                 target = rules[pair]
                 new_pair_a, new_pair_b = get_new_pairs(pair, target)
@@ -95,7 +94,7 @@ def part_one(input_data: list[str]):
     answer = get_answer(input_data, 10)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 14, 1)
+        raise SolutionNotFoundError(2021, 14, 1)
 
     return answer
 
@@ -105,7 +104,7 @@ def part_two(input_data: list[str]):
     answer = get_answer(input_data, 40)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 14, 2)
+        raise SolutionNotFoundError(2021, 14, 2)
 
     return answer
 

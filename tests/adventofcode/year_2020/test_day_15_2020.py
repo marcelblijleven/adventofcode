@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from adventofcode.year_2020.day_15_2020 import part_two, part_one, parse_input, solve
+from adventofcode.year_2020.day_15_2020 import parse_input, part_one, part_two, solve
 
 test_input = [
     "0,3,6",
@@ -34,6 +34,6 @@ def test_part_one():
     assert part_one(test_input) == 436
 
 
-@pytest.mark.skipif(os.getenv("CI", 0) == "true", reason="slow test")
+@pytest.mark.skipif(os.getenv("CI", None) == "true", reason="slow test")
 def test_part_two():
     assert part_two(test_input) == 175594

@@ -1,5 +1,5 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 NORTH = "N"
@@ -83,9 +83,7 @@ def _turn_waypoint_right(waypoint: tuple[int, int], degrees: int) -> tuple[int, 
     return x, y
 
 
-def turn_waypoint(
-    waypoint: tuple[int, int], direction: str, degrees: int
-) -> tuple[int, int]:
+def turn_waypoint(waypoint: tuple[int, int], direction: str, degrees: int) -> tuple[int, int]:
     if direction == LEFT:
         return _turn_waypoint_left(waypoint, degrees)
     elif direction == RIGHT:
@@ -94,9 +92,7 @@ def turn_waypoint(
         raise ValueError(f"cannot process unknown direction: {direction}")
 
 
-def move_waypoint(
-    waypoint: tuple[int, int], action: str, number: int
-) -> tuple[int, int]:
+def move_waypoint(waypoint: tuple[int, int], action: str, number: int) -> tuple[int, int]:
     x, y = waypoint
 
     if action == NORTH:
@@ -161,7 +157,7 @@ def part_one(input_data: list[str]):
     answer = parse_instructions(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 12, 1)
+        raise SolutionNotFoundError(2020, 12, 1)
 
     return answer
 
@@ -171,7 +167,7 @@ def part_two(input_data: list[str]):
     answer = parse_instructions_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 12, 2)
+        raise SolutionNotFoundError(2020, 12, 2)
 
     return answer
 

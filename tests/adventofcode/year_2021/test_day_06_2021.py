@@ -1,13 +1,13 @@
 import pytest
 
 from adventofcode.year_2021.day_06_2021 import (
-    part_two,
-    part_one,
     Fish,
+    count_fish_after_days,
+    count_fish_faster,
     get_starting_fish,
     iterate_day,
-    count_fish_faster,
-    count_fish_after_days,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -30,7 +30,7 @@ def test_get_starting_fish():
 def test_iterate_day(days, expected):
     fish = [Fish(3), Fish(4), Fish(3), Fish(1), Fish(2)]
 
-    for day in range(days):
+    for _ in range(days):
         fish = iterate_day(fish)
 
     assert len(fish) == expected

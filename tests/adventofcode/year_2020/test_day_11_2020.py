@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2020.day_11_2020 import (
+    get_adjacent_coordinates,
     get_layout,
     get_x_y_range,
-    get_adjacent_coordinates,
-    start_iterating,
     los_seating_iteration,
+    start_iterating,
 )
 
 test_input = [

@@ -1,8 +1,7 @@
 import statistics
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -38,7 +37,7 @@ def part_one(input_data: list[str]):
         ids.append(row * 8 + column)
 
     if not ids:
-        raise SolutionNotFoundException(2020, 5, 1)
+        raise SolutionNotFoundError(2020, 5, 1)
 
     return max(ids)
 
@@ -49,16 +48,11 @@ def _part_one_binary_version(input_data: list[str]) -> list[int]:
     for boarding_pass in input_data:
         # could also use a translation table
         # boarding_pass.translate(str.maketrans({'B': '1', 'F': '0', 'R': '1', 'L': '0'})
-        boarding_pass = (
-            boarding_pass.replace("B", "1")
-            .replace("F", "0")
-            .replace("R", "1")
-            .replace("L", "0")
-        )
-        ids.append(int(boarding_pass, 2))
+        _boarding_pass = boarding_pass.replace("B", "1").replace("F", "0").replace("R", "1").replace("L", "0")
+        ids.append(int(_boarding_pass, 2))
 
     if not ids:
-        raise SolutionNotFoundException(2020, 5, 2)
+        raise SolutionNotFoundError(2020, 5, 2)
 
     return ids
 

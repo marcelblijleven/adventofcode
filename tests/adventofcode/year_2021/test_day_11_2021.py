@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2021.day_11_2021 import (
-    part_two,
-    part_one,
     Octopus,
-    run_ticks,
     OctopusGrid,
+    part_one,
+    part_two,
+    run_ticks,
     run_ticks_until_sync,
 )
 

@@ -1,10 +1,10 @@
 from adventofcode.year_2020.day_13_2020 import (
-    part_two,
-    part_one,
-    parse_input,
-    get_departure_times,
     get_answer_part_one,
+    get_departure_times,
     get_sequential_departure_times,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [

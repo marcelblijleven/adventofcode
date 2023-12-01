@@ -1,14 +1,13 @@
 import re
-from typing import Dict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def get_passports(batch_file: str) -> list[Dict[str, str]]:
+def get_passports(batch_file: str) -> list[dict[str, str]]:
     _data = batch_file.split("\n\n")
-    passports: list[Dict[str, str]] = []
+    passports: list[dict[str, str]] = []
 
     for value in _data:
         passports.append(get_passport_as_dict(value))
@@ -16,7 +15,7 @@ def get_passports(batch_file: str) -> list[Dict[str, str]]:
     return passports
 
 
-def get_passport_as_dict(passport: str) -> Dict[str, str]:
+def get_passport_as_dict(passport: str) -> dict[str, str]:
     values = {}
 
     for i in passport.split(" "):
@@ -27,7 +26,7 @@ def get_passport_as_dict(passport: str) -> Dict[str, str]:
     return values
 
 
-def validate_passport(passport: Dict[str, str]) -> bool:
+def validate_passport(passport: dict[str, str]) -> bool:
     keys = passport.keys()
     return len(keys) == 8 or (len(keys) == 7 and "cid" not in keys)
 
@@ -54,9 +53,7 @@ def expiration_check(value: str) -> bool:
 def height_check(value: str) -> bool:
     height = "".join([char for char in value if char.isdigit()])
     unit = "".join([char for char in value if char.isalpha()])
-    return (unit == "cm" and _range_check(height, 150, 193)) or (
-        unit == "in" and _range_check(height, 59, 76)
-    )
+    return (unit == "cm" and _range_check(height, 150, 193)) or (unit == "in" and _range_check(height, 59, 76))
 
 
 def hair_color_check(value: str) -> bool:
@@ -71,7 +68,7 @@ def pid_check(value):
     return re.compile(r"\d{9}$").match(value) is not None
 
 
-def deep_validation(passport: Dict[str, str]) -> bool:  # noqa C901
+def deep_validation(passport: dict[str, str]) -> bool:  # C901
     if not validate_passport(passport):
         return False
 
@@ -104,19 +101,18 @@ def part_one(input_data: list[str]) -> int:
     answer = len([passport for passport in passports if validate_passport(passport)])
 
     if not answer:
-        raise SolutionNotFoundException(2020, 4, 1)
+        raise SolutionNotFoundError(2020, 4, 1)
 
     return answer
 
 
 @register_solution(2020, 4, 2)
 def part_two(input_data: list[str]) -> int:
-
     passports = get_passports("\n".join(input_data))
     answer = len([passport for passport in passports if deep_validation(passport)])
 
     if not answer:
-        raise SolutionNotFoundException(2020, 4, 1)
+        raise SolutionNotFoundError(2020, 4, 1)
 
     return answer
 

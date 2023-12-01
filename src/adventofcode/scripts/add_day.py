@@ -2,12 +2,14 @@ import os
 import sys
 from argparse import ArgumentParser
 
-from httpx import HTTPError  # noqa
+from httpx import HTTPError
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.scripts.get_inputs import get_input
 from adventofcode.util.console import console
 from adventofcode.util.input_helpers import get_input_for_day
+
+UNKNOWN_EXCEPTION = "unknown exception occurred in verify_input_exists"
 
 
 def add_day():
@@ -26,9 +28,7 @@ def add_day():
     write_solution_template(solution_file, year, day)
 
     # Test file
-    test_module_path = os.path.abspath(
-        os.path.join(ROOT_DIR, "../../tests/adventofcode", f"year_{year}")
-    )
+    test_module_path = os.path.abspath(os.path.join(ROOT_DIR, "../../tests/adventofcode", f"year_{year}"))
     test_file = os.path.join(test_module_path, f"test_day_{day:02}_{year}.py")
     create_module_dir(test_module_path)
     write_test_template(test_file, year, day)
@@ -42,10 +42,7 @@ def write_solution_template(path: str, year: int, day: int) -> None:
         write_template(path, read_solution_template(year, day))
         console.print(f"[green]Wrote template to {path}")
     else:
-        console.print(
-            f"[yellow]Did not write template for year {year} day {day}"
-            ", the file already exists."
-        )
+        console.print(f"[yellow]Did not write template for year {year} day {day}" ", the file already exists.")
 
 
 def write_test_template(path: str, year: int, day: int) -> None:
@@ -54,10 +51,7 @@ def write_test_template(path: str, year: int, day: int) -> None:
         write_template(path, read_test_template(year, day))
         console.print(f"[green]Wrote test template to {path}")
     else:
-        console.print(
-            f"[yellow]Did not write test template for year {year} day {day}"
-            ", the file already exists."
-        )
+        console.print(f"[yellow]Did not write test template for year {year} day {day}" ", the file already exists.")
 
 
 def create_module_dir(path: str) -> None:
@@ -79,29 +73,21 @@ def verify_input_exists(year: int, day: int) -> None:
     """Verifies if user input exists, and downloads it if not"""
     try:
         _ = get_input_for_day(year, day)
-        console.print(
-            f"Input data already exists for year {year} day {day}, skipping download"
-        )
+        console.print(f"Input data already exists for year {year} day {day}, skipping download")
         return
     except FileNotFoundError:
         try:
             get_input(year, day)
-            console.print(
-                f"Automatically downloaded input data for year {year} day {day}"
-            )
+            console.print(f"Automatically downloaded input data for year {year} day {day}")
             return
         except HTTPError as e:
-            console.print(
-                "[red]Could not retrieve input data for "
-                f"year {year} day {day} automatically: {e}"
-            )
+            console.print("[red]Could not retrieve input data for " f"year {year} day {day} automatically: {e}")
         except FileNotFoundError:
             console.print(
-                "[red]Could not retrieve input data for "
-                f"year {year} day {day}: .session not set correctly"
+                "[red]Could not retrieve input data for " f"year {year} day {day}: .session not set correctly"
             )
 
-    raise ValueError("unknown exception occurred in verify_input_exists")
+    raise ValueError(UNKNOWN_EXCEPTION)
 
 
 def _read_solution_template(template_path: str, year: str, day: str) -> str:

@@ -1,5 +1,5 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -109,7 +109,7 @@ def _paper_to_str(paper: Paper) -> str:
 
 
 def print_paper(paper: Paper) -> None:
-    print(_paper_to_str(paper))
+    print(_paper_to_str(paper))  # noqa
 
 
 def count_visible_dots(paper: Paper) -> int:
@@ -123,7 +123,7 @@ def part_one(input_data: list[str]):
     answer = count_visible_dots(paper)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 13, 1)
+        raise SolutionNotFoundError(2021, 13, 1)
 
     return answer
 
@@ -135,7 +135,7 @@ def part_two(input_data: list[str]):
     answer = "\n" + _paper_to_str(paper)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 13, 2)
+        raise SolutionNotFoundError(2021, 13, 2)
 
     return answer
 

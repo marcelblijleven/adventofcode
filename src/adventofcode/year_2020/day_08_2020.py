@@ -1,9 +1,6 @@
-from typing import Tuple
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
-
 
 OPERATION_ACC = "acc"
 OPERATION_JMP = "jmp"
@@ -16,7 +13,7 @@ def part_one(input_data: list[str]) -> int:
     accumulator = isolation_run(instructions)
 
     if not accumulator:
-        raise SolutionNotFoundException(2020, 8, 1)
+        raise SolutionNotFoundError(2020, 8, 1)
 
     return accumulator[0]
 
@@ -27,19 +24,19 @@ def part_two(input_data: list[str]) -> int:
     accumulator = correcting_run(instructions)
 
     if not accumulator:
-        raise SolutionNotFoundException(2020, 8, 2)
+        raise SolutionNotFoundError(2020, 8, 2)
 
     return accumulator
 
 
-def parse_instruction(line: str) -> Tuple[str, int]:
+def parse_instruction(line: str) -> tuple[str, int]:
     parsed = line.split(" ")
     operation = parsed[0]
     argument = int(parsed[1])
     return operation, argument
 
 
-def isolation_run(instructions: list[Tuple[str, int]]) -> Tuple[int, int]:
+def isolation_run(instructions: list[tuple[str, int]]) -> tuple[int, int]:
     accumulator = 0
     idx = 0
     seen_idxs = []
@@ -64,11 +61,11 @@ def isolation_run(instructions: list[Tuple[str, int]]) -> Tuple[int, int]:
     return accumulator, 0
 
 
-def verify_correction(instructions: list[Tuple[str, int]]) -> int:
+def verify_correction(instructions: list[tuple[str, int]]) -> int:
     return len([i for i in instructions if i[0] == OPERATION_JMP and i[1] == 0]) == 0
 
 
-def correcting_run(instructions: list[Tuple[str, int]]) -> int:
+def correcting_run(instructions: list[tuple[str, int]]) -> int:
     for idx, (operation, argument) in enumerate(instructions):
         if operation in [OPERATION_JMP, OPERATION_NOP]:
             if operation == OPERATION_JMP:

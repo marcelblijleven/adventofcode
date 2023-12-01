@@ -2,9 +2,9 @@ import pytest
 
 from adventofcode.year_2015.day_20_2015 import (
     most_presents_at_house,
+    part_one,
     visit_houses,
     visit_houses_part_two,
-    part_one,
 )
 
 

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.helpers import memoize
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -88,13 +88,11 @@ def game(player_one: Player, player_two: Player) -> int:
         rounds += 1
 
     rolls = die.rolls
-    losing_score = [p for p in players if not p.has_won][0].score
+    losing_score = [p for p in players if not p.has_won][0].score  # noqa
     return rolls * losing_score
 
 
-def apply_wins(
-    wins: tuple[int, int], universe_wins: tuple[int, int]
-) -> tuple[int, int]:
+def apply_wins(wins: tuple[int, int], universe_wins: tuple[int, int]) -> tuple[int, int]:
     return wins[0] + universe_wins[1], wins[1] + universe_wins[0]
 
 
@@ -112,9 +110,7 @@ def quantum_game(player_one_pos, player_two_pos, player_one_score, player_two_sc
             for r3 in [1, 2, 3]:
                 next_pos = get_new_position(player_one_pos, r1 + r2 + r3)
                 score = player_one_score + next_pos
-                universe_wins = quantum_game(
-                    player_two_pos, next_pos, player_two_score, score
-                )
+                universe_wins = quantum_game(player_two_pos, next_pos, player_two_score, score)
                 wins = apply_wins(wins, universe_wins)
 
     return wins
@@ -126,7 +122,7 @@ def part_one(input_data: list[str]):
     answer = game(Player(1, positions[0]), Player(2, positions[1]))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 21, 1)
+        raise SolutionNotFoundError(2021, 21, 1)
 
     return answer
 
@@ -137,7 +133,7 @@ def part_two(input_data: list[str]):
     answer = max(quantum_game(positions[0], positions[1], 0, 0))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 21, 2)
+        raise SolutionNotFoundError(2021, 21, 2)
 
     return answer
 

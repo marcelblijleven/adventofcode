@@ -1,7 +1,7 @@
 from adventofcode.year_2021.day_01_2021 import (
-    sonar_sweep_sliding_window,
-    sonar_sweep,
     count_increasing_windows,
+    sonar_sweep,
+    sonar_sweep_sliding_window,
     sonar_sweep_sliding_window_reuse,
 )
 

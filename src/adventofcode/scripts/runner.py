@@ -29,12 +29,12 @@ def _run_day(module: str, year: int, day: int):
     """
     data = get_input_for_day(year, day)
     try:
-        getattr(module, "part_one")(data)
+        module.part_one(data)
     except AttributeError:
         pass
 
     try:
-        getattr(module, "part_two")(data)
+        module.part_two(data)
     except AttributeError:
         pass
 

@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 import re
-from typing import Optional
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 pattern = re.compile(r"(-?\d+)")
@@ -24,7 +23,7 @@ def get_cuboid(line: str, limit: bool = True) -> dict[CubeDimensions, bool]:
     state, coords = get_cuboid_from_line(line)
     cubes: dict[CubeDimensions, bool] = {}
 
-    if limit and any([coord < -50 or coord > 50 for coord in coords]):
+    if limit and any([coord < -50 or coord > 50 for coord in coords]):  # noqa
         return cubes
 
     (xa, xb, ya, yb, za, zb) = coords
@@ -37,9 +36,7 @@ def get_cuboid(line: str, limit: bool = True) -> dict[CubeDimensions, bool]:
     return cubes
 
 
-def apply_reboot_line(
-    line: str, cuboids: dict[CubeDimensions, bool], limit: bool = True
-):
+def apply_reboot_line(line: str, cuboids: dict[CubeDimensions, bool], limit: bool = True):
     cuboid = get_cuboid(line, limit)
     cuboids.update(cuboid)
 
@@ -60,9 +57,7 @@ class Cuboid:
 
     @property
     def volume(self) -> int:
-        return (
-            (self.xb - self.xa + 1) * (self.yb - self.ya + 1) * (self.zb - self.za + 1)
-        )
+        return (self.xb - self.xa + 1) * (self.yb - self.ya + 1) * (self.zb - self.za + 1)
 
     def intersects(self, other: Cuboid) -> bool:
         if (
@@ -74,7 +69,7 @@ class Cuboid:
 
         return True
 
-    def intersection(self, other: Cuboid) -> Optional[Cuboid]:
+    def intersection(self, other: Cuboid) -> Cuboid | None:
         if not self.intersects(other):
             return None
 
@@ -111,7 +106,7 @@ def part_one(input_data: list[str]):
     answer = apply_reboot(input_data, limit=True)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 22, 1)
+        raise SolutionNotFoundError(2021, 22, 1)
 
     return answer
 
@@ -121,7 +116,7 @@ def part_two(input_data: list[str]):
     answer = apply_reboot_without_limit(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 22, 2)
+        raise SolutionNotFoundError(2021, 22, 2)
 
     return answer
 

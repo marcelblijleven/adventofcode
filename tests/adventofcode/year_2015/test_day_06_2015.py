@@ -1,10 +1,10 @@
 import pytest
 
 from adventofcode.year_2015.day_06_2015 import (
-    count_lights,
     count_brightness,
-    run_instructions_part_two,
+    count_lights,
     run_instructions,
+    run_instructions_part_two,
 )
 
 

@@ -1,6 +1,6 @@
 import os
 
-from httpx import get  # noqa
+from httpx import get
 
 from adventofcode.config import ROOT_DIR
 
@@ -25,7 +25,7 @@ def _download_input(year: int, day: int, session: str) -> bytes:
 def _save_input(data: bytes, year: int, day: int) -> None:
     inputs_path = os.path.join(ROOT_DIR, "inputs")
 
-    if not os.path.exists((year_path := os.path.join(inputs_path, str(year)))):
+    if not os.path.exists(year_path := os.path.join(inputs_path, str(year))):
         os.mkdir(year_path)
 
     with open(os.path.join(year_path, f"day_{day:02}.txt"), "wb") as file:

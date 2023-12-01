@@ -1,6 +1,6 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
-from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
+from adventofcode.util.input_helpers import get_input_for_day
 
 
 @register_solution(2015, 1, 1)
@@ -29,7 +29,7 @@ def part_two(input_data: list[str]) -> int:
         if floor == -1:
             return i + 1
 
-    raise SolutionNotFoundException(2015, 1, 2)
+    raise SolutionNotFoundError(2015, 1, 2)
 
 
 if __name__ == "__main__":

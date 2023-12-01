@@ -1,7 +1,5 @@
-from typing import Dict, FrozenSet
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 segment_0 = "abcefg"
@@ -17,7 +15,7 @@ segment_9 = "abcdfg"
 lengths = [len(segment_1), len(segment_4), len(segment_7), len(segment_8)]
 
 InputLine = tuple[str, str]
-TranslationTable = Dict[FrozenSet[str], int]
+TranslationTable = dict[frozenset[str], int]
 
 
 def parse_input(input_data: list[str]) -> list[InputLine]:
@@ -73,13 +71,11 @@ def get_all_outputs(lines: list[InputLine]) -> list[int]:
     return outputs
 
 
-def patterns_as_frozen_sets(patterns: list[str]) -> list[FrozenSet[str]]:
+def patterns_as_frozen_sets(patterns: list[str]) -> list[frozenset[str]]:
     return list(map(frozenset, patterns))  # type: ignore
 
 
-def _fill_table_with_know_patterns(
-    patterns: list[FrozenSet[str]], table: TranslationTable
-):
+def _fill_table_with_know_patterns(patterns: list[frozenset[str]], table: TranslationTable):
     for pattern in patterns:
         if len(pattern) == 2:
             table[pattern] = 1
@@ -91,7 +87,7 @@ def _fill_table_with_know_patterns(
             table[pattern] = 8
 
 
-def pattern_translation_table(patterns: list[FrozenSet[str]]) -> TranslationTable:
+def pattern_translation_table(patterns: list[frozenset[str]]) -> TranslationTable:
     translation_table: TranslationTable = {}
     _fill_table_with_know_patterns(patterns, translation_table)
 
@@ -122,7 +118,7 @@ def part_one(input_data: list[str]):
     answer = count_unique_segments(parsed)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 8, 1)
+        raise SolutionNotFoundError(2021, 8, 1)
 
     return answer
 
@@ -133,7 +129,7 @@ def part_two(input_data: list[str]):
     answer = sum(get_all_outputs(parsed))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 8, 2)
+        raise SolutionNotFoundError(2021, 8, 2)
 
     return answer
 

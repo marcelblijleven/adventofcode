@@ -1,8 +1,9 @@
 import pytest
+
 from adventofcode.year_2015.day_23_2015 import (
+    get_input_for_day,
     parse_instruction,
     run_program,
-    get_input_for_day,
 )
 
 

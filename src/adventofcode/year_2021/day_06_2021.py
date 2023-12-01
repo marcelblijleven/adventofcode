@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from typing import Generator
+from collections.abc import Generator
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -45,8 +45,7 @@ def get_starting_fish(input_data: list[str]) -> Generator[Fish, None, None]:
 
 
 def get_starting_fish_no_classes(input_data: list[str]) -> Generator[int, None, None]:
-    for fish in map(int, input_data[0].split(",")):
-        yield fish
+    yield from map(int, input_data[0].split(","))
 
 
 def iterate_day(fish: list[Fish]) -> list[Fish]:
@@ -65,9 +64,9 @@ def iterate_day(fish: list[Fish]) -> list[Fish]:
 
 
 def count_fish_after_days(input_data: list[str], days: int) -> int:
-    fish = [fish for fish in get_starting_fish(input_data)]
+    fish = list(get_starting_fish(input_data))
 
-    for day in range(days):
+    for _ in range(days):
         fish = iterate_day(fish)
 
     return len(fish)
@@ -81,9 +80,7 @@ def count_fish_faster(input_data: list[str], stop_after: int) -> int:
         cyclic_days[f] += 1
 
     for day in range(stop_after):
-        target_day = day % len(
-            cyclic_days
-        )  # This will make it loop back to the start of the days list
+        target_day = day % len(cyclic_days)  # This will make it loop back to the start of the days list
         fish = cyclic_days[target_day]
 
         next_spawn_day_existing_fish = (target_day + 7) % number_of_days
@@ -103,7 +100,7 @@ def part_one(input_data: list[str]):
     answer = count_fish_faster(input_data, 80)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 6, 1)
+        raise SolutionNotFoundError(2021, 6, 1)
 
     return answer
 
@@ -114,17 +111,17 @@ def part_two(input_data: list[str]):
     answer = count_fish_faster(input_data, 256)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 6, 2)
+        raise SolutionNotFoundError(2021, 6, 2)
 
     return answer
 
 
 @register_solution(2021, 6, 2, version="faster")
 def part_two_faster(input_data: list[str]):
-    starting_fish = [f for f in get_starting_fish_no_classes(input_data)]
+    starting_fish = list(get_starting_fish_no_classes(input_data))
     days = [starting_fish.count(i) for i in range(9)]
 
-    for day in range(256):
+    for _ in range(256):
         breeding_fish = days.pop(0)
         days[6] += breeding_fish  # will start having babies in 7 days
         days.append(breeding_fish)  # Add babies to end of cyclic days

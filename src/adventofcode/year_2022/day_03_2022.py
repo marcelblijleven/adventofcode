@@ -1,8 +1,7 @@
 import string
-from typing import Optional
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -11,7 +10,7 @@ def split_rucksack(rucksack: str) -> tuple[str, str]:
     return rucksack[:mid], rucksack[mid:]
 
 
-def compare_compartments(a: str, b: str) -> Optional[str]:
+def compare_compartments(a: str, b: str) -> str | None:
     if not (found := (set(a) & set(b))):
         return None
 
@@ -26,9 +25,7 @@ def rucksacks_part_one(input_data: list[str]) -> int:
     score: int = 0
 
     for rucksack in input_data:
-        if (
-            matched_letter := compare_compartments(*split_rucksack(rucksack))
-        ) is not None:
+        if (matched_letter := compare_compartments(*split_rucksack(rucksack))) is not None:
             score += get_letter_value(matched_letter)
 
     return score
@@ -39,7 +36,7 @@ def get_groups_of_three(input_data: list[str]):
         yield input_data[idx : idx + 3]
 
 
-def compare_rucksacks(a: str, b: str, c: str) -> Optional[str]:
+def compare_rucksacks(a: str, b: str, c: str) -> str | None:
     if not (found := (set(a) & set(b) & set(c))):
         return None
 
@@ -61,7 +58,7 @@ def part_one(input_data: list[str]):
     answer = rucksacks_part_one(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 3, 1)
+        raise SolutionNotFoundError(2022, 3, 1)
 
     return answer
 
@@ -71,7 +68,7 @@ def part_two(input_data: list[str]):
     answer = rucksacks_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 3, 2)
+        raise SolutionNotFoundError(2022, 3, 2)
 
     return answer
 

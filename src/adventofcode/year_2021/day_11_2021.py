@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -45,11 +44,7 @@ class Octopus:
             (x + 1, y + 1),
         ]
 
-        return [
-            octopus
-            for octopus in octopuses
-            if 0 <= octopus[0] <= 9 and 0 <= octopus[1] <= 9
-        ]
+        return [octopus for octopus in octopuses if 0 <= octopus[0] <= 9 and 0 <= octopus[1] <= 9]
 
     def flash(self, grid: dict[Position, Octopus]):
         self.energy = 0
@@ -77,7 +72,7 @@ def parse_input(input_data: list[str]) -> Grid:
 
 
 def run_ticks(grid: OctopusGrid, iterations: int = 100):
-    for tick in range(iterations):
+    for _ in range(iterations):
         grid.tick()
 
 
@@ -125,10 +120,7 @@ class OctopusGrid:
 
             for coord in octopus.adjacent_octopuses:
                 adjacent_octopus = self.grid[coord]
-                if (
-                    adjacent_octopus not in self.can_flash
-                    and adjacent_octopus.can_flash
-                ):
+                if adjacent_octopus not in self.can_flash and adjacent_octopus.can_flash:
                     self.can_flash.append(adjacent_octopus)
 
         if flashed_during_tick == self.total_octopuses:
@@ -144,7 +136,7 @@ def part_one(input_data: list[str]):
     answer = grid.flash_counter
 
     if not answer:
-        raise SolutionNotFoundException(2021, 11, 1)
+        raise SolutionNotFoundError(2021, 11, 1)
 
     return answer
 
@@ -155,7 +147,7 @@ def part_two(input_data: list[str]):
     answer = run_ticks_until_sync(grid)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 11, 2)
+        raise SolutionNotFoundError(2021, 11, 2)
 
     return answer
 

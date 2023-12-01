@@ -1,8 +1,7 @@
 import copy
-from typing import Union
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 EASTBOUND = ">"
@@ -22,9 +21,7 @@ def get_values(input_data: list[str]) -> Grid:
     return grid
 
 
-def get_next_position(
-    position: Position, direction: str, grid: Grid, max_x: int, max_y: int
-) -> Union[bool, Position]:
+def get_next_position(position: Position, direction: str, grid: Grid, max_x: int, max_y: int) -> bool | Position:
     x, y = position
 
     if direction == EASTBOUND:
@@ -50,7 +47,7 @@ def get_next_southbound_position(
     old_eastbound_positions: set[Position],
     grid: Grid,
     max_y: int,
-) -> Union[bool, Position]:
+) -> bool | Position:
     x, y = position
     y += 1
 
@@ -122,7 +119,7 @@ def part_one(input_data: list[str]):
     answer = do_steps(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 25, 1)
+        raise SolutionNotFoundError(2021, 25, 1)
 
     return answer
 

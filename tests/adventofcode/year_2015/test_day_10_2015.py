@@ -3,10 +3,10 @@ import pytest
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.year_2015.day_10_2015 import (
     iterate,
-    part_two,
     part_one,
+    part_two,
     part_two_method_2,
-)  # noqa
+)
 
 
 @pytest.mark.parametrize(

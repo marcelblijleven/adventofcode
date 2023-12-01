@@ -1,4 +1,4 @@
-from adventofcode.year_2015.day_19_2015 import part_one, part_two, get_input_for_day
+from adventofcode.year_2015.day_19_2015 import get_input_for_day, part_one, part_two
 
 
 def test_part_one():

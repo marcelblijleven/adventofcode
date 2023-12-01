@@ -1,4 +1,4 @@
-from adventofcode.year_2022.day_01_2022 import part_two, part_one, find_most_calories
+from adventofcode.year_2022.day_01_2022 import find_most_calories, part_one, part_two
 
 test_input = [
     "1000",

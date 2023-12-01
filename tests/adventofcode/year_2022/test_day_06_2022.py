@@ -1,9 +1,10 @@
 import pytest
+
 from adventofcode.year_2022.day_06_2022 import (
-    part_two,
-    part_one,
     find_marker,
     find_message_marker,
+    part_one,
+    part_two,
 )
 
 test_input = ["mjqjpqmgbljsphdztnvjfqwrcgsmlb"]

@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-from typing import Union
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 # A, X Rock
@@ -120,7 +118,7 @@ class Scissors(Shape):
         return isinstance(other, Scissors)
 
 
-def get_shape(letter: str) -> Union[Rock, Paper, Scissors]:
+def get_shape(letter: str) -> Rock | Paper | Scissors:
     if letter in ["A", "X"]:
         return Rock()
     if letter in ["B", "Y"]:
@@ -196,7 +194,7 @@ def part_one(input_data: list[str]):
     answer = play_round_one(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 2, 1)
+        raise SolutionNotFoundError(2022, 2, 1)
 
     return answer
 
@@ -206,7 +204,7 @@ def part_one_with_mapping(input_data: list[str]):
     answer = play_round_one_with_mapping(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 2, 1)
+        raise SolutionNotFoundError(2022, 2, 1)
 
     return answer
 
@@ -216,7 +214,7 @@ def part_two(input_data: list[str]):
     answer = play_round_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 2, 2)
+        raise SolutionNotFoundError(2022, 2, 2)
 
     return answer
 
@@ -226,7 +224,7 @@ def part_two_with_mapping(input_data: list[str]):
     answer = play_round_two_with_mapping(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 2, 1)
+        raise SolutionNotFoundError(2022, 2, 1)
 
     return answer
 

@@ -3,8 +3,8 @@ import pytest_mock
 
 from adventofcode.util import input_helpers
 from adventofcode.util.input_helpers import (
-    _read_file,
     _get_input,
+    _read_file,
     get_input_for_day,
     get_input_for_day_as_str,
 )

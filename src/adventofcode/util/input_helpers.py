@@ -1,7 +1,6 @@
 import os
 import warnings
 
-
 from adventofcode.config import ROOT_DIR
 
 

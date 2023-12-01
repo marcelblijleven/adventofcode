@@ -1,6 +1,5 @@
-from adventofcode.registry import registry, autodetect
-
+from adventofcode.registry import autodetect, registry
 
 autodetect()
 
-print(registry)
+print(registry)  # noqa

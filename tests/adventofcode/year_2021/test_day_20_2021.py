@@ -1,17 +1,18 @@
-import pytest
 from collections import defaultdict
 
+import pytest
+
 from adventofcode.year_2021.day_20_2021 import (
-    part_two,
-    part_one,
-    parse_input,
     get_algorithm_position_for_pixel,
     get_algorithm_position_for_pixel_simplified,
     get_infinity_grid,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [
-    "..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..##"
+    "..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..##"  # noqa
     + "#..######.###...####..#..#####..##..#.#####...##.#.#..#.##..#.#......#.###"
     + ".######.###.####...#.##.##..#..#..#####.....#.#....###..#.##......#.....#."
     + ".#..#..##..#...##.######.####.####.#.#...#.......#..#.#.#...####.##.#....."
@@ -73,17 +74,13 @@ def test_enhance():
 def test_get_algorithm_position_for_pixel():
     image = parse_input(test_input)
     infinity_grid_test: defaultdict[tuple[int, int], int] = defaultdict(int, image.grid)
-    assert get_algorithm_position_for_pixel((2, 2), infinity_grid_test) == int(
-        "000100010", 2
-    )
+    assert get_algorithm_position_for_pixel((2, 2), infinity_grid_test) == int("000100010", 2)
 
 
 def test_get_algorithm_position_for_pixel_simplified():
     image = parse_input(test_input)
     infinity_grid_test: defaultdict[tuple[int, int], int] = defaultdict(int, image.grid)
-    assert get_algorithm_position_for_pixel_simplified(
-        (2, 2), infinity_grid_test
-    ) == int("000100010", 2)
+    assert get_algorithm_position_for_pixel_simplified((2, 2), infinity_grid_test) == int("000100010", 2)
 
 
 @pytest.mark.parametrize(

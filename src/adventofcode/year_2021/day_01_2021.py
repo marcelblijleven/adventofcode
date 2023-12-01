@@ -1,13 +1,12 @@
 from collections import deque
-from typing import Optional
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
 def sonar_sweep(measurements: list[int]) -> int:
-    previous: Optional[int] = None
+    previous: int | None = None
     count = 0
 
     for measurement in measurements:
@@ -20,7 +19,7 @@ def sonar_sweep(measurements: list[int]) -> int:
 
 
 def count_increasing_windows(windows: list[list[int]]) -> int:
-    previous: Optional[int] = None
+    previous: int | None = None
     count = 0
 
     for window in windows:
@@ -63,7 +62,7 @@ def part_one(input_data: list[str]):
     answer = sonar_sweep(list(map(int, input_data)))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 1, 1)
+        raise SolutionNotFoundError(2021, 1, 1)
 
     return answer
 
@@ -73,7 +72,7 @@ def part_two(input_data: list[str]):
     answer = sonar_sweep_sliding_window(list(map(int, input_data)))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 1, 2)
+        raise SolutionNotFoundError(2021, 1, 2)
 
     return answer
 
@@ -83,7 +82,7 @@ def part_two_reuse_part_one(input_data: list[str]):
     answer = sonar_sweep_sliding_window_reuse(list(map(int, input_data)))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 1, 2)
+        raise SolutionNotFoundError(2021, 1, 2)
 
     return answer
 

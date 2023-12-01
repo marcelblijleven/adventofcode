@@ -10,12 +10,12 @@ from adventofcode.scripts.generate_readme import _replace_between_tags
 from adventofcode.util.console import console
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.util.module_helpers import (
-    get_full_year_paths,
-    year_dir_from_path,
+    clean_day,
     clean_year,
     get_full_day_paths,
-    clean_day,
     get_full_module_from_day_file,
+    get_full_year_paths,
+    year_dir_from_path,
 )
 
 Benchmarks = dict[int, dict[int, dict[str, float]]]
@@ -32,7 +32,7 @@ def get_benchmarks() -> Benchmarks:
     """
     benchmarks = _retrieve_benchmarks()
     # benchmarks = _retrieve_benchmarks_mp()
-    print(get_averages(benchmarks))
+    print(get_averages(benchmarks))  # noqa
     return benchmarks
 
 
@@ -41,16 +41,14 @@ def get_averages(benchmarks: Benchmarks) -> tuple[float, float]:
     part_two_solutions = []
 
     for days in benchmarks.values():
-        for day, solutions in days.items():
+        for solutions in days.values():
             for solution, benchmark in solutions.items():
                 if solution.startswith("part one"):
                     part_one_solutions.append(benchmark)
                 elif solution.startswith("part two"):
                     part_two_solutions.append(benchmark)
 
-    return sum(part_one_solutions) / len(part_one_solutions), sum(
-        part_two_solutions
-    ) / len(part_two_solutions)
+    return sum(part_one_solutions) / len(part_one_solutions), sum(part_two_solutions) / len(part_two_solutions)
 
 
 def create_benchmark_text(benchmarks: Benchmarks) -> str:
@@ -130,9 +128,7 @@ def write_benchmarks_to_readme(benchmarks: Benchmarks):
         console.print(table)
 
 
-def _retrieve_benchmarks_for_day_mp(
-    day_file: str, year: int
-) -> dict[int, dict[str, float]]:
+def _retrieve_benchmarks_for_day_mp(day_file: str, year: int) -> dict[int, dict[str, float]]:
     config.RUNNING_BENCHMARKS = True
     day = clean_day(day_file)
     benchmarks: dict[int, dict[str, float]] = {day: {}}
@@ -199,9 +195,7 @@ def _retrieve_benchmarks() -> Benchmarks:
 
 def _get_extra_solutions_in_module(module: str) -> list[str]:
     def _eval_functions(f: str) -> bool:
-        return f not in ["part_one", "part_two"] and (
-            f.startswith("part_one") or f.startswith("part_two")
-        )
+        return f not in ["part_one", "part_two"] and (f.startswith("part_one") or f.startswith("part_two"))
 
     functions = dir(module)
     return [f for f in functions if _eval_functions(f)]
@@ -215,14 +209,14 @@ def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
     console.log(f"retrieved input for {year} {day:02}")
 
     try:
-        benchmarks[year][day]["part one"] = getattr(module, "part_one")(data)
+        benchmarks[year][day]["part one"] = module.part_one(data)
     except AttributeError:
         pass
 
     console.log(f"ran {year} {day:02} part one")
 
     try:
-        benchmarks[year][day]["part two"] = getattr(module, "part_two")(data)
+        benchmarks[year][day]["part two"] = module.part_two(data)
     except AttributeError:
         pass
 
@@ -238,9 +232,7 @@ def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
         console.log(f"ran {year} {day:02} {readable_name}")
 
 
-def _run_day_mp(
-    module: Any, year: int, day: int, benchmarks: dict[int, dict[str, float]]
-):
+def _run_day_mp(module: Any, year: int, day: int, benchmarks: dict[int, dict[str, float]]):
     """
     Runs all solutions in the given day
     """
@@ -248,12 +240,12 @@ def _run_day_mp(
     console.log(f"retrieved input for {year} {day:02}")
 
     try:
-        benchmarks[day]["part one"] = getattr(module, "part_one")(data)
+        benchmarks[day]["part one"] = module.part_one(data)
     except AttributeError:
         pass
 
     try:
-        benchmarks[day]["part two"] = getattr(module, "part_two")(data)
+        benchmarks[day]["part two"] = module.part_two(data)
     except AttributeError:
         pass
 

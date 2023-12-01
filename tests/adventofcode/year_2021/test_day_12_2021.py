@@ -2,12 +2,12 @@ import pytest
 import pytest_mock
 
 from adventofcode.year_2021.day_12_2021 import (
-    part_two,
-    part_one,
+    CaveExplorer3000,
+    get_paths,
     is_big_cave,
     is_small_cave,
-    get_paths,
-    CaveExplorer3000,
+    part_one,
+    part_two,
 )
 
 test_input = [

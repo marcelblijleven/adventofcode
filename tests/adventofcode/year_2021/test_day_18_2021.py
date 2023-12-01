@@ -1,15 +1,15 @@
 import pytest
 
 from adventofcode.year_2021.day_18_2021 import (
-    part_two,
-    part_one,
-    explode,
     addition,
-    parse_snailfish_number,
-    reduce_snailfish_number,
-    parse_snailfish_numbers,
     calculate_magnitude,
+    explode,
     get_pair_numbers,
+    parse_snailfish_number,
+    parse_snailfish_numbers,
+    part_one,
+    part_two,
+    reduce_snailfish_number,
 )
 
 test_input = [
@@ -67,10 +67,7 @@ def test_reduce_snailfish_number(number, expected):
 
 def test_parse_snailfish_number():
     snailfish_number = "[[[[4,3],4],4],[7,[[8,4],9]]]"
-    assert (
-        parse_snailfish_number(snailfish_number, "[1,1]")
-        == "[[[[0,7],4],[[7,8],[6,0]]],[8,1]]"
-    )
+    assert parse_snailfish_number(snailfish_number, "[1,1]") == "[[[[0,7],4],[[7,8],[6,0]]],[8,1]]"
 
 
 @pytest.mark.parametrize(

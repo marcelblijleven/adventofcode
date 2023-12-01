@@ -1,13 +1,11 @@
 import math
-from typing import Dict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
-
 LightType = tuple[int, int]
-GridType = Dict[LightType, str]
+GridType = dict[LightType, str]
 ON = "#"
 OFF = "."
 
@@ -56,7 +54,7 @@ def get_next_state(light: LightType, grid: GridType) -> str:
     # neighbours_off = neighbour_states.count(OFF)
 
     if own_state == ON:
-        if neighbours_on == 2 or neighbours_on == 3:
+        if neighbours_on in (2, 3):
             return ON
 
         return OFF
@@ -116,13 +114,13 @@ def grid_to_list_str(grid: GridType) -> list[str]:
 def part_one(input_data: list[str]):
     grid = read_grid(input_data)
 
-    for i in range(100):
+    for _ in range(100):
         grid = animate(grid)
 
     answer = "".join(grid_to_list_str(grid)).count(ON)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 18, 1)
+        raise SolutionNotFoundError(2015, 18, 1)
 
     return answer
 
@@ -134,13 +132,13 @@ def part_two(input_data: list[str]):
     for corner in get_corners(grid):
         grid[corner] = ON
 
-    for i in range(100):
+    for _ in range(100):
         grid = animate_stuck_corners(grid)
 
     answer = "".join(grid_to_list_str(grid)).count(ON)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 18, 2)
+        raise SolutionNotFoundError(2015, 18, 2)
 
     return answer
 

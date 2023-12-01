@@ -1,6 +1,6 @@
 from adventofcode.year_2015.day_09_2015 import (
-    get_all_routes,
     get_all_cities,
+    get_all_routes,
     get_fastest_route,
     get_slowest_route,
 )
@@ -20,9 +20,7 @@ def test_get_all_cities():
         ("Dublin", "Belfast"): 141,
     }
 
-    assert sorted(["London", "Dublin", "Belfast"]) == sorted(
-        get_all_cities(test_input, dist_dict)
-    )
+    assert sorted(["London", "Dublin", "Belfast"]) == sorted(get_all_cities(test_input, dist_dict))
     assert expected_dist_dict == dist_dict
 
 

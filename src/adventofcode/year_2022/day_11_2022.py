@@ -2,18 +2,19 @@ from __future__ import annotations
 
 import math
 from collections import deque
+from collections.abc import Callable
 from functools import partial
-from typing import Callable, Literal, Optional
+from typing import Literal
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
 class Monkey:
     number: int
     items: deque[int]
-    operation: Callable[[Optional[int]], int]
+    operation: Callable[[int | None], int]
     test: tuple[int, int, int]
     other_monkeys: dict[int, Monkey]
     inspected: int
@@ -24,7 +25,7 @@ class Monkey:
         self,
         number: int,
         starting_items: list[int],
-        operation: Callable[[Optional[int]], int],
+        operation: Callable[[int | None], int],
         test: tuple[int, int, int],
         other_monkeys: dict[int, Monkey],
         allow_relief: bool,
@@ -108,9 +109,7 @@ def parse_instructions(input_data: list[str], allow_relief=True) -> dict[int, Mo
             int(chunk[4].split(" ")[-1]),
             int(chunk[5].split(" ")[-1]),
         )
-        monkeys[number] = Monkey(
-            number, starting_items, operation, test, monkeys, allow_relief
-        )
+        monkeys[number] = Monkey(number, starting_items, operation, test, monkeys, allow_relief)
         idx += 7
 
     common_modulo = math.prod([monkey.test[0] for monkey in monkeys.values()])
@@ -124,13 +123,11 @@ def play_rounds(input_data: list[str], rounds: int = 20, allow_relief=True) -> i
     """Play rounds and let the monkeys do their thing"""
     monkeys = parse_instructions(input_data, allow_relief=allow_relief)
 
-    for rnd in range(rounds):
+    for _ in range(rounds):
         for monkey in monkeys.values():
             monkey.play_round()
 
-    inspections = sorted(
-        [monkey.inspected for monkey in monkeys.values()], reverse=True
-    )
+    inspections = sorted([monkey.inspected for monkey in monkeys.values()], reverse=True)
     return inspections[0] * inspections[1]
 
 
@@ -139,7 +136,7 @@ def part_one(input_data: list[str]):
     answer = play_rounds(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 11, 1)
+        raise SolutionNotFoundError(2022, 11, 1)
 
     return answer
 
@@ -149,7 +146,7 @@ def part_two(input_data: list[str]):
     answer = play_rounds(input_data, 10000, allow_relief=False)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 11, 2)
+        raise SolutionNotFoundError(2022, 11, 2)
 
     return answer
 

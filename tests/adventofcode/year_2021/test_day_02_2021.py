@@ -2,12 +2,11 @@ import pytest
 
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.year_2021.day_02_2021 import (
-    part_two,
-    part_one,
-    move_submarine,
     get_new_position,
+    move_submarine,
+    part_one,
+    part_two,
 )
-
 
 test_input = [
     "forward 5",
