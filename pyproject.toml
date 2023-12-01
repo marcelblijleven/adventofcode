@@ -174,3 +174,10 @@ exclude_lines = [
     "if __name__ == .__main__.:",
     "if TYPE_CHECKING:",
 ]
+
+[tool.commitizen]
+tag_format = "v$version"
+version = "1.8.2"
+version_files = [
+    "src/adventofcode/__about__.py",
+]
