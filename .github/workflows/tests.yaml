@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.9', '3.10', '3.11']
+        python-version: ['3.11', '3.12']
       fail-fast: false
 
     steps:
@@ -38,7 +38,7 @@ jobs:
       - name: Run tests
         run: pytest --cov=./ --cov-report=xml --durations=10
       - name: "Upload coverage to Codecov"
-        if: matrix.python-version == 3.11  # Only upload coverage once per run
+        if: matrix.python-version == 3.12  # Only upload coverage once per run
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
