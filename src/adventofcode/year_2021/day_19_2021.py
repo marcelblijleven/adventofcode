@@ -4,9 +4,8 @@ import dataclasses
 from collections import Counter
 from itertools import combinations
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -59,7 +58,7 @@ class Scanner:
 
     @classmethod
     def from_input(cls, input_data: list[str]) -> Scanner:
-        number = int(input_data[0].lstrip("--- scanner ").rstrip(" ---"))
+        number = int(input_data[0].lstrip("--- scanner ").rstrip(" ---"))  # noqa
         beacons: list[Coordinates] = []
 
         for beacon in input_data[1:]:
@@ -183,7 +182,7 @@ def part_one(input_data: list[str]):
     answer = count_unique_beacons(scanners)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 19, 1)
+        raise SolutionNotFoundError(2021, 19, 1)
 
     return answer
 
@@ -195,7 +194,7 @@ def part_two(input_data: list[str]):
     answer = calculate_max_distance(scanners)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 19, 2)
+        raise SolutionNotFoundError(2021, 19, 2)
 
     return answer
 

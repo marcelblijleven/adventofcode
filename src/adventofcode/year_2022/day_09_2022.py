@@ -1,8 +1,8 @@
 from collections import defaultdict
-from typing import Generator
+from collections.abc import Generator
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.helpers import manhattan_distance
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -35,7 +35,8 @@ def _move_in_direction(
     elif direction == "L":
         x -= steps
     else:
-        raise ValueError(f'unknown direction "{direction}" received')
+        err = f'unknown direction "{direction}" received'
+        raise ValueError(err)
     return x, y
 
 
@@ -100,18 +101,18 @@ def move_snake(
     Apply the move instruction and update the head, knot and tail positions
     """
     direction, steps = instruction
-
+    head_pos = 0
+    tail_pos = 9
     for _ in range(steps):
         for key, position in positions.items():
-            if key == 0:  # Head
+            if key == head_pos:  # Head
                 positions[key] = _move_in_direction(position, direction, 1)
-            else:
-                if manhattan_distance(
+            elif manhattan_distance(
                     position, positions[key - 1]
                 ) > get_allowed_distance(positions[key - 1], position):
                     positions[key] = determine_move(position, positions[key - 1])
 
-                    if key == 9:  # Tail
+                    if key == tail_pos:  # Tail
                         tail_locations[positions[key]] += 1
 
 
@@ -152,7 +153,7 @@ def part_one(input_data: list[str]):
     answer = simulate_rope(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 9, 1)
+        raise SolutionNotFoundError(2022, 9, 1)
 
     return answer
 
@@ -162,7 +163,7 @@ def part_two(input_data: list[str]):
     answer = simulate_rope_snake(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 9, 2)
+        raise SolutionNotFoundError(2022, 9, 2)
 
     return answer
 

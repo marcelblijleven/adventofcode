@@ -3,17 +3,17 @@ import asyncio
 import pytest
 
 from adventofcode.year_2021.day_09_2021 import (
-    part_two,
-    part_one,
-    parse_input,
-    get_risk_level,
-    find_basin_size_product,
     calculate_basin,
-    get_low_points,
     calculate_basin_async,
-    find_basin_size_product_async,
     calculate_basin_mp,
+    find_basin_size_product,
+    find_basin_size_product_async,
     find_basin_size_product_mp,
+    get_low_points,
+    get_risk_level,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [

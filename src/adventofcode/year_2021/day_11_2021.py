@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
@@ -77,7 +76,7 @@ def parse_input(input_data: list[str]) -> Grid:
 
 
 def run_ticks(grid: OctopusGrid, iterations: int = 100):
-    for tick in range(iterations):
+    for _ in range(iterations):
         grid.tick()
 
 
@@ -144,7 +143,7 @@ def part_one(input_data: list[str]):
     answer = grid.flash_counter
 
     if not answer:
-        raise SolutionNotFoundException(2021, 11, 1)
+        raise SolutionNotFoundError(2021, 11, 1)
 
     return answer
 
@@ -155,7 +154,7 @@ def part_two(input_data: list[str]):
     answer = run_ticks_until_sync(grid)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 11, 2)
+        raise SolutionNotFoundError(2021, 11, 2)
 
     return answer
 

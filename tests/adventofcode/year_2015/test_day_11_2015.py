@@ -1,4 +1,5 @@
 import pytest
+
 from adventofcode.year_2015.day_11_2015 import is_valid
 
 

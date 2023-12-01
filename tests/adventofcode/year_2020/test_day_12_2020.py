@@ -1,15 +1,15 @@
 import pytest
 
 from adventofcode.year_2020.day_12_2020 import (
-    part_two,
-    part_one,
-    turn,
-    LEFT,
-    RIGHT,
-    NORTH,
     EAST,
+    LEFT,
+    NORTH,
+    RIGHT,
     SOUTH,
     WEST,
+    part_one,
+    part_two,
+    turn,
     turn_waypoint,
 )
 

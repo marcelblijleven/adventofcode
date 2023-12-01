@@ -1,14 +1,13 @@
 import re
 from itertools import combinations, permutations
-from typing import Dict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r"^(\w+)[\w\s]+(gain|lose)\s(\d+)[\w\s]+\s(\w+)\.$")
 
-HappinessChartType = Dict[tuple[str, str], int]
+HappinessChartType = dict[tuple[str, str], int]
 
 
 def parse_line(line: str, chart: HappinessChartType) -> None:
@@ -96,7 +95,7 @@ def part_one(input_data: list[str]):
     answer = get_seating_happiness(persons, chart)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 13, 1)
+        raise SolutionNotFoundError(2015, 13, 1)
 
     return answer
 
@@ -110,7 +109,7 @@ def part_two(input_data: list[str]):
     answer = get_seating_happiness(persons, chart)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 13, 2)
+        raise SolutionNotFoundError(2015, 13, 2)
 
     return answer
 

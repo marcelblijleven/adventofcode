@@ -1,15 +1,14 @@
 import re
-from typing import Dict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 bag_type_pattern = re.compile(r"^([a-z]+ [a-z]+)")
 contents_pattern = re.compile(r"((\d) ([a-z]+ [a-z]+))")
 gold_bag = "shiny gold"
 
-BagType = Dict[str, Dict[str, int]]
+BagType = dict[str, dict[str, int]]
 
 
 @register_solution(2020, 7, 1)
@@ -21,7 +20,7 @@ def part_one(input_data: list[str]) -> int:
             gold_holders.append(bag)
 
     if not gold_holders:
-        raise SolutionNotFoundException(2020, 7, 1)
+        raise SolutionNotFoundError(2020, 7, 1)
 
     return len(gold_holders)
 
@@ -33,7 +32,7 @@ def part_two(input_data: list[str]) -> int:
     answer = bag_counter(gold_bag, bags, 1, 0)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 7, 2)
+        raise SolutionNotFoundError(2020, 7, 2)
 
     return answer
 
@@ -54,13 +53,12 @@ def get_bags(input_data: list[str]) -> BagType:
 
 
 def search(bags: BagType, current_bag: str, bag: str) -> bool:
-    contents = [content for content in bags[current_bag].keys()]
+    contents = list(bags[current_bag].keys())
     if contents:
         for content in contents:
             if content == bag:
                 return True
-            else:
-                if search(bags, content, bag):
+            elif search(bags, content, bag):
                     return True
 
     return False

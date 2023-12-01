@@ -1,10 +1,9 @@
 from adventofcode.year_2022.day_02_2022 import (
-    part_two,
     part_one,
+    part_two,
     play_round_one,
     play_round_two,
 )
-
 
 test_input = [
     "A Y",

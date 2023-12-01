@@ -1,12 +1,11 @@
 from collections import defaultdict
-from typing import Dict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def most_presents_at_house(houses: Dict[int, int]) -> int:
+def most_presents_at_house(houses: dict[int, int]) -> int:
     presents = sorted(houses.values())
 
     if len(presents) == 0:
@@ -16,7 +15,7 @@ def most_presents_at_house(houses: Dict[int, int]) -> int:
 
 
 def visit_houses(elf_count: int, target: int):
-    houses: Dict[int, int] = defaultdict(int)
+    houses: dict[int, int] = defaultdict(int)
 
     for elf in range(1, target):
         for house in range(elf, elf_count, elf):
@@ -27,7 +26,7 @@ def visit_houses(elf_count: int, target: int):
 
 
 def visit_houses_part_two(elf_count: int, target: int):
-    houses: Dict[int, int] = defaultdict(int)
+    houses: dict[int, int] = defaultdict(int)
 
     for elf in range(1, target):
         for house in range(elf, min([elf * 50 + 1, elf_count]), elf):
@@ -43,7 +42,7 @@ def part_one(input_data: list[str]):
     answer = visit_houses(1000000, target)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 20, 1)
+        raise SolutionNotFoundError(2015, 20, 1)
 
     return answer
 
@@ -54,7 +53,7 @@ def part_two(input_data: list[str]):
     answer = visit_houses_part_two(1000000, target)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 20, 2)
+        raise SolutionNotFoundError(2015, 20, 2)
 
     return answer
 

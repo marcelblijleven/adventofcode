@@ -4,15 +4,15 @@ import pytest
 import pytest_mock
 
 from adventofcode.year_2021.day_16_2021 import (
-    part_one,
     input_to_binary_string,
-    read_type_four_packet,
     input_to_binary_string_faster,
+    part_one,
+    part_two,
+    peek_version_and_type_id,
+    peek_version_type_id_and_length_type,
     read_operator_packet,
     read_outer_packet,
-    part_two,
-    peek_version_type_id_and_length_type,
-    peek_version_and_type_id,
+    read_type_four_packet,
 )
 
 

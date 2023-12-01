@@ -1,9 +1,9 @@
 import re
+from collections.abc import Generator
 from itertools import combinations
-from typing import Dict, Generator
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 MEMORY_PATTERN = re.compile(r"(\d+).+ = (\d+)$")
@@ -22,7 +22,7 @@ def apply_mask_to_value(value: str, mask: str) -> int:
     masked = "".join(
         [
             value if mask_value == "X" else mask_value
-            for value, mask_value in zip(value, mask)
+            for value, mask_value in zip(value, mask, strict=True)
         ]
     )
     return int(masked, 2)
@@ -36,7 +36,7 @@ def apply_mask_to_address(address: str, mask: str) -> Generator[int, None, None]
     masked_address = "".join(
         [
             character if mask_value == "0" else mask_value
-            for character, mask_value in zip(address, mask)
+            for character, mask_value in zip(address, mask, strict=True)
         ]
     )
 
@@ -51,9 +51,9 @@ def apply_mask_to_address(address: str, mask: str) -> Generator[int, None, None]
         yield int(address, 2)
 
 
-def parse_program(input_data: list[str]) -> Dict[int, int]:
+def parse_program(input_data: list[str]) -> dict[int, int]:
     current_mask = ""
-    memory: Dict[int, int] = {}
+    memory: dict[int, int] = {}
 
     for line in input_data:
         if line.startswith("mask"):
@@ -66,9 +66,9 @@ def parse_program(input_data: list[str]) -> Dict[int, int]:
     return memory
 
 
-def parse_program_version_2(input_data: list[str]) -> Dict[int, int]:
+def parse_program_version_2(input_data: list[str]) -> dict[int, int]:
     current_mask = ""
-    memory: Dict[int, int] = {}
+    memory: dict[int, int] = {}
 
     for line in input_data:
         if line.startswith("mask"):
@@ -84,7 +84,7 @@ def parse_program_version_2(input_data: list[str]) -> Dict[int, int]:
     return memory
 
 
-def count_memory(memory: Dict[int, int]) -> int:
+def count_memory(memory: dict[int, int]) -> int:
     return sum(memory.values())
 
 
@@ -94,7 +94,7 @@ def part_one(input_data: list[str]):
     answer = count_memory(memory)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 14, 1)
+        raise SolutionNotFoundError(2020, 14, 1)
 
     return answer
 
@@ -105,7 +105,7 @@ def part_two(input_data: list[str]):
     answer = count_memory(memory)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 14, 2)
+        raise SolutionNotFoundError(2020, 14, 2)
 
     return answer
 

@@ -1,4 +1,5 @@
 import pytest
+
 from adventofcode.year_2015.day_04_2015 import find_number, part_one, part_two
 
 

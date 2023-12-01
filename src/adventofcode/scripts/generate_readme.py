@@ -3,11 +3,11 @@ import re
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.util.module_helpers import (
-    get_functions_from_day_file,
-    get_full_day_paths,
-    get_full_year_paths,
     clean_day,
     clean_year,
+    get_full_day_paths,
+    get_full_year_paths,
+    get_functions_from_day_file,
 )
 
 YearDayType = dict[int, dict[int, dict[str, bool]]]
@@ -123,8 +123,8 @@ def _create_year_overview(completed_days: dict[int, dict[str, bool]]) -> list[st
     ]
 
     for day, parts in completed_days.items():
-        part_one = "⭐️" if parts["part_one"] else "–"
-        part_two = "⭐️" if parts["part_two"] else "–"
+        part_one = "⭐️" if parts["part_one"] else "-"
+        part_two = "⭐️" if parts["part_two"] else "-"
         text.append(f"| {day:02} | {part_one} | {part_two} |")
 
     return text

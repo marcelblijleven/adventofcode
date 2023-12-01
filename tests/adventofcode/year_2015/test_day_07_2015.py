@@ -2,12 +2,12 @@ import pytest
 
 from adventofcode.year_2015.day_07_2015 import (
     Graph,
-    is_operation,
-    do_not,
-    do_or,
     do_and,
     do_lshift,
+    do_not,
+    do_or,
     do_rshift,
+    is_operation,
 )
 
 

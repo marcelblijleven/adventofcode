@@ -1,7 +1,6 @@
 import ast
 import os
 
-
 from adventofcode.config import ROOT_DIR
 
 
@@ -33,7 +32,7 @@ def get_functions_from_day_file(day: str):
     """
     Uses ast to retrieve all top level functions in the provided day file
     """
-    with open(day, "rt") as f:
+    with open(day) as f:
         parsed = ast.parse(f.read(), filename=day)
 
     return [func.name for func in parsed.body if isinstance(func, ast.FunctionDef)]

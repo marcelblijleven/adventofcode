@@ -1,11 +1,11 @@
-from typing import Generator, Optional
+from collections.abc import Generator
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
-def parse_instruction(line: str) -> Optional[int]:
+def parse_instruction(line: str) -> int | None:
     if line == "noop":
         return None
 
@@ -60,7 +60,7 @@ def draw_crt(input_data: list[str]) -> str:
             crt_row = [" "] * 40
 
     value = "\n".join(crt_rows)
-    print(value)
+    print(value)  # noqa
     return value
 
 
@@ -69,7 +69,7 @@ def part_one(input_data: list[str]):
     answer = get_signal_strength(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 10, 1)
+        raise SolutionNotFoundError(2022, 10, 1)
 
     return answer
 
@@ -79,7 +79,7 @@ def part_two(input_data: list[str]):
     answer = draw_crt(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 10, 2)
+        raise SolutionNotFoundError(2022, 10, 2)
 
     return answer
 

@@ -2,7 +2,6 @@ import argparse
 import os
 import sys
 
-
 from adventofcode.config import ROOT_DIR
 from adventofcode.util.console import console
 

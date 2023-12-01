@@ -1,4 +1,4 @@
-from adventofcode.year_2021.day_25_2021 import part_one, get_values, do_step
+from adventofcode.year_2021.day_25_2021 import do_step, get_values, part_one
 
 test_input = [
     "v...>>.vv>",

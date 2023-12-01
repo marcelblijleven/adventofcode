@@ -1,9 +1,9 @@
 import pytest
 
 from adventofcode.year_2015.day_05_2015 import (
-    is_nice,
-    has_repeating_letter,
     has_recurring_pairs,
+    has_repeating_letter,
+    is_nice,
 )
 
 

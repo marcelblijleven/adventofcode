@@ -1,13 +1,13 @@
 from adventofcode.year_2022.day_05_2022 import (
-    part_two,
-    part_one,
-    get_number_of_crates,
-    parse_crates,
-    parse_instructions,
     execute_instruction,
-    move_crates,
     execute_instruction_9001,
+    get_number_of_crates,
+    move_crates,
+    parse_crates,
     parse_crates_option_two,
+    parse_instructions,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -40,7 +40,7 @@ def test_parse_instructions():
     instructions_input = test_input[4:]
 
     for instruction in parse_instructions(instructions_input):
-        print(type(instruction), instruction)
+        print(type(instruction), instruction)  # noqa
 
 
 def test_execute_instructions():

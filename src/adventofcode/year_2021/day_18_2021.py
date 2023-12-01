@@ -1,11 +1,9 @@
+import math
 import re
 from itertools import permutations
-from typing import Union
 
-import math
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 pair_pattern = re.compile(r"(\[\d+,\d+])")
@@ -107,7 +105,7 @@ def parse_snailfish_number(snailfish_number: str, next_value: str) -> str:
 
 
 def parse_snailfish_numbers(
-    snailfish_numbers: Union[list[str], tuple[str, ...]]
+    snailfish_numbers: list[str] | tuple[str, ...]
 ) -> str:
     result = snailfish_numbers[0]
 
@@ -156,7 +154,7 @@ def part_one(input_data: list[str]):
     answer = solve_homework(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 18, 1)
+        raise SolutionNotFoundError(2021, 18, 1)
 
     return answer
 
@@ -166,7 +164,7 @@ def part_two(input_data: list[str]):
     answer = solve_homework_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 18, 2)
+        raise SolutionNotFoundError(2021, 18, 2)
 
     return answer
 

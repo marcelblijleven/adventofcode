@@ -1,10 +1,10 @@
 from adventofcode.year_2022.day_03_2022 import (
-    compare_rucksacks,
-    part_two,
-    part_one,
-    split_rucksack,
     compare_compartments,
+    compare_rucksacks,
+    part_one,
+    part_two,
     rucksacks_part_one,
+    split_rucksack,
 )
 
 test_input = [

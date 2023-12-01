@@ -1,6 +1,6 @@
 from adventofcode.year_2015.day_09_2015 import (
-    get_all_routes,
     get_all_cities,
+    get_all_routes,
     get_fastest_route,
     get_slowest_route,
 )

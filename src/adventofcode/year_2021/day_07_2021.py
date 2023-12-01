@@ -1,10 +1,9 @@
 from statistics import median
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
-from adventofcode.util.math_helpers import mean_floor, mean_ceil, gaussian_sum
+from adventofcode.util.math_helpers import gaussian_sum, mean_ceil, mean_floor
 
 
 def get_crabs(input_data: list[str]) -> list[int]:
@@ -71,7 +70,7 @@ def part_one(input_data: list[str]):
     answer = get_least_amount_of_fuel(crabs)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 7, 1)
+        raise SolutionNotFoundError(2021, 7, 1)
 
     return answer
 
@@ -82,7 +81,7 @@ def part_two(input_data: list[str]):
     answer = get_least_amount_of_fuel_part_two(crabs)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 7, 2)
+        raise SolutionNotFoundError(2021, 7, 2)
 
     return answer
 

@@ -1,13 +1,13 @@
 import re
 from collections import defaultdict
-from typing import DefaultDict, Generator
+from collections.abc import Generator
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Coord = tuple[int, int]
-GridType = DefaultDict[Coord, int]
+GridType = defaultdict[Coord, int]
 LinePositions = tuple[Coord, Coord]
 Line = list[Coord]
 line_pattern = re.compile(r"(\d+)")
@@ -47,7 +47,7 @@ def get_lines(positions_list: list[LinePositions]) -> Generator[Line, None, None
 
 
 def count_intersections(parsed_input: list[LinePositions]) -> int:
-    seen: DefaultDict[Coord, int] = defaultdict(int)
+    seen: defaultdict[Coord, int] = defaultdict(int)
 
     for line in get_lines(parsed_input):
         for coord in line:
@@ -79,7 +79,7 @@ def part_one(input_data: list[str]):
     answer = count_intersections(parsed_input)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 5, 1)
+        raise SolutionNotFoundError(2021, 5, 1)
 
     return answer
 
@@ -90,7 +90,7 @@ def part_two(input_data: list[str]):
     answer = count_intersections(parsed_input)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 5, 2)
+        raise SolutionNotFoundError(2021, 5, 2)
 
     return answer
 

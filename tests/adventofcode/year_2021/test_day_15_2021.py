@@ -1,14 +1,13 @@
 import pytest
 
-from adventofcode.util.helpers import grid_to_string
 from adventofcode.year_2021.day_15_2021 import (
-    part_two,
-    part_one,
-    parse_input,
-    get_possible_routes_for_position,
-    find_route,
     enlarge_grid,
+    find_route,
+    get_possible_routes_for_position,
     increment_value,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -207,12 +206,6 @@ def test_find_route():
 
 def test_find_route_enlarged():
     assert find_route(enlarge_grid(test_grid)) == 315
-
-
-def test_enlarge_grid():
-    grid = enlarge_grid(test_grid.copy())
-    print()
-    print(grid_to_string(grid))
 
 
 @pytest.mark.parametrize(

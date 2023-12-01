@@ -1,8 +1,7 @@
 import re
-from typing import Dict, Union
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r"(?:(\w+)?\s?(RSHIFT|LSHIFT|AND|OR|NOT) )?(\w+)")
@@ -37,8 +36,8 @@ def do_rshift(left: int, right: int) -> int:
 
 class Graph:
     def __init__(self, lines: list[str]):
-        self._seen: Dict[str, int] = {}
-        self._values: Dict[str, Union[str, int]] = {}
+        self._seen: dict[str, int] = {}
+        self._values: dict[str, str | int] = {}
         self._parse_lines(lines)
 
     def _parse_lines(self, lines: list[str]):
@@ -73,7 +72,7 @@ class Graph:
 
         raise ValueError(f"unknown operation: {operation}")
 
-    def get_value(self, key: Union[str, int]) -> int:
+    def get_value(self, key: str | int) -> int:
         """
         Recursively traverse the graph to find the value
         """
@@ -123,7 +122,7 @@ def part_one(input_data: list[str]):
     answer = graph.get_value("a")
 
     if not answer:
-        raise SolutionNotFoundException(2015, 7, 1)
+        raise SolutionNotFoundError(2015, 7, 1)
 
     return answer
 
@@ -136,7 +135,7 @@ def part_two(input_data: list[str]):
     answer = graph.get_value("a")
 
     if not answer:
-        raise SolutionNotFoundException(2015, 7, 2)
+        raise SolutionNotFoundError(2015, 7, 2)
 
     return answer
 

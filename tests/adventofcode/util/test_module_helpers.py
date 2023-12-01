@@ -5,13 +5,13 @@ import pytest_mock
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.util.module_helpers import (
-    get_full_year_paths,
-    get_full_day_paths,
-    get_functions_from_day_file,
-    clean_year,
     clean_day,
-    year_dir_from_path,
+    clean_year,
+    get_full_day_paths,
     get_full_module_from_day_file,
+    get_full_year_paths,
+    get_functions_from_day_file,
+    year_dir_from_path,
 )
 
 

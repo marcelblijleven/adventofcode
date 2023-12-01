@@ -1,10 +1,9 @@
 import re
 from functools import partial
 from multiprocessing import Pool
-from typing import Optional
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.helpers import manhattan_distance
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -70,7 +69,7 @@ def undo_rotate_positions(position: Position) -> Position:
 
 def find_positions_at_y(
     pairs: list[tuple[Position, Position]], y_value: int
-) -> Optional[Position]:
+) -> Position | None:
     ranges: list[Position] = []
 
     for sensor, beacon in pairs:
@@ -108,7 +107,7 @@ def part_one(input_data: list[str]):
     answer = find_locations_at_y(input_data, 2000000)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 15, 1)
+        raise SolutionNotFoundError(2022, 15, 1)
 
     return answer
 
@@ -118,7 +117,7 @@ def part_two(input_data: list[str]):
     answer = find_beacon_position(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 15, 2)
+        raise SolutionNotFoundError(2022, 15, 2)
 
     return answer
 

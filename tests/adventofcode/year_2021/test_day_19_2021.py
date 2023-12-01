@@ -1,14 +1,14 @@
 from adventofcode.year_2021.day_19_2021 import (
-    part_two,
-    part_one,
-    calculate_max_distance,
     AxisOffset,
     Scanner,
-    get_offset,
     apply_offset,
-    get_scanners,
-    process_scanners,
+    calculate_max_distance,
     count_unique_beacons,
+    get_offset,
+    get_scanners,
+    part_one,
+    part_two,
+    process_scanners,
 )
 
 test_input = [

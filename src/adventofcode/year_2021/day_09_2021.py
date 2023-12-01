@@ -1,18 +1,16 @@
 import asyncio
+import math
 import multiprocessing
 from asyncio import Queue
 from collections import defaultdict
 from itertools import repeat
-from typing import DefaultDict, Set
 
-import math
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
-CaveFloor = DefaultDict[Position, int]
+CaveFloor = defaultdict[Position, int]
 
 
 def _cave_floor_factory() -> int:
@@ -46,15 +44,15 @@ def get_low_points(cave_floor: CaveFloor, width: int, height: int) -> list[Posit
                 cave_floor[(x, y + 1)],
             ]
 
-            if all([number < value for value in adjacent_values]):
+            if all([number < value for value in adjacent_values]):  # noqa
                 positions.append((x, y))
 
     return positions
 
 
 def calculate_basin(
-    cave_floor: CaveFloor, position: Position, basin: Set[Position]
-) -> Set[Position]:
+    cave_floor: CaveFloor, position: Position, basin: set[Position]
+) -> set[Position]:
     x, y = position
     left, right, top, down = (x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)
 
@@ -82,7 +80,7 @@ def find_basin_size_product(cave_floor: CaveFloor, width: int, height: int) -> i
     basin_sizes: list[int] = []
 
     for point in low_points:
-        basin: Set[Position] = set()
+        basin: set[Position] = set()
         basin.add(point)
         basin = calculate_basin(cave_floor, point, basin)
         basin_sizes.append(len(basin))
@@ -94,7 +92,7 @@ def find_basin_size_product(cave_floor: CaveFloor, width: int, height: int) -> i
 async def calculate_basin_async(
     cave_floor: CaveFloor, position: Position
 ) -> list[tuple[int, int]]:
-    basin: Set[Position] = set()
+    basin: set[Position] = set()
     basin = calculate_basin(cave_floor, position, basin)
     return list(basin)
 
@@ -118,7 +116,7 @@ async def find_basin_size_product_async(
 def calculate_basin_mp(
     cave_floor: CaveFloor, position: Position
 ) -> list[tuple[int, int]]:
-    basin: Set[Position] = set()
+    basin: set[Position] = set()
     basin = calculate_basin(cave_floor, position, basin)
     return list(basin)
 
@@ -147,7 +145,7 @@ def get_risk_level(cave_floor: CaveFloor, width: int, height: int) -> int:
                 cave_floor[(x, y + 1)],
             ]
 
-            if all([number < value for value in adjacent_values]):
+            if all([number < value for value in adjacent_values]):  # noqa
                 points.append(number + 1)
 
     return sum(points)
@@ -158,7 +156,7 @@ def part_one(input_data: list[str]):
     answer = get_risk_level(*parse_input(input_data))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 9, 1)
+        raise SolutionNotFoundError(2021, 9, 1)
 
     return answer
 
@@ -168,7 +166,7 @@ def part_two(input_data: list[str]):
     answer = find_basin_size_product(*parse_input(input_data))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 9, 2)
+        raise SolutionNotFoundError(2021, 9, 2)
 
     return answer
 
@@ -178,7 +176,7 @@ def part_two_async(input_data: list[str]):
     answer = asyncio.run(find_basin_size_product_async(*parse_input(input_data)))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 9, 2)
+        raise SolutionNotFoundError(2021, 9, 2)
 
     return answer
 
@@ -188,7 +186,7 @@ def part_two_mp(input_data: list[str]):
     answer = find_basin_size_product_mp(*parse_input(input_data))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 9, 2)
+        raise SolutionNotFoundError(2021, 9, 2)
 
     return answer
 

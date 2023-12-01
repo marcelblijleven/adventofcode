@@ -2,7 +2,8 @@ import cProfile
 import os
 import pstats
 import time
-from typing import Callable, Literal, Dict, Any
+from collections.abc import Callable
+from typing import Any, Literal
 
 from adventofcode.config import RUNNING_ALL, RUNNING_BENCHMARKS
 from adventofcode.util.console import console
@@ -71,7 +72,7 @@ def solution_profiler(
     version: str = "",
     stats_amount: int = 10,
     sort: Literal["time", "cumulative"] = "time",
-):  # noqa: C901, type: ignore
+):  # , type: ignore
     prefix = _get_prefix(year, day, part, version)
 
     def decorator(func: Callable):  # type: ignore
@@ -99,7 +100,7 @@ def solution_profiler(
 
 
 def memoize(func: Callable):  # type: ignore
-    cache: Dict[Any, Any] = dict()
+    cache: dict[Any, Any] = {}
 
     def memoized_func(*args):
         if args in cache:

@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import dataclasses
+from collections.abc import Callable
 from copy import deepcopy
-from typing import Callable
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.helpers import memoize
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -13,8 +13,10 @@ from adventofcode.util.input_helpers import get_input_for_day
 Magic Missile costs 53 mana. It instantly does 4 damage.
 Drain costs 73 mana. It instantly does 2 damage and heals you for 2 hit points.
 Shield costs 113 mana. It starts an effect that lasts for 6 turns. While it is active, your armor is increased by 7.
-Poison costs 173 mana. It starts an effect that lasts for 6 turns. At the start of each turn while it is active, it deals the boss 3 damage.
-Recharge costs 229 mana. It starts an effect that lasts for 5 turns. At the start of each turn while it is active, it gives you 101 new mana.
+Poison costs 173 mana. It starts an effect that lasts for 6 turns. At the start of each turn while it is active,
+it deals the boss 3 damage.
+Recharge costs 229 mana. It starts an effect that lasts for 5 turns. At the start of each turn while it is active,
+it gives you 101 new mana.
 """
 
 
@@ -83,7 +85,7 @@ def apply_status_effects(
         )
 
         if new_effect.duration > 0:
-            next_effects = next_effects + (new_effect,)
+            next_effects = (*next_effects, new_effect)
 
     return next_effects, boss_health, player_health, player_armor, player_mana
 
@@ -104,7 +106,7 @@ def do_player_turn(
             continue
 
         copied_effects = deepcopy(next_effects)
-        copied_effects = copied_effects + (spell,)
+        copied_effects = (*copied_effects, spell)
 
         simulation_func(
             boss_health,
@@ -196,7 +198,7 @@ def part_one(_: list[str]):
     answer = fight(50, 500, 58, 9, False)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 22, 1)
+        raise SolutionNotFoundError(2015, 22, 1)
 
     return answer
 
@@ -206,7 +208,7 @@ def part_two(_: list[str]):
     answer = fight(50, 500, 58, 9, True)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 22, 2)
+        raise SolutionNotFoundError(2015, 22, 2)
 
     return answer
 

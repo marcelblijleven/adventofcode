@@ -10,12 +10,12 @@ from adventofcode.scripts.generate_readme import _replace_between_tags
 from adventofcode.util.console import console
 from adventofcode.util.input_helpers import get_input_for_day
 from adventofcode.util.module_helpers import (
-    get_full_year_paths,
-    year_dir_from_path,
+    clean_day,
     clean_year,
     get_full_day_paths,
-    clean_day,
     get_full_module_from_day_file,
+    get_full_year_paths,
+    year_dir_from_path,
 )
 
 Benchmarks = dict[int, dict[int, dict[str, float]]]
@@ -32,7 +32,7 @@ def get_benchmarks() -> Benchmarks:
     """
     benchmarks = _retrieve_benchmarks()
     # benchmarks = _retrieve_benchmarks_mp()
-    print(get_averages(benchmarks))
+    print(get_averages(benchmarks))  # noqa
     return benchmarks
 
 
@@ -41,7 +41,7 @@ def get_averages(benchmarks: Benchmarks) -> tuple[float, float]:
     part_two_solutions = []
 
     for days in benchmarks.values():
-        for day, solutions in days.items():
+        for solutions in days.values():
             for solution, benchmark in solutions.items():
                 if solution.startswith("part one"):
                     part_one_solutions.append(benchmark)
@@ -215,14 +215,14 @@ def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
     console.log(f"retrieved input for {year} {day:02}")
 
     try:
-        benchmarks[year][day]["part one"] = getattr(module, "part_one")(data)
+        benchmarks[year][day]["part one"] = module.part_one(data)
     except AttributeError:
         pass
 
     console.log(f"ran {year} {day:02} part one")
 
     try:
-        benchmarks[year][day]["part two"] = getattr(module, "part_two")(data)
+        benchmarks[year][day]["part two"] = module.part_two(data)
     except AttributeError:
         pass
 
@@ -248,12 +248,12 @@ def _run_day_mp(
     console.log(f"retrieved input for {year} {day:02}")
 
     try:
-        benchmarks[day]["part one"] = getattr(module, "part_one")(data)
+        benchmarks[day]["part one"] = module.part_one(data)
     except AttributeError:
         pass
 
     try:
-        benchmarks[day]["part two"] = getattr(module, "part_two")(data)
+        benchmarks[day]["part two"] = module.part_two(data)
     except AttributeError:
         pass
 

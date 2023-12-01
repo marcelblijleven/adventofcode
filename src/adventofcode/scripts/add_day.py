@@ -2,13 +2,14 @@ import os
 import sys
 from argparse import ArgumentParser
 
-from httpx import HTTPError  # noqa
+from httpx import HTTPError
 
 from adventofcode.config import ROOT_DIR
 from adventofcode.scripts.get_inputs import get_input
 from adventofcode.util.console import console
 from adventofcode.util.input_helpers import get_input_for_day
 
+UNKNOWN_EXCEPTION = "unknown exception occurred in verify_input_exists"
 
 def add_day():
     """
@@ -101,7 +102,7 @@ def verify_input_exists(year: int, day: int) -> None:
                 f"year {year} day {day}: .session not set correctly"
             )
 
-    raise ValueError("unknown exception occurred in verify_input_exists")
+    raise ValueError(UNKNOWN_EXCEPTION)
 
 
 def _read_solution_template(template_path: str, year: str, day: str) -> str:

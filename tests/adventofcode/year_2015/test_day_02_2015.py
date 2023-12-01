@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2015.day_02_2015 import (
-    get_surface,
+    get_input_for_day,
     get_ribbon,
+    get_surface,
     parse_line,
     part_one,
-    get_input_for_day,
     part_two,
 )
 

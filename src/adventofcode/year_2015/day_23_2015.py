@@ -1,18 +1,17 @@
-from typing import Dict, Callable
+from collections.abc import Callable
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
-
-instructions_funcs: Dict[str, Callable[[int], int]] = {
+instructions_funcs: dict[str, Callable[[int], int]] = {
     "hlf r": lambda r: int(r / 2),
     "tpl r": lambda r: int(r * 3),
     "inc r": lambda r: r + 1,
 }
 
 
-def run_program(input_data: list[str], registers: Dict[str, int]) -> int:  # noqa: C901
+def run_program(input_data: list[str], registers: dict[str, int]) -> int:
     position = 0
 
     while position < len(input_data):
@@ -58,7 +57,7 @@ def part_one(input_data: list[str]):
     answer = run_program(input_data, registers)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 23, 1)
+        raise SolutionNotFoundError(2015, 23, 1)
 
     return answer
 
@@ -69,7 +68,7 @@ def part_two(input_data: list[str]):
     answer = run_program(input_data, registers)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 23, 2)
+        raise SolutionNotFoundError(2015, 23, 2)
 
     return answer
 

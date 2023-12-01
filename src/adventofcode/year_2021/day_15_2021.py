@@ -1,7 +1,7 @@
 import heapq
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.helpers import manhattan_distance
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -101,7 +101,7 @@ def part_one(input_data: list[str]):
     answer = find_route(parse_input(input_data))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 15, 1)
+        raise SolutionNotFoundError(2021, 15, 1)
 
     return answer
 
@@ -112,7 +112,7 @@ def part_two(input_data: list[str]):
     answer = find_route(enlarge_grid(grid))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 15, 2)
+        raise SolutionNotFoundError(2021, 15, 2)
 
     return answer
 

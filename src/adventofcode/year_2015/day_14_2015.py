@@ -1,8 +1,7 @@
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r"(\w+)[^0-9]+(\d{1,2})[^0-9]+(\d{1,2})[^0-9]+(\d{2,3}).+")
@@ -121,7 +120,7 @@ def part_one(input_data: list[str]):
     answer = race(reindeer, 2503)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 14, 1)
+        raise SolutionNotFoundError(2015, 14, 1)
 
     return answer
 
@@ -133,7 +132,7 @@ def part_two(input_data: list[str]):
     answer = sorted(reindeer, key=lambda x: x.points, reverse=True)[0]
 
     if not answer:
-        raise SolutionNotFoundException(2015, 14, 2)
+        raise SolutionNotFoundError(2015, 14, 2)
 
     return answer
 

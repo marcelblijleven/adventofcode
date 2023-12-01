@@ -1,13 +1,13 @@
 import pytest
 
 from adventofcode.year_2022.day_04_2022 import (
-    part_two,
-    part_one,
-    find_containing,
     does_contain,
-    get_pairs,
     does_overlap,
+    find_containing,
     find_overlapping,
+    get_pairs,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -32,6 +32,7 @@ test_input = [
             ((6, 6), (4, 6)),
             ((2, 6), (4, 8)),
         ],
+        strict=True,
     ),
 )
 def test_get_pairs(row, expected):

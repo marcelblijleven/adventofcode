@@ -1,4 +1,4 @@
-from adventofcode.year_2020.day_10_2020 import part_one, part_two, find_differences
+from adventofcode.year_2020.day_10_2020 import find_differences, part_one, part_two
 
 test_input = [
     28,

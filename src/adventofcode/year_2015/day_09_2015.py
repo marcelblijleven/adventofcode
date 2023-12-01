@@ -1,14 +1,13 @@
 import re
 from itertools import permutations
-from typing import Dict
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 PATTERN = re.compile(r"(\w+)")
 
-DistDictType = Dict[tuple[str, str], int]
+DistDictType = dict[tuple[str, str], int]
 
 
 def get_all_cities(input_data: list[str], dist_dict: DistDictType) -> list[str]:
@@ -76,7 +75,7 @@ def part_one(input_data: list[str]):
     answer = get_fastest_route(routes, dist_dict)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 9, 1)
+        raise SolutionNotFoundError(2015, 9, 1)
 
     return answer
 
@@ -90,7 +89,7 @@ def part_two(input_data: list[str]):
     answer = get_slowest_route(routes, dist_dict)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 9, 2)
+        raise SolutionNotFoundError(2015, 9, 2)
 
     return answer
 

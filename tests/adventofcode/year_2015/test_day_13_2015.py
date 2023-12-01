@@ -1,10 +1,10 @@
 import pytest
 
 from adventofcode.year_2015.day_13_2015 import (
+    get_all_combinations,
+    get_happiness_chart,
     get_seating_happiness,
     get_unique_persons,
-    get_happiness_chart,
-    get_all_combinations,
     update_happiness_chart,
 )
 

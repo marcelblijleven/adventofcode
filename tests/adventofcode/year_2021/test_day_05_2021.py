@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2021.day_05_2021 import (
-    part_two,
-    part_one,
-    parse_input,
-    get_line,
     count_intersections,
+    get_line,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [

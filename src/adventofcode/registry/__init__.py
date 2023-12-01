@@ -1,6 +1,7 @@
 import os.path
+from collections.abc import Callable
 from importlib import import_module
-from typing import Callable, Any
+from typing import Any
 
 from adventofcode.config import ROOT_DIR
 

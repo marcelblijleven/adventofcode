@@ -1,8 +1,8 @@
+import ast
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 QUOTE_PATTERN = re.compile(r'(\\")')
@@ -16,7 +16,7 @@ def get_hex_character(hex_str: str) -> str:
 
 
 def get_in_memory_count(line: str) -> int:
-    return len(eval(line))
+    return len(ast.literal_eval(line))
 
 
 def parse_line(line: str) -> int:
@@ -61,7 +61,7 @@ def part_one(input_data: list[str]):
     answer = parse_lines(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 8, 1)
+        raise SolutionNotFoundError(2015, 8, 1)
 
     return answer
 
@@ -71,7 +71,7 @@ def part_two(input_data: list[str]):
     answer = parse_lines_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 8, 2)
+        raise SolutionNotFoundError(2015, 8, 2)
 
     return answer
 

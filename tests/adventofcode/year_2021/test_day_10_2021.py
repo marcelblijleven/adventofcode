@@ -1,13 +1,13 @@
 import pytest
 
 from adventofcode.year_2021.day_10_2021 import (
-    part_two,
-    part_one,
-    find_corrupted_characters,
+    count_points_autocomplete,
     count_points_corrupted_characters,
     filter_lines,
     find_closing_characters,
-    count_points_autocomplete,
+    find_corrupted_characters,
+    part_one,
+    part_two,
     reduce_line,
 )
 
@@ -99,7 +99,7 @@ def test_find_closing_characters():
         ),
     ],
 )
-def test_count_points_autocomplete(lines, expected):
+def test_count_points_autocomplete(lines, expected):  # noqa
     assert count_points_autocomplete(["])}>"]) == 294
 
 

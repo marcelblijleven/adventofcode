@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2020.day_14_2020 import (
-    part_two,
-    part_one,
-    parse_program,
-    apply_mask_to_value,
     apply_mask_to_address,
+    apply_mask_to_value,
+    parse_program,
+    part_one,
+    part_two,
 )
 
 test_input = [
@@ -61,7 +61,7 @@ def test_apply_mask_to_address():
         int("000000000000000000000000000000111010", 2),
         int("000000000000000000000000000000111011", 2),
     ]
-    assert sorted(list(apply_mask_to_address(address, mask))) == sorted(expected)
+    assert sorted(apply_mask_to_address(address, mask)) == sorted(expected)
 
     address = "000000000000000000000000000000011010"
     mask = "00000000000000000000000000000000X0XX"
@@ -75,7 +75,7 @@ def test_apply_mask_to_address():
         int("000000000000000000000000000000011010", 2),
         int("000000000000000000000000000000011011", 2),
     ]
-    assert sorted(list(apply_mask_to_address(address, mask))) == sorted(expected)
+    assert sorted(apply_mask_to_address(address, mask)) == sorted(expected)
 
 
 def test_part_one():

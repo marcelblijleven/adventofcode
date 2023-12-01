@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.helpers import memoize
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -88,7 +88,7 @@ def game(player_one: Player, player_two: Player) -> int:
         rounds += 1
 
     rolls = die.rolls
-    losing_score = [p for p in players if not p.has_won][0].score
+    losing_score = [p for p in players if not p.has_won][0].score  # noqa
     return rolls * losing_score
 
 
@@ -126,7 +126,7 @@ def part_one(input_data: list[str]):
     answer = game(Player(1, positions[0]), Player(2, positions[1]))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 21, 1)
+        raise SolutionNotFoundError(2021, 21, 1)
 
     return answer
 
@@ -137,7 +137,7 @@ def part_two(input_data: list[str]):
     answer = max(quantum_game(positions[0], positions[1], 0, 0))
 
     if not answer:
-        raise SolutionNotFoundException(2021, 21, 2)
+        raise SolutionNotFoundError(2021, 21, 2)
 
     return answer
 

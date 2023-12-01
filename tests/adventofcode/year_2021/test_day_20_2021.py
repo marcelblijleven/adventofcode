@@ -1,17 +1,18 @@
-import pytest
 from collections import defaultdict
 
+import pytest
+
 from adventofcode.year_2021.day_20_2021 import (
-    part_two,
-    part_one,
-    parse_input,
     get_algorithm_position_for_pixel,
     get_algorithm_position_for_pixel_simplified,
     get_infinity_grid,
+    parse_input,
+    part_one,
+    part_two,
 )
 
 test_input = [
-    "..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..##"
+    "..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..##"  # noqa
     + "#..######.###...####..#..#####..##..#.#####...##.#.#..#.##..#.#......#.###"
     + ".######.###.####...#.##.##..#..#..#####.....#.#....###..#.##......#.....#."
     + ".#..#..##..#...##.######.####.####.#.#...#.......#..#.#.#...####.##.#....."

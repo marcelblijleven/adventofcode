@@ -1,8 +1,7 @@
 from collections import Counter
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -10,13 +9,13 @@ def input_to_list_of_list(input_data: list[str]) -> list[list[str]]:
     lists: list[list[str]] = []
 
     for line in input_data:
-        lists.append([num for num in line])
+        lists.append(list(line))
 
     return lists
 
 
 def merge_lists(lists: list[list[str]]) -> list[tuple[str]]:
-    merged = zip(*lists)
+    merged = zip(*lists, strict=True)
     return list(merged)  # type: ignore
 
 
@@ -68,7 +67,7 @@ def part_one(input_data: list[str]):
     answer = get_power_consumption(merged)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 3, 1)
+        raise SolutionNotFoundError(2021, 3, 1)
 
     return answer
 
@@ -78,7 +77,7 @@ def part_two(input_data: list[str]):
     answer = get_life_support(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2021, 3, 2)
+        raise SolutionNotFoundError(2021, 3, 2)
 
     return answer
 

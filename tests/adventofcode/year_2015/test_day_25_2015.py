@@ -1,5 +1,5 @@
 from adventofcode.util.input_helpers import get_input_for_day
-from adventofcode.year_2015.day_25_2015 import part_two, part_one
+from adventofcode.year_2015.day_25_2015 import part_one, part_two
 
 
 def test_part_one():

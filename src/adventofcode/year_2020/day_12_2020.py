@@ -1,5 +1,5 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 NORTH = "N"
@@ -161,7 +161,7 @@ def part_one(input_data: list[str]):
     answer = parse_instructions(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 12, 1)
+        raise SolutionNotFoundError(2020, 12, 1)
 
     return answer
 
@@ -171,7 +171,7 @@ def part_two(input_data: list[str]):
     answer = parse_instructions_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2020, 12, 2)
+        raise SolutionNotFoundError(2020, 12, 2)
 
     return answer
 

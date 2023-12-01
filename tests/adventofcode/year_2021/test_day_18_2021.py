@@ -1,15 +1,15 @@
 import pytest
 
 from adventofcode.year_2021.day_18_2021 import (
-    part_two,
-    part_one,
-    explode,
     addition,
-    parse_snailfish_number,
-    reduce_snailfish_number,
-    parse_snailfish_numbers,
     calculate_magnitude,
+    explode,
     get_pair_numbers,
+    parse_snailfish_number,
+    parse_snailfish_numbers,
+    part_one,
+    part_two,
+    reduce_snailfish_number,
 )
 
 test_input = [

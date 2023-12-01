@@ -1,14 +1,14 @@
 import pytest
 
 from adventofcode.year_2021.day_07_2021 import (
-    part_two,
-    part_one,
     get_crabs,
-    move_to_position,
-    try_all_positions,
     get_least_amount_of_fuel,
     get_least_amount_of_fuel_part_two,
     get_least_amount_of_fuel_part_two_slower,
+    move_to_position,
+    part_one,
+    part_two,
+    try_all_positions,
 )
 
 test_input = [

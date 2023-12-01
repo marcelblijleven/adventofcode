@@ -1,18 +1,18 @@
 from collections import defaultdict
 
 from adventofcode.registry.decorators import register_solution
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 Position = tuple[int, int]
 Cave = dict[Position, str]
 
 
-class AbyssException(Exception):
+class AbyssError(Exception):
     """Raised when a unit of sand falls into the abyss"""
 
 
-class SandStoppedException(Exception):
+class SandStoppedError(Exception):
     """Raised when the pouring of sand has stopped"""
 
 
@@ -92,7 +92,7 @@ def simulate_sand(cave: Cave) -> int:
                 x, y = position
 
                 if y > abyss:
-                    raise AbyssException()
+                    raise AbyssError()
 
                 # Try vertical drop
                 if (next_position := (x, y + 1)) not in cave:
@@ -110,7 +110,7 @@ def simulate_sand(cave: Cave) -> int:
                     # Sand cannot drop any further and rests here
                     cave[position] = "o"
                     break
-    except AbyssException:
+    except AbyssError:
         # Return units of sand minus one because we need the unit BEFORE they start
         # to fall into the abyss
         return units_of_sand - 1
@@ -134,7 +134,7 @@ def simulate_sand_with_floor(cave: Cave) -> int:
     try:
         while True:  # pour new unit of sand
             if pouring_start in cave:
-                raise SandStoppedException()
+                raise SandStoppedError()
 
             units_of_sand += 1
             position = pouring_start
@@ -165,7 +165,7 @@ def simulate_sand_with_floor(cave: Cave) -> int:
                     cave[position] = "o"
                     break
 
-    except SandStoppedException:
+    except SandStoppedError:
         return units_of_sand
 
 
@@ -186,7 +186,7 @@ def part_one(input_data: list[str]):
     answer = count_units_of_sand(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 14, 1)
+        raise SolutionNotFoundError(2022, 14, 1)
 
     return answer
 
@@ -196,7 +196,7 @@ def part_two(input_data: list[str]):
     answer = count_units_of_sand_until_stopped(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2022, 14, 2)
+        raise SolutionNotFoundError(2022, 14, 2)
 
     return answer
 

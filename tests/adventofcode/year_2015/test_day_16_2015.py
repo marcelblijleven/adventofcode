@@ -1,11 +1,11 @@
 import pytest
 
 from adventofcode.year_2015.day_16_2015 import (
-    parse_lines,
     Aunt,
     all_properties_match,
     find_aunt_sue,
     find_aunt_sue_part_two,
+    parse_lines,
 )
 
 test_input = [

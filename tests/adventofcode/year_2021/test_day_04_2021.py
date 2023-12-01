@@ -1,9 +1,9 @@
 from adventofcode.year_2021.day_04_2021 import (
-    part_two,
+    flatten,
     part_one,
+    part_two,
     play_bingo,
     transpose_rows,
-    flatten,
 )
 
 test_input = [

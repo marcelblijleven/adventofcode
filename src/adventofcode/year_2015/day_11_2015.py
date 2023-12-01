@@ -1,8 +1,7 @@
 import re
 
-
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 PAIR_PATTERN = re.compile(r"(([a-z])\2)+")
@@ -116,7 +115,7 @@ def part_one(input_data: list[str]):
     answer = increment_password(input_data[0])
 
     if not answer:
-        raise SolutionNotFoundException(2015, 11, 1)
+        raise SolutionNotFoundError(2015, 11, 1)
 
     return answer
 
@@ -126,7 +125,7 @@ def part_two(input_data: list[str]):
     answer = increment_password_part_two(input_data[0])
 
     if not answer:
-        raise SolutionNotFoundException(2015, 11, 2)
+        raise SolutionNotFoundError(2015, 11, 2)
 
     return answer
 

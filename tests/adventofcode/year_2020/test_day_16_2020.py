@@ -1,9 +1,9 @@
 from adventofcode.year_2020.day_16_2020 import (
-    part_one,
-    parse_input,
-    get_rules,
-    get_departures,
     filter_tickets,
+    get_departures,
+    get_rules,
+    parse_input,
+    part_one,
     part_two,
 )
 

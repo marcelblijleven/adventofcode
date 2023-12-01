@@ -1,17 +1,17 @@
 import re
-from typing import Callable, Dict
+from collections.abc import Callable
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 pattern = re.compile(r"(\d{1,3},\d{1,3}) through (\d{1,3},\d{1,3})")
 
 ActionType = Callable[[bool], bool]
 
-TURN_ON: ActionType = lambda x: True
-TURN_OFF: ActionType = lambda x: False
-TOGGLE: ActionType = lambda x: not x
+TURN_ON: ActionType = lambda x: True  # noqa: E731, ARG005
+TURN_OFF: ActionType = lambda x: False  # noqa: E731, ARG005
+TOGGLE: ActionType = lambda x: not x  # noqa: E731
 
 
 def read_instruction(
@@ -93,11 +93,11 @@ def run_instructions_part_two(input_data: list[str]) -> int:
     return count_brightness(lights)
 
 
-def count_lights(lights: Dict[tuple[int, int], bool]) -> int:
+def count_lights(lights: dict[tuple[int, int], bool]) -> int:
     return len({light: status for light, status in lights.items() if status})
 
 
-def count_brightness(lights: Dict[tuple[int, int], int]) -> int:
+def count_brightness(lights: dict[tuple[int, int], int]) -> int:
     return sum(lights.values())
 
 
@@ -106,7 +106,7 @@ def part_one(input_data: list[str]):
     answer = run_instructions(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 6, 1)
+        raise SolutionNotFoundError(2015, 6, 1)
 
     return answer
 
@@ -116,7 +116,7 @@ def part_two(input_data: list[str]):
     answer = run_instructions_part_two(input_data)
 
     if not answer:
-        raise SolutionNotFoundException(2015, 6, 2)
+        raise SolutionNotFoundError(2015, 6, 2)
 
     return answer
 

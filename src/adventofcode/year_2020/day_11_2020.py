@@ -1,5 +1,4 @@
 from operator import itemgetter
-from typing import Tuple, Dict
 
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
@@ -8,7 +7,7 @@ FREE_SEAT = "L"
 FLOOR = "."
 TAKEN_SEAT = "#"
 
-LayoutType = Dict[tuple[int, int], str]
+LayoutType = dict[tuple[int, int], str]
 
 
 def get_layout(lines):
@@ -25,7 +24,7 @@ def get_layout(lines):
     return layout
 
 
-def get_x_y_range(layout: LayoutType) -> Tuple[int, int]:
+def get_x_y_range(layout: LayoutType) -> tuple[int, int]:
     max_x = max(layout.keys(), key=itemgetter(0))[0]
     max_y = max(layout.keys(), key=itemgetter(1))[1]
     return max_x, max_y
@@ -81,7 +80,7 @@ def print_layout(layout: LayoutType):
 
         lines.append(line)
 
-    print("\n".join(lines), "\n")
+    print("\n".join(lines), "\n")  # noqa
 
 
 def start_iterating(layout: LayoutType, iteration_func=seating_iteration):  # type: ignore

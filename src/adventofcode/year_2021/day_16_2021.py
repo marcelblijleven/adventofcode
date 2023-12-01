@@ -1,10 +1,8 @@
 import io
-
-
 import math
 
-from adventofcode.util.exceptions import SolutionNotFoundException
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 translation_dict: dict[str, str] = {
@@ -274,7 +272,7 @@ def read_operator_packet(
     """
     version = int(buffer.read(3), 2)
     type_id = int(buffer.read(3), 2)
-    assert type_id == parent_type_id
+    assert type_id == parent_type_id  # noqa
     length_type_id = int(buffer.read(1), 2)
     versions = [version]
 
@@ -305,7 +303,7 @@ def read_garbage_bits(buffer: io.StringIO) -> None:
     if read_bits % 4 > 0:
         buffer.read(4 - read_bits % 4)
 
-    assert buffer.tell() % 4 == 0
+    assert buffer.tell() % 4 == 0  # noqa
 
 
 @register_solution(2021, 16, 1)
@@ -316,7 +314,7 @@ def part_one(input_data: list[str]):
     answer = sum(versions)
 
     if answer is None:
-        raise SolutionNotFoundException(2021, 16, 1)
+        raise SolutionNotFoundError(2021, 16, 1)
 
     return answer
 
@@ -329,7 +327,7 @@ def part_two(input_data: list[str]):
     answer = value
 
     if answer is None:
-        raise SolutionNotFoundException(2021, 16, 2)
+        raise SolutionNotFoundError(2021, 16, 2)
 
     return answer
 
