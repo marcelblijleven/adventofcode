@@ -1,5 +1,5 @@
 {
-    "bumpFiles": [{"filename": "VERSION.txt", "type": "plain-text"}],
+    "bumpFiles": [{"filename": "src/adventofcode/__about__", "type": "plain-text"}],
     "types": [
         {"section": "✨ Features", "type": "feat"},
         {"section": "⭐️ Solutions", "type": "solution"},
