@@ -144,9 +144,7 @@ def fight(
             if player_health <= 0:
                 return False
 
-        status_result = apply_status_effects(
-            status_effects, boss_health, player_health, player_armor, player_mana
-        )
+        status_result = apply_status_effects(status_effects, boss_health, player_health, player_armor, player_mana)
         (
             next_effects,
             boss_health,
@@ -173,9 +171,7 @@ def fight(
                 run_simulation,
             )
         else:
-            player_health += (
-                player_armor - boss_damage if player_armor - boss_damage < 0 else -1
-            )
+            player_health += player_armor - boss_damage if player_armor - boss_damage < 0 else -1
             if player_health > 0:
                 run_simulation(
                     boss_health,
@@ -186,9 +182,7 @@ def fight(
                     mana_spent,
                 )
 
-    run_simulation(
-        boss_starting_health, player_starting_health, player_starting_mana, (), True, 0
-    )
+    run_simulation(boss_starting_health, player_starting_health, player_starting_mana, (), True, 0)
 
     return minimum_mana
 

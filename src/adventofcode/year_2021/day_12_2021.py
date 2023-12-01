@@ -64,13 +64,9 @@ class CaveExplorer3000:
 
         visited.add(cave)
         paths = self.paths[cave]
-        return sum(
-            self.traverse_part_two(path, visited.copy(), revisit) for path in paths
-        )
+        return sum(self.traverse_part_two(path, visited.copy(), revisit) for path in paths)
 
-    def traverse_with_print(
-        self, cave: str, visited: set[str], path_flow: str = ""
-    ) -> int:
+    def traverse_with_print(self, cave: str, visited: set[str], path_flow: str = "") -> int:
         if path_flow == "":
             path_flow = f"{cave}"
         else:
@@ -87,9 +83,7 @@ class CaveExplorer3000:
 
         visited.add(cave)
         paths = self.paths[cave]
-        return sum(
-            self.traverse_with_print(path, visited.copy(), path_flow) for path in paths
-        )
+        return sum(self.traverse_with_print(path, visited.copy(), path_flow) for path in paths)
 
 
 @register_solution(2021, 12, 1)

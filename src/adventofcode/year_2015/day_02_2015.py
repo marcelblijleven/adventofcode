@@ -16,11 +16,7 @@ class Box:
 
     @property
     def surface(self) -> int:
-        surface_area = (
-            2 * self.length * self.width
-            + 2 * self.width * self.height
-            + 2 * self.height * self.length
-        )
+        surface_area = 2 * self.length * self.width + 2 * self.width * self.height + 2 * self.height * self.length
 
         extra = [
             self.length * self.width,

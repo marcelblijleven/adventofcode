@@ -19,9 +19,7 @@ def get_grid(input_data: list[str]) -> dict[tuple[int, int], int]:
     return grid
 
 
-def is_visible(
-    grid: dict[tuple[int, int], int], tree: tuple[int, int], grid_size: tuple[int, int]
-) -> bool:
+def is_visible(grid: dict[tuple[int, int], int], tree: tuple[int, int], grid_size: tuple[int, int]) -> bool:
     """Check if the tree is visible from the outside"""
     x, y = tree
     horizontal, vertical = grid_size
@@ -115,9 +113,7 @@ def get_scenic_scores(input_data: list[str]) -> int:
 
     for y in range(grid_size[1]):
         for x in range(grid_size[0]):
-            max_scenic_score = max(
-                max_scenic_score, get_scenic_score_for_tree(grid, (x, y), grid_size)
-            )
+            max_scenic_score = max(max_scenic_score, get_scenic_score_for_tree(grid, (x, y), grid_size))
 
     return max_scenic_score
 

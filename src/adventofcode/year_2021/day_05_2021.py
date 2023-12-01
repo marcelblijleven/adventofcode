@@ -36,9 +36,7 @@ def get_line(positions: LinePositions) -> Line:
     dx = bool(x2 > x1) - bool(x2 < x1)
     dy = bool(y2 > y1) - bool(y2 < y1)
 
-    return [
-        (x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)
-    ]
+    return [(x1 + n * dx, y1 + n * dy) for n in range(max(abs(x2 - x1), abs(y2 - y1)) + 1)]
 
 
 def get_lines(positions_list: list[LinePositions]) -> Generator[Line, None, None]:
@@ -56,9 +54,7 @@ def count_intersections(parsed_input: list[LinePositions]) -> int:
     return len([value for value in seen.values() if value > 1])
 
 
-def parse_input(
-    input_data: list[str], filter_diagonal: bool = True
-) -> list[LinePositions]:
+def parse_input(input_data: list[str], filter_diagonal: bool = True) -> list[LinePositions]:
     lines: list[LinePositions] = []
 
     for line in input_data:

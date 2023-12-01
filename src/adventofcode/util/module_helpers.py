@@ -8,11 +8,7 @@ def get_full_year_paths() -> list[str]:
     """
     Retrieves all directories in the ROOT_DIR that start with 'year_'
     """
-    paths = [
-        os.path.join(ROOT_DIR, val)
-        for val in os.listdir(ROOT_DIR)
-        if val.startswith("year_")
-    ]
+    paths = [os.path.join(ROOT_DIR, val) for val in os.listdir(ROOT_DIR) if val.startswith("year_")]
     return sorted(paths)
 
 
@@ -20,11 +16,7 @@ def get_full_day_paths(year_path: str) -> list[str]:
     """
     Retrieves all files in the ROOT_DIR/year_{year} directory that start with 'day_'
     """
-    paths = [
-        os.path.join(year_path, val)
-        for val in os.listdir(year_path)
-        if val.startswith("day_")
-    ]
+    paths = [os.path.join(year_path, val) for val in os.listdir(year_path) if val.startswith("day_")]
     return sorted(paths)
 
 

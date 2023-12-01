@@ -77,6 +77,4 @@ def test_get_all_combinations(value, expected):
 
 def test_get_unique_persons():
     chart = get_happiness_chart(test_input)
-    assert sorted(["Carol", "Alice", "Bob", "David"]) == sorted(
-        get_unique_persons(chart)
-    )
+    assert sorted(["Carol", "Alice", "Bob", "David"]) == sorted(get_unique_persons(chart))

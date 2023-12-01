@@ -40,9 +40,7 @@ def _get_new_position(position: Position, instruction: Instruction) -> Position:
     return x, y
 
 
-def _get_new_position_with_aim(
-    position: Position, aim: int, instruction: Instruction
-) -> tuple[Position, int]:
+def _get_new_position_with_aim(position: Position, aim: int, instruction: Instruction) -> tuple[Position, int]:
     x, y = position
     direction, steps = instruction
 
@@ -59,9 +57,7 @@ def _get_new_position_with_aim(
     return (x, y), aim
 
 
-def get_new_position(
-    position: Position, aim: int, instruction: Instruction, include_aim: bool
-) -> tuple[Position, int]:
+def get_new_position(position: Position, aim: int, instruction: Instruction, include_aim: bool) -> tuple[Position, int]:
     if not include_aim:
         return _get_new_position(position, instruction), 0
 

@@ -68,9 +68,7 @@ class Cookie:
     @property
     def score(self) -> int:
         capacity = sum([ingredient.get_capacity() for ingredient in self.ingredients])
-        durability = sum(
-            [ingredient.get_durability() for ingredient in self.ingredients]
-        )
+        durability = sum([ingredient.get_durability() for ingredient in self.ingredients])
         flavor = sum([ingredient.get_flavor() for ingredient in self.ingredients])
         texture = sum([ingredient.get_texture() for ingredient in self.ingredients])
 
@@ -91,18 +89,14 @@ def parse_ingredients(input_data: list[str]) -> list[Ingredient]:
 
     for line in input_data:
         name, content = line.split(": ")
-        capacity, durability, flavor, texture, calories = map(
-            int, PATTERN.findall(content)
-        )
+        capacity, durability, flavor, texture, calories = map(int, PATTERN.findall(content))
         ingredient = Ingredient(name, capacity, durability, flavor, texture, calories)
         ingredients.append(ingredient)
 
     return ingredients
 
 
-def find_highest_scoring_cookie(
-    input_data: list[str], match_calories: bool = False
-) -> int:
+def find_highest_scoring_cookie(input_data: list[str], match_calories: bool = False) -> int:
     highest_score = 0
     ingredients = parse_ingredients(input_data)
     max_ingredients = 100

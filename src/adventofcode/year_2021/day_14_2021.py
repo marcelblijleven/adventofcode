@@ -76,7 +76,6 @@ def get_answer(input_data: list[str], steps: int) -> int:
         pair_counter_in_step: defaultdict[str, int] = defaultdict(int)
 
         for pair, count in pairs.items():
-
             if pair in pairs and count > 0:
                 target = rules[pair]
                 new_pair_a, new_pair_b = get_new_pairs(pair, target)

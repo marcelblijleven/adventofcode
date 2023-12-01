@@ -53,9 +53,7 @@ def expiration_check(value: str) -> bool:
 def height_check(value: str) -> bool:
     height = "".join([char for char in value if char.isdigit()])
     unit = "".join([char for char in value if char.isalpha()])
-    return (unit == "cm" and _range_check(height, 150, 193)) or (
-        unit == "in" and _range_check(height, 59, 76)
-    )
+    return (unit == "cm" and _range_check(height, 150, 193)) or (unit == "in" and _range_check(height, 59, 76))
 
 
 def hair_color_check(value: str) -> bool:
@@ -110,7 +108,6 @@ def part_one(input_data: list[str]) -> int:
 
 @register_solution(2020, 4, 2)
 def part_two(input_data: list[str]) -> int:
-
     passports = get_passports("\n".join(input_data))
     answer = len([passport for passport in passports if deep_validation(passport)])
 

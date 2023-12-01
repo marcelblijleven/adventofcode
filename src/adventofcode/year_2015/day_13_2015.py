@@ -73,9 +73,7 @@ def get_seating_happiness(persons: list[str], chart: HappinessChartType) -> int:
     return max_happiness
 
 
-def update_happiness_chart(
-    chart: HappinessChartType, person: str
-) -> HappinessChartType:
+def update_happiness_chart(chart: HappinessChartType, person: str) -> HappinessChartType:
     persons = get_unique_persons(chart)
     persons.append(person)
 

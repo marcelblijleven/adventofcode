@@ -44,11 +44,7 @@ class Octopus:
             (x + 1, y + 1),
         ]
 
-        return [
-            octopus
-            for octopus in octopuses
-            if 0 <= octopus[0] <= 9 and 0 <= octopus[1] <= 9
-        ]
+        return [octopus for octopus in octopuses if 0 <= octopus[0] <= 9 and 0 <= octopus[1] <= 9]
 
     def flash(self, grid: dict[Position, Octopus]):
         self.energy = 0
@@ -124,10 +120,7 @@ class OctopusGrid:
 
             for coord in octopus.adjacent_octopuses:
                 adjacent_octopus = self.grid[coord]
-                if (
-                    adjacent_octopus not in self.can_flash
-                    and adjacent_octopus.can_flash
-                ):
+                if adjacent_octopus not in self.can_flash and adjacent_octopus.can_flash:
                     self.can_flash.append(adjacent_octopus)
 
         if flashed_during_tick == self.total_octopuses:

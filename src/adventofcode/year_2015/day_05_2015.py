@@ -35,11 +35,7 @@ def _check_double_characters(line: str) -> bool:
 
 
 def is_nice(line: str) -> bool:
-    return (
-        _check_double_characters(line)
-        and _check_forbidden_characters(line)
-        and _check_vowels(line)
-    )
+    return _check_double_characters(line) and _check_forbidden_characters(line) and _check_vowels(line)
 
 
 @register_solution(2015, 5, 1)

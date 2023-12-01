@@ -66,9 +66,7 @@ def _update_stars_in_image():
     with open(image_dark) as f:
         svg_content = f.read()
 
-    svg_content = _replace_between_tags(
-        svg_content, content, "<!-- start star count -->", "<!-- end star count -->"
-    )
+    svg_content = _replace_between_tags(svg_content, content, "<!-- start star count -->", "<!-- end star count -->")
 
     with open(image_dark, "w") as f:
         f.write(svg_content)
@@ -76,9 +74,7 @@ def _update_stars_in_image():
     with open(image_light) as f:
         svg_content = f.read()
 
-    svg_content = _replace_between_tags(
-        svg_content, content, "<!-- start star count -->", "<!-- end star count -->"
-    )
+    svg_content = _replace_between_tags(svg_content, content, "<!-- start star count -->", "<!-- end star count -->")
 
     with open(image_light, "w") as f:
         f.write(svg_content)
@@ -86,14 +82,7 @@ def _update_stars_in_image():
 
 def _count_stars() -> int:
     found = _find_completed_days()
-    return sum(
-        [
-            val
-            for days in found.values()
-            for parts in days.values()
-            for val in parts.values()
-        ]
-    )
+    return sum([val for days in found.values() for parts in days.values() for val in parts.values()])
 
 
 def _update_year_readme(year: int) -> None:

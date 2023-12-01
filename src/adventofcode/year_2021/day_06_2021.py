@@ -80,9 +80,7 @@ def count_fish_faster(input_data: list[str], stop_after: int) -> int:
         cyclic_days[f] += 1
 
     for day in range(stop_after):
-        target_day = day % len(
-            cyclic_days
-        )  # This will make it loop back to the start of the days list
+        target_day = day % len(cyclic_days)  # This will make it loop back to the start of the days list
         fish = cyclic_days[target_day]
 
         next_spawn_day_existing_fish = (target_day + 7) % number_of_days

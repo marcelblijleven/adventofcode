@@ -59,7 +59,7 @@ def search(bags: BagType, current_bag: str, bag: str) -> bool:
             if content == bag:
                 return True
             elif search(bags, content, bag):
-                    return True
+                return True
 
     return False
 

@@ -75,9 +75,7 @@ def patterns_as_frozen_sets(patterns: list[str]) -> list[frozenset[str]]:
     return list(map(frozenset, patterns))  # type: ignore
 
 
-def _fill_table_with_know_patterns(
-    patterns: list[frozenset[str]], table: TranslationTable
-):
+def _fill_table_with_know_patterns(patterns: list[frozenset[str]], table: TranslationTable):
     for pattern in patterns:
         if len(pattern) == 2:
             table[pattern] = 1

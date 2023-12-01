@@ -44,13 +44,7 @@ def find_different_ways(input_data: list[str], liters: int = 150) -> int:
                 )
                 possible_combinations.append(combination)
 
-    return len(
-        [
-            container
-            for container in possible_combinations
-            if len(container) == minimum_containers
-        ]
-    )
+    return len([container for container in possible_combinations if len(container) == minimum_containers])
 
 
 @register_solution(2015, 17, 1)

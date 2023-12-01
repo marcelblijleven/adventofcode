@@ -8,9 +8,7 @@ def test_gaussian_sum(number):
     assert gaussian_sum(number) == sum(range(1, number + 1))
 
 
-@pytest.mark.parametrize(
-    ["target_list", "expected"], [([1, 2, 3, 4, 5], 3), ([13, 34, 45, 68, 5], 33)]
-)
+@pytest.mark.parametrize(["target_list", "expected"], [([1, 2, 3, 4, 5], 3), ([13, 34, 45, 68, 5], 33)])
 def test_mean_floor(target_list, expected):
     assert mean_floor(target_list) == expected
 

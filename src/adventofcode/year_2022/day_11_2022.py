@@ -109,9 +109,7 @@ def parse_instructions(input_data: list[str], allow_relief=True) -> dict[int, Mo
             int(chunk[4].split(" ")[-1]),
             int(chunk[5].split(" ")[-1]),
         )
-        monkeys[number] = Monkey(
-            number, starting_items, operation, test, monkeys, allow_relief
-        )
+        monkeys[number] = Monkey(number, starting_items, operation, test, monkeys, allow_relief)
         idx += 7
 
     common_modulo = math.prod([monkey.test[0] for monkey in monkeys.values()])
@@ -129,9 +127,7 @@ def play_rounds(input_data: list[str], rounds: int = 20, allow_relief=True) -> i
         for monkey in monkeys.values():
             monkey.play_round()
 
-    inspections = sorted(
-        [monkey.inspected for monkey in monkeys.values()], reverse=True
-    )
+    inspections = sorted([monkey.inspected for monkey in monkeys.values()], reverse=True)
     return inspections[0] * inspections[1]
 
 

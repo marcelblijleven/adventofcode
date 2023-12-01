@@ -83,9 +83,7 @@ def _turn_waypoint_right(waypoint: tuple[int, int], degrees: int) -> tuple[int, 
     return x, y
 
 
-def turn_waypoint(
-    waypoint: tuple[int, int], direction: str, degrees: int
-) -> tuple[int, int]:
+def turn_waypoint(waypoint: tuple[int, int], direction: str, degrees: int) -> tuple[int, int]:
     if direction == LEFT:
         return _turn_waypoint_left(waypoint, degrees)
     elif direction == RIGHT:
@@ -94,9 +92,7 @@ def turn_waypoint(
         raise ValueError(f"cannot process unknown direction: {direction}")
 
 
-def move_waypoint(
-    waypoint: tuple[int, int], action: str, number: int
-) -> tuple[int, int]:
+def move_waypoint(waypoint: tuple[int, int], action: str, number: int) -> tuple[int, int]:
     x, y = waypoint
 
     if action == NORTH:

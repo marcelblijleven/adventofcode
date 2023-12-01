@@ -1,4 +1,3 @@
-
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day

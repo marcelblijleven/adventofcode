@@ -85,18 +85,9 @@ def calculate_cost(boss: Character):
             # only one armor
             for ring_one, ring_two in itertools.combinations(rings, 2):
                 # two rings
-                total_cost = (
-                    weapon.cost + armor_item.cost + ring_one.cost + ring_two.cost
-                )
-                total_damage = (
-                    weapon.damage
-                    + armor_item.damage
-                    + ring_one.damage
-                    + ring_two.damage
-                )
-                total_armor = (
-                    weapon.armor + armor_item.armor + ring_one.armor + ring_two.armor
-                )
+                total_cost = weapon.cost + armor_item.cost + ring_one.cost + ring_two.cost
+                total_damage = weapon.damage + armor_item.damage + ring_one.damage + ring_two.damage
+                total_armor = weapon.armor + armor_item.armor + ring_one.armor + ring_two.armor
 
                 player = Character(health=100, damage=total_damage, armor=total_armor)
 

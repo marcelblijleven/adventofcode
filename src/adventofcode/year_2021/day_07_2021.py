@@ -41,9 +41,7 @@ def get_least_amount_of_fuel_part_two_slower(crabs: list[int]) -> int:
     fuel = sum(gaussian_sum(abs(crab - mid)) for crab in crabs)
 
     for position in range(min(crabs[mid:]), max(crabs) + 1):
-        position_fuel = min(
-            fuel, sum(gaussian_sum(abs(crab - position)) for crab in crabs)
-        )
+        position_fuel = min(fuel, sum(gaussian_sum(abs(crab - position)) for crab in crabs))
         fuel = min(fuel, position_fuel)
 
     return fuel

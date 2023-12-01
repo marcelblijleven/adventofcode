@@ -62,7 +62,7 @@ cov = [
 ]
 
 [[tool.hatch.envs.all.matrix]]
-python = ["3.7", "3.8", "3.9", "3.10", "3.11"]
+python = ["3.11", "3.12"]
 
 [tool.hatch.envs.lint]
 detached = true
@@ -137,6 +137,8 @@ ignore = [
     "FBT001", "FBT002",
     # Exceptions with string literals
     "EM101", "EM102",
+    # Concatenated string literals on one line
+    "ISC001",
 
 ]
 unfixable = [

@@ -46,9 +46,7 @@ def find_locations_at_y(input_data: list[str], y_value: int) -> int:
             distance_y = abs(sensor_y - y_value)
             distance_remainder = distance - distance_y
 
-            for x in range(
-                sensor_x - distance_remainder, sensor_x + distance_remainder + 1
-            ):
+            for x in range(sensor_x - distance_remainder, sensor_x + distance_remainder + 1):
                 if (position := (x, y_value)) not in grid:
                     grid[position] = "#"
 
@@ -67,9 +65,7 @@ def undo_rotate_positions(position: Position) -> Position:
     return (u + v) // 2, (u - v) // 2
 
 
-def find_positions_at_y(
-    pairs: list[tuple[Position, Position]], y_value: int
-) -> Position | None:
+def find_positions_at_y(pairs: list[tuple[Position, Position]], y_value: int) -> Position | None:
     ranges: list[Position] = []
 
     for sensor, beacon in pairs:

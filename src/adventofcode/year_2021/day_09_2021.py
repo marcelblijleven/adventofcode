@@ -50,9 +50,7 @@ def get_low_points(cave_floor: CaveFloor, width: int, height: int) -> list[Posit
     return positions
 
 
-def calculate_basin(
-    cave_floor: CaveFloor, position: Position, basin: set[Position]
-) -> set[Position]:
+def calculate_basin(cave_floor: CaveFloor, position: Position, basin: set[Position]) -> set[Position]:
     x, y = position
     left, right, top, down = (x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)
 
@@ -89,17 +87,13 @@ def find_basin_size_product(cave_floor: CaveFloor, width: int, height: int) -> i
     return math.prod(basin_sizes[-3:])
 
 
-async def calculate_basin_async(
-    cave_floor: CaveFloor, position: Position
-) -> list[tuple[int, int]]:
+async def calculate_basin_async(cave_floor: CaveFloor, position: Position) -> list[tuple[int, int]]:
     basin: set[Position] = set()
     basin = calculate_basin(cave_floor, position, basin)
     return list(basin)
 
 
-async def find_basin_size_product_async(
-    cave_floor: CaveFloor, width: int, height: int
-) -> int:
+async def find_basin_size_product_async(cave_floor: CaveFloor, width: int, height: int) -> int:
     low_points = get_low_points(cave_floor, width, height)
     position_queue: Queue[Position] = asyncio.Queue()
     tasks = []
@@ -113,9 +107,7 @@ async def find_basin_size_product_async(
     return math.prod(lengths[-3:])
 
 
-def calculate_basin_mp(
-    cave_floor: CaveFloor, position: Position
-) -> list[tuple[int, int]]:
+def calculate_basin_mp(cave_floor: CaveFloor, position: Position) -> list[tuple[int, int]]:
     basin: set[Position] = set()
     basin = calculate_basin(cave_floor, position, basin)
     return list(basin)
