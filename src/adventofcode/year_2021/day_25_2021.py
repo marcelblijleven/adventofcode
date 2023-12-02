@@ -129,7 +129,7 @@ def part_one(input_data: list[str]):
 #     answer = ...
 #
 #     if not answer:
-#         raise SolutionNotFoundException(2021, 25, 2)
+#         raise SolutionNotFoundError(2021, 25, 2)
 #
 #     return answer
 

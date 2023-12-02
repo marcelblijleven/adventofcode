@@ -1,4 +1,4 @@
-from adventofcode.util.exceptions import SolutionNotFoundException
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_for_day
 
@@ -8,7 +8,7 @@ def part_one(input_data: list[str]):
     answer = ...
 
     if not answer:
-        raise SolutionNotFoundException({year}, {day}, 1)
+        raise SolutionNotFoundError({year}, {day}, 1)
 
     return answer
 
@@ -18,7 +18,7 @@ def part_two(input_data: list[str]):
     answer = ...
 
     if not answer:
-        raise SolutionNotFoundException({year}, {day}, 2)
+        raise SolutionNotFoundError({year}, {day}, 2)
 
     return answer
 
