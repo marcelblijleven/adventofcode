@@ -36,7 +36,8 @@ jobs:
         run: hatch run test-cov
       - name: "Upload coverage to Codecov"
         if: matrix.python-version == 3.12  # Only upload coverage once per run
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
-          fail_ci_if_error: true
+          fail_ci_if_error: false
+
           token: ${{ secrets.CODECOV_TOKEN }}
