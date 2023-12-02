@@ -1,13 +1,11 @@
-import functools
 import math
-import operator
 import re
 
-from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
-game_pattern = re.compile("(?:(?P<amount>\d+)\s|(?P<color>red|blue|green))")
+game_pattern = re.compile(r"(?:(?P<amount>\d+)\s|(?P<color>red|blue|green))")
 
 
 def parse_game(line) -> list[dict[str, int]]:
@@ -15,8 +13,8 @@ def parse_game(line) -> list[dict[str, int]]:
     game_values = []
     rounds = game.split("; ")
 
-    for round in rounds:
-        pairs = round.split(", ")
+    for _round in rounds:
+        pairs = _round.split(", ")
 
         round_values = {}
         for pair in pairs:
@@ -70,7 +68,7 @@ def find_possibilities(lines: list[str]) -> int:
 
 def find_minimum_possible(lines: list[str]) -> int:
     total: int = 0
-    for game_number, line in enumerate(lines, start=1):
+    for line in lines:
         game_values = parse_game(line)
 
         total += check_minimum(game_values)
@@ -98,7 +96,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2023, 2)
     part_one(data)
     part_two(data)
