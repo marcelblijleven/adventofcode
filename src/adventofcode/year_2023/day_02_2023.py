@@ -1,3 +1,6 @@
+import functools
+import math
+import operator
 import re
 
 from adventofcode.util.exceptions import SolutionNotFoundError
@@ -34,6 +37,18 @@ def check_game(constraints: dict[str, int], game_values: list[dict[str, int]]) -
     return True
 
 
+def check_minimum(game_values: list[dict[str, int]]) -> int:
+    minimums: dict[str, int] = {}
+
+    for game_value in game_values:
+        for color, value in game_value.items():
+            if color not in minimums:
+                minimums[color] = value
+            else:
+                minimums[color] = max(value, minimums[color])
+    return math.prod(minimums.values())
+
+
 def find_possibilities(lines: list[str]) -> int:
     # only 12 red cubes, 13 green cubes, and 14 blue cubes
     constraints = {
@@ -53,6 +68,16 @@ def find_possibilities(lines: list[str]) -> int:
     return sum_of_ids
 
 
+def find_minimum_possible(lines: list[str]) -> int:
+    total: int = 0
+    for game_number, line in enumerate(lines, start=1):
+        game_values = parse_game(line)
+
+        total += check_minimum(game_values)
+
+    return total
+
+
 @register_solution(2023, 2, 1)
 def part_one(input_data: list[str]):
     answer = find_possibilities(input_data)
@@ -65,7 +90,7 @@ def part_one(input_data: list[str]):
 
 @register_solution(2023, 2, 2)
 def part_two(input_data: list[str]):
-    answer = ...
+    answer = find_minimum_possible(input_data)
 
     if not answer:
         raise SolutionNotFoundError(2023, 2, 2)
