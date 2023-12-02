@@ -59,7 +59,7 @@ def create_module_dir(path: str) -> None:
     create_dir(path)
 
     if not os.path.exists(init_file := os.path.join(path, "__init__.py")):
-        with open(init_file):
+        with open(init_file, "a+"):
             pass
 
 
@@ -82,12 +82,12 @@ def verify_input_exists(year: int, day: int) -> None:
             return
         except HTTPError as e:
             console.print("[red]Could not retrieve input data for " f"year {year} day {day} automatically: {e}")
+            return
         except FileNotFoundError:
             console.print(
                 "[red]Could not retrieve input data for " f"year {year} day {day}: .session not set correctly"
             )
-
-    raise ValueError(UNKNOWN_EXCEPTION)
+            return
 
 
 def _read_solution_template(template_path: str, year: str, day: str) -> str:
