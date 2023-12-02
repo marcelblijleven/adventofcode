@@ -1,3 +1,14 @@
+## v1.10.0 (2023-12-02)
+
+### Feat
+
+- add 2023 day 2 part 2
+- add 2023 day 2 part 1
+
+### Fix
+
+- apply linting outputs
+
 ## v1.9.0 (2023-12-02)
 
 ### Feat
