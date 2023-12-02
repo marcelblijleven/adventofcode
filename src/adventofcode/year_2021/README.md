@@ -25,4 +25,4 @@ Solutions for 23 days in 2021 with a total of 46 stars collected
 | 20 | ⭐️ | ⭐️ |
 | 21 | ⭐️ | ⭐️ |
 | 22 | ⭐️ | ⭐️ |
-| 25 | ⭐️ | – |
+| 25 | ⭐️ | - |
