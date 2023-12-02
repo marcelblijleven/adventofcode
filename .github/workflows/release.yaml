@@ -1,25 +1,18 @@
-name: Release
+---
+name: "release"
 
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
+  tagged-release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
 
-  build:
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: release
-        uses: actions/create-release@v1
-        id: create_release
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          draft: false
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          release_name: Release ${{ github.ref }}
-          tag_name: ${{ github.ref }}
-          body : |
-            This is an automated release, see [the changelog](https://github.com/marcelblijleven/adventofcode/blob/master/CHANGELOG.md) for changes
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
