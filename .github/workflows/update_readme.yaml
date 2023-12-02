@@ -27,5 +27,5 @@ jobs:
       run: |
         git config --global user.name 'Marcel Blijleven'
         git config --global user.email 'marcelblijleven@users.noreply.github.com'
-        [[ -n $(git status -s) ]] && git commit -am "docs: update README"
+        [[ -n $(git status -s) ]] && git add -A && git commit -m "docs: update README"
         git push
