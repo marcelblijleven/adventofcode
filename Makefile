@@ -1,11 +1,4 @@
-.PHONY: all install clean_project
-
-all: clean_project install
-
-install:
-	pip install -r requirements_dev.txt
-	cp pre-commit.template .git/hooks/pre-commit
-	chmod +x .git/hooks/pre-commit
+.PHONY: clean_project
 
 clean_project:
 	find . \( -type f -name '*.pyc' -or -type d -name '__pycache__' \) -delete

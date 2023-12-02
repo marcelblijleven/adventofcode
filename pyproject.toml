@@ -47,11 +47,12 @@ dependencies = [
     "httpx",
     "coverage[toml]>=6.5",
     "pytest",
+    "pytest-cov",
     "pytest-mock>=3.10",
 ]
 [tool.hatch.envs.default.scripts]
 test = "pytest {args:tests}"
-test-cov = "coverage run -m pytest {args:tests}"
+test-cov = "coverage run -m pytest --cov {args:tests} "
 cov-report = [
     "- coverage combine",
     "coverage report",

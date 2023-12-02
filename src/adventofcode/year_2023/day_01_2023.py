@@ -25,6 +25,9 @@ def get_calibration_value(line: str) -> int:
             if left is None:
                 left = char
 
+    if left is None or right is None:
+        raise ValueError("invalid state")
+
     return int(left + right)
 
 
@@ -49,6 +52,9 @@ def get_calibration_value_with_words(line: str) -> int:
         if (rfind := line.rfind(word)) != -1 and (right_idx is None or rfind > right_idx):
             right = value
             right_idx = rfind
+
+    if left is None or right is None:
+        raise ValueError("invalid state")
 
     return int(left + right)
 
