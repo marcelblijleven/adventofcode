@@ -28,18 +28,48 @@ def get_calibration_value(line: str) -> int:
     return int(left + right)
 
 
-def get_calibration_values(lines: list[str]) -> int:
+def get_calibration_value_with_words(line: str) -> int:
+    left: str | None = None
+    left_idx: int | None = None
+    right: str | None = None
+    right_idx: int | None = None
+
+    for idx, char in enumerate(line):
+        if char.isdigit():
+            right = char
+            right_idx = idx
+            if left is None:
+                left = char
+                left_idx = idx
+
+    for word, value in DIGITS.items():
+        if (lfind := line.find(word)) != -1 and (left_idx is None or lfind < left_idx):
+            left = value
+            left_idx = lfind
+        if (rfind := line.rfind(word)) != -1 and (right_idx is None or rfind > right_idx):
+            right = value
+            right_idx = rfind
+
+    return int(left + right)
+
+
+def get_calibration_values(lines: list[str], *, with_words: bool) -> int:
     total: int = 0
 
+    if with_words:
+        func = get_calibration_value_with_words
+    else:
+        func = get_calibration_value
+
     for line in lines:
-        total += get_calibration_value(line)
+        total += func(line)
 
     return total
 
 
 @register_solution(2023, 1, 1)
 def part_one(input_data: list[str]):
-    answer = get_calibration_values(input_data)
+    answer = get_calibration_values(input_data, with_words=False)
 
     if not answer:
         raise SolutionNotFoundError(2023, 1, 1)
@@ -49,7 +79,7 @@ def part_one(input_data: list[str]):
 
 @register_solution(2023, 1, 2)
 def part_two(input_data: list[str]):
-    answer = ...
+    answer = get_calibration_values(input_data, with_words=True)
 
     if not answer:
         raise SolutionNotFoundError(2023, 1, 2)
