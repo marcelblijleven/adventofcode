@@ -1,8 +1,8 @@
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
-from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -24,7 +24,7 @@ def find_gear_coords(lines: list[str]) -> dict[tuple[int, int], list[int]]:
     """
     Loop through all lines to find x,y coordinates of all gears (*)
     """
-    coords: dict[tuple[int, int], []] = {}
+    coords: dict[tuple[int, int], list[int]] = {}
 
     for y, line in enumerate(lines):
         for x, value in enumerate(line):
@@ -47,7 +47,9 @@ def neighbour_has_adjacent_symbol(current_position: tuple[int, int], symbols: se
     return False
 
 
-def neighbouring_gear_coords(current_position: tuple[int, int], gears: Iterable[tuple[int, int]]) -> tuple[int, int] | None:
+def neighbouring_gear_coords(
+        current_position: tuple[int, int], gears: Iterable[tuple[int, int]]
+) -> tuple[int, int] | None:
     x, y = current_position
     for y_mod in [-1, 0, 1]:
         for x_mod in [-1, 0, 1]:
@@ -114,7 +116,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2023, 3)
     part_one(data)
     part_two(data)
