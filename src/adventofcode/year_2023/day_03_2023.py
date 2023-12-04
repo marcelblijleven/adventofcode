@@ -48,7 +48,7 @@ def neighbour_has_adjacent_symbol(current_position: tuple[int, int], symbols: se
 
 
 def neighbouring_gear_coords(
-        current_position: tuple[int, int], gears: Iterable[tuple[int, int]]
+    current_position: tuple[int, int], gears: Iterable[tuple[int, int]]
 ) -> tuple[int, int] | None:
     x, y = current_position
     for y_mod in [-1, 0, 1]:
@@ -90,7 +90,7 @@ def find_gear_ratios(lines: list[str]) -> int:
                     gears[gear_pos].append(int(match.group()))
 
                     if len(gears[gear_pos]) == 2:
-                        total += (gears[gear_pos][0] * gears[gear_pos][1])
+                        total += gears[gear_pos][0] * gears[gear_pos][1]
                     break
 
     return total
