@@ -131,4 +131,6 @@ dmypy.json
 # PyCharm
 .idea
 
+# Advent of code related
 .session
+src/adventofcode/inputs
