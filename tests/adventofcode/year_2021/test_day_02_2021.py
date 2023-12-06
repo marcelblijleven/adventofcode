@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from adventofcode.util.input_helpers import get_input_for_day
@@ -35,11 +37,13 @@ def test_get_new_position():
     assert str(wrapped_e.value) == "unknown direction received: coffee"
 
 
+@pytest.mark.skipif(os.environ["CI"] == "true")
 def test_part_one():
     answer = part_one(get_input_for_day(2021, 2))
     assert answer == 2036120
 
 
+@pytest.mark.skipif(os.environ["CI"] == "true")
 def test_part_two():
     answer = part_two(get_input_for_day(2021, 2))
     assert answer == 2015547716

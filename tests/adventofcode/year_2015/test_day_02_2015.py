@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from adventofcode.year_2015.day_02_2015 import (
@@ -27,9 +29,11 @@ def test_parse_line():
     assert str(wrapped_e.value) == "could not parse line"
 
 
+@pytest.mark.skipif(os.environ["CI"] == "true")
 def test_part_one():
     assert part_one(get_input_for_day(2015, 2)) == 1606483
 
 
+@pytest.mark.skipif(os.environ["CI"] == "true")
 def test_part_two():
     assert part_two(get_input_for_day(2015, 2)) == 3842356

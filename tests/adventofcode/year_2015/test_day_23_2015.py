@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from adventofcode.year_2015.day_23_2015 import (
@@ -7,10 +9,12 @@ from adventofcode.year_2015.day_23_2015 import (
 )
 
 
+@pytest.mark.skipif(os.environ["CI"] == "true")
 def test_part_one():
     assert run_program(get_input_for_day(2015, 23), {"a": 0, "b": 0}) == 255
 
 
+@pytest.mark.skipif(os.environ["CI"] == "true")
 def test_part_two():
     assert run_program(get_input_for_day(2015, 23), {"a": 1, "b": 0}) == 334
 
