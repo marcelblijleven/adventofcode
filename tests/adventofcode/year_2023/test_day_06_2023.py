@@ -1,7 +1,12 @@
 import pytest
 
-from adventofcode.year_2023.day_06_2023 import (part_two, part_one, calculate_distance, parse_input,
-                                                calculate_ways_to_win)
+from adventofcode.year_2023.day_06_2023 import (
+    calculate_distance,
+    calculate_ways_to_win,
+    parse_input,
+    part_one,
+    part_two,
+)
 
 test_input = [
     "Time:      7  15   30",
@@ -13,25 +18,31 @@ def test_parse_input():
     assert parse_input(test_input) == [(7, 9), (15, 40), (30, 200)]
 
 
-@pytest.mark.parametrize(["hold", "max_time", "expected"], [
-    (0, 7, 0),
-    (1, 7, 6),
-    (2, 7, 10),
-    (3, 7, 12),
-    (4, 7, 12),
-    (5, 7, 10),
-    (6, 7, 6),
-    (7, 7, 0),
-])
+@pytest.mark.parametrize(
+    ["hold", "max_time", "expected"],
+    [
+        (0, 7, 0),
+        (1, 7, 6),
+        (2, 7, 10),
+        (3, 7, 12),
+        (4, 7, 12),
+        (5, 7, 10),
+        (6, 7, 6),
+        (7, 7, 0),
+    ],
+)
 def test_calculate_distance(hold, max_time, expected):
     assert calculate_distance(hold, max_time) == expected
 
 
-@pytest.mark.parametrize(["duration", "farthest_distance", "expected"], [
-    (7, 9, 4),
-    (15, 40, 8),
-    (30, 200, 9),
-])
+@pytest.mark.parametrize(
+    ["duration", "farthest_distance", "expected"],
+    [
+        (7, 9, 4),
+        (15, 40, 8),
+        (30, 200, 9),
+    ],
+)
 def test_calculate_ways_to_win(duration, farthest_distance, expected):
     assert calculate_ways_to_win(duration, farthest_distance) == expected
 
@@ -41,4 +52,4 @@ def test_part_one():
 
 
 def test_part_two():
-    assert part_two(test_input) == 'x'
+    assert part_two(test_input) == "x"

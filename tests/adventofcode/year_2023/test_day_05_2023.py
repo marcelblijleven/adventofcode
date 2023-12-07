@@ -1,4 +1,4 @@
-from adventofcode.year_2023.day_05_2023 import part_two, part_one, find_locations
+from adventofcode.year_2023.day_05_2023 import part_one, part_two
 
 test_input = [
     "seeds: 79 14 55 13",
