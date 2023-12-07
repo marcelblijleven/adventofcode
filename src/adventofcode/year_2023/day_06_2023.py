@@ -32,7 +32,7 @@ def calculate_ways_to_win(duration: int, farthest_distance: int) -> int:
     """
     Calculate ways to beat the current farthest distance
     """
-    possibilities = zip(range(duration + 1), [duration] * duration, strict=True)
+    possibilities = zip(range(duration), [duration] * duration, strict=True)
     distances = starmap(calculate_distance, possibilities)
     winning_distances = filter(lambda x: x > farthest_distance, distances)
     return len(list(winning_distances))
