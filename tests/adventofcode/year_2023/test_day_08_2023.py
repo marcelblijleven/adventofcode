@@ -22,6 +22,19 @@ test_input_2 = [
     "ZZZ = (ZZZ, ZZZ)",
 ]
 
+test_input_3 = [
+    "LR",
+    "",
+    "11A = (11B, XXX)",
+    "11B = (XXX, 11Z)",
+    "11Z = (11B, XXX)",
+    "22A = (22B, XXX)",
+    "22B = (22C, 22C)",
+    "22C = (22Z, 22Z)",
+    "22Z = (22B, 22B)",
+    "XXX = (XXX, XXX)",
+]
+
 
 def test_parse_input():
     assert parse_input(test_input_2) == (
@@ -44,4 +57,4 @@ def test_part_one():
 
 
 def test_part_two():
-    assert part_two(test_input) == "x"
+    assert part_two(test_input_3) == 6
