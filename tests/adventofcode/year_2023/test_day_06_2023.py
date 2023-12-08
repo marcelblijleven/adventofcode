@@ -5,7 +5,7 @@ from adventofcode.year_2023.day_06_2023 import (
     calculate_ways_to_win,
     parse_input,
     part_one,
-    part_two,
+    part_two, parse_input_part_two, calculate_ways_to_win_part_two,
 )
 
 test_input = [
@@ -16,6 +16,10 @@ test_input = [
 
 def test_parse_input():
     assert parse_input(test_input) == [(7, 9), (15, 40), (30, 200)]
+
+
+def test_parse_input_part_two():
+    assert parse_input_part_two(test_input) == (71530, 940200)
 
 
 @pytest.mark.parametrize(
@@ -47,9 +51,13 @@ def test_calculate_ways_to_win(duration, farthest_distance, expected):
     assert calculate_ways_to_win(duration, farthest_distance) == expected
 
 
+def test_calculate_ways_to_win_part_two():
+    assert calculate_ways_to_win_part_two(71530, 940200) == 71503
+
+
 def test_part_one():
     assert part_one(test_input) == 288
 
 
 def test_part_two():
-    assert part_two(test_input) == "x"
+    assert part_two(test_input) == 71503
