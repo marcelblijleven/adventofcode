@@ -22,7 +22,7 @@ def test_parse_input():
 
 
 @pytest.mark.parametrize(["hand", "expected"], [
-    ("32T3K", hands["High card"]),
+    ("32T3K", hands["One pair"]),
     ("T55J5", hands["Three of a kind"]),
     ("KK677", hands["Two pair"]),
     ("KTJJT", hands["Two pair"]),
@@ -32,7 +32,21 @@ def test_parse_input():
     ("AAAKK", hands["Full house"]),
 ])
 def test_parse_hand(hand, expected):
-    assert parse_hand(hand) == expected
+    assert parse_hand(hand, with_jokers=False) == expected
+
+
+@pytest.mark.parametrize(["hand", "expected"], [
+    ("32T3K", hands["One pair"]),
+    ("T55J5", hands["Four of a kind"]),
+    ("KK677", hands["Two pair"]),
+    ("KTJJT", hands["Four of a kind"]),
+    ("QQQJA", hands["Four of a kind"]),
+    ("AAAAA", hands["Five of a kind"]),
+    ("AAAAK", hands["Four of a kind"]),
+    ("AAAKK", hands["Full house"]),
+])
+def test_parse_hand_with_joker(hand, expected):
+    assert parse_hand(hand, with_jokers=True) == expected
 
 
 def test_part_one():
