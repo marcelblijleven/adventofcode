@@ -36,11 +36,11 @@ def test_move_packages_into_groups():
     assert move_packages_into_groups(test_input, 4) == 44
 
 
-@pytest.mark.skipif(os.environ["CI"] == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
 def test_part_one():
     assert part_one(get_input_for_day(2015, 24)) == 10723906903
 
 
-@pytest.mark.skipif(os.environ["CI"] == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
 def test_part_two():
     assert part_two(get_input_for_day(2015, 24)) == 74850409

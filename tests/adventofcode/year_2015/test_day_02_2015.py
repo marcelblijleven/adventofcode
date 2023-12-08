@@ -29,11 +29,11 @@ def test_parse_line():
     assert str(wrapped_e.value) == "could not parse line"
 
 
-@pytest.mark.skipif(os.environ["CI"] == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
 def test_part_one():
     assert part_one(get_input_for_day(2015, 2)) == 1606483
 
 
-@pytest.mark.skipif(os.environ["CI"] == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
 def test_part_two():
     assert part_two(get_input_for_day(2015, 2)) == 3842356

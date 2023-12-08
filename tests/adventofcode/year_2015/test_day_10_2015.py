@@ -27,7 +27,7 @@ def test_iterate(value, expected):
     assert expected == iterate(value)
 
 
-@pytest.mark.skipif(os.environ["CI"] == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
 def test_part_one():
     assert part_one(get_input_for_day(2015, 10)) == 329356
 
@@ -37,6 +37,6 @@ def test_part_two():
     assert part_two(get_input_for_day(2015, 10)) == 4666278
 
 
-@pytest.mark.skipif(os.environ["CI"] == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
 def test_part_two_method_2():
     assert part_two_method_2(get_input_for_day(2015, 10)) == 4666278
