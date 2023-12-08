@@ -1,8 +1,6 @@
 from collections import deque
 
-from adventofcode.year_2023.day_08_2023 import part_two, part_one, parse_input, follow_instructions
-
-
+from adventofcode.year_2023.day_08_2023 import follow_instructions, parse_input, part_one, part_two
 
 test_input = [
     "RL",
@@ -26,11 +24,14 @@ test_input_2 = [
 
 
 def test_parse_input():
-    assert parse_input(test_input_2) == (deque("LLR"), {
-        "AAA": ("BBB", "BBB"),
-        "BBB": ("AAA", "ZZZ"),
-        "ZZZ": ("ZZZ", "ZZZ"),
-    })
+    assert parse_input(test_input_2) == (
+        deque("LLR"),
+        {
+            "AAA": ("BBB", "BBB"),
+            "BBB": ("AAA", "ZZZ"),
+            "ZZZ": ("ZZZ", "ZZZ"),
+        },
+    )
 
 
 def test_follow_instructions():
@@ -43,4 +44,4 @@ def test_part_one():
 
 
 def test_part_two():
-    assert part_two(test_input) == 'x'
+    assert part_two(test_input) == "x"

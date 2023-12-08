@@ -3,9 +3,11 @@ import pytest
 from adventofcode.year_2023.day_06_2023 import (
     calculate_distance,
     calculate_ways_to_win,
+    calculate_ways_to_win_part_two,
     parse_input,
+    parse_input_part_two,
     part_one,
-    part_two, parse_input_part_two, calculate_ways_to_win_part_two,
+    part_two,
 )
 
 test_input = [

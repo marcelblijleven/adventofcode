@@ -1,8 +1,8 @@
 import re
 from collections import deque
 
-from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
 
 
@@ -56,7 +56,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2023, 8)
     part_one(data)
     part_two(data)

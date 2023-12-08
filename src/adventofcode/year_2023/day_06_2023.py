@@ -92,8 +92,8 @@ def calculate_margin_of_error_quadratic(data: list[str]) -> int:
     """
     duration, distance = parse_input_part_two(data)
     discriminant = duration * duration - 4 * distance
-    lower_bound = math.ceil((-duration + math.sqrt(discriminant)) / - 2)
-    upper_bound = math.floor((-duration - math.sqrt(discriminant)) / - 2)
+    lower_bound = math.ceil((-duration + math.sqrt(discriminant)) / -2)
+    upper_bound = math.floor((-duration - math.sqrt(discriminant)) / -2)
 
     total = 0
 
@@ -121,16 +121,6 @@ def part_one(input_data: list[str]):
 @register_solution(2023, 6, 2)
 def part_two(input_data: list[str]):
     answer = calculate_margin_of_error_part_two(input_data)
-
-    if not answer:
-        raise SolutionNotFoundError(2023, 6, 2)
-
-    return answer
-
-
-@register_solution(2023, 6, 2, version="quadratic")
-def part_two_quadratic(input_data: list[str]):
-    answer = calculate_margin_of_error_quadratic(input_data)
 
     if not answer:
         raise SolutionNotFoundError(2023, 6, 2)

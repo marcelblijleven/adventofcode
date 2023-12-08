@@ -1,12 +1,11 @@
 from collections import Counter, deque
+from collections.abc import Iterable
 from functools import cmp_to_key, partial
 from itertools import starmap
-from typing import Iterable
 
-from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
-
 
 cards = {
     "A": 13,
@@ -145,7 +144,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2023, 7)
     part_one(data)
     part_two(data)
