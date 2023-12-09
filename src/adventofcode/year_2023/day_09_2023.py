@@ -1,13 +1,12 @@
 import re
+from collections.abc import Iterable
 from functools import partial
 from itertools import pairwise
 from operator import itemgetter
-from typing import Iterable
 
-from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
 from adventofcode.util.input_helpers import get_input_for_day
-
 
 pattern = re.compile("-?\\d+")
 
@@ -31,7 +30,7 @@ def parse_input_reversed(data: list[str]) -> Iterable[Iterable[int]]:
 def find_next_in_sequence(sequence: Iterable[int], lines: list[list[int]] | None) -> int:
     numbers = list(sequence)
     lines = [numbers] if lines is None or len(lines) == 0 else lines
-    differences = [y-x for (x, y) in pairwise(numbers)]
+    differences = [y - x for (x, y) in pairwise(numbers)]
     lines.append(differences)
 
     if any(differences):
@@ -72,7 +71,7 @@ def part_two(input_data: list[str]):
     return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = get_input_for_day(2023, 9)
     part_one(data)
     part_two(data)
