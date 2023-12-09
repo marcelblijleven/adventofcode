@@ -12,7 +12,7 @@ def parse_inputs(data: list[str]) -> list[list[str]]:
     return [line.split("\n") for line in as_text.split("\n\n")]
 
 
-def find_locations(data: list[str]) -> None:
+def find_locations(data: list[str]) -> int:
     """
     Parse input back to str, and split by \n\n to get the
     mappings easier
