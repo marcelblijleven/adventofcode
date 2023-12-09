@@ -1,5 +1,5 @@
 # 2023
-Solutions for 8 days in 2023 with a total of 16 stars collected
+Solutions for 9 days in 2023 with a total of 18 stars collected
 
 | day   | part one | part two |
 | :---: | :------: | :------: |
@@ -11,3 +11,4 @@ Solutions for 8 days in 2023 with a total of 16 stars collected
 | 06 | ⭐️ | ⭐️ |
 | 07 | ⭐️ | ⭐️ |
 | 08 | ⭐️ | ⭐️ |
+| 09 | ⭐️ | ⭐️ |
