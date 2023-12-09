@@ -122,4 +122,4 @@ def test_part_one():
 
 
 def test_part_two():
-    assert part_two(test_input) == "x"
+    assert part_two(test_input) == 2
