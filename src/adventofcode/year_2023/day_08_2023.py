@@ -1,8 +1,7 @@
-from functools import partial, reduce
-
 import math
 import re
 from collections import deque
+from functools import reduce
 
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.exceptions import SolutionNotFoundError
