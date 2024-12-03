@@ -48,7 +48,9 @@ def get_averages(benchmarks: Benchmarks) -> tuple[float, float]:
                 elif solution.startswith("part two"):
                     part_two_solutions.append(benchmark)
 
-    return sum(part_one_solutions) / len(part_one_solutions), sum(part_two_solutions) / len(part_two_solutions)
+    return sum(part_one_solutions) / len(part_one_solutions), sum(
+        part_two_solutions
+    ) / len(part_two_solutions)
 
 
 def create_benchmark_text(benchmarks: Benchmarks) -> str:
@@ -128,7 +130,9 @@ def write_benchmarks_to_readme(benchmarks: Benchmarks):
         console.print(table)
 
 
-def _retrieve_benchmarks_for_day_mp(day_file: str, year: int) -> dict[int, dict[str, float]]:
+def _retrieve_benchmarks_for_day_mp(
+    day_file: str, year: int
+) -> dict[int, dict[str, float]]:
     config.RUNNING_BENCHMARKS = True
     day = clean_day(day_file)
     benchmarks: dict[int, dict[str, float]] = {day: {}}
@@ -195,7 +199,9 @@ def _retrieve_benchmarks() -> Benchmarks:
 
 def _get_extra_solutions_in_module(module: str) -> list[str]:
     def _eval_functions(f: str) -> bool:
-        return f not in ["part_one", "part_two"] and (f.startswith("part_one") or f.startswith("part_two"))
+        return f not in ["part_one", "part_two"] and (
+            f.startswith("part_one") or f.startswith("part_two")
+        )
 
     functions = dir(module)
     return [f for f in functions if _eval_functions(f)]
@@ -232,7 +238,9 @@ def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
         console.log(f"ran {year} {day:02} {readable_name}")
 
 
-def _run_day_mp(module: Any, year: int, day: int, benchmarks: dict[int, dict[str, float]]):
+def _run_day_mp(
+    module: Any, year: int, day: int, benchmarks: dict[int, dict[str, float]]
+):
     """
     Runs all solutions in the given day
     """

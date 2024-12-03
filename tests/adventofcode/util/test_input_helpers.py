@@ -39,8 +39,7 @@ def test_get_input_for_day_as_str(mocker: pytest_mock.MockerFixture):
 
 
 @pytest.mark.skip()
-def test__read_lines():
-    ...
+def test__read_lines(): ...
 
 
 def test__get_input(mocker: pytest_mock.MockerFixture):

@@ -21,7 +21,9 @@ def get_values(input_data: list[str]) -> Grid:
     return grid
 
 
-def get_next_position(position: Position, direction: str, grid: Grid, max_x: int, max_y: int) -> bool | Position:
+def get_next_position(
+    position: Position, direction: str, grid: Grid, max_x: int, max_y: int
+) -> bool | Position:
     x, y = position
 
     if direction == EASTBOUND:

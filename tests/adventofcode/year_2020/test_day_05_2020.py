@@ -10,5 +10,4 @@ def test_part_one():
 
 
 @pytest.mark.skip()
-def test_part_two():
-    ...
+def test_part_two(): ...

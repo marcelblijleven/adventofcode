@@ -36,7 +36,9 @@ def get_cuboid(line: str, limit: bool = True) -> dict[CubeDimensions, bool]:
     return cubes
 
 
-def apply_reboot_line(line: str, cuboids: dict[CubeDimensions, bool], limit: bool = True):
+def apply_reboot_line(
+    line: str, cuboids: dict[CubeDimensions, bool], limit: bool = True
+):
     cuboid = get_cuboid(line, limit)
     cuboids.update(cuboid)
 
@@ -57,7 +59,9 @@ class Cuboid:
 
     @property
     def volume(self) -> int:
-        return (self.xb - self.xa + 1) * (self.yb - self.ya + 1) * (self.zb - self.za + 1)
+        return (
+            (self.xb - self.xa + 1) * (self.yb - self.ya + 1) * (self.zb - self.za + 1)
+        )
 
     def intersects(self, other: Cuboid) -> bool:
         if (

@@ -25,7 +25,9 @@ def rucksacks_part_one(input_data: list[str]) -> int:
     score: int = 0
 
     for rucksack in input_data:
-        if (matched_letter := compare_compartments(*split_rucksack(rucksack))) is not None:
+        if (
+            matched_letter := compare_compartments(*split_rucksack(rucksack))
+        ) is not None:
             score += get_letter_value(matched_letter)
 
     return score

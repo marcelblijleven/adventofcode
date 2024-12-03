@@ -1,6 +1,12 @@
 import pytest
 
-from adventofcode.year_2023.day_07_2023 import hands, parse_hand, parse_input, part_one, part_two
+from adventofcode.year_2023.day_07_2023 import (
+    hands,
+    parse_hand,
+    parse_input,
+    part_one,
+    part_two,
+)
 
 test_input = [
     "32T3K 765",

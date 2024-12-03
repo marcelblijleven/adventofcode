@@ -37,7 +37,9 @@ class PasswordHelper:
         return self._matches
 
     def is_valid(self) -> bool:
-        return self.password.count(self.letter) in range(self.lower_bound, self.upper_bound + 1)
+        return self.password.count(self.letter) in range(
+            self.lower_bound, self.upper_bound + 1
+        )
 
     def is_valid_part_two(self) -> bool:
         position_one = self.password[self.lower_bound - 1] == self.letter

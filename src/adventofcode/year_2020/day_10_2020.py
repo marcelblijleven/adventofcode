@@ -7,7 +7,9 @@ from adventofcode.util.input_helpers import get_input_for_day
 
 def find_differences(input_data: list[int]) -> list[int]:
     working_list = sorted([0, *input_data, max(input_data) + 3])
-    differences = [y - x for x, y in zip(working_list[:-1], working_list[1:], strict=True)]  # noqa
+    differences = [
+        y - x for x, y in zip(working_list[:-1], working_list[1:], strict=True)
+    ]  # noqa
     return differences
 
 

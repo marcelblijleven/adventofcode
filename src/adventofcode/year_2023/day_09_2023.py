@@ -27,7 +27,9 @@ def parse_input_reversed(data: list[str]) -> Iterable[Iterable[int]]:
     return map(parse_sequence_backwards, data)
 
 
-def find_next_in_sequence(sequence: Iterable[int], lines: list[list[int]] | None) -> int:
+def find_next_in_sequence(
+    sequence: Iterable[int], lines: list[list[int]] | None
+) -> int:
     numbers = list(sequence)
     lines = [numbers] if lines is None or len(lines) == 0 else lines
     differences = [y - x for (x, y) in pairwise(numbers)]

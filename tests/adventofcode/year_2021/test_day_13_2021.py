@@ -109,7 +109,9 @@ def test_part_one():
 
 
 # flake8: noqa
-@pytest.mark.skipif(os.environ.get("CI", "false") == "true", reason="inputs not available in CI")
+@pytest.mark.skipif(
+    os.environ.get("CI", "false") == "true", reason="inputs not available in CI"
+)
 def test_part_two():
     assert (
         part_two(get_input_for_day(2021, 13))

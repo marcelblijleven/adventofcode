@@ -67,7 +67,10 @@ def test_reduce_snailfish_number(number, expected):
 
 def test_parse_snailfish_number():
     snailfish_number = "[[[[4,3],4],4],[7,[[8,4],9]]]"
-    assert parse_snailfish_number(snailfish_number, "[1,1]") == "[[[[0,7],4],[[7,8],[6,0]]],[8,1]]"
+    assert (
+        parse_snailfish_number(snailfish_number, "[1,1]")
+        == "[[[[0,7],4],[[7,8],[6,0]]],[8,1]]"
+    )
 
 
 @pytest.mark.parametrize(

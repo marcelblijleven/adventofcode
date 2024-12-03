@@ -99,7 +99,15 @@ def test_move_snake():
     assert positions[1] == (3, 0)
     assert positions[2] == (2, 0)
     assert positions[3] == (1, 0)
-    assert positions[4] == positions[5] == positions[6] == positions[7] == positions[8] == positions[9] == (0, 0)
+    assert (
+        positions[4]
+        == positions[5]
+        == positions[6]
+        == positions[7]
+        == positions[8]
+        == positions[9]
+        == (0, 0)
+    )
 
     move_snake(("U", 4), positions, tail_locations)
     assert positions[0] == (4, -4)

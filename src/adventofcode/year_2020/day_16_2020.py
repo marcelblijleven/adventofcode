@@ -29,7 +29,9 @@ def get_rules(input_data: list[str]) -> Rules:
 
         matches = match.groups()
         rule = matches[0]
-        lower_bound_a, upper_bound_a, lower_bound_b, upper_bound_b = map(int, matches[1:])
+        lower_bound_a, upper_bound_a, lower_bound_b, upper_bound_b = map(
+            int, matches[1:]
+        )
         rules[rule] = [lower_bound_a, upper_bound_a, lower_bound_b, upper_bound_b]
 
     return rules
@@ -62,7 +64,9 @@ def evaluate_tickets(tickets: list[Ticket], rules: Rules) -> int:
     return sum(seen_invalid_numbers)
 
 
-def find_rules_for_columns(columns: list[tuple[int, ...]], rules: Rules) -> dict[int, set[str]]:
+def find_rules_for_columns(
+    columns: list[tuple[int, ...]], rules: Rules
+) -> dict[int, set[str]]:
     rules_for_columns: dict[int, set[str]] = {}
 
     for index, column in enumerate(columns):
@@ -70,13 +74,20 @@ def find_rules_for_columns(columns: list[tuple[int, ...]], rules: Rules) -> dict
 
         for rule, bounds in rules.items():
             lower_a, upper_a, lower_b, upper_b = bounds
-            if all([lower_a <= number <= upper_a or lower_b <= number <= upper_b for number in column]):  # noqa
+            if all(
+                [
+                    lower_a <= number <= upper_a or lower_b <= number <= upper_b
+                    for number in column
+                ]
+            ):  # noqa
                 rules_for_columns[index].add(rule)
 
     return rules_for_columns
 
 
-def reduce_column_rules(column_rules: dict[int, set[str]], available_rules: set[str]) -> dict[str, int]:
+def reduce_column_rules(
+    column_rules: dict[int, set[str]], available_rules: set[str]
+) -> dict[str, int]:
     for column, rules in column_rules.items():
         if len(rules) == 1:
             try:
@@ -95,7 +106,9 @@ def reduce_column_rules(column_rules: dict[int, set[str]], available_rules: set[
 def find_order(tickets: list[Ticket], rules: Rules) -> dict[str, int]:
     columns = list(zip(*tickets, strict=True))
     available_rules = set(rules.keys())
-    column_rules: dict[str, int] = reduce_column_rules(find_rules_for_columns(columns, rules), available_rules)
+    column_rules: dict[str, int] = reduce_column_rules(
+        find_rules_for_columns(columns, rules), available_rules
+    )
     return column_rules
 
 

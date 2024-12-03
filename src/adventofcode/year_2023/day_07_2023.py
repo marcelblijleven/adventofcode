@@ -90,7 +90,9 @@ def parse_hand_with_jokers(hand: str) -> int:
     return max(values)
 
 
-def sort_hands(hand_a: tuple[str, int], hand_b: tuple[str, int], with_jokers: bool) -> int:
+def sort_hands(
+    hand_a: tuple[str, int], hand_b: tuple[str, int], with_jokers: bool
+) -> int:
     parsed_a = parse_hand(hand_a[0], with_jokers=with_jokers)
     parsed_b = parse_hand(hand_b[0], with_jokers=with_jokers)
 
@@ -121,7 +123,9 @@ def sort_hands(hand_a: tuple[str, int], hand_b: tuple[str, int], with_jokers: bo
 def calculate_winnings(data: list[str], with_jokers: bool) -> int:
     sort_func = partial(sort_hands, with_jokers=with_jokers)
     sorted_hands = sorted(parse_input(data), key=cmp_to_key(sort_func))  # type: ignore
-    return sum(starmap(lambda idx, hand: hand[1] * idx, enumerate(sorted_hands, start=1)))
+    return sum(
+        starmap(lambda idx, hand: hand[1] * idx, enumerate(sorted_hands, start=1))
+    )
 
 
 @register_solution(2023, 7, 1)

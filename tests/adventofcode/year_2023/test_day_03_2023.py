@@ -24,7 +24,14 @@ test_input = [
 
 
 def test_find_symbol_coords():
-    assert find_symbol_coords(test_input) == {(3, 8), (5, 5), (3, 4), (5, 8), (3, 1), (6, 3)}
+    assert find_symbol_coords(test_input) == {
+        (3, 8),
+        (5, 5),
+        (3, 4),
+        (5, 8),
+        (3, 1),
+        (6, 3),
+    }
 
 
 def test_find_gear_coords():

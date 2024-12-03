@@ -195,7 +195,9 @@ def test_parse_input():
     ],
 )
 def test_get_possible_routes_for_position(position, expected):
-    assert sorted(get_possible_routes_for_position(position, test_grid)) == sorted(expected)
+    assert sorted(get_possible_routes_for_position(position, test_grid)) == sorted(
+        expected
+    )
 
 
 def test_find_route():

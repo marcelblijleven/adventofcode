@@ -123,7 +123,9 @@ def calculate_magnitude(snailfish_number: str) -> int:
         left, right = get_pair_numbers(pair.group())
         pair_value = left * 3 + right * 2
         span = pair.span()
-        snailfish_number = f"{snailfish_number[:span[0]]}{pair_value}{snailfish_number[span[1]:]}"
+        snailfish_number = (
+            f"{snailfish_number[:span[0]]}{pair_value}{snailfish_number[span[1]:]}"
+        )
         return calculate_magnitude(snailfish_number)
 
     raise ValueError(f"cannot parse snailfish number: {snailfish_number}")

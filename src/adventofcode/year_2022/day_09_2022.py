@@ -19,7 +19,9 @@ def get_instructions(input_data: list[str]) -> Generator[tuple[str, int], None, 
         yield parse_instruction(line)
 
 
-def _move_in_direction(position: tuple[int, int], direction: str, steps: int) -> tuple[int, int]:
+def _move_in_direction(
+    position: tuple[int, int], direction: str, steps: int
+) -> tuple[int, int]:
     if not steps:
         return position
 
@@ -55,14 +57,18 @@ def move(
     for _ in range(steps):
         position_head = _move_in_direction(position_head, direction, 1)
 
-        if manhattan_distance(position_head, position_tail) > get_allowed_distance(position_head, position_tail):
+        if manhattan_distance(position_head, position_tail) > get_allowed_distance(
+            position_head, position_tail
+        ):
             position_tail = determine_move(position_tail, position_head)
             tail_locations[position_tail] += 1
 
     return position_head, position_tail
 
 
-def determine_move(position: tuple[int, int], target: tuple[int, int]) -> tuple[int, int]:
+def determine_move(
+    position: tuple[int, int], target: tuple[int, int]
+) -> tuple[int, int]:
     """
     Determine the next position based on the target
 
@@ -101,7 +107,9 @@ def move_snake(
         for key, position in positions.items():
             if key == head_pos:  # Head
                 positions[key] = _move_in_direction(position, direction, 1)
-            elif manhattan_distance(position, positions[key - 1]) > get_allowed_distance(positions[key - 1], position):
+            elif manhattan_distance(
+                position, positions[key - 1]
+            ) > get_allowed_distance(positions[key - 1], position):
                 positions[key] = determine_move(position, positions[key - 1])
 
                 if key == tail_pos:  # Tail

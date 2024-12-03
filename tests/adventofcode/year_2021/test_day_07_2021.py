@@ -20,7 +20,9 @@ def test_get_crabs():
     assert get_crabs(test_input) == [16, 1, 2, 0, 4, 2, 7, 1, 2, 14]
 
 
-@pytest.mark.parametrize(["position", "expected"], [(1, 41), (2, 37), (3, 39), (10, 71)])
+@pytest.mark.parametrize(
+    ["position", "expected"], [(1, 41), (2, 37), (3, 39), (10, 71)]
+)
 def test_move_to_position(position, expected):
     crabs = get_crabs(test_input)
     assert move_to_position(crabs, position=position) == expected
@@ -48,7 +50,9 @@ def test_get_least_amount_of_fuel_part_two_slower():
 
 def test_compare_part_two_solutions():
     crabs = get_crabs(test_input)
-    assert get_least_amount_of_fuel_part_two_slower(crabs) == get_least_amount_of_fuel_part_two(crabs)
+    assert get_least_amount_of_fuel_part_two_slower(
+        crabs
+    ) == get_least_amount_of_fuel_part_two(crabs)
 
 
 def test_part_one():

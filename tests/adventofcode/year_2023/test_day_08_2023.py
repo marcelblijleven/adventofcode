@@ -1,6 +1,11 @@
 from collections import deque
 
-from adventofcode.year_2023.day_08_2023 import follow_instructions, parse_input, part_one, part_two
+from adventofcode.year_2023.day_08_2023 import (
+    follow_instructions,
+    parse_input,
+    part_one,
+    part_two,
+)
 
 test_input = [
     "RL",

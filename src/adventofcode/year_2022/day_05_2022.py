@@ -99,7 +99,9 @@ def execute_instruction(crates: defaultdict[int, list[str]], instructions) -> No
         try:
             crates[destination].append(crates[source].pop())
         except IndexError as exc:
-            raise ValueError(f"tried to move a crate from an empty stack with instruction {instructions}") from exc
+            raise ValueError(
+                f"tried to move a crate from an empty stack with instruction {instructions}"
+            ) from exc
 
 
 def execute_instruction_9001(crates: defaultdict[int, list[str]], instructions) -> None:

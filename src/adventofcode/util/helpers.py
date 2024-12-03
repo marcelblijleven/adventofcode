@@ -44,7 +44,9 @@ def _get_prefix(year: int, day: int, part: int, version: str) -> str:
     return prefix
 
 
-def solution_timer(solution_input: Any, func: Callable, year: int, day: int, part: int, version: str):  # type: ignore
+def solution_timer(
+    solution_input: Any, func: Callable, year: int, day: int, part: int, version: str
+):  # type: ignore
     prefix = _get_prefix(year, day, part, version)
     try:
         start = time.perf_counter()
