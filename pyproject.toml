@@ -42,7 +42,7 @@ exclude_lines = ["no cov", "if __name__ == __main__:", "if TYPE_CHECKING:"]
 
 [tool.commitizen]
 tag_format = "v$version"
-version = "1.10.0"
+version = "2.0.0"
 version_files = ["src/adventofcode/__about__.py"]
 
 [build-system]

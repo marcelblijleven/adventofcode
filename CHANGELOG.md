@@ -1,3 +1,31 @@
+## v2.0.0 (2024-12-03)
+
+### Feat
+
+- add 2024 day 1 part 1 & 2
+- add 2023 day 09
+- add 2023 day 08 part 02
+- add 2023 day 07 part 01
+- add 2023 day 7 part 1 & 2
+- add 2023 day 6 part 2
+- add 2023 day 06 part 1
+- add 2023 day 05 part 2
+- add 2023 day 05 part 1
+- add 2023 day 4 part 2
+- add 2023 day 4 part 1
+- add 2023 day 03
+
+### Fix
+
+- send user agent with input retrieval request
+- add return value
+- remove extra number in range
+- formatting
+- type hints
+
+
+- migrate to poetry
+
 ## v1.10.0 (2023-12-02)
 
 ### Feat
