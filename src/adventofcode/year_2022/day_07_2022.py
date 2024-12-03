@@ -44,7 +44,9 @@ def get_dir_sizes(files: dict[Path, int]) -> dict[Path, int]:
     return dirs
 
 
-def get_sum_of_dirs_below_threshold(dirs: dict[Path, int], threshold: int = 100000) -> int:
+def get_sum_of_dirs_below_threshold(
+    dirs: dict[Path, int], threshold: int = 100000
+) -> int:
     """Sum the size of all dirs with a size below threshold"""
     total: int = 0
 

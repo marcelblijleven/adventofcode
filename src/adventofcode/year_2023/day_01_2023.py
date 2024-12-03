@@ -49,7 +49,9 @@ def get_calibration_value_with_words(line: str) -> int:
         if (lfind := line.find(word)) != -1 and (left_idx is None or lfind < left_idx):
             left = value
             left_idx = lfind
-        if (rfind := line.rfind(word)) != -1 and (right_idx is None or rfind > right_idx):
+        if (rfind := line.rfind(word)) != -1 and (
+            right_idx is None or rfind > right_idx
+        ):
             right = value
             right_idx = rfind
 

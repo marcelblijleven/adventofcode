@@ -42,7 +42,9 @@ def highest_common_multiple(num_a: int, num_b: int) -> int:
     return num_a * num_b // math.gcd(num_a, num_b)
 
 
-def find_end_as_ghost(starting_position: str, instructions: deque[str], paths: dict[str, tuple[str, str]]) -> int:
+def find_end_as_ghost(
+    starting_position: str, instructions: deque[str], paths: dict[str, tuple[str, str]]
+) -> int:
     """
     Count how many staps it will take to arrive at a location that ends with Z
     """

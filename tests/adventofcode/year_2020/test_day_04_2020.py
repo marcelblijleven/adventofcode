@@ -24,9 +24,7 @@ ecl:brn pid:760753108 byr:1931
 hgt:179cm
 
 hcl:#cfa07d eyr:2025 pid:166559648
-iyr:2011 ecl:brn hgt:59in""".split(
-    "\n"
-)
+iyr:2011 ecl:brn hgt:59in""".split("\n")
 
 
 @pytest.mark.parametrize(

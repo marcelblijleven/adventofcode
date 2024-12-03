@@ -35,7 +35,9 @@ def get_all_routes(cities: list[str]) -> list[tuple[str, ...]]:
     return routes
 
 
-def _get_route_distances(routes: list[tuple[str, ...]], dist_dict: DistDictType) -> list[int]:
+def _get_route_distances(
+    routes: list[tuple[str, ...]], dist_dict: DistDictType
+) -> list[int]:
     distances = []
     for route in routes:
         distance = 0

@@ -53,7 +53,9 @@ def expiration_check(value: str) -> bool:
 def height_check(value: str) -> bool:
     height = "".join([char for char in value if char.isdigit()])
     unit = "".join([char for char in value if char.isalpha()])
-    return (unit == "cm" and _range_check(height, 150, 193)) or (unit == "in" and _range_check(height, 59, 76))
+    return (unit == "cm" and _range_check(height, 150, 193)) or (
+        unit == "in" and _range_check(height, 59, 76)
+    )
 
 
 def hair_color_check(value: str) -> bool:

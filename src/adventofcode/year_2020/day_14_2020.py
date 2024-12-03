@@ -20,7 +20,10 @@ def value_to_36_bit_string(value: str) -> str:
 
 def apply_mask_to_value(value: str, mask: str) -> int:
     masked = "".join(
-        [value if mask_value == "X" else mask_value for value, mask_value in zip(value, mask, strict=True)]
+        [
+            value if mask_value == "X" else mask_value
+            for value, mask_value in zip(value, mask, strict=True)
+        ]
     )
     return int(masked, 2)
 
@@ -31,7 +34,10 @@ def apply_mask_to_address(address: str, mask: str) -> Generator[int, None, None]
     bits = ["0", "1"] * floating_bits
 
     masked_address = "".join(
-        [character if mask_value == "0" else mask_value for character, mask_value in zip(address, mask, strict=True)]
+        [
+            character if mask_value == "0" else mask_value
+            for character, mask_value in zip(address, mask, strict=True)
+        ]
     )
 
     for combination in set(combinations(bits, floating_bits)):

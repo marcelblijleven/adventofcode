@@ -81,14 +81,20 @@ def get_reindeer(input_data: list[str]) -> list[Reindeer]:
     for line in input_data:
         if (matched := PATTERN.match(line)) and matched is not None:
             name, speed, fly_duration, rest_duration = matched.groups()
-            reindeer.append(Reindeer(name, int(speed), int(fly_duration), int(rest_duration)))
+            reindeer.append(
+                Reindeer(name, int(speed), int(fly_duration), int(rest_duration))
+            )
 
     return reindeer
 
 
 def check_leaderboard_and_assign_points(reindeer: list[Reindeer]):
     leader = sorted(reindeer, reverse=True)[0]
-    tied_racers = [racer for racer in reindeer if racer.distance_travelled == leader.distance_travelled]
+    tied_racers = [
+        racer
+        for racer in reindeer
+        if racer.distance_travelled == leader.distance_travelled
+    ]
 
     for racer in tied_racers:
         racer.assign_point()

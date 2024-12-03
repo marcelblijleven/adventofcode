@@ -48,7 +48,12 @@ def _part_one_binary_version(input_data: list[str]) -> list[int]:
     for boarding_pass in input_data:
         # could also use a translation table
         # boarding_pass.translate(str.maketrans({'B': '1', 'F': '0', 'R': '1', 'L': '0'})
-        _boarding_pass = boarding_pass.replace("B", "1").replace("F", "0").replace("R", "1").replace("L", "0")
+        _boarding_pass = (
+            boarding_pass.replace("B", "1")
+            .replace("F", "0")
+            .replace("R", "1")
+            .replace("L", "0")
+        )
         ids.append(int(_boarding_pass, 2))
 
     if not ids:

@@ -173,18 +173,24 @@ def read_outer_packet(buffer: io.StringIO) -> tuple[list[int], int]:
 
         if length_type == 0:
             total_length = int(buffer.read(15), 2)
-            packet_versions, packet_value = read_packets_until_length(buffer, total_length, type_id)
+            packet_versions, packet_value = read_packets_until_length(
+                buffer, total_length, type_id
+            )
             versions += packet_versions
         else:
             number_of_packets = int(buffer.read(11), 2)
-            packet_versions, packet_value = read_packets_until_all_read(buffer, number_of_packets, type_id)
+            packet_versions, packet_value = read_packets_until_all_read(
+                buffer, number_of_packets, type_id
+            )
             versions += packet_versions
 
     read_garbage_bits(buffer)
     return versions, packet_value
 
 
-def read_packets_until_length(buffer: io.StringIO, total_length: int, parent_type_id: int) -> tuple[list[int], int]:
+def read_packets_until_length(
+    buffer: io.StringIO, total_length: int, parent_type_id: int
+) -> tuple[list[int], int]:
     """
     Reads packets from the buffer until the total amount of bits read equals the total length parameter
     """
@@ -256,7 +262,9 @@ def read_type_four_packet(buffer: io.StringIO) -> int:
     return int(value, 2)
 
 
-def read_operator_packet(buffer: io.StringIO, parent_type_id: int) -> tuple[list[int], int]:
+def read_operator_packet(
+    buffer: io.StringIO, parent_type_id: int
+) -> tuple[list[int], int]:
     """
     Determines the length type id for the packet and calls the correct operator packet
     reader.
@@ -270,10 +278,14 @@ def read_operator_packet(buffer: io.StringIO, parent_type_id: int) -> tuple[list
 
     if length_type_id == 0:
         total_length = int(buffer.read(15), 2)
-        packet_versions, packet_value = read_packets_until_length(buffer, total_length, parent_type_id)
+        packet_versions, packet_value = read_packets_until_length(
+            buffer, total_length, parent_type_id
+        )
     elif length_type_id == 1:
         total_packets = int(buffer.read(11), 2)
-        packet_versions, packet_value = read_packets_until_all_read(buffer, total_packets, parent_type_id)
+        packet_versions, packet_value = read_packets_until_all_read(
+            buffer, total_packets, parent_type_id
+        )
     else:
         raise ValueError(f'unexpected length type "{length_type_id}" received')
 

@@ -20,7 +20,9 @@ def test_get_all_cities():
         ("Dublin", "Belfast"): 141,
     }
 
-    assert sorted(["London", "Dublin", "Belfast"]) == sorted(get_all_cities(test_input, dist_dict))
+    assert sorted(["London", "Dublin", "Belfast"]) == sorted(
+        get_all_cities(test_input, dist_dict)
+    )
     assert expected_dist_dict == dist_dict
 
 

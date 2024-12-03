@@ -34,7 +34,9 @@ def find_gear_coords(lines: list[str]) -> dict[tuple[int, int], list[int]]:
     return coords
 
 
-def neighbour_has_adjacent_symbol(current_position: tuple[int, int], symbols: set[tuple[int, int]]) -> bool:
+def neighbour_has_adjacent_symbol(
+    current_position: tuple[int, int], symbols: set[tuple[int, int]]
+) -> bool:
     x, y = current_position
     for y_mod in [-1, 0, 1]:
         for x_mod in [-1, 0, 1]:

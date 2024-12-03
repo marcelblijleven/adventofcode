@@ -80,7 +80,12 @@ def increment_password(password: str) -> str:
     seventh = sixth + 1  # e.g. 'c'
     eighth = seventh  # e.g. 'c'
 
-    password = "".join([chr(char) for char in int_password[:3] + [fourth, fifth, sixth, seventh, eighth]])
+    password = "".join(
+        [
+            chr(char)
+            for char in int_password[:3] + [fourth, fifth, sixth, seventh, eighth]
+        ]
+    )
 
     if not is_valid(password):
         raise ValueError("password invalid")
